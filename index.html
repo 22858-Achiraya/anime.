@@ -662,6 +662,284 @@
       text-underline-offset: 3px;
     }
 
+
+    /* =====================================================
+       EXTRA FANTASY SPRING DECORATIONS
+    ===================================================== */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 15% 25%, rgba(255,196,217,.22), transparent 16%),
+        radial-gradient(circle at 82% 18%, rgba(180,221,196,.24), transparent 17%),
+        radial-gradient(circle at 50% 95%, rgba(200,184,232,.18), transparent 20%);
+      mix-blend-mode: screen;
+    }
+
+    /* Magical sparkles */
+    .sparkle-field {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 3;
+    }
+
+    .sparkle {
+      position: absolute;
+      color: rgba(255,255,255,.9);
+      text-shadow: 0 0 7px rgba(255,255,255,.95), 0 0 18px rgba(215,123,155,.35);
+      animation: sparkleTwinkle 2.4s ease-in-out infinite;
+    }
+
+    @keyframes sparkleTwinkle {
+      0%,100% { opacity: .15; transform: scale(.55) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.25) rotate(90deg); }
+    }
+
+    /* Ornamental floral corners */
+    .floral-corner {
+      position: fixed;
+      z-index: 4;
+      pointer-events: none;
+      font-size: 76px;
+      line-height: 1;
+      opacity: .55;
+      filter: drop-shadow(0 8px 16px rgba(90,75,90,.12));
+      animation: cornerSway 5s ease-in-out infinite;
+    }
+
+    .floral-corner.tl { top: 8px; left: 4px; transform-origin: top left; }
+    .floral-corner.tr { top: 8px; right: 4px; transform-origin: top right; transform: scaleX(-1); }
+    .floral-corner.bl { bottom: 8px; left: 4px; transform-origin: bottom left; transform: rotate(180deg); }
+    .floral-corner.br { bottom: 8px; right: 4px; transform-origin: bottom right; transform: rotate(180deg) scaleX(-1); }
+
+    @keyframes cornerSway {
+      0%,100% { filter: drop-shadow(0 8px 16px rgba(90,75,90,.12)); }
+      50% { filter: drop-shadow(0 10px 22px rgba(215,123,155,.22)); }
+    }
+
+    /* Hanging flower garland */
+    .garland {
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1120px, 94%);
+      height: 95px;
+      z-index: 7;
+      pointer-events: none;
+    }
+
+    .garland::before {
+      content: "";
+      position: absolute;
+      left: 5%;
+      right: 5%;
+      top: 12px;
+      height: 3px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, transparent, rgba(85,127,98,.7), rgba(215,123,155,.7), rgba(85,127,98,.7), transparent);
+      box-shadow: 0 2px 7px rgba(85,127,98,.15);
+    }
+
+    .garland span {
+      position: absolute;
+      top: 15px;
+      font-size: 23px;
+      animation: garlandFloat 3.5s ease-in-out infinite;
+    }
+
+    .garland span:nth-child(1) { left: 10%; }
+    .garland span:nth-child(2) { left: 25%; animation-delay: .5s; }
+    .garland span:nth-child(3) { left: 40%; animation-delay: 1s; }
+    .garland span:nth-child(4) { left: 56%; animation-delay: .8s; }
+    .garland span:nth-child(5) { left: 71%; animation-delay: .35s; }
+    .garland span:nth-child(6) { left: 85%; animation-delay: 1.2s; }
+
+    @keyframes garlandFloat {
+      0%,100% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(8px) rotate(4deg); }
+    }
+
+    /* Hero ornament */
+    .hero::after {
+      content: "🌸";
+      right: 22px;
+      bottom: 12px;
+    }
+
+    .hero-ornament {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 17px;
+      font-size: 18px;
+      opacity: .8;
+      animation: softGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes softGlow {
+      0%,100% { opacity: .62; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-2px); }
+    }
+
+    /* Card glass gleam */
+    .character-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 25%, rgba(255,255,255,.4) 48%, transparent 62%);
+      transform: translateX(-130%);
+      transition: transform .9s ease;
+      pointer-events: none;
+      z-index: 6;
+    }
+
+    .character-card:hover::before {
+      transform: translateX(130%);
+    }
+
+    /* Name halo */
+    .content h2 {
+      text-shadow: 0 0 14px rgba(215,123,155,.13);
+    }
+
+    .chip {
+      transition: transform .25s ease, box-shadow .25s ease;
+      border: 1px solid rgba(128,169,135,.12);
+    }
+
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 16px rgba(85,127,98,.10);
+    }
+
+    /* Floating quote ribbon */
+    .spring-ribbon {
+      position: relative;
+      z-index: 5;
+      width: fit-content;
+      max-width: calc(100% - 40px);
+      margin: 24px auto 0;
+      padding: 10px 19px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.66);
+      border: 1px solid rgba(215,123,155,.18);
+      box-shadow: 0 10px 28px rgba(90,75,90,.09);
+      backdrop-filter: blur(10px);
+      color: #776c77;
+      font-size: 13px;
+      letter-spacing: .3px;
+    }
+
+    /* Spring lanterns */
+    .lantern {
+      position: fixed;
+      z-index: 2;
+      pointer-events: none;
+      font-size: 33px;
+      opacity: .5;
+      filter: drop-shadow(0 5px 14px rgba(90,75,90,.15));
+      animation: lanternFloat 6s ease-in-out infinite;
+    }
+
+    .lantern.l1 { left: 2.5%; top: 19%; }
+    .lantern.l2 { right: 2.5%; top: 31%; animation-delay: 1.4s; }
+    .lantern.l3 { left: 4%; top: 70%; animation-delay: 2.2s; }
+    .lantern.l4 { right: 4%; top: 78%; animation-delay: .8s; }
+
+    @keyframes lanternFloat {
+      0%,100% { transform: translateY(0) rotate(-4deg); }
+      50% { transform: translateY(-13px) rotate(4deg); }
+    }
+
+    /* Character mood ribbons */
+    .mood-ribbon {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 4;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: rgba(255,255,255,.96);
+      background: rgba(90,82,92,.42);
+      border: 1px solid rgba(255,255,255,.55);
+      font-size: 10px;
+      letter-spacing: .7px;
+      backdrop-filter: blur(7px);
+    }
+
+    /* Bottom flower meadow */
+    .meadow {
+      position: relative;
+      z-index: 4;
+      width: min(1120px, calc(100% - 24px));
+      margin: 18px auto -34px;
+      height: 58px;
+      overflow: hidden;
+      text-align: center;
+      white-space: nowrap;
+      font-size: 24px;
+      letter-spacing: 9px;
+      opacity: .66;
+      user-select: none;
+    }
+
+    .meadow span {
+      display: inline-block;
+      animation: meadowBob 2.8s ease-in-out infinite;
+    }
+    .meadow span:nth-child(2n) { animation-delay: .35s; }
+    .meadow span:nth-child(3n) { animation-delay: .8s; }
+
+    @keyframes meadowBob {
+      0%,100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-5px) rotate(2deg); }
+    }
+
+    /* Stronger ornate music player */
+    .spring-music {
+      border-radius: 26px;
+      border: 2px solid rgba(255,255,255,.9);
+      box-shadow:
+        0 0 18px rgba(255,255,255,.6),
+        0 0 34px rgba(215,123,155,.16),
+        0 16px 40px rgba(72,60,72,.22);
+    }
+
+    .spring-music::before {
+      content: "✿";
+      position: absolute;
+      left: 8px;
+      top: -8px;
+      font-size: 19px;
+      opacity: .85;
+      animation: bloomPulse 2.2s ease-in-out infinite;
+    }
+
+    .spring-music::after {
+      content: "✿";
+      position: absolute;
+      right: 8px;
+      bottom: -8px;
+      font-size: 17px;
+      opacity: .85;
+      animation: bloomPulse 2.7s ease-in-out infinite reverse;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: rgba(255,255,255,.45); }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(#d77b9b, #80a987);
+      border-radius: 999px;
+    }
+
     /* =====================================================
        RESPONSIVE
     ===================================================== */
@@ -717,9 +995,27 @@
   <div class="custom-cursor" id="cursor"></div>
   <div class="petal-layer" id="petals"></div>
   <div class="firefly-layer" id="fireflies"></div>
+
+  <div class="floral-corner tl">🌿🌸</div>
+  <div class="floral-corner tr">🌿🌸</div>
+  <div class="floral-corner bl">🌿🌷</div>
+  <div class="floral-corner br">🌿🌷</div>
+
+  <div class="sparkle-field" id="sparkles"></div>
+
+  <div class="lantern l1">🏮</div>
+  <div class="lantern l2">🏮</div>
+  <div class="lantern l3">🏮</div>
+  <div class="lantern l4">🏮</div>
+
   <div class="garden-fog"></div>
 
   <header id="top">
+    <div class="garland" aria-hidden="true">
+      <span>🌸</span><span>🍃</span><span>🌷</span>
+      <span>🌿</span><span>🌼</span><span>🍃</span>
+    </div>
+
     <div class="title-decoration">🌿 ❀ 🌿</div>
     <h1>Love &amp; Deepspace</h1>
     <p>Spring Garden — Sylus • Zayne • Caleb</p>
@@ -740,6 +1036,7 @@
         หน้าแฟนเมดโทนฤดูใบไม้ผลิที่นำตัวละคร 3 คนมาไว้ในสวนดอกไม้
         พร้อมข้อมูลพื้นฐานจาก Love and Deepspace Wiki
       </p>
+      <div class="hero-ornament">🌸 ✦ 🦋 ✦ 🌿 ✦ 🌷 ✦ 🌿 ✦ 🦋 ✦ 🌸</div>
     </section>
 
     <div class="spring-divider"><i></i><b>🌷</b><i></i></div>
@@ -749,6 +1046,7 @@
       <!-- SYLUS -->
       <article class="character-card sylus" id="sylus">
         <div class="portrait">
+          <div class="mood-ribbon">MYSTERIOUS BLOOM</div>
           <div class="orb"></div>
           <span class="leaf a">🍃</span>
           <span class="leaf b">🌿</span>
@@ -788,6 +1086,7 @@
       <!-- ZAYNE -->
       <article class="character-card zayne" id="zayne">
         <div class="portrait">
+          <div class="mood-ribbon">WINTER → SPRING</div>
           <div class="orb"></div>
           <span class="leaf a">🍃</span>
           <span class="leaf b">🌱</span>
@@ -827,6 +1126,7 @@
       <!-- CALEB -->
       <article class="character-card caleb" id="caleb">
         <div class="portrait">
+          <div class="mood-ribbon">SUNLIT BLOOM</div>
           <div class="orb"></div>
           <span class="leaf a">🌿</span>
           <span class="leaf b">🍃</span>
@@ -877,6 +1177,13 @@
     <div id="youtubePlayer"></div>
   </section>
 
+
+    <div class="meadow" aria-hidden="true">
+      <span>🌱</span><span>🌷</span><span>🌼</span><span>🌿</span>
+      <span>🌸</span><span>🍃</span><span>🪻</span><span>🌼</span>
+      <span>🌷</span><span>🌿</span><span>🌸</span><span>🍃</span>
+    </div>
+
   <footer>
     <div class="floral-line">🌷 ✿ 🌿 🦋 🌿 ✿ 🌷</div>
     <p><strong>Love &amp; Deepspace — Spring Garden</strong></p>
@@ -900,6 +1207,23 @@
       cursor.style.left = e.clientX + "px";
       cursor.style.top = e.clientY + "px";
     });
+
+
+    /* =====================================================
+       EXTRA SPARKLE FIELD
+    ===================================================== */
+    const sparkleField = document.getElementById("sparkles");
+    for (let i = 0; i < 32; i++) {
+      const s = document.createElement("span");
+      s.className = "sparkle";
+      s.textContent = Math.random() > 0.5 ? "✦" : "·";
+      s.style.left = Math.random() * 100 + "%";
+      s.style.top = Math.random() * 100 + "%";
+      s.style.fontSize = (7 + Math.random() * 14) + "px";
+      s.style.animationDelay = (-Math.random() * 4) + "s";
+      s.style.animationDuration = (1.8 + Math.random() * 2.3) + "s";
+      sparkleField.appendChild(s);
+    }
 
     /* =====================================================
        PETALS + FIREFLIES
