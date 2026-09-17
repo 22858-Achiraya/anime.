@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love & Deepspace — Spring Garden</title>
+
+  <style>
+    /* =====================================================
+       RESET
+    ===================================================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* =====================================================
+       SPRING PALETTE
+    ===================================================== */
+    :root {
+      --rose-deep: #a64d70;
+      --rose: #d77b9b;
+      --rose-light: #f3b7ca;
+      --rose-pale: #fff0f6;
+
+      --leaf-deep: #557f62;
+      --leaf: #80a987;
+      --leaf-light: #b9d8b1;
+      --leaf-pale: #eef8e9;
+
+      --sky: #8bc7df;
+      --sky-pale: #eaf8fd;
+      --lavender: #c8b8e8;
+
+      --ink: #4d4650;
+      --white: #ffffff;
+
+      --shadow: 0 22px 55px rgba(100, 85, 100, .16);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Segoe UI", "Noto Sans Thai", Tahoma, sans-serif;
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+      cursor: none;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,255,255,.92), transparent 27%),
+        radial-gradient(circle at 88% 82%, rgba(255,255,255,.78), transparent 30%),
+        linear-gradient(135deg, #fff7fb, #f2faed, #edf8ff, #faf4ff);
+      background-size: 300% 300%;
+      animation: bgMove 16s ease infinite;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* =====================================================
+       DECORATION
+    ===================================================== */
+    .custom-cursor {
+      position: fixed;
+      width: 22px;
+      height: 22px;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%) rotate(-25deg);
+      background: linear-gradient(135deg, #a6d8a4, #f6a9c1);
+      border: 2px solid #fff;
+      border-radius: 70% 15% 70% 15%;
+      box-shadow: 0 0 14px rgba(215,123,155,.45);
+    }
+
+    .petal-layer,
+    .firefly-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .petal {
+      position: absolute;
+      top: -40px;
+      opacity: .75;
+      filter: drop-shadow(0 0 5px rgba(255,255,255,.55));
+      animation: petalFall linear infinite;
+    }
+
+    @keyframes petalFall {
+      0%   { transform: translate3d(0,-20px,0) rotate(0deg); opacity: 0; }
+      12%  { opacity: .8; }
+      50%  { transform: translate3d(40px, 52vh,0) rotate(170deg); }
+      100% { transform: translate3d(-50px, 110vh,0) rotate(360deg); opacity: 0; }
+    }
+
+    .firefly {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff4a8;
+      box-shadow: 0 0 9px #fff4a8, 0 0 22px rgba(255,231,140,.6);
+      animation: fireflyFloat 7s ease-in-out infinite;
+    }
+
+    @keyframes fireflyFloat {
+      0%,100% { transform: translateY(0) scale(.7); opacity: .2; }
+      50% { transform: translateY(-35px) scale(1.2); opacity: .95; }
+    }
+
+    .garden-fog {
+      position: fixed;
+      left: -20%;
+      bottom: 0;
+      width: 140%;
+      height: 210px;
+      background: radial-gradient(ellipse, rgba(255,255,255,.52), transparent 70%);
+      filter: blur(24px);
+      opacity: .42;
+      pointer-events: none;
+      z-index: 2;
+      animation: fogMove 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes fogMove {
+      from { transform: translateX(-4%); }
+      to { transform: translateX(9%); }
+    }
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+    header {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 72px 20px 35px;
+      background: linear-gradient(135deg, rgba(255,255,255,.84), rgba(249,243,255,.72));
+      backdrop-filter: blur(14px);
+      border-bottom: 2px solid rgba(128,169,135,.25);
+      box-shadow: 0 15px 40px rgba(83,101,84,.08);
+    }
+
+    header::before {
+      content: "🌷";
+      position: absolute;
+      left: 8%;
+      top: 30px;
+      font-size: 42px;
+      animation: floatDecor 4.5s ease-in-out infinite;
+    }
+
+    header::after {
+      content: "🦋";
+      position: absolute;
+      right: 8%;
+      top: 38px;
+      font-size: 36px;
+      animation: floatDecor 5s ease-in-out infinite reverse;
+    }
+
+    @keyframes floatDecor {
+      0%,100% { transform: translateY(0) rotate(-4deg); }
+      50% { transform: translateY(-10px) rotate(7deg); }
+    }
+
+    .title-decoration {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+      color: var(--rose-deep);
+    }
+
+    .title-decoration::before,
+    .title-decoration::after {
+      content: "";
+      width: 90px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--rose));
+    }
+
+    .title-decoration::after {
+      background: linear-gradient(90deg, var(--rose), transparent);
+    }
+
+    header h1 {
+      position: relative;
+      display: inline-block;
+      font-size: clamp(32px, 5vw, 50px);
+      color: var(--rose-deep);
+      margin-bottom: 12px;
+      letter-spacing: .5px;
+      text-shadow: 2px 4px 14px rgba(166,77,112,.16);
+    }
+
+    header h1::after {
+      content: "✿";
+      position: absolute;
+      right: -38px;
+      top: -14px;
+      font-size: 24px;
+      color: var(--leaf);
+      animation: bloomPulse 1.9s ease-in-out infinite;
+    }
+
+    @keyframes bloomPulse {
+      0%,100% { transform: scale(.85) rotate(-12deg); opacity: .65; }
+      50% { transform: scale(1.2) rotate(12deg); opacity: 1; }
+    }
+
+    header p {
+      display: inline-block;
+      font-size: 16px;
+      line-height: 1.7;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(215,123,155,.2);
+      padding: 8px 20px;
+      border-radius: 50px;
+      box-shadow: 0 8px 24px rgba(90,80,90,.07);
+    }
+
+    /* =====================================================
+       NAV
+    ===================================================== */
+    nav {
+      position: relative;
+      z-index: 1000;
+      margin-top: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nav-links a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 20px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(166,77,112,.88), rgba(128,169,135,.9));
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: 0 9px 24px rgba(102,86,95,.14);
+      overflow: hidden;
+      transition: .35s ease;
+    }
+
+    .nav-links a::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.55) 50%, transparent 80%);
+      transform: translateX(-120%);
+      transition: transform .7s ease;
+    }
+
+    .nav-links a:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 15px 33px rgba(102,86,95,.2);
+    }
+
+    .nav-links a:hover::before { transform: translateX(120%); }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+    .hero {
+      position: relative;
+      z-index: 5;
+      width: min(1100px, calc(100% - 40px));
+      margin: 42px auto 0;
+      padding: 34px;
+      border: 2px solid rgba(128,169,135,.25);
+      border-radius: 34px;
+      background: rgba(255,255,255,.68);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      font-size: 46px;
+      opacity: .55;
+    }
+
+    .hero::before { content: "🌿"; left: 20px; top: 16px; }
+    .hero::after  { content: "🌸"; right: 22px; bottom: 12px; }
+
+    .hero h2 {
+      text-align: center;
+      color: var(--leaf-deep);
+      font-size: clamp(24px, 3vw, 34px);
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 1.9;
+      color: #625a64;
+    }
+
+    /* =====================================================
+       CHARACTER GRID
+    ===================================================== */
+    .gallery {
+      position: relative;
+      z-index: 5;
+      width: min(1100px, calc(100% - 40px));
+      margin: 36px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .character-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 2px solid rgba(255,255,255,.9);
+      background: rgba(255,255,255,.83);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      transition: transform .4s ease, box-shadow .4s ease;
+      transform-style: preserve-3d;
+    }
+
+    .character-card:hover {
+      transform: translateY(-10px) rotateX(2deg) rotateY(-2deg);
+      box-shadow: 0 28px 58px rgba(86,70,86,.20);
+    }
+
+    .portrait {
+      position: relative;
+      height: 315px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .portrait::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255,255,255,.7), transparent 35%),
+        linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,0));
+      z-index: 0;
+    }
+
+    .portrait .orb {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      bottom: -45px;
+      filter: blur(2px);
+      opacity: .6;
+      z-index: 0;
+    }
+
+    .portrait .initial {
+      position: relative;
+      z-index: 1;
+      font-size: 118px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 12px;
+      text-shadow: 0 10px 30px rgba(60,50,60,.22);
+    }
+
+    .portrait .leaf {
+      position: absolute;
+      font-size: 34px;
+      z-index: 2;
+      animation: floatDecor 4s ease-in-out infinite;
+    }
+
+    .portrait .leaf.a { left: 18px; top: 22px; }
+    .portrait .leaf.b { right: 20px; top: 42px; animation-delay: .9s; }
+    .portrait .flower { left: 26px; bottom: 24px; font-size: 27px; z-index: 2; }
+    .portrait .butterfly { right: 24px; bottom: 20px; font-size: 25px; z-index: 2; }
+
+    .sylus .portrait {
+      background: linear-gradient(160deg, #f5dfe8, #ead9f7, #e7f4ec);
+    }
+    .sylus .orb { background: radial-gradient(circle, #f3a7bf, #bcaee6); }
+    .sylus .initial { color: #83516d; }
+
+    .zayne .portrait {
+      background: linear-gradient(160deg, #dcecf4, #e8f4ee, #edf0fb);
+    }
+    .zayne .orb { background: radial-gradient(circle, #9ccfe0, #bfd5c3); }
+    .zayne .initial { color: #58778a; }
+
+    .caleb .portrait {
+      background: linear-gradient(160deg, #fff0d7, #e6f2dd, #dcebf8);
+    }
+    .caleb .orb { background: radial-gradient(circle, #f1c486, #b3d1a5); }
+    .caleb .initial { color: #7b6a58; }
+
+    .image-label {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 3;
+      padding: 6px 13px;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      background: rgba(90,92,82,.54);
+      backdrop-filter: blur(7px);
+      border: 1px solid rgba(255,255,255,.6);
+    }
+
+    .content {
+      position: relative;
+      padding: 24px 24px 28px;
+    }
+
+    .content::before {
+      content: "✿";
+      position: absolute;
+      right: 18px;
+      top: 15px;
+      color: var(--rose);
+      font-size: 25px;
+      opacity: .55;
+      animation: bloomPulse 3s ease-in-out infinite;
+    }
+
+    .number {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--leaf-deep);
+      margin-bottom: 5px;
+    }
+
+    .content h2 {
+      color: var(--rose-deep);
+      font-size: 25px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--rose-pale);
+    }
+
+    .tagline {
+      color: #756b75;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .info {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 8px;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .info-row strong { color: var(--leaf-deep); }
+
+    .content p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #625b64;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--leaf-pale);
+      color: var(--leaf-deep);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* =====================================================
+       DIVIDER
+    ===================================================== */
+    .spring-divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      margin: 38px auto 18px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .spring-divider i {
+      width: 105px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--leaf), var(--rose), transparent);
+    }
+
+    .spring-divider b {
+      font-size: 21px;
+      animation: bloomPulse 2s ease-in-out infinite;
+    }
+
+    /* =====================================================
+       MUSIC PLAYER
+    ===================================================== */
+    .spring-music {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 99999;
+      width: 300px;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 13px;
+      background: linear-gradient(135deg, #bd6d8e, #7c9f7f);
+      color: white;
+      border: 2px solid rgba(255,255,255,.8);
+      border-radius: 23px;
+      box-shadow: 0 0 18px rgba(255,255,255,.55),
+                  0 13px 34px rgba(72,60,72,.2);
+      backdrop-filter: blur(12px);
+      animation: musicFloat 3s ease-in-out infinite;
+    }
+
+    .music-disc {
+      width: 45px;
+      height: 45px;
+      min-width: 45px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.2);
+      font-size: 22px;
+      box-shadow: 0 0 14px rgba(255,255,255,.5);
+      animation: spin 5s linear infinite;
+    }
+
+    .music-text {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .music-text small {
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,.82);
+    }
+
+    .music-text strong {
+      font-size: 12.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #musicBtn {
+      width: 41px;
+      height: 41px;
+      min-width: 41px;
+      border: 0;
+      border-radius: 50%;
+      background: #fff;
+      color: #8a5b73;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 0 17px rgba(255,255,255,.75);
+      transition: .3s;
+    }
+
+    #musicBtn:hover { transform: scale(1.12); }
+
+    #youtubePlayer {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+      left: -9999px;
+      top: -9999px;
+    }
+
+    @keyframes musicFloat {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+    footer {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      margin-top: 60px;
+      padding: 42px 20px;
+      background: linear-gradient(135deg, #6e9274, #a76682, #789dc0);
+      color: white;
+      border-top: 3px solid rgba(255,255,255,.5);
+      box-shadow: 0 -16px 40px rgba(92,76,92,.12);
+    }
+
+    footer .floral-line {
+      font-size: 20px;
+      letter-spacing: 7px;
+      margin-bottom: 12px;
+    }
+
+    footer p {
+      margin: 7px;
+      font-size: 13.5px;
+      line-height: 1.7;
+      opacity: .95;
+    }
+
+    footer a {
+      color: #fff;
+      font-weight: 700;
+      text-underline-offset: 3px;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+    @media (max-width: 900px) {
+      body { cursor: auto; }
+      .custom-cursor { display: none; }
+
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+
+      .spring-music {
+        width: 270px;
+        right: 12px;
+        bottom: 12px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      header { padding: 55px 18px 30px; }
+      header::before, header::after { font-size: 28px; }
+
+      .hero {
+        width: min(calc(100% - 28px), 520px);
+        padding: 26px 20px;
+      }
+
+      .gallery {
+        width: min(calc(100% - 28px), 520px);
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .portrait { height: 285px; }
+
+      .spring-music {
+        width: calc(100% - 24px);
+        right: 12px;
+        bottom: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="petal-layer" id="petals"></div>
+  <div class="firefly-layer" id="fireflies"></div>
+  <div class="garden-fog"></div>
+
+  <header id="top">
+    <div class="title-decoration">🌿 ❀ 🌿</div>
+    <h1>Love &amp; Deepspace</h1>
+    <p>Spring Garden — Sylus • Zayne • Caleb</p>
+
+    <nav>
+      <div class="nav-links">
+        <a href="#sylus">🦋 Sylus</a>
+        <a href="#zayne">❄️ Zayne</a>
+        <a href="#caleb">🌼 Caleb</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>🌸 A Gentle Spring in Deepspace 🌸</h2>
+      <p>
+        หน้าแฟนเมดโทนฤดูใบไม้ผลิที่นำตัวละคร 3 คนมาไว้ในสวนดอกไม้
+        พร้อมข้อมูลพื้นฐานจาก Love and Deepspace Wiki
+      </p>
+    </section>
+
+    <div class="spring-divider"><i></i><b>🌷</b><i></i></div>
+
+    <section class="gallery">
+
+      <!-- SYLUS -->
+      <article class="character-card sylus" id="sylus">
+        <div class="portrait">
+          <div class="orb"></div>
+          <span class="leaf a">🍃</span>
+          <span class="leaf b">🌿</span>
+          <span class="flower">🌸</span>
+          <span class="butterfly">🦋</span>
+          <div class="image-label">CHARACTER 01</div>
+          <div class="initial">S</div>
+        </div>
+
+        <div class="content">
+          <span class="number">01 / SPRING PROFILE</span>
+          <h2>Sylus</h2>
+          <div class="tagline">The leader of Onychinus</div>
+
+          <div class="info">
+            <div class="info-row"><strong>Age</strong><span>28</span></div>
+            <div class="info-row"><strong>Height</strong><span>190 cm</span></div>
+            <div class="info-row"><strong>Birthday</strong><span>April 18</span></div>
+            <div class="info-row"><strong>Sign</strong><span>Aries</span></div>
+            <div class="info-row"><strong>Evol</strong><span>Energy Manipulation</span></div>
+            <div class="info-row"><strong>Workplace</strong><span>Onychinus</span></div>
+          </div>
+
+          <p>
+            Sylus เป็นผู้นำของ Onychinus มีบุคลิกมั่นใจ พูดตรง สุขุมในสถานการณ์กดดัน
+            และมีแนวคิดเชิงวิเคราะห์และวางแผนล่วงหน้า
+          </p>
+
+          <div class="chips">
+            <span class="chip">🖤 Silver Hair</span>
+            <span class="chip">❤️ Red Eyes</span>
+            <span class="chip">🐦 Crow</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ZAYNE -->
+      <article class="character-card zayne" id="zayne">
+        <div class="portrait">
+          <div class="orb"></div>
+          <span class="leaf a">🍃</span>
+          <span class="leaf b">🌱</span>
+          <span class="flower">❄️</span>
+          <span class="butterfly">🌼</span>
+          <div class="image-label">CHARACTER 02</div>
+          <div class="initial">Z</div>
+        </div>
+
+        <div class="content">
+          <span class="number">02 / SPRING PROFILE</span>
+          <h2>Zayne</h2>
+          <div class="tagline">Akso Hospital — Cardiac Surgeon</div>
+
+          <div class="info">
+            <div class="info-row"><strong>Age</strong><span>27</span></div>
+            <div class="info-row"><strong>Height</strong><span>186 cm</span></div>
+            <div class="info-row"><strong>Birthday</strong><span>September 5</span></div>
+            <div class="info-row"><strong>Sign</strong><span>Virgo</span></div>
+            <div class="info-row"><strong>Evol</strong><span>Ice</span></div>
+            <div class="info-row"><strong>Workplace</strong><span>Akso Hospital</span></div>
+          </div>
+
+          <p>
+            Zayne เป็นศัลยแพทย์หัวใจที่ทำงานที่ Akso Hospital
+            มีบุคลิกสุขุม ตรงไปตรงมา เป็นมืออาชีพ และใส่ใจคนรอบตัว
+          </p>
+
+          <div class="chips">
+            <span class="chip">❄️ Ice Evol</span>
+            <span class="chip">🩺 Cardiac Surgeon</span>
+            <span class="chip">🍫 Sweet Treats</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- CALEB -->
+      <article class="character-card caleb" id="caleb">
+        <div class="portrait">
+          <div class="orb"></div>
+          <span class="leaf a">🌿</span>
+          <span class="leaf b">🍃</span>
+          <span class="flower">🌼</span>
+          <span class="butterfly">🦋</span>
+          <div class="image-label">CHARACTER 03</div>
+          <div class="initial">C</div>
+        </div>
+
+        <div class="content">
+          <span class="number">03 / SPRING PROFILE</span>
+          <h2>Caleb</h2>
+          <div class="tagline">Farspace Fleet — Colonel</div>
+
+          <div class="info">
+            <div class="info-row"><strong>Age</strong><span>25</span></div>
+            <div class="info-row"><strong>Height</strong><span>188 cm</span></div>
+            <div class="info-row"><strong>Birthday</strong><span>June 13</span></div>
+            <div class="info-row"><strong>Sign</strong><span>Gemini</span></div>
+            <div class="info-row"><strong>Evol</strong><span>Gravity Manipulation</span></div>
+            <div class="info-row"><strong>Workplace</strong><span>Farspace Fleet</span></div>
+          </div>
+
+          <p>
+            Caleb เคยเป็นนักบินรบของ DAA และปัจจุบันเป็น Colonel แห่ง Farspace Fleet
+            บุคลิกที่แสดงในเรื่องมีทั้งความใจดี ขี้เล่น ปกป้องคนที่สำคัญ และมีด้านที่จริงจังมากขึ้นหลังกลับมา
+          </p>
+
+          <div class="chips">
+            <span class="chip">🌌 Gravity</span>
+            <span class="chip">✈️ Fighter Pilot</span>
+            <span class="chip">🌼 Protective</span>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- MUSIC -->
+  <section class="spring-music" aria-label="Music player">
+    <div class="music-disc">🎵</div>
+    <div class="music-text">
+      <small>SPRING MUSIC</small>
+      <strong>Love &amp; Deepspace • YouTube</strong>
+    </div>
+    <button id="musicBtn" type="button" aria-label="เล่นหรือหยุดเพลง">▶</button>
+    <div id="youtubePlayer"></div>
+  </section>
+
+  <footer>
+    <div class="floral-line">🌷 ✿ 🌿 🦋 🌿 ✿ 🌷</div>
+    <p><strong>Love &amp; Deepspace — Spring Garden</strong></p>
+    <p>Fan-made page • ข้อมูลตัวละครอ้างอิงจาก Love and Deepspace Wiki</p>
+    <p>
+      <a href="https://loveanddeepspace.fandom.com/wiki/Sylus" target="_blank" rel="noopener">Sylus Wiki</a>
+      ·
+      <a href="https://loveanddeepspace.fandom.com/wiki/Zayne" target="_blank" rel="noopener">Zayne Wiki</a>
+      ·
+      <a href="https://loveanddeepspace.fandom.com/wiki/Caleb" target="_blank" rel="noopener">Caleb Wiki</a>
+    </p>
+  </footer>
+
+  <script>
+    /* =====================================================
+       CUSTOM CURSOR
+    ===================================================== */
+    const cursor = document.getElementById("cursor");
+
+    window.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+
+    /* =====================================================
+       PETALS + FIREFLIES
+    ===================================================== */
+    const petals = document.getElementById("petals");
+    const fireflies = document.getElementById("fireflies");
+
+    const petalChars = ["🌸", "🌷", "🌼", "🍃", "✿"];
+
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement("span");
+      p.className = "petal";
+      p.textContent = petalChars[Math.floor(Math.random() * petalChars.length)];
+      p.style.left = Math.random() * 100 + "%";
+      p.style.fontSize = (14 + Math.random() * 18) + "px";
+      p.style.animationDuration = (7 + Math.random() * 8) + "s";
+      p.style.animationDelay = (-Math.random() * 12) + "s";
+      petals.appendChild(p);
+    }
+
+    for (let i = 0; i < 18; i++) {
+      const f = document.createElement("span");
+      f.className = "firefly";
+      f.style.left = Math.random() * 100 + "%";
+      f.style.top = (8 + Math.random() * 82) + "%";
+      f.style.animationDuration = (4 + Math.random() * 5) + "s";
+      f.style.animationDelay = (-Math.random() * 8) + "s";
+      fireflies.appendChild(f);
+    }
+
+    /* =====================================================
+       CLICK FLOWERS
+    ===================================================== */
+    document.addEventListener("click", (e) => {
+      if (e.target.closest(".spring-music")) return;
+
+      const burst = ["🌸", "🌼", "✿", "🍃"];
+      for (let i = 0; i < 6; i++) {
+        const el = document.createElement("span");
+        el.textContent = burst[Math.floor(Math.random() * burst.length)];
+        el.style.position = "fixed";
+        el.style.left = e.clientX + "px";
+        el.style.top = e.clientY + "px";
+        el.style.pointerEvents = "none";
+        el.style.zIndex = "100000";
+        el.style.fontSize = (14 + Math.random() * 12) + "px";
+        el.style.transition = "transform 0.9s ease, opacity 0.9s ease";
+
+        const dx = (Math.random() - .5) * 150;
+        const dy = (Math.random() - .5) * 150;
+
+        document.body.appendChild(el);
+
+        requestAnimationFrame(() => {
+          el.style.transform = `translate(${dx}px, ${dy}px) rotate(${Math.random() * 260}deg)`;
+          el.style.opacity = "0";
+        });
+
+        setTimeout(() => el.remove(), 950);
+      }
+    });
+
+    /* =====================================================
+       YOUTUBE MUSIC
+       Video ID from the user's supplied URL
+    ===================================================== */
+    let player;
+    let isPlaying = false;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player("youtubePlayer", {
+        width: "1",
+        height: "1",
+        videoId: "xMR9tY3XfaY",
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          rel: 0,
+          playsinline: 1
+        },
+        events: {
+          onReady: () => {
+            document.getElementById("musicBtn").textContent = "▶";
+          },
+          onStateChange: (event) => {
+            if (event.data === YT.PlayerState.PLAYING) {
+              isPlaying = true;
+              document.getElementById("musicBtn").textContent = "❚❚";
+            } else if (
+              event.data === YT.PlayerState.PAUSED ||
+              event.data === YT.PlayerState.ENDED
+            ) {
+              isPlaying = false;
+              document.getElementById("musicBtn").textContent = "▶";
+            }
+          }
+        }
+      });
+    }
+
+    document.getElementById("musicBtn").addEventListener("click", () => {
+      if (!player || !player.playVideo) return;
+
+      if (isPlaying) {
+        player.pauseVideo();
+      } else {
+        player.playVideo();
+      }
+    });
+
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+  </script>
+</body>
+</html>
