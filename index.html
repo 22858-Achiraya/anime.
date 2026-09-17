@@ -940,6 +940,39 @@
       border-radius: 999px;
     }
 
+
+    /* CHARACTER IMAGES */
+    .portrait .character-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      z-index: 1;
+      display: block;
+      filter: saturate(.96) contrast(1.02);
+      transition: transform .55s ease, filter .55s ease;
+    }
+
+    .character-card:hover .portrait .character-image {
+      transform: scale(1.04);
+      filter: saturate(1.04) contrast(1.04);
+    }
+
+    .portrait .image-shade {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(to top, rgba(255,255,255,.18), transparent 48%, rgba(255,255,255,.12));
+    }
+
+    .portrait .initial { z-index: 0; }
+    .portrait .leaf, .portrait .flower, .portrait .butterfly, .portrait .image-label, .portrait .mood-ribbon {
+      z-index: 3;
+    }
+
     /* =====================================================
        RESPONSIVE
     ===================================================== */
@@ -1048,11 +1081,14 @@
         <div class="portrait">
           <div class="mood-ribbon">MYSTERIOUS BLOOM</div>
           <div class="orb"></div>
+          <img class="character-image" src="https://r.res.easebar.com/pic/20250609/f40ad552-296b-4f97-a398-1c6c3a6999ba.png" alt="Sylus from Love and Deepspace" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+          <div class="image-shade"></div>
           <span class="leaf a">🍃</span>
           <span class="leaf b">🌿</span>
           <span class="flower">🌸</span>
           <span class="butterfly">🦋</span>
-          <img src="images/95b108e6-65e6-408b-9c98-0d89e10f6463.png" alt="Sylus" class="character-img">
+          <div class="image-label">CHARACTER 01</div>
+          <div class="initial">S</div>
         </div>
 
         <div class="content">
@@ -1087,6 +1123,8 @@
         <div class="portrait">
           <div class="mood-ribbon">WINTER → SPRING</div>
           <div class="orb"></div>
+          <img class="character-image" src="https://pbs.twimg.com/media/GB7n-3bawAA-aA2.jpg" alt="Zayne from Love and Deepspace" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+          <div class="image-shade"></div>
           <span class="leaf a">🍃</span>
           <span class="leaf b">🌱</span>
           <span class="flower">❄️</span>
@@ -1127,6 +1165,8 @@
         <div class="portrait">
           <div class="mood-ribbon">SUNLIT BLOOM</div>
           <div class="orb"></div>
+          <img class="character-image" src="https://otome.com/wp-content/uploads/2025/01/Love-and-Deepspace-Caleb-Close-Up-1.png" alt="Caleb from Love and Deepspace" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+          <div class="image-shade"></div>
           <span class="leaf a">🌿</span>
           <span class="leaf b">🍃</span>
           <span class="flower">🌼</span>
