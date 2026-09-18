@@ -4,13 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#8e637f">
-<title>Love & Deepspace — Spring River Fantasy</title>
+<meta name="theme-color" content="#d77b9b">
+
+<title>Love & Deepspace — Spring Fantasy World</title>
 
 <style>
-/* =========================================================
-   GOOGLE FONTS
-========================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
 /* =========================================================
@@ -28,484 +26,584 @@ html{
 
 body{
     font-family:"Kanit","Noto Sans Thai",sans-serif;
-    color:#544b57;
-    min-height:100vh;
+    color:var(--ink);
+    background:var(--bg-main);
     overflow-x:hidden;
     cursor:none;
-    background:
-        linear-gradient(
-            180deg,
-            #fef8fb 0%,
-            #edf8f1 38%,
-            #e9f8fb 67%,
-            #f9eef5 100%
-        );
+    transition:
+        background 1s ease,
+        color 1s ease;
 }
 
 /* =========================================================
-   VARIABLES
+   SPRING THEME
 ========================================================= */
 :root{
-    --rose-deep:#8f4666;
-    --rose:#d783a2;
-    --rose-light:#f4bed1;
+    --bg-main:#f9f4fa;
 
-    --green-deep:#4d755b;
-    --green:#82b38c;
-    --green-light:#c1dfc3;
+    --sky-top:#dff5fc;
+    --sky-mid:#e9e2fa;
+    --sky-bottom:#f8eaf1;
 
-    --blue:#8dcfe2;
-    --blue-deep:#507f92;
+    --rose-deep:#91405f;
+    --rose:#d77b9b;
+    --rose-light:#f4b7ca;
 
-    --lavender:#c7b5ea;
-    --lavender-deep:#7f69a4;
+    --leaf-deep:#4f785c;
+    --leaf:#82ad88;
+    --leaf-light:#bcdcbc;
 
-    --gold:#dfbe7c;
+    --blue:#8dcde4;
+    --blue-deep:#56879d;
+
+    --lavender:#c6b5e8;
+
+    --water-a:#8fd3df;
+    --water-b:#6da9c3;
+    --water-glow:#d9fbff;
+
+    --gold:#d8b46e;
+
+    --petal-a:#f5b7cb;
+    --petal-b:#fff1f7;
+    --petal-shadow:#bf718e;
+
+    --ink:#554d57;
+    --muted:#827781;
+    --white:#ffffff;
 
     --glass:rgba(255,255,255,.64);
-    --glass-heavy:rgba(255,255,255,.82);
+    --glass-strong:rgba(255,255,255,.82);
 
     --shadow:
-      0 28px 75px rgba(78,60,80,.14),
-      0 8px 25px rgba(78,60,80,.08);
+        0 30px 85px rgba(86,66,88,.16),
+        0 10px 25px rgba(86,66,88,.08);
 }
 
 /* =========================================================
-   PAGE LOADER / OPENING SCENE
+   AUTUMN THEME
 ========================================================= */
-.opening-screen{
+body[data-theme="autumn"]{
+
+    --bg-main:#f5eee4;
+
+    --sky-top:#f5d9b8;
+    --sky-mid:#e8c59f;
+    --sky-bottom:#d9a97f;
+
+    --rose-deep:#8b4f31;
+    --rose:#c66e3c;
+    --rose-light:#e5a66e;
+
+    --leaf-deep:#5a633d;
+    --leaf:#87904e;
+    --leaf-light:#c1bd7b;
+
+    --blue:#a8b890;
+    --blue-deep:#66744b;
+
+    --lavender:#c2a184;
+
+    --water-a:#779a91;
+    --water-b:#55796f;
+    --water-glow:#d5efe1;
+
+    --gold:#c9974a;
+
+    --petal-a:#de8a3a;
+    --petal-b:#f6c36f;
+    --petal-shadow:#8f4d22;
+
+    --ink:#51463c;
+    --muted:#79685b;
+
+    --glass:rgba(255,248,237,.63);
+    --glass-strong:rgba(255,248,237,.82);
+
+    --shadow:
+        0 30px 85px rgba(90,57,35,.18),
+        0 10px 25px rgba(90,57,35,.08);
+}
+
+/* =========================================================
+   PAGE TRANSITION
+========================================================= */
+body::before{
+    content:"";
     position:fixed;
     inset:0;
-    z-index:999999;
-    overflow:hidden;
-    display:grid;
-    place-items:center;
+    pointer-events:none;
+    z-index:99990;
     background:
-      radial-gradient(circle at 50% 45%,rgba(255,255,255,.85),transparent 24%),
-      linear-gradient(
-        145deg,
-        #fceaf2,
-        #e9f6ef 38%,
-        #eaf7fd 67%,
-        #f5eafa
-      );
-    transition:
-      opacity 1.2s ease,
-      visibility 1.2s ease;
-}
-
-.opening-screen.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.opening-screen::before{
-    content:"";
-    position:absolute;
-    inset:-20%;
-    background:
-      radial-gradient(circle,rgba(255,255,255,.9),transparent 19%);
-    filter:blur(20px);
-    animation:openingGlow 4s ease-in-out infinite;
-}
-
-@keyframes openingGlow{
-    0%,100%{transform:scale(.9);opacity:.55;}
-    50%{transform:scale(1.12);opacity:1;}
-}
-
-.opening-content{
-    position:relative;
-    z-index:10;
-    width:min(760px,calc(100% - 30px));
-    padding:55px 30px;
-    text-align:center;
-    border-radius:42px;
-    border:1px solid rgba(255,255,255,.9);
-    background:rgba(255,255,255,.52);
-    backdrop-filter:blur(20px);
-    box-shadow:
-        0 40px 120px rgba(77,59,79,.18),
-        inset 0 1px 0 rgba(255,255,255,.9);
-    animation:openingCard 1.5s ease both;
-}
-
-@keyframes openingCard{
-    from{
-        transform:translateY(30px) scale(.96);
-        opacity:0;
-    }
-    to{
-        transform:translateY(0) scale(1);
-        opacity:1;
-    }
-}
-
-.opening-kicker{
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:4px;
-    color:var(--rose-deep);
-    margin-bottom:16px;
-}
-
-.opening-title{
-    font-family:"Playfair Display",serif;
-    font-size:clamp(42px,8vw,82px);
-    line-height:.95;
-    color:var(--rose-deep);
-    text-shadow:
-        0 0 40px rgba(255,255,255,.95),
-        0 12px 40px rgba(143,70,102,.16);
-}
-
-.opening-subtitle{
-    margin-top:17px;
-    font-size:15px;
-    color:#756c77;
-}
-
-.opening-line{
-    width:150px;
-    height:2px;
-    margin:24px auto;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        var(--rose),
-        var(--lavender),
-        var(--green),
-        transparent
-    );
-    border-radius:99px;
-}
-
-.opening-small{
-    max-width:540px;
-    margin:auto;
-    color:#7a707b;
-    line-height:1.9;
-    font-size:13px;
-}
-
-.enter-btn{
-    position:relative;
-    margin-top:28px;
-    padding:14px 30px;
-    border:1px solid rgba(255,255,255,.9);
-    border-radius:999px;
-    color:white;
-    background:linear-gradient(
-        135deg,
-        #a25475,
-        #d98aa5,
-        #7cae88
-    );
-    box-shadow:
-        0 15px 35px rgba(91,69,89,.18),
-        0 0 25px rgba(255,255,255,.55);
-    font-family:inherit;
-    font-size:14px;
-    font-weight:600;
-    cursor:pointer;
-    overflow:hidden;
-    transition:.35s ease;
-}
-
-.enter-btn::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-      linear-gradient(
-        115deg,
-        transparent 20%,
-        rgba(255,255,255,.7) 50%,
-        transparent 80%
-      );
-    transform:translateX(-130%);
-    transition:.8s ease;
-}
-
-.enter-btn:hover{
-    transform:translateY(-4px) scale(1.04);
-    box-shadow:
-        0 22px 42px rgba(91,69,89,.24),
-        0 0 35px rgba(255,255,255,.72);
-}
-
-.enter-btn:hover::before{
-    transform:translateX(130%);
-}
-
-.opening-ring{
-    position:absolute;
-    width:520px;
-    height:520px;
-    border-radius:50%;
-    border:1px solid rgba(143,70,102,.13);
-    animation:openingRing 24s linear infinite;
-}
-
-.opening-ring::before,
-.opening-ring::after{
-    content:"";
-    position:absolute;
-    border-radius:50%;
-    background:white;
-    box-shadow:0 0 18px white,0 0 35px rgba(215,131,162,.4);
-}
-
-.opening-ring::before{
-    width:10px;
-    height:10px;
-    top:0;
-    left:50%;
-}
-
-.opening-ring::after{
-    width:7px;
-    height:7px;
-    bottom:50px;
-    right:20px;
-}
-
-@keyframes openingRing{
-    to{transform:rotate(360deg);}
+        radial-gradient(circle at 50% 50%, transparent 0 25%, rgba(255,255,255,.08) 55%, transparent 72%);
+    opacity:.55;
+    mix-blend-mode:screen;
 }
 
 /* =========================================================
    CUSTOM CURSOR
 ========================================================= */
-.cursor-core{
+.cursor-dot{
     position:fixed;
-    width:14px;
-    height:14px;
+    width:15px;
+    height:15px;
     border-radius:50%;
-    pointer-events:none;
-    z-index:1000000;
     background:
-      radial-gradient(circle,#fff,#ffdce9 55%,#d77b9b 100%);
+        radial-gradient(circle,#fff 0%,#ffe2eb 45%,var(--rose) 100%);
     box-shadow:
-      0 0 10px #fff,
-      0 0 28px rgba(215,123,155,.8);
+        0 0 12px #fff,
+        0 0 30px rgba(215,123,155,.8);
     transform:translate(-50%,-50%);
+    pointer-events:none;
+    z-index:100000;
 }
 
 .cursor-ring{
     position:fixed;
-    width:42px;
-    height:42px;
+    width:45px;
+    height:45px;
     border-radius:50%;
-    border:1px solid rgba(143,70,102,.4);
-    pointer-events:none;
-    z-index:999999;
+    border:1px solid rgba(145,64,95,.38);
     transform:translate(-50%,-50%);
+    pointer-events:none;
+    z-index:99999;
     transition:
-      width .25s ease,
-      height .25s ease,
-      border-color .25s ease;
+        width .25s ease,
+        height .25s ease,
+        border-color .25s ease;
+}
+
+body.cursor-hover .cursor-dot{
+    width:25px;
+    height:25px;
 }
 
 body.cursor-hover .cursor-ring{
-    width:60px;
-    height:60px;
-    border-color:rgba(215,131,162,.8);
+    width:67px;
+    height:67px;
+    border-color:var(--rose);
 }
 
 /* =========================================================
    SCROLL PROGRESS
 ========================================================= */
-.scroll-line{
+.scroll-bar{
     position:fixed;
-    top:0;
     left:0;
-    width:0;
+    top:0;
     height:4px;
-    z-index:100000;
+    width:0%;
+    z-index:100001;
     background:
-      linear-gradient(
-        90deg,
-        #88cde0,
-        #c6b5ea,
-        #d783a2,
-        #82b38c
-      );
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--lavender),
+            var(--rose),
+            var(--leaf)
+        );
     box-shadow:
-      0 0 12px rgba(255,255,255,.9),
-      0 0 28px rgba(215,131,162,.45);
+        0 0 10px rgba(255,255,255,.85),
+        0 0 22px var(--rose);
 }
 
 /* =========================================================
-   BACKGROUND AURORA
+   OPENING SCENE
 ========================================================= */
-.aurora{
+.intro-screen{
     position:fixed;
     inset:0;
+    z-index:95000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     overflow:hidden;
-    pointer-events:none;
-    z-index:0;
+    background:
+        radial-gradient(circle at 50% 35%,rgba(255,255,255,.95),transparent 25%),
+        linear-gradient(
+            135deg,
+            var(--sky-top),
+            var(--sky-mid),
+            var(--sky-bottom)
+        );
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
 }
 
-.aurora-band{
+.intro-screen.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.intro-aura{
     position:absolute;
-    width:90%;
-    height:280px;
+    width:700px;
+    height:700px;
     border-radius:50%;
-    filter:blur(35px);
-    opacity:.33;
-    mix-blend-mode:screen;
-    animation:auroraMove 12s ease-in-out infinite alternate;
-}
-
-.aurora-a{
-    top:4%;
-    left:-15%;
     background:
-      linear-gradient(
-        90deg,
-        rgba(146,211,225,.8),
-        rgba(205,183,237,.8),
-        rgba(239,166,198,.7)
-      );
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.85),
+            rgba(255,255,255,.25) 35%,
+            transparent 68%
+        );
+    animation:introAura 5s ease-in-out infinite;
 }
 
-.aurora-b{
-    top:15%;
-    right:-20%;
-    height:240px;
-    animation-delay:-4s;
-    background:
-      linear-gradient(
-        90deg,
-        rgba(173,225,193,.8),
-        rgba(188,214,241,.7),
-        rgba(236,180,208,.75)
-      );
-}
-
-.aurora-c{
-    bottom:10%;
-    left:15%;
-    height:220px;
-    animation-delay:-7s;
-    background:
-      linear-gradient(
-        90deg,
-        rgba(225,185,210,.6),
-        rgba(155,210,224,.65),
-        rgba(165,213,182,.62)
-      );
-}
-
-@keyframes auroraMove{
-    0%{
-        transform:
-            translate3d(-3%,0,0)
-            rotate(-5deg)
-            scale(1);
+@keyframes introAura{
+    0%,100%{
+        transform:scale(.92);
+        opacity:.7;
     }
     50%{
-        transform:
-            translate3d(6%,-18px,0)
-            rotate(3deg)
-            scale(1.08);
-    }
-    100%{
-        transform:
-            translate3d(-2%,10px,0)
-            rotate(-2deg)
-            scale(1.02);
+        transform:scale(1.08);
+        opacity:1;
     }
 }
 
+.intro-content{
+    position:relative;
+    z-index:3;
+    text-align:center;
+    width:min(900px,calc(100% - 30px));
+}
+
+.intro-small{
+    color:var(--rose-deep);
+    font-size:11px;
+    letter-spacing:5px;
+    font-weight:700;
+    margin-bottom:12px;
+    opacity:.8;
+}
+
+.intro-title{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(45px,8vw,95px);
+    line-height:.95;
+    color:var(--rose-deep);
+    text-shadow:
+        0 10px 35px rgba(120,70,90,.18),
+        0 0 40px rgba(255,255,255,.9);
+}
+
+.intro-sub{
+    margin-top:17px;
+    color:var(--muted);
+    font-size:14px;
+    letter-spacing:.5px;
+}
+
+.flower-pile{
+    position:absolute;
+    left:50%;
+    top:54%;
+    width:0;
+    height:0;
+    z-index:2;
+}
+
+.intro-petal{
+    position:absolute;
+    left:0;
+    top:0;
+    width:42px;
+    height:28px;
+    border-radius:
+        70% 12% 70% 12%;
+    background:
+        linear-gradient(
+            135deg,
+            var(--petal-b),
+            var(--petal-a)
+        );
+    box-shadow:
+        inset 0 2px 4px rgba(255,255,255,.75),
+        inset -3px -4px 7px rgba(150,80,110,.16),
+        0 5px 12px rgba(110,70,90,.15);
+    transform:
+        translate(-50%,-50%)
+        rotate(var(--start-rot))
+        scale(var(--start-scale));
+    opacity:var(--start-opacity);
+    animation:
+        scatterFlower 4.2s
+        cubic-bezier(.2,.72,.15,1)
+        forwards;
+    animation-delay:var(--delay);
+}
+
+.intro-petal::after{
+    content:"";
+    position:absolute;
+    width:80%;
+    height:2px;
+    left:10%;
+    top:50%;
+    border-radius:99px;
+    background:rgba(255,255,255,.7);
+    filter:blur(1px);
+}
+
+@keyframes scatterFlower{
+
+    0%{
+        transform:
+            translate(-50%,-50%)
+            rotate(var(--start-rot))
+            scale(var(--start-scale));
+        opacity:var(--start-opacity);
+    }
+
+    22%{
+        transform:
+            translate(
+                calc(-50% + var(--tx1)),
+                calc(-50% + var(--ty1))
+            )
+            rotate(calc(var(--rot1)))
+            scale(1.1);
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translate(
+                calc(-50% + var(--tx2)),
+                calc(-50% + var(--ty2))
+            )
+            rotate(var(--rot2))
+            scale(.2);
+        opacity:0;
+    }
+}
+
+.intro-hint{
+    margin-top:28px;
+    color:var(--muted);
+    font-size:11px;
+    letter-spacing:2px;
+    opacity:.72;
+    animation:hintPulse 2s ease-in-out infinite;
+}
+
+@keyframes hintPulse{
+    0%,100%{opacity:.35}
+    50%{opacity:1}
+}
+
 /* =========================================================
-   PETALS
+   BACKGROUND PARTICLES
 ========================================================= */
-.petal-layer{
+.particle-layer,
+.petal-layer,
+.firefly-layer{
     position:fixed;
     inset:0;
-    overflow:hidden;
     pointer-events:none;
-    z-index:6;
+    overflow:hidden;
+}
+
+.particle-layer{
+    z-index:2;
+}
+
+.petal-layer{
+    z-index:4;
+}
+
+.firefly-layer{
+    z-index:3;
 }
 
 .petal{
     position:absolute;
-    top:-50px;
-    will-change:transform;
-    filter:
-      drop-shadow(0 4px 7px rgba(110,80,100,.13))
-      drop-shadow(0 0 7px rgba(255,255,255,.55));
-    opacity:.82;
-    animation:petalFall linear infinite;
+    top:-40px;
+    width:26px;
+    height:16px;
+    border-radius:
+        75% 15% 75% 15%;
+    background:
+        linear-gradient(
+            135deg,
+            var(--petal-b),
+            var(--petal-a)
+        );
+    box-shadow:
+        inset 0 1px 4px rgba(255,255,255,.85),
+        inset -2px -2px 5px var(--petal-shadow),
+        0 3px 10px rgba(90,60,70,.14);
+    opacity:.72;
+    animation:
+        fallingPetal
+        linear infinite;
 }
 
-@keyframes petalFall{
+.petal::after{
+    content:"";
+    position:absolute;
+    left:14%;
+    right:14%;
+    top:49%;
+    height:1px;
+    background:rgba(255,255,255,.8);
+}
+
+@keyframes fallingPetal{
+
     0%{
         transform:
-          translate3d(0,-10vh,0)
-          rotate(0deg)
-          scale(.7);
+            translate3d(0,-10vh,0)
+            rotate(0deg);
         opacity:0;
     }
 
-    8%{
-        opacity:.9;
+    10%{
+        opacity:.82;
     }
 
-    45%{
+    50%{
         transform:
-          translate3d(90px,52vh,0)
-          rotate(170deg)
-          scale(1);
+            translate3d(
+                var(--wind),
+                54vh,
+                0
+            )
+            rotate(180deg);
     }
 
     100%{
         transform:
-          translate3d(-100px,115vh,0)
-          rotate(360deg)
-          scale(.85);
+            translate3d(
+                calc(var(--wind) * -1),
+                112vh,
+                0
+            )
+            rotate(380deg);
         opacity:0;
     }
 }
 
-/* =========================================================
-   SPARKLES
-========================================================= */
-.sparkles{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:5;
-}
-
-.spark{
+.firefly{
     position:absolute;
-    color:white;
-    text-shadow:
-      0 0 8px white,
-      0 0 18px rgba(216,134,163,.5);
-    animation:sparkle 2.7s ease-in-out infinite;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#fff7a9;
+    box-shadow:
+        0 0 8px #fff7a9,
+        0 0 22px rgba(255,237,147,.75);
+    animation:
+        fireflyFloat
+        ease-in-out infinite;
 }
 
-@keyframes sparkle{
+@keyframes fireflyFloat{
     0%,100%{
-        opacity:.12;
-        transform:scale(.5) rotate(0);
+        transform:translateY(0) scale(.55);
+        opacity:.18;
     }
     50%{
+        transform:translateY(-35px) scale(1.3);
         opacity:1;
-        transform:scale(1.3) rotate(90deg);
     }
 }
 
 /* =========================================================
-   MAIN
+   AURORA
 ========================================================= */
-main{
-    position:relative;
-    z-index:10;
+.aurora{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.aurora-band{
+    position:absolute;
+    width:140%;
+    height:240px;
+    left:-20%;
+    border-radius:50%;
+    filter:blur(30px);
+    opacity:.47;
+    mix-blend-mode:screen;
+}
+
+.aurora-one{
+    top:5%;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(173,238,220,.7),
+            transparent 65%
+        );
+    animation:auroraMove1 13s ease-in-out infinite;
+}
+
+.aurora-two{
+    top:9%;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(207,188,245,.65),
+            transparent 66%
+        );
+    animation:auroraMove2 17s ease-in-out infinite;
+}
+
+.aurora-three{
+    top:18%;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(247,188,215,.52),
+            transparent 62%
+        );
+    animation:auroraMove3 20s ease-in-out infinite;
+}
+
+body[data-theme="autumn"] .aurora-one{
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(215,226,164,.42),
+            transparent 65%
+        );
+}
+
+body[data-theme="autumn"] .aurora-two{
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(243,194,145,.38),
+            transparent 66%
+        );
+}
+
+body[data-theme="autumn"] .aurora-three{
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(236,138,91,.28),
+            transparent 62%
+        );
+}
+
+@keyframes auroraMove1{
+    0%,100%{transform:translateX(-4%) rotate(-2deg)}
+    50%{transform:translateX(8%) rotate(3deg)}
+}
+
+@keyframes auroraMove2{
+    0%,100%{transform:translateX(4%) rotate(3deg)}
+    50%{transform:translateX(-8%) rotate(-3deg)}
+}
+
+@keyframes auroraMove3{
+    0%,100%{transform:translateX(-2%) scale(1)}
+    50%{transform:translateX(6%) scale(1.08)}
 }
 
 /* =========================================================
@@ -513,120 +611,179 @@ main{
 ========================================================= */
 .hero{
     position:relative;
-    min-height:900px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:110px 20px 170px;
+    min-height:930px;
     overflow:hidden;
-}
-
-.hero-sky{
-    position:absolute;
-    inset:0;
+    padding:120px 20px 0;
     background:
-      radial-gradient(
-        circle at 50% 24%,
-        rgba(255,255,255,.92),
-        transparent 29%
-      ),
-      linear-gradient(
-        180deg,
-        rgba(255,247,251,.28),
-        rgba(233,247,242,.16),
-        rgba(219,242,249,.22)
-      );
+        linear-gradient(
+            180deg,
+            var(--sky-top) 0%,
+            var(--sky-mid) 40%,
+            var(--sky-bottom) 68%,
+            #d9efdf 100%
+        );
 }
 
-.hero-mist{
+.hero::after{
+    content:"";
     position:absolute;
-    left:-10%;
-    width:120%;
-    bottom:180px;
+    left:0;
+    right:0;
+    bottom:0;
+    height:300px;
+    background:
+        linear-gradient(
+            to top,
+            rgba(69,103,72,.2),
+            transparent
+        );
+    pointer-events:none;
+}
+
+.moon{
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    right:7%;
+    top:110px;
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff,
+            #fff8fb 25%,
+            #ead5df 68%,
+            #caa5b7 100%
+        );
+    box-shadow:
+        0 0 30px rgba(255,255,255,.95),
+        0 0 90px rgba(255,255,255,.48);
+    opacity:.65;
+    animation:moonFloat 8s ease-in-out infinite;
+}
+
+body[data-theme="autumn"] .moon{
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fffbe9,
+            #f4e4bb 30%,
+            #d5ad72 72%,
+            #a87743
+        );
+}
+
+@keyframes moonFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-18px)}
+}
+
+/* =========================================================
+   GARDEN SILHOUETTES
+========================================================= */
+.garden-back{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:145px;
     height:180px;
     background:
-      radial-gradient(
-        ellipse,
-        rgba(255,255,255,.75),
-        transparent 70%
-      );
-    filter:blur(25px);
-    opacity:.5;
-    animation:mistMove 14s ease-in-out infinite alternate;
+        linear-gradient(
+            to top,
+            rgba(55,93,62,.45),
+            rgba(89,130,94,.2),
+            transparent
+        );
+    clip-path:
+        polygon(
+            0 67%,4% 59%,7% 66%,11% 48%,15% 60%,
+            20% 42%,25% 60%,30% 46%,35% 64%,
+            41% 41%,47% 60%,54% 37%,60% 62%,
+            66% 49%,72% 65%,78% 43%,83% 61%,
+            89% 47%,94% 64%,100% 48%,
+            100% 100%,0 100%
+        );
+    opacity:.65;
 }
 
-@keyframes mistMove{
-    from{transform:translateX(-4%);}
-    to{transform:translateX(6%);}
-}
-
-.hero-content{
-    position:relative;
-    z-index:20;
-    width:min(1080px,100%);
-    padding:58px 30px;
-    text-align:center;
-    border-radius:44px;
-    border:1px solid rgba(255,255,255,.88);
+.garden-front{
+    position:absolute;
+    left:-3%;
+    right:-3%;
+    bottom:78px;
+    height:180px;
     background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,.72),
-        rgba(249,242,255,.5),
-        rgba(238,250,243,.46)
-      );
-    backdrop-filter:blur(18px);
-    box-shadow:
-      0 35px 95px rgba(81,63,83,.14),
-      inset 0 1px 0 rgba(255,255,255,.92);
-    transform:
-      translate3d(
-        var(--hero-x,0px),
-        var(--hero-y,0px),
-        0
-      );
-    transition:transform .2s ease-out;
+        linear-gradient(
+            to top,
+            rgba(54,97,59,.75),
+            rgba(84,132,85,.37),
+            transparent
+        );
+    clip-path:
+        polygon(
+            0 70%,5% 57%,10% 70%,17% 48%,22% 67%,
+            30% 46%,37% 66%,44% 53%,50% 70%,
+            60% 44%,66% 65%,72% 49%,80% 69%,
+            87% 43%,94% 65%,100% 50%,
+            100% 100%,0 100%
+        );
+}
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+.hero-center{
+    position:relative;
+    z-index:8;
+    width:min(1100px,100%);
+    margin:auto;
+    text-align:center;
+    padding-top:80px;
 }
 
 .hero-kicker{
     display:inline-flex;
+    gap:10px;
     align-items:center;
-    gap:11px;
     padding:8px 18px;
     border-radius:999px;
-    background:rgba(255,255,255,.76);
-    border:1px solid rgba(255,255,255,.94);
+    background:rgba(255,255,255,.66);
+    border:1px solid rgba(255,255,255,.85);
+    backdrop-filter:blur(13px);
     color:var(--rose-deep);
     font-size:10px;
-    font-weight:700;
     letter-spacing:3px;
-    box-shadow:0 9px 25px rgba(90,73,91,.08);
+    box-shadow:0 10px 26px rgba(90,72,90,.08);
 }
 
 .hero-title{
     margin-top:22px;
     font-family:"Playfair Display",serif;
-    font-size:clamp(55px,9vw,104px);
-    line-height:.9;
-    letter-spacing:-2px;
+    font-size:clamp(62px,10vw,130px);
+    line-height:.86;
     color:var(--rose-deep);
     text-shadow:
-      0 0 42px rgba(255,255,255,.95),
-      0 13px 40px rgba(143,70,102,.16);
+        0 12px 42px rgba(115,68,90,.18),
+        0 0 50px rgba(255,255,255,.95);
+}
+
+.hero-title span{
+    display:block;
 }
 
 .hero-subtitle{
-    margin-top:18px;
-    font-size:18px;
-    color:#776b76;
+    margin-top:20px;
+    color:#756b78;
+    font-size:17px;
+    letter-spacing:2px;
 }
 
-.hero-description{
-    width:min(770px,100%);
-    margin:19px auto 0;
-    font-size:14px;
+.hero-copy{
+    max-width:780px;
+    margin:23px auto 0;
     line-height:2;
-    color:#716875;
+    font-size:14px;
+    color:#6b636d;
 }
 
 .hero-actions{
@@ -634,370 +791,391 @@ main{
     justify-content:center;
     flex-wrap:wrap;
     gap:12px;
-    margin-top:30px;
+    margin-top:32px;
 }
 
 .hero-btn{
     position:relative;
-    padding:13px 23px;
+    padding:13px 22px;
     border-radius:18px;
     text-decoration:none;
-    overflow:hidden;
-    transition:.35s ease;
     font-size:13px;
     font-weight:600;
+    overflow:hidden;
+    transition:.35s ease;
+    backdrop-filter:blur(12px);
 }
 
 .hero-btn.primary{
-    color:white;
+    color:#fff;
     background:
-      linear-gradient(
-        135deg,
-        #a45273,
-        #d984a2
-      );
-    box-shadow:
-      0 14px 32px rgba(124,78,101,.2);
+        linear-gradient(
+            135deg,
+            var(--rose-deep),
+            var(--rose)
+        );
+    box-shadow:0 16px 30px rgba(130,62,92,.18);
 }
 
 .hero-btn.secondary{
     color:var(--rose-deep);
-    background:rgba(255,255,255,.74);
-    border:1px solid rgba(255,255,255,.95);
+    background:rgba(255,255,255,.65);
+    border:1px solid rgba(255,255,255,.9);
+}
+
+.hero-btn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            120deg,
+            transparent 25%,
+            rgba(255,255,255,.65) 50%,
+            transparent 72%
+        );
+    transform:translateX(-130%);
+    transition:.75s ease;
 }
 
 .hero-btn:hover{
     transform:translateY(-5px) scale(1.03);
-    box-shadow:
-      0 20px 40px rgba(86,66,86,.18);
 }
 
-.hero-btn::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-      linear-gradient(
-        115deg,
-        transparent 25%,
-        rgba(255,255,255,.68) 50%,
-        transparent 75%
-      );
-    transform:translateX(-130%);
-    transition:.8s ease;
-}
-
-.hero-btn:hover::after{
+.hero-btn:hover::before{
     transform:translateX(130%);
 }
 
 /* =========================================================
-   GARDEN SILHOUETTES
+   HERO DECOR
 ========================================================= */
-.garden{
+.sky-petal{
     position:absolute;
-    left:0;
-    right:0;
-    bottom:125px;
-    height:220px;
-    pointer-events:none;
+    width:18px;
+    height:11px;
+    border-radius:80% 15% 80% 15%;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.95),
+            var(--petal-a)
+        );
+    box-shadow:
+        0 2px 8px rgba(110,70,80,.14),
+        inset 0 1px 2px rgba(255,255,255,.9);
+    animation:skyFloat 6s ease-in-out infinite;
 }
 
-.garden-back{
+@keyframes skyFloat{
+    0%,100%{
+        transform:translateY(0) rotate(-6deg);
+    }
+    50%{
+        transform:translateY(-17px) rotate(8deg);
+    }
+}
+
+.sky-petal.p1{left:10%;top:31%;animation-delay:-1s}
+.sky-petal.p2{left:18%;top:18%;animation-delay:-3s}
+.sky-petal.p3{right:17%;top:39%;animation-delay:-2s}
+.sky-petal.p4{right:8%;top:24%;animation-delay:-4s}
+.sky-petal.p5{left:27%;top:44%;animation-delay:-4.5s}
+.sky-petal.p6{right:28%;top:20%;animation-delay:-5s}
+
+/* =========================================================
+   RIVER BASIN
+========================================================= */
+.river-basin{
+    position:absolute;
+    left:-8%;
+    right:-8%;
+    bottom:-85px;
+    height:260px;
+    transform:rotate(-1deg);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(208,248,246,.6),
+            var(--water-a) 34%,
+            var(--water-b) 100%
+        );
+    border-radius:50% 50% 0 0;
+    box-shadow:
+        0 -18px 50px rgba(80,130,130,.16),
+        inset 0 18px 30px rgba(255,255,255,.25);
+    overflow:hidden;
+    z-index:5;
+}
+
+.river-basin::before{
+    content:"";
     position:absolute;
     inset:0;
     background:
-      linear-gradient(
-        140deg,
-        transparent 0 30%,
-        rgba(105,147,115,.22) 31% 45%,
-        transparent 46%
-      ),
-      linear-gradient(
-        40deg,
-        transparent 0 55%,
-        rgba(125,169,131,.18) 56% 70%,
-        transparent 71%
-      );
-    filter:blur(1px);
+        repeating-linear-gradient(
+            8deg,
+            transparent 0 22px,
+            rgba(255,255,255,.18) 24px 28px,
+            transparent 30px 48px
+        );
+    opacity:.8;
+    animation:waterFlow 8s linear infinite;
 }
 
-.garden-ground{
+@keyframes waterFlow{
+    from{transform:translateX(-40px)}
+    to{transform:translateX(40px)}
+}
+
+.river-shine{
     position:absolute;
-    left:-5%;
-    right:-5%;
-    bottom:0;
-    height:150px;
+    width:420px;
+    height:120px;
+    left:50%;
+    top:28px;
+    transform:translateX(-50%);
     background:
-      radial-gradient(
-        ellipse at 15% 100%,
-        rgba(102,146,108,.55),
-        transparent 30%
-      ),
-      radial-gradient(
-        ellipse at 82% 100%,
-        rgba(92,140,102,.5),
-        transparent 33%
-      ),
-      linear-gradient(
-        180deg,
-        rgba(142,187,143,.1),
-        rgba(81,128,89,.28)
-      );
-    border-radius:50% 50% 0 0/30% 30% 0 0;
+        radial-gradient(
+            ellipse,
+            rgba(255,255,255,.42),
+            transparent 68%
+        );
+    filter:blur(8px);
+    animation:riverShimmer 5s ease-in-out infinite;
+}
+
+@keyframes riverShimmer{
+    0%,100%{transform:translateX(-50%) scale(.9);opacity:.5}
+    50%{transform:translateX(-50%) scale(1.15);opacity:1}
 }
 
 /* =========================================================
-   RIVER
+   WATER RIPPLE
 ========================================================= */
-.river-scene{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    height:220px;
-    z-index:8;
-    overflow:hidden;
-}
-
-.river{
-    position:absolute;
-    inset:0;
-    background:
-      linear-gradient(
-        180deg,
-        rgba(166,223,231,.72),
-        rgba(112,183,202,.88)
-      );
-    box-shadow:
-      inset 0 10px 28px rgba(255,255,255,.45),
-      inset 0 -15px 40px rgba(65,130,157,.22);
-    overflow:hidden;
-}
-
-.river::before{
-    content:"";
-    position:absolute;
-    inset:-20%;
-    background:
-      repeating-linear-gradient(
-        175deg,
-        transparent 0 14px,
-        rgba(255,255,255,.18) 15px 17px,
-        transparent 18px 31px
-      );
-    animation:waterMove 8s linear infinite;
-}
-
-.river::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-      radial-gradient(
-        ellipse at 50% 18%,
-        rgba(255,255,255,.65),
-        transparent 34%
-      );
-    opacity:.5;
-}
-
-@keyframes waterMove{
-    from{
-        transform:translateX(-70px);
-    }
-    to{
-        transform:translateX(70px);
-    }
-}
-
-.river-light{
-    position:absolute;
-    width:320px;
-    height:100px;
-    border-radius:50%;
-    background:
-      radial-gradient(
-        ellipse,
-        rgba(255,255,255,.58),
-        transparent 72%
-      );
-    filter:blur(10px);
-    pointer-events:none;
-    transform:translate(-50%,-50%);
-    z-index:5;
-    mix-blend-mode:screen;
-}
-
 .river-ripple{
     position:absolute;
-    width:24px;
-    height:10px;
-    border:1px solid rgba(255,255,255,.7);
+    width:20px;
+    height:20px;
+    border:2px solid rgba(255,255,255,.72);
     border-radius:50%;
-    transform:translate(-50%,-50%) scale(.1);
+    transform:translate(-50%,-50%) scale(.2);
+    animation:waterRipple 1.15s ease-out forwards;
     pointer-events:none;
-    animation:riverRipple .9s ease-out forwards;
-    z-index:10;
+    z-index:5;
 }
 
-@keyframes riverRipple{
+@keyframes waterRipple{
     0%{
-        opacity:.9;
-        transform:translate(-50%,-50%) scale(.1);
+        transform:translate(-50%,-50%) scale(.2);
+        opacity:.95;
     }
     100%{
+        transform:translate(-50%,-50%) scale(8);
         opacity:0;
-        transform:translate(-50%,-50%) scale(7);
     }
 }
 
 /* =========================================================
-   WATER LILY / FLOWERS
+   NAV
 ========================================================= */
-.bank-flower{
+.nav-wrap{
+    position:sticky;
+    top:12px;
+    z-index:7000;
+    width:min(1040px,calc(100% - 26px));
+    margin:-28px auto 0;
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:7px;
+    padding:8px;
+    border-radius:22px;
+    background:rgba(255,255,255,.6);
+    border:1px solid rgba(255,255,255,.9);
+    backdrop-filter:blur(20px);
+    box-shadow:0 17px 40px rgba(76,62,78,.12);
+}
+
+.nav a,
+.theme-toggle{
+    position:relative;
+    border:0;
+    padding:11px 15px;
+    border-radius:14px;
+    background:transparent;
+    color:#625964;
+    text-decoration:none;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:12px;
+    font-weight:600;
+    transition:.3s ease;
+}
+
+.nav a::before,
+.theme-toggle::before{
+    content:"";
     position:absolute;
-    bottom:115px;
-    z-index:9;
-    font-size:25px;
-    filter:
-      drop-shadow(0 6px 8px rgba(72,82,70,.18))
-      drop-shadow(0 0 9px rgba(255,255,255,.5));
-    animation:flowerSway 4s ease-in-out infinite;
+    inset:0;
+    border-radius:inherit;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(215,123,155,.18),
+            rgba(128,169,135,.13)
+        );
+    transform:scale(.7);
+    opacity:0;
+    transition:.3s ease;
 }
 
-.bank-flower.f1{left:5%;}
-.bank-flower.f2{left:13%;font-size:19px;animation-delay:-1s;}
-.bank-flower.f3{left:21%;font-size:29px;animation-delay:-2s;}
-.bank-flower.f4{right:6%;}
-.bank-flower.f5{right:14%;font-size:20px;animation-delay:-1.5s;}
-.bank-flower.f6{right:22%;font-size:28px;animation-delay:-3s;}
-
-@keyframes flowerSway{
-    0%,100%{
-        transform:translateY(0) rotate(-4deg);
-    }
-    50%{
-        transform:translateY(-7px) rotate(5deg);
-    }
+.nav a:hover,
+.nav a.active,
+.theme-toggle:hover{
+    color:var(--rose-deep);
+    transform:translateY(-2px);
 }
 
-/* =========================================================
-   FLOATING WATER PARTICLES
-========================================================= */
-.water-dot{
-    position:absolute;
-    width:4px;
-    height:4px;
-    border-radius:50%;
-    background:rgba(255,255,255,.8);
-    box-shadow:
-      0 0 9px white,
-      0 0 20px rgba(154,221,235,.85);
-    animation:waterDot 5s ease-in-out infinite;
-    z-index:9;
+.nav a:hover::before,
+.nav a.active::before,
+.theme-toggle:hover::before{
+    transform:scale(1);
+    opacity:1;
 }
 
-@keyframes waterDot{
-    0%,100%{
-        opacity:.1;
-        transform:translateY(0) scale(.6);
-    }
-    50%{
-        opacity:1;
-        transform:translateY(-14px) scale(1.1);
-    }
+.nav a span,
+.theme-toggle span{
+    position:relative;
+    z-index:2;
 }
 
 /* =========================================================
-   SECTION HEADERS
+   SECTION
 ========================================================= */
+main{
+    position:relative;
+    z-index:20;
+}
+
 .section{
     position:relative;
-    z-index:15;
-    width:min(1180px,calc(100% - 30px));
-    margin:85px auto 0;
+    width:min(1160px,calc(100% - 30px));
+    margin:0 auto;
 }
 
-.section-head{
+.section-header{
     text-align:center;
-    margin-bottom:35px;
+    margin-top:90px;
 }
 
 .kicker{
     display:inline-flex;
     align-items:center;
-    gap:9px;
-    font-size:10px;
-    font-weight:700;
+    gap:10px;
     color:var(--rose-deep);
+    font-size:10px;
     letter-spacing:3px;
+    font-weight:700;
 }
 
 .kicker::before,
 .kicker::after{
     content:"";
-    width:43px;
+    width:45px;
     height:1px;
     background:
-      linear-gradient(
-        90deg,
-        transparent,
-        var(--rose)
-      );
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--rose)
+        );
 }
 
 .kicker::after{
     background:
-      linear-gradient(
-        90deg,
-        var(--rose),
-        transparent
-      );
+        linear-gradient(
+            90deg,
+            var(--rose),
+            transparent
+        );
 }
 
-.section-head h2{
-    margin-top:8px;
+.section-header h2{
+    margin-top:11px;
     font-family:"Playfair Display",serif;
-    color:var(--green-deep);
-    font-size:clamp(34px,5vw,54px);
+    font-size:clamp(35px,5vw,57px);
+    color:var(--leaf-deep);
 }
 
-.section-head p{
-    max-width:760px;
-    margin:11px auto 0;
-    color:#7c737e;
-    line-height:1.9;
-    font-size:13px;
+.section-header p{
+    width:min(780px,100%);
+    margin:15px auto 0;
+    color:var(--muted);
+    line-height:1.95;
+    font-size:14px;
 }
 
 /* =========================================================
-   CHARACTER GRID
+   CHARACTERS
 ========================================================= */
 .characters{
+    margin-top:44px;
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:28px;
-    perspective:1500px;
+    perspective:1600px;
 }
 
 .card{
     position:relative;
     border-radius:34px;
     overflow:hidden;
-    background:rgba(255,255,255,.68);
-    border:1px solid rgba(255,255,255,.95);
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,.92);
+    backdrop-filter:blur(15px);
     box-shadow:var(--shadow);
     transform-style:preserve-3d;
     transition:
-      transform .18s ease-out,
-      box-shadow .35s ease;
+        transform .18s ease,
+        box-shadow .35s ease;
+    opacity:0;
+    transform:translateY(35px);
+}
+
+.card.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            120deg,
+            transparent 26%,
+            rgba(255,255,255,.62) 48%,
+            transparent 66%
+        );
+    transform:translateX(-130%);
+    transition:.85s ease;
+    pointer-events:none;
+    z-index:20;
+}
+
+.card:hover::before{
+    transform:translateX(130%);
 }
 
 .card:hover{
     box-shadow:
-      0 38px 90px rgba(75,58,77,.23),
-      0 0 32px rgba(255,255,255,.6);
+        0 42px 100px rgba(78,59,79,.22),
+        0 0 38px rgba(255,255,255,.7);
 }
 
 .card-image{
@@ -1006,70 +1184,48 @@ main{
     overflow:hidden;
 }
 
+.card-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            to top,
+            rgba(36,28,37,.4),
+            transparent 44%
+        );
+    z-index:2;
+}
+
 .card-image img{
     position:absolute;
     inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
-    object-position:center top;
-    z-index:1;
+    object-position:top center;
     transition:
-      transform .75s cubic-bezier(.2,.8,.2,1),
-      filter .75s ease;
+        transform .8s cubic-bezier(.2,.8,.2,1),
+        filter .8s ease;
 }
 
 .card:hover .card-image img{
     transform:scale(1.07);
-    filter:brightness(1.06) saturate(1.05);
+    filter:saturate(1.08) brightness(1.04);
 }
 
-.card-overlay{
-    position:absolute;
-    inset:0;
-    z-index:2;
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,.08),
-        transparent 35%,
-        rgba(40,36,44,.44)
-      );
-}
-
-.card-image::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    z-index:3;
-    background:
-      linear-gradient(
-        125deg,
-        transparent 22%,
-        rgba(255,255,255,.42) 48%,
-        transparent 65%
-      );
-    transform:translateX(-130%);
-    transition:.95s ease;
-}
-
-.card:hover .card-image::after{
-    transform:translateX(130%);
-}
-
-.badge{
+.card-badge{
     position:absolute;
     left:16px;
     top:16px;
-    z-index:5;
+    z-index:7;
     padding:7px 12px;
     border-radius:999px;
-    color:white;
     font-size:9px;
-    font-weight:700;
     letter-spacing:1.5px;
-    background:rgba(61,54,63,.45);
-    border:1px solid rgba(255,255,255,.65);
+    color:white;
+    background:rgba(55,47,56,.42);
+    border:1px solid rgba(255,255,255,.66);
     backdrop-filter:blur(9px);
 }
 
@@ -1077,14 +1233,14 @@ main{
     position:absolute;
     right:16px;
     top:16px;
-    z-index:5;
-    padding:7px 12px;
+    z-index:7;
+    padding:7px 11px;
     border-radius:999px;
-    color:white;
-    font-size:8px;
+    font-size:9px;
     letter-spacing:1px;
-    background:rgba(61,54,63,.4);
-    border:1px solid rgba(255,255,255,.6);
+    color:white;
+    background:rgba(55,47,56,.4);
+    border:1px solid rgba(255,255,255,.62);
     backdrop-filter:blur(9px);
 }
 
@@ -1092,90 +1248,82 @@ main{
     position:absolute;
     left:20px;
     bottom:18px;
-    z-index:5;
+    z-index:7;
     color:white;
 }
 
 .card-name small{
     display:block;
-    font-size:8px;
+    font-size:9px;
     letter-spacing:2px;
-    opacity:.75;
+    opacity:.76;
 }
 
 .card-name strong{
+    display:block;
     font-family:"Playfair Display",serif;
-    font-size:35px;
-    text-shadow:
-      0 5px 18px rgba(0,0,0,.25);
+    font-size:36px;
+    line-height:1;
+    text-shadow:0 5px 20px rgba(30,20,30,.25);
 }
 
 .card-symbol{
     position:absolute;
-    right:20px;
+    right:18px;
     bottom:20px;
-    z-index:5;
+    z-index:7;
     width:48px;
     height:48px;
     display:grid;
     place-items:center;
     border-radius:50%;
-    background:rgba(255,255,255,.14);
-    border:1px solid rgba(255,255,255,.6);
-    backdrop-filter:blur(8px);
     color:white;
-    box-shadow:0 0 18px rgba(255,255,255,.15);
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.62);
+    backdrop-filter:blur(9px);
 }
 
-.card-content{
-    position:relative;
-    padding:25px;
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,.88),
-        rgba(255,255,255,.66)
-      );
+.card-info{
+    padding:26px 24px 28px;
 }
 
-.card-content h3{
+.card-info h3{
     font-family:"Playfair Display",serif;
-    font-size:30px;
     color:var(--rose-deep);
+    font-size:29px;
 }
 
-.card-tagline{
+.card-tag{
+    color:var(--muted);
+    font-size:12px;
     margin-top:3px;
-    color:#837781;
-    font-size:11px;
+    margin-bottom:18px;
 }
 
-.info{
+.meta{
     display:grid;
     gap:7px;
-    margin-top:18px;
 }
 
-.info-row{
+.meta-row{
     display:grid;
-    grid-template-columns:84px 1fr;
-    gap:6px;
-    padding-bottom:5px;
-    border-bottom:1px dashed rgba(128,169,135,.17);
+    grid-template-columns:86px 1fr;
+    gap:7px;
     font-size:12.5px;
-    line-height:1.6;
+    line-height:1.55;
+    padding-bottom:6px;
+    border-bottom:1px dashed rgba(100,100,100,.12);
 }
 
-.info-row strong{
-    color:var(--green-deep);
-    font-weight:600;
+.meta-row b{
+    color:var(--leaf-deep);
 }
 
 .card-description{
-    margin-top:17px;
+    margin-top:16px;
+    color:#69616b;
     font-size:13px;
     line-height:1.9;
-    color:#69626d;
 }
 
 .tags{
@@ -1188,124 +1336,340 @@ main{
 .tag{
     padding:7px 10px;
     border-radius:999px;
-    color:var(--green-deep);
-    background:
-      linear-gradient(
-        135deg,
-        rgba(239,248,240,.95),
-        rgba(255,240,247,.88)
-      );
-    border:1px solid rgba(128,169,135,.14);
     font-size:10px;
+    color:var(--leaf-deep);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(238,248,239,.95),
+            rgba(255,240,246,.9)
+        );
+    border:1px solid rgba(128,169,135,.14);
     transition:.25s ease;
 }
 
 .tag:hover{
     transform:translateY(-3px);
-    box-shadow:0 8px 17px rgba(76,103,80,.12);
 }
 
 /* =========================================================
-   GARDEN FEATURE
+   INTERACTIVE RIVER SCENE
 ========================================================= */
-.garden-panel{
-    position:relative;
-    overflow:hidden;
-    border-radius:38px;
-    padding:45px 30px;
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,.76),
-        rgba(248,240,251,.52),
-        rgba(239,251,243,.56)
-      );
-    border:1px solid rgba(255,255,255,.92);
-    backdrop-filter:blur(18px);
-    box-shadow:var(--shadow);
+.river-section{
+    margin-top:100px;
 }
 
-.garden-panel::before,
-.garden-panel::after{
+.river-card{
+    position:relative;
+    min-height:560px;
+    border-radius:40px;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            180deg,
+            #bdded6,
+            #9ecbc0 30%,
+            #77a89f 100%
+        );
+    border:1px solid rgba(255,255,255,.72);
+    box-shadow:
+        0 35px 90px rgba(63,86,82,.19);
+}
+
+.river-card::before{
     content:"";
     position:absolute;
-    border-radius:50%;
-    filter:blur(5px);
-}
-
-.garden-panel::before{
-    width:280px;
-    height:280px;
-    top:-130px;
-    left:-100px;
+    inset:0;
     background:
-      radial-gradient(
-        circle,
-        rgba(215,131,162,.2),
-        transparent 70%
-      );
+        radial-gradient(
+            circle at 20% 25%,
+            rgba(255,255,255,.3),
+            transparent 18%
+        ),
+        radial-gradient(
+            circle at 80% 35%,
+            rgba(255,255,255,.2),
+            transparent 18%
+        );
 }
 
-.garden-panel::after{
-    width:300px;
-    height:300px;
-    bottom:-150px;
-    right:-100px;
-    background:
-      radial-gradient(
-        circle,
-        rgba(129,178,142,.22),
-        transparent 70%
-      );
-}
-
-.garden-content{
-    position:relative;
-    z-index:2;
+.river-title{
+    position:absolute;
+    top:34px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:9;
+    width:min(800px,calc(100% - 40px));
     text-align:center;
 }
 
-.garden-icon{
-    font-size:34px;
-    animation:floatIcon 3.5s ease-in-out infinite;
+.river-title .kicker{
+    color:#47695e;
 }
 
-@keyframes floatIcon{
-    0%,100%{
-      transform:translateY(0);
+body[data-theme="autumn"] .river-title .kicker{
+    color:#5e6747;
+}
+
+.river-title h2{
+    margin-top:8px;
+    font-family:"Playfair Display",serif;
+    font-size:clamp(35px,5vw,54px);
+    color:#315a54;
+    text-shadow:0 3px 16px rgba(255,255,255,.35);
+}
+
+body[data-theme="autumn"] .river-title h2{
+    color:#4e6042;
+}
+
+.river-title p{
+    margin-top:8px;
+    font-size:13px;
+    line-height:1.8;
+    color:#4d6962;
+}
+
+.river{
+    position:absolute;
+    left:-8%;
+    right:-8%;
+    bottom:-110px;
+    height:330px;
+    border-radius:50% 50% 0 0;
+    background:
+        linear-gradient(
+            170deg,
+            var(--water-a),
+            var(--water-b)
+        );
+    overflow:hidden;
+    transform:rotate(-1deg);
+    box-shadow:
+        inset 0 18px 40px rgba(255,255,255,.2);
+}
+
+.river-flow{
+    position:absolute;
+    inset:-30%;
+    background:
+        repeating-linear-gradient(
+            8deg,
+            transparent 0 26px,
+            rgba(255,255,255,.18) 28px 32px,
+            transparent 34px 53px
+        );
+    animation:riverCurrent 7s linear infinite;
+}
+
+@keyframes riverCurrent{
+    from{transform:translateX(-50px)}
+    to{transform:translateX(50px)}
+}
+
+.water-glow{
+    position:absolute;
+    width:420px;
+    height:260px;
+    border-radius:50%;
+    left:var(--water-x,50%);
+    top:var(--water-y,40%);
+    transform:translate(-50%,-50%);
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,255,255,.32),
+            transparent 67%
+        );
+    filter:blur(10px);
+    pointer-events:none;
+    transition:
+        left .2s ease,
+        top .2s ease;
+}
+
+.water-line{
+    position:absolute;
+    height:2px;
+    background:rgba(255,255,255,.3);
+    border-radius:99px;
+    filter:blur(.5px);
+    animation:waterLine 4s linear infinite;
+}
+
+.water-line.l1{width:170px;top:38%;left:10%}
+.water-line.l2{width:110px;top:52%;left:56%;animation-delay:-1.1s}
+.water-line.l3{width:240px;top:66%;left:34%;animation-delay:-2s}
+.water-line.l4{width:125px;top:76%;left:78%;animation-delay:-.5s}
+
+@keyframes waterLine{
+    from{
+        transform:translateX(-30px);
+        opacity:.1;
     }
     50%{
-      transform:translateY(-8px);
+        opacity:.7;
+    }
+    to{
+        transform:translateX(60px);
+        opacity:.1;
     }
 }
 
-.garden-content h3{
-    margin-top:8px;
+.lily{
+    position:absolute;
+    z-index:6;
+    width:70px;
+    height:34px;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            ellipse,
+            #86ac7a 0%,
+            #628864 100%
+        );
+    box-shadow:
+        0 8px 16px rgba(48,76,54,.2);
+}
+
+.lily::after{
+    content:"";
+    position:absolute;
+    width:17px;
+    height:17px;
+    right:5px;
+    top:3px;
+    background:rgba(255,255,255,.6);
+    clip-path:polygon(0 0,100% 50%,0 100%);
+}
+
+.lily.l1{left:13%;top:33%;transform:rotate(-13deg)}
+.lily.l2{right:15%;top:47%;transform:rotate(12deg)}
+.lily.l3{left:38%;top:70%;transform:rotate(-5deg)}
+
+.fish{
+    position:absolute;
+    z-index:7;
+    width:45px;
+    height:20px;
+    border-radius:70% 55% 55% 70%;
+    background:
+        linear-gradient(
+            90deg,
+            #f3c181,
+            #e08d5d
+        );
+    box-shadow:0 3px 8px rgba(70,70,70,.15);
+    animation:fishSwim 9s linear infinite;
+}
+
+.fish::before{
+    content:"";
+    position:absolute;
+    width:18px;
+    height:18px;
+    left:-12px;
+    top:1px;
+    background:inherit;
+    clip-path:polygon(100% 50%,0 0,0 100%);
+}
+
+.fish::after{
+    content:"";
+    position:absolute;
+    right:7px;
+    top:6px;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 0 0 1px rgba(60,50,50,.35);
+}
+
+.fish.f1{
+    top:42%;
+    left:-80px;
+    animation-duration:11s;
+}
+
+.fish.f2{
+    top:66%;
+    left:-110px;
+    animation-duration:14s;
+    animation-delay:-6s;
+    transform:scale(.8);
+}
+
+@keyframes fishSwim{
+    0%{transform:translateX(0) scale(1)}
+    45%{transform:translateX(53vw) translateY(-13px) scale(1)}
+    50%{transform:translateX(58vw) translateY(-13px) scaleX(-1)}
+    100%{transform:translateX(120vw) translateY(7px) scaleX(-1)}
+}
+
+.river-help{
+    position:absolute;
+    left:50%;
+    top:205px;
+    transform:translateX(-50%);
+    z-index:10;
+    padding:11px 17px;
+    border-radius:999px;
+    background:rgba(255,255,255,.35);
+    border:1px solid rgba(255,255,255,.6);
+    backdrop-filter:blur(10px);
+    color:#45665f;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+/* =========================================================
+   MAGIC PANEL
+========================================================= */
+.magic-panel{
+    margin-top:75px;
+    padding:43px;
+    border-radius:35px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.75),
+            rgba(249,242,255,.53),
+            rgba(237,249,241,.58)
+        );
+    border:1px solid rgba(255,255,255,.9);
+    backdrop-filter:blur(16px);
+    box-shadow:var(--shadow);
+    text-align:center;
+}
+
+.magic-icon{
+    font-size:38px;
+    margin-bottom:8px;
+    animation:magicPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes magicPulse{
+    0%,100%{
+        transform:translateY(0) scale(.95);
+    }
+    50%{
+        transform:translateY(-5px) scale(1.08);
+    }
+}
+
+.magic-panel h2{
     font-family:"Playfair Display",serif;
     color:var(--rose-deep);
     font-size:32px;
 }
 
-.garden-content p{
-    width:min(780px,100%);
+.magic-panel p{
+    max-width:820px;
     margin:12px auto 0;
-    color:#746b76;
-    font-size:13.5px;
+    color:var(--muted);
     line-height:1.95;
-}
-
-.garden-divider{
-    width:135px;
-    height:2px;
-    margin:20px auto 0;
-    border-radius:99px;
-    background:
-      linear-gradient(
-        90deg,
-        var(--rose),
-        var(--lavender),
-        var(--green)
-      );
+    font-size:14px;
 }
 
 /* =========================================================
@@ -1313,112 +1677,144 @@ main{
 ========================================================= */
 footer{
     position:relative;
-    z-index:15;
-    margin-top:85px;
-    padding:75px 20px 45px;
+    z-index:20;
+    margin-top:90px;
+    padding:75px 20px 55px;
     text-align:center;
-    color:white;
     overflow:hidden;
+    color:white;
     background:
-      radial-gradient(
-        circle at 15% 25%,
-        rgba(255,255,255,.12),
-        transparent 24%
-      ),
-      radial-gradient(
-        circle at 82% 72%,
-        rgba(255,255,255,.11),
-        transparent 23%
-      ),
-      linear-gradient(
-        135deg,
-        #547960,
-        #8e607b,
-        #6488a3
-      );
-    box-shadow:
-      0 -20px 60px rgba(79,62,80,.12);
+        linear-gradient(
+            135deg,
+            var(--leaf-deep),
+            var(--rose-deep),
+            #6d8797
+        );
 }
 
-footer h4{
+body[data-theme="autumn"] footer{
+    background:
+        linear-gradient(
+            135deg,
+            #596341,
+            #8b593f,
+            #6b6950
+        );
+}
+
+footer::before,
+footer::after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.14),
+            transparent 70%
+        );
+}
+
+footer::before{
+    left:-130px;
+    top:-140px;
+}
+
+footer::after{
+    right:-110px;
+    bottom:-140px;
+}
+
+.footer-flower{
+    font-size:25px;
+    letter-spacing:8px;
+}
+
+footer h3{
+    margin-top:12px;
     font-family:"Playfair Display",serif;
-    font-size:28px;
+    font-size:31px;
 }
 
 footer p{
-    margin-top:6px;
-    font-size:12.5px;
-    opacity:.92;
+    margin-top:7px;
+    font-size:13px;
     line-height:1.8;
+    opacity:.9;
 }
 
 footer a{
     color:white;
     font-weight:600;
-    text-underline-offset:3px;
 }
 
 /* =========================================================
-   MUSIC
+   MUSIC PLAYER
 ========================================================= */
 .music-player{
     position:fixed;
-    right:18px;
-    bottom:18px;
-    z-index:50000;
-    width:340px;
+    right:20px;
+    bottom:20px;
+    width:350px;
     min-height:80px;
+    z-index:9999;
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:11px;
     padding:10px 12px;
-    border-radius:24px;
+    border-radius:25px;
     background:
-      linear-gradient(
-        135deg,
-        rgba(151,82,112,.95),
-        rgba(81,126,94,.95)
-      );
+        linear-gradient(
+            135deg,
+            rgba(143,70,99,.95),
+            rgba(77,120,86,.95)
+        );
     border:1px solid rgba(255,255,255,.85);
     box-shadow:
-      0 0 20px rgba(255,255,255,.4),
-      0 17px 45px rgba(66,54,66,.23);
+        0 0 22px rgba(255,255,255,.46),
+        0 20px 44px rgba(54,44,54,.23);
     backdrop-filter:blur(18px);
     animation:musicFloat 4s ease-in-out infinite;
 }
 
+body[data-theme="autumn"] .music-player{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(137,82,49,.95),
+            rgba(86,103,60,.95)
+        );
+}
+
 @keyframes musicFloat{
-    0%,100%{
-      transform:translateY(0);
-    }
-    50%{
-      transform:translateY(-4px);
-    }
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-5px)}
 }
 
 .music-disc{
-    width:48px;
-    height:48px;
-    min-width:48px;
+    width:49px;
+    height:49px;
+    min-width:49px;
     border-radius:50%;
     display:grid;
     place-items:center;
     background:
-      radial-gradient(
-        circle at 30% 30%,
-        white,
-        #efb8cc 45%,
-        #a45072 100%
-      );
+        radial-gradient(
+            circle at 33% 28%,
+            #fff,
+            #f0b3c9 40%,
+            #9e4d70 100%
+        );
     box-shadow:
-      0 0 16px rgba(255,255,255,.72);
-    animation:discSpin 7s linear infinite;
+        0 0 20px rgba(255,255,255,.7);
+    animation:spinMusic 6s linear infinite;
 }
 
-@keyframes discSpin{
-    to{
-      transform:rotate(360deg);
-    }
+@keyframes spinMusic{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
 }
 
 .music-text{
@@ -1431,12 +1827,12 @@ footer a{
     display:block;
     font-size:8px;
     letter-spacing:2px;
-    opacity:.74;
+    opacity:.72;
 }
 
 .music-text strong{
     display:block;
-    margin-top:3px;
+    margin-top:2px;
     font-size:12px;
     white-space:nowrap;
     overflow:hidden;
@@ -1449,15 +1845,16 @@ footer a{
     min-width:43px;
     border:0;
     border-radius:50%;
+    cursor:pointer;
     background:white;
     color:var(--rose-deep);
+    font-size:15px;
     box-shadow:0 0 20px rgba(255,255,255,.75);
-    cursor:pointer;
-    transition:.3s;
+    transition:.3s ease;
 }
 
 #musicBtn:hover{
-    transform:scale(1.1);
+    transform:scale(1.12);
 }
 
 #youtubePlayer{
@@ -1466,6 +1863,7 @@ footer a{
     top:-9999px;
     width:1px;
     height:1px;
+    opacity:0;
 }
 
 /* =========================================================
@@ -1474,20 +1872,20 @@ footer a{
 .top-btn{
     position:fixed;
     right:24px;
-    bottom:115px;
+    bottom:120px;
     width:44px;
     height:44px;
-    border-radius:50%;
     border:1px solid rgba(255,255,255,.9);
-    background:rgba(255,255,255,.72);
-    backdrop-filter:blur(12px);
+    border-radius:50%;
+    background:rgba(255,255,255,.7);
     color:var(--rose-deep);
-    font-size:18px;
+    backdrop-filter:blur(12px);
     cursor:pointer;
-    z-index:40000;
+    z-index:9000;
     opacity:0;
     transform:translateY(15px);
     transition:.35s ease;
+    box-shadow:0 12px 27px rgba(81,66,81,.14);
 }
 
 .top-btn.show{
@@ -1495,28 +1893,48 @@ footer a{
     transform:translateY(0);
 }
 
-/* =========================================================
-   CLICK FLOWER EXPLOSION
-========================================================= */
-.click-petal{
-    position:fixed;
-    pointer-events:none;
-    z-index:1000000;
-    font-size:17px;
-    transition:
-      transform .95s cubic-bezier(.2,.8,.2,1),
-      opacity .95s ease;
+.top-btn:hover{
+    transform:translateY(-4px) scale(1.05);
 }
 
 /* =========================================================
-   REVEAL ANIMATION
+   CLICK MAGIC
+========================================================= */
+.click-particle{
+    position:fixed;
+    pointer-events:none;
+    z-index:100001;
+    font-size:17px;
+    color:var(--rose);
+    animation:clickBurst .9s ease-out forwards;
+}
+
+@keyframes clickBurst{
+    0%{
+        transform:translate(-50%,-50%) scale(.5);
+        opacity:1;
+    }
+    100%{
+        transform:
+            translate(
+                calc(-50% + var(--dx)),
+                calc(-50% + var(--dy))
+            )
+            rotate(var(--rot))
+            scale(1.4);
+        opacity:0;
+    }
+}
+
+/* =========================================================
+   REVEAL
 ========================================================= */
 .reveal{
     opacity:0;
-    transform:translateY(40px);
+    transform:translateY(45px);
     transition:
-      opacity .9s ease,
-      transform .9s ease;
+        opacity 1s ease,
+        transform 1s cubic-bezier(.2,.8,.2,1);
 }
 
 .reveal.visible{
@@ -1533,8 +1951,13 @@ footer a{
         grid-template-columns:repeat(2,1fr);
     }
 
+    .moon{
+        width:130px;
+        height:130px;
+    }
+
     .hero{
-        min-height:820px;
+        min-height:850px;
     }
 }
 
@@ -1544,32 +1967,25 @@ footer a{
         cursor:auto;
     }
 
-    .cursor-core,
+    .cursor-dot,
     .cursor-ring{
         display:none;
     }
 
-    .opening-content{
-        padding:42px 20px;
-    }
-
     .hero{
-        min-height:760px;
-        padding-top:100px;
-        padding-bottom:170px;
-    }
-
-    .hero-content{
-        padding:42px 19px;
-        border-radius:30px;
+        min-height:800px;
+        padding-top:95px;
     }
 
     .hero-title{
-        font-size:clamp(46px,14vw,72px);
+        font-size:clamp(53px,16vw,85px);
     }
 
-    .hero-description{
-        font-size:12.5px;
+    .moon{
+        right:-20px;
+        top:80px;
+        width:100px;
+        height:100px;
     }
 
     .characters{
@@ -1577,7 +1993,19 @@ footer a{
     }
 
     .card-image{
-        height:370px;
+        height:390px;
+    }
+
+    .river-card{
+        min-height:520px;
+    }
+
+    .river-title{
+        top:32px;
+    }
+
+    .river-help{
+        top:198px;
     }
 
     .music-player{
@@ -1587,25 +2015,20 @@ footer a{
     }
 
     .top-btn{
-        right:14px;
-        bottom:105px;
+        right:15px;
+        bottom:104px;
     }
 
-    .garden-panel{
-        padding:35px 18px;
-        border-radius:30px;
+    .magic-panel{
+        padding:30px 20px;
     }
 
-    .river-scene{
-        height:190px;
-    }
-
-    .bank-flower{
-        bottom:100px;
+    .intro-title{
+        font-size:clamp(45px,14vw,72px);
     }
 }
 
-@media(max-width:440px){
+@media(max-width:450px){
 
     .hero-actions{
         flex-direction:column;
@@ -1615,12 +2038,18 @@ footer a{
         width:100%;
     }
 
-    .card-image{
-        height:330px;
+    .nav a,
+    .theme-toggle{
+        font-size:10px;
+        padding:9px 10px;
     }
 
-    .music-player{
-        min-height:74px;
+    .card-image{
+        height:340px;
+    }
+
+    .card-name strong{
+        font-size:29px;
     }
 }
 
@@ -1629,81 +2058,67 @@ footer a{
     *,
     *::before,
     *::after{
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
-        transition-duration:.01ms !important;
-        scroll-behavior:auto !important;
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.01ms!important;
+        scroll-behavior:auto!important;
     }
 }
 </style>
 </head>
 
-<body>
+<body data-theme="spring">
 
 <!-- =========================================================
-     OPENING SCREEN
+     SCROLL BAR
 ========================================================= -->
-<div class="opening-screen" id="openingScreen">
-
-    <div class="opening-ring"></div>
-
-    <div class="opening-content">
-
-        <div class="opening-kicker">
-            LOVE &amp; DEEPSPACE
-        </div>
-
-        <div class="opening-title">
-            Spring<br>
-            Memories
-        </div>
-
-        <div class="opening-subtitle">
-            A Fantasy Garden Beyond the Stars
-        </div>
-
-        <div class="opening-line"></div>
-
-        <p class="opening-small">
-            สายน้ำ กลีบดอกไม้ แสงออโรร่า
-            และเรื่องราวของ Sylus, Zayne และ Caleb
-            กำลังรอให้คุณเดินทางเข้าสู่สวนแห่งฤดูใบไม้ผลิ
-        </p>
-
-        <button class="enter-btn" id="enterBtn">
-            ✦ Enter the Garden ✦
-        </button>
-
-    </div>
-</div>
-
+<div class="scroll-bar" id="scrollBar"></div>
 
 <!-- =========================================================
-     UI
+     CURSOR
 ========================================================= -->
-<div class="scroll-line" id="scrollLine"></div>
-
-<div class="cursor-core" id="cursorCore"></div>
+<div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
 
 <!-- =========================================================
-     AURORA
+     OPENING SCENE
 ========================================================= -->
-<div class="aurora">
+<section class="intro-screen" id="introScreen">
 
-    <div class="aurora-band aurora-a"></div>
-    <div class="aurora-band aurora-b"></div>
-    <div class="aurora-band aurora-c"></div>
+    <div class="intro-aura"></div>
 
-</div>
+    <div class="intro-content">
+
+        <div class="intro-small">
+            WELCOME TO
+        </div>
+
+        <h1 class="intro-title">
+            Spring Garden
+        </h1>
+
+        <p class="intro-sub">
+            Love &amp; Deepspace · A Fantasy Journey
+        </p>
+
+        <div class="intro-hint">
+            ✦ THE GARDEN IS BLOOMING ✦
+        </div>
+
+    </div>
+
+    <div class="flower-pile" id="flowerPile"></div>
+
+</section>
 
 
 <!-- =========================================================
-     PARTICLES
+     BACKGROUND PARTICLES
 ========================================================= -->
-<div class="petal-layer" id="petalLayer"></div>
-<div class="sparkles" id="sparkles"></div>
+<div class="particle-layer" id="particles"></div>
+<div class="petal-layer" id="petals"></div>
+<div class="firefly-layer" id="fireflies"></div>
 
 
 <!-- =========================================================
@@ -1711,481 +2126,531 @@ footer a{
 ========================================================= -->
 <header class="hero" id="top">
 
-    <div class="hero-sky"></div>
+    <div class="aurora">
+        <div class="aurora-band aurora-one"></div>
+        <div class="aurora-band aurora-two"></div>
+        <div class="aurora-band aurora-three"></div>
+    </div>
 
-    <div class="hero-content" id="heroContent">
+    <div class="moon"></div>
+
+    <!-- Floating illuminated petals -->
+    <div class="sky-petal p1"></div>
+    <div class="sky-petal p2"></div>
+    <div class="sky-petal p3"></div>
+    <div class="sky-petal p4"></div>
+    <div class="sky-petal p5"></div>
+    <div class="sky-petal p6"></div>
+
+    <div class="hero-center" id="heroCenter">
 
         <div class="hero-kicker">
-            SPRING RIVER EDITION
+            ✦ SPRING FANTASY WORLD ✦
         </div>
 
         <h1 class="hero-title">
-            Love &amp;<br>
-            Deepspace
+            <span>Love &amp;</span>
+            <span>Deepspace</span>
         </h1>
 
         <div class="hero-subtitle">
-            ✦ Sylus · Zayne · Caleb ✦
+            SYLUS · ZAYNE · CALEB
         </div>
 
-        <p class="hero-description">
-            สวนฤดูใบไม้ผลิแห่งใหม่ที่ซ่อนอยู่ท่ามกลางหมู่ดาว
-            ที่ซึ่งสายลมพัดผ่านดอกไม้
-            แสง Aurora สะท้อนบนสายน้ำ
-            และกลีบดอกไม้ค่อย ๆ ลอยผ่านหน้าจอ
+        <p class="hero-copy">
+            ยินดีต้อนรับสู่สวนแห่งความฝัน
+            ที่แสง Aurora ส่องผ่านท้องฟ้า
+            กลีบดอกไม้ล่องลอยเหนือสายน้ำ
+            และตัวละครทั้งสามปรากฏขึ้นท่ามกลางสวนแฟนตาซี
         </p>
 
         <div class="hero-actions">
 
             <a href="#characters" class="hero-btn primary">
-                🌸 Explore Characters
+                ✦ Explore Characters
             </a>
 
-            <a href="#garden" class="hero-btn secondary">
-                🌿 Enter the Garden
+            <a href="#river" class="hero-btn secondary">
+                🌊 Discover the River
             </a>
 
         </div>
 
     </div>
 
+    <div class="garden-back"></div>
+    <div class="garden-front"></div>
 
-    <!-- GARDEN -->
-    <div class="garden">
-
-        <div class="garden-back"></div>
-        <div class="garden-ground"></div>
-
-    </div>
-
-
-    <!-- RIVER -->
-    <div class="river-scene" id="riverScene">
-
-        <div class="river" id="river">
-
-            <div class="river-light" id="riverLight"></div>
-
-            <div class="bank-flower f1">🌸</div>
-            <div class="bank-flower f2">🌿</div>
-            <div class="bank-flower f3">🌷</div>
-
-            <div class="bank-flower f4">🌼</div>
-            <div class="bank-flower f5">🍃</div>
-            <div class="bank-flower f6">🪻</div>
-
-        </div>
-
+    <!-- Decorative river -->
+    <div class="river-basin" id="heroRiver">
+        <div class="river-shine"></div>
     </div>
 
 </header>
 
 
 <!-- =========================================================
-     CHARACTERS
+     NAVIGATION
 ========================================================= -->
-<section class="section reveal" id="characters">
-
-    <div class="section-head">
-
-        <div class="kicker">
-            CHARACTER COLLECTION
-        </div>
-
-        <h2>
-            Three Souls in Spring
-        </h2>
-
-        <p>
-            พบกับตัวละครทั้งสามท่ามกลางบรรยากาศของสวน
-            ที่มีทั้งความอบอุ่น ความเย็นสงบ
-            และประกายลึกลับจากจักรวาลของ Deepspace
-        </p>
-
-    </div>
-
-
-    <div class="characters">
-
-        <!-- SYLUS -->
-        <article class="card" id="sylus">
-
-            <div class="card-image">
-
-                <div class="badge">
-                    CHARACTER 01
-                </div>
-
-                <div class="card-mood">
-                    MYSTERIOUS BLOOM
-                </div>
-
-                <img
-                    src="https://r.res.easebar.com/pic/20250609/f40ad552-296b-4f97-a398-1c6c3a6999ba.png"
-                    alt="Sylus"
-                    loading="lazy"
-                    referrerpolicy="no-referrer"
-                    onerror="this.style.display='none'"
-                >
-
-                <div class="card-overlay"></div>
-
-                <div class="card-name">
-                    <small>THE LEADER</small>
-                    <strong>Sylus</strong>
-                </div>
-
-                <div class="card-symbol">
-                    ♟
-                </div>
-
-            </div>
-
-            <div class="card-content">
-
-                <h3>Sylus</h3>
-
-                <div class="card-tagline">
-                    The leader of Onychinus
-                </div>
-
-                <div class="info">
-
-                    <div class="info-row">
-                        <strong>Age</strong>
-                        <span>28</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Height</strong>
-                        <span>190 cm</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Birthday</strong>
-                        <span>April 18</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Sign</strong>
-                        <span>Aries</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Evol</strong>
-                        <span>Energy Manipulation</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Workplace</strong>
-                        <span>Onychinus</span>
-                    </div>
-
-                </div>
-
-                <p class="card-description">
-                    Sylus เป็นผู้นำของ Onychinus
-                    มีบุคลิกมั่นใจ พูดตรง สุขุม
-                    และมีแนวคิดแบบวิเคราะห์และวางแผนล่วงหน้า
-                </p>
-
-                <div class="tags">
-                    <span class="tag">🖤 Silver Hair</span>
-                    <span class="tag">❤️ Red Eyes</span>
-                    <span class="tag">🐦 Crow</span>
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- ZAYNE -->
-        <article class="card" id="zayne">
-
-            <div class="card-image">
-
-                <div class="badge">
-                    CHARACTER 02
-                </div>
-
-                <div class="card-mood">
-                    WINTER → SPRING
-                </div>
-
-                <img
-                    src="https://pbs.twimg.com/media/GB7n-3bawAA-aA2.jpg"
-                    alt="Zayne"
-                    loading="lazy"
-                    referrerpolicy="no-referrer"
-                    onerror="this.style.display='none'"
-                >
-
-                <div class="card-overlay"></div>
-
-                <div class="card-name">
-                    <small>THE DOCTOR</small>
-                    <strong>Zayne</strong>
-                </div>
-
-                <div class="card-symbol">
-                    ❄
-                </div>
-
-            </div>
-
-            <div class="card-content">
-
-                <h3>Zayne</h3>
-
-                <div class="card-tagline">
-                    Akso Hospital — Cardiac Surgeon
-                </div>
-
-                <div class="info">
-
-                    <div class="info-row">
-                        <strong>Age</strong>
-                        <span>27</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Height</strong>
-                        <span>186 cm</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Birthday</strong>
-                        <span>September 5</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Sign</strong>
-                        <span>Virgo</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Evol</strong>
-                        <span>Ice</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Workplace</strong>
-                        <span>Akso Hospital</span>
-                    </div>
-
-                </div>
-
-                <p class="card-description">
-                    Zayne เป็นศัลยแพทย์หัวใจที่ Akso Hospital
-                    มีบุคลิกสุขุม ตรงไปตรงมา
-                    เป็นมืออาชีพ และใส่ใจคนรอบตัว
-                </p>
-
-                <div class="tags">
-                    <span class="tag">❄️ Ice Evol</span>
-                    <span class="tag">🩺 Cardiac Surgeon</span>
-                    <span class="tag">🍫 Sweet Treats</span>
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- CALEB -->
-        <article class="card" id="caleb">
-
-            <div class="card-image">
-
-                <div class="badge">
-                    CHARACTER 03
-                </div>
-
-                <div class="card-mood">
-                    SUNLIT BLOOM
-                </div>
-
-                <img
-                    src="https://otome.com/wp-content/uploads/2025/01/Love-and-Deepspace-Caleb-Close-Up-1.png"
-                    alt="Caleb"
-                    loading="lazy"
-                    referrerpolicy="no-referrer"
-                    onerror="this.style.display='none'"
-                >
-
-                <div class="card-overlay"></div>
-
-                <div class="card-name">
-                    <small>THE COLONEL</small>
-                    <strong>Caleb</strong>
-                </div>
-
-                <div class="card-symbol">
-                    ✦
-                </div>
-
-            </div>
-
-            <div class="card-content">
-
-                <h3>Caleb</h3>
-
-                <div class="card-tagline">
-                    Farspace Fleet — Colonel
-                </div>
-
-                <div class="info">
-
-                    <div class="info-row">
-                        <strong>Age</strong>
-                        <span>25</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Height</strong>
-                        <span>188 cm</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Birthday</strong>
-                        <span>June 13</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Sign</strong>
-                        <span>Gemini</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Evol</strong>
-                        <span>Gravity Manipulation</span>
-                    </div>
-
-                    <div class="info-row">
-                        <strong>Workplace</strong>
-                        <span>Farspace Fleet</span>
-                    </div>
-
-                </div>
-
-                <p class="card-description">
-                    Caleb เคยเป็นนักบินรบของ DAA
-                    และปัจจุบันเป็น Colonel แห่ง Farspace Fleet
-                    มีทั้งความใจดี ขี้เล่น ปกป้องคนสำคัญ
-                    และมีด้านที่จริงจังมากขึ้นหลังกลับมา
-                </p>
-
-                <div class="tags">
-                    <span class="tag">🌌 Gravity</span>
-                    <span class="tag">✈️ Fighter Pilot</span>
-                    <span class="tag">🌼 Protective</span>
-                </div>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
+<div class="nav-wrap">
+
+    <nav class="nav">
+
+        <a href="#top">
+            <span>🏡 Home</span>
+        </a>
+
+        <a href="#characters">
+            <span>✦ Characters</span>
+        </a>
+
+        <a href="#sylus">
+            <span>🦋 Sylus</span>
+        </a>
+
+        <a href="#zayne">
+            <span>❄ Zayne</span>
+        </a>
+
+        <a href="#caleb">
+            <span>🌼 Caleb</span>
+        </a>
+
+        <a href="#river">
+            <span>🌊 River</span>
+        </a>
+
+        <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+        >
+            <span id="themeText">
+                🍂 Autumn
+            </span>
+        </button>
+
+    </nav>
+
+</div>
 
 
 <!-- =========================================================
-     GARDEN SECTION
+     MAIN
 ========================================================= -->
-<section class="section reveal" id="garden">
+<main>
 
-    <div class="section-head">
+    <!-- =====================================================
+         CHARACTERS
+    ====================================================== -->
+    <section class="section" id="characters">
 
-        <div class="kicker">
-            SPRING GARDEN
-        </div>
+        <div class="section-header reveal">
 
-        <h2>
-            Where the River Remembers
-        </h2>
-
-    </div>
-
-
-    <div class="garden-panel">
-
-        <div class="garden-content">
-
-            <div class="garden-icon">
-                🦋
+            <div class="kicker">
+                CHARACTER COLLECTION
             </div>
 
-            <h3>
-                A Garden Beyond the Stars
-            </h3>
+            <h2>
+                Three Souls in the Garden
+            </h2>
 
             <p>
-                ที่นี่คือสวนฤดูใบไม้ผลิที่ซ่อนตัวอยู่ระหว่าง
-                แสง Aurora และสายน้ำ
-                กลีบดอกไม้จะลอยไปตามลม
-                ส่วนแสงบนผิวน้ำจะค่อย ๆ เคลื่อนไหวตามเมาส์ของคุณ
-                ทำให้หน้าเว็บมีชีวิตตลอดเวลา
+                ตัวละครทั้งสามถูกนำเข้าสู่โลกฤดูใบไม้ผลิ
+                ที่เต็มไปด้วยกลีบดอกไม้ แสงเงา และธรรมชาติ
+                พร้อมเอฟเฟกต์ 3D และการเคลื่อนไหวตามเมาส์
             </p>
-
-            <div class="garden-divider"></div>
 
         </div>
 
-    </div>
 
-</section>
+        <div class="characters">
+
+            <!-- =================================================
+                 SYLUS
+            ================================================== -->
+            <article
+                class="card tilt-card reveal"
+                id="sylus"
+                data-depth="16"
+            >
+
+                <div class="card-image">
+
+                    <div class="card-badge">
+                        CHARACTER 01
+                    </div>
+
+                    <div class="card-mood">
+                        MYSTERIOUS BLOOM
+                    </div>
+
+                    <img
+                        src="https://r.res.easebar.com/pic/20250609/f40ad552-296b-4f97-a398-1c6c3a6999ba.png"
+                        alt="Sylus from Love and Deepspace"
+                        loading="lazy"
+                        referrerpolicy="no-referrer"
+                        onerror="this.style.display='none'"
+                    >
+
+                    <div class="card-name">
+                        <small>THE LEADER</small>
+                        <strong>Sylus</strong>
+                    </div>
+
+                    <div class="card-symbol">
+                        ♟
+                    </div>
+
+                </div>
+
+                <div class="card-info">
+
+                    <h3>Sylus</h3>
+
+                    <div class="card-tag">
+                        The leader of Onychinus
+                    </div>
+
+                    <div class="meta">
+
+                        <div class="meta-row">
+                            <b>Age</b>
+                            <span>28</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Height</b>
+                            <span>190 cm</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Birthday</b>
+                            <span>April 18</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Sign</b>
+                            <span>Aries</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Evol</b>
+                            <span>Energy Manipulation</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Workplace</b>
+                            <span>Onychinus</span>
+                        </div>
+
+                    </div>
+
+                    <p class="card-description">
+                        Sylus เป็นผู้นำของ Onychinus
+                        มีบุคลิกมั่นใจ พูดตรง
+                        สุขุมในสถานการณ์กดดัน
+                        และมีแนวคิดเชิงวิเคราะห์
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Silver Hair</span>
+                        <span class="tag">Red Eyes</span>
+                        <span class="tag">Crow</span>
+                        <span class="tag">Mysterious</span>
+                    </div>
+
+                </div>
+
+            </article>
 
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-<footer>
+            <!-- =================================================
+                 ZAYNE
+            ================================================== -->
+            <article
+                class="card tilt-card reveal"
+                id="zayne"
+                data-depth="16"
+            >
 
-    <h4>
-        Love &amp; Deepspace — Spring River Fantasy
-    </h4>
+                <div class="card-image">
 
-    <p>
-        Fan-made page • Fantasy Spring Edition
-    </p>
+                    <div class="card-badge">
+                        CHARACTER 02
+                    </div>
 
-    <p>
-        ข้อมูลตัวละครอ้างอิงจาก Love and Deepspace Wiki
-    </p>
+                    <div class="card-mood">
+                        WINTER → SPRING
+                    </div>
 
-    <p>
-        <a
-            href="https://loveanddeepspace.fandom.com/wiki/Sylus"
-            target="_blank"
-            rel="noopener"
-        >
-            Sylus Wiki
-        </a>
+                    <img
+                        src="https://pbs.twimg.com/media/GB7n-3bawAA-aA2.jpg"
+                        alt="Zayne from Love and Deepspace"
+                        loading="lazy"
+                        referrerpolicy="no-referrer"
+                        onerror="this.style.display='none'"
+                    >
 
-        ·
+                    <div class="card-name">
+                        <small>THE DOCTOR</small>
+                        <strong>Zayne</strong>
+                    </div>
 
-        <a
-            href="https://loveanddeepspace.fandom.com/wiki/Zayne"
-            target="_blank"
-            rel="noopener"
-        >
-            Zayne Wiki
-        </a>
+                    <div class="card-symbol">
+                        ❄
+                    </div>
 
-        ·
+                </div>
 
-        <a
-            href="https://loveanddeepspace.fandom.com/wiki/Caleb"
-            target="_blank"
-            rel="noopener"
-        >
-            Caleb Wiki
-        </a>
-    </p>
+                <div class="card-info">
 
-</footer>
+                    <h3>Zayne</h3>
+
+                    <div class="card-tag">
+                        Akso Hospital — Cardiac Surgeon
+                    </div>
+
+                    <div class="meta">
+
+                        <div class="meta-row">
+                            <b>Age</b>
+                            <span>27</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Height</b>
+                            <span>186 cm</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Birthday</b>
+                            <span>September 5</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Sign</b>
+                            <span>Virgo</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Evol</b>
+                            <span>Ice</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Workplace</b>
+                            <span>Akso Hospital</span>
+                        </div>
+
+                    </div>
+
+                    <p class="card-description">
+                        Zayne เป็นศัลยแพทย์หัวใจ
+                        มีบุคลิกสุขุม ตรงไปตรงมา
+                        เป็นมืออาชีพและใส่ใจคนรอบตัว
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Ice Evol</span>
+                        <span class="tag">Cardiac Surgeon</span>
+                        <span class="tag">Sweet Treats</span>
+                        <span class="tag">Calm</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 CALEB
+            ================================================== -->
+            <article
+                class="card tilt-card reveal"
+                id="caleb"
+                data-depth="16"
+            >
+
+                <div class="card-image">
+
+                    <div class="card-badge">
+                        CHARACTER 03
+                    </div>
+
+                    <div class="card-mood">
+                        SUNLIT BLOOM
+                    </div>
+
+                    <img
+                        src="https://otome.com/wp-content/uploads/2025/01/Love-and-Deepspace-Caleb-Close-Up-1.png"
+                        alt="Caleb from Love and Deepspace"
+                        loading="lazy"
+                        referrerpolicy="no-referrer"
+                        onerror="this.style.display='none'"
+                    >
+
+                    <div class="card-name">
+                        <small>THE COLONEL</small>
+                        <strong>Caleb</strong>
+                    </div>
+
+                    <div class="card-symbol">
+                        ✦
+                    </div>
+
+                </div>
+
+                <div class="card-info">
+
+                    <h3>Caleb</h3>
+
+                    <div class="card-tag">
+                        Farspace Fleet — Colonel
+                    </div>
+
+                    <div class="meta">
+
+                        <div class="meta-row">
+                            <b>Age</b>
+                            <span>25</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Height</b>
+                            <span>188 cm</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Birthday</b>
+                            <span>June 13</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Sign</b>
+                            <span>Gemini</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Evol</b>
+                            <span>Gravity Manipulation</span>
+                        </div>
+
+                        <div class="meta-row">
+                            <b>Workplace</b>
+                            <span>Farspace Fleet</span>
+                        </div>
+
+                    </div>
+
+                    <p class="card-description">
+                        Caleb เคยเป็นนักบินรบของ DAA
+                        และปัจจุบันเป็น Colonel
+                        แห่ง Farspace Fleet
+                        มีทั้งความใจดี ขี้เล่น และปกป้องคนสำคัญ
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Gravity</span>
+                        <span class="tag">Fighter Pilot</span>
+                        <span class="tag">Protective</span>
+                        <span class="tag">Sunlit</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RIVER
+    ====================================================== -->
+    <section
+        class="section river-section reveal"
+        id="river"
+    >
+
+        <div class="river-card" id="riverCard">
+
+            <div class="river-title">
+
+                <div class="kicker">
+                    SECRET GARDEN
+                </div>
+
+                <h2>
+                    River of Memories
+                </h2>
+
+                <p>
+                    ขยับเมาส์เหนือสายน้ำเพื่อให้แสงสะท้อนตามเคลื่อนไหว
+                    และคลิกลงบนแม่น้ำเพื่อสร้างระลอกน้ำ
+                </p>
+
+            </div>
+
+            <div class="river-help">
+                MOVE YOUR MOUSE · TOUCH THE WATER
+            </div>
+
+
+            <div class="river" id="interactiveRiver">
+
+                <div class="river-flow"></div>
+
+                <div class="water-glow" id="waterGlow"></div>
+
+                <div class="water-line l1"></div>
+                <div class="water-line l2"></div>
+                <div class="water-line l3"></div>
+                <div class="water-line l4"></div>
+
+                <div class="lily l1"></div>
+                <div class="lily l2"></div>
+                <div class="lily l3"></div>
+
+                <div class="fish f1"></div>
+                <div class="fish f2"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAGIC PANEL
+    ====================================================== -->
+    <section class="section reveal">
+
+        <div class="magic-panel">
+
+            <div class="magic-icon">
+                ✦
+            </div>
+
+            <h2>
+                One Garden, Two Seasons
+            </h2>
+
+            <p>
+                เว็บไซต์นี้สามารถสลับบรรยากาศระหว่าง
+                <b>Spring Garden</b> และ <b>Autumn Garden</b>
+                ได้ทันที โดยเปลี่ยนสีท้องฟ้า กลีบดอกไม้
+                สายน้ำ แสง Aurora และบรรยากาศโดยรวม
+                ให้เข้ากับฤดูกาลนั้น
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
 
 
 <!-- =========================================================
@@ -2199,7 +2664,9 @@ footer a{
 
     <div class="music-text">
         <small>SPRING MUSIC</small>
-        <strong>Love &amp; Deepspace • YouTube</strong>
+        <strong>
+            Love &amp; Deepspace • YouTube
+        </strong>
     </div>
 
     <button
@@ -2216,358 +2683,398 @@ footer a{
 
 
 <!-- =========================================================
-     TOP BUTTON
+     BACK TO TOP
 ========================================================= -->
 <button
     class="top-btn"
     id="topBtn"
     type="button"
-    aria-label="กลับด้านบน"
 >
     ↑
 </button>
 
 
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+<footer>
+
+    <div class="footer-flower">
+        ✦ ❀ ✦ 🌿 ✦ 🦋 ✦
+    </div>
+
+    <h3>
+        Love &amp; Deepspace
+    </h3>
+
+    <p>
+        Spring Fantasy World
+    </p>
+
+    <p>
+        Fan-made page • Spring / Autumn Interactive Theme
+    </p>
+
+    <p>
+        <a
+            href="https://loveanddeepspace.fandom.com/wiki/Sylus"
+            target="_blank"
+            rel="noopener"
+        >
+            Sylus Wiki
+        </a>
+        ·
+        <a
+            href="https://loveanddeepspace.fandom.com/wiki/Zayne"
+            target="_blank"
+            rel="noopener"
+        >
+            Zayne Wiki
+        </a>
+        ·
+        <a
+            href="https://loveanddeepspace.fandom.com/wiki/Caleb"
+            target="_blank"
+            rel="noopener"
+        >
+            Caleb Wiki
+        </a>
+    </p>
+
+</footer>
+
+
 <script>
 
 /* =========================================================
-   OPENING SCENE
+   CURSOR
 ========================================================= */
 
-const openingScreen =
-    document.getElementById("openingScreen");
-
-const enterBtn =
-    document.getElementById("enterBtn");
-
-enterBtn.addEventListener("click", () => {
-
-    openingScreen.classList.add("hide");
-
-    setTimeout(() => {
-        openingScreen.style.display = "none";
-    }, 1300);
-
-});
-
-
-/* =========================================================
-   CUSTOM CURSOR
-========================================================= */
-
-const cursorCore =
-    document.getElementById("cursorCore");
+const cursorDot =
+    document.getElementById("cursorDot");
 
 const cursorRing =
     document.getElementById("cursorRing");
 
-let mx = innerWidth / 2;
-let my = innerHeight / 2;
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
 
-let rx = mx;
-let ry = my;
+let ringX = mouseX;
+let ringY = mouseY;
 
-window.addEventListener("mousemove", (e) => {
+window.addEventListener("mousemove",(e)=>{
 
-    mx = e.clientX;
-    my = e.clientY;
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 
-    cursorCore.style.left = mx + "px";
-    cursorCore.style.top = my + "px";
+    cursorDot.style.left =
+        mouseX + "px";
+
+    cursorDot.style.top =
+        mouseY + "px";
 
 });
 
-function cursorLoop(){
+function animateCursor(){
 
-    rx += (mx - rx) * .14;
-    ry += (my - ry) * .14;
+    ringX +=
+        (mouseX - ringX) * .15;
 
-    cursorRing.style.left = rx + "px";
-    cursorRing.style.top = ry + "px";
+    ringY +=
+        (mouseY - ringY) * .15;
 
-    requestAnimationFrame(cursorLoop);
+    cursorRing.style.left =
+        ringX + "px";
+
+    cursorRing.style.top =
+        ringY + "px";
+
+    requestAnimationFrame(
+        animateCursor
+    );
+}
+
+animateCursor();
+
+
+document
+.querySelectorAll("a,button,.card,.tag,.river-card")
+.forEach(el=>{
+
+    el.addEventListener(
+        "mouseenter",
+        ()=>{
+            document.body
+                .classList
+                .add("cursor-hover");
+        }
+    );
+
+    el.addEventListener(
+        "mouseleave",
+        ()=>{
+            document.body
+                .classList
+                .remove("cursor-hover");
+        }
+    );
+
+});
+
+
+/* =========================================================
+   OPENING FLOWER PILE
+========================================================= */
+
+const flowerPile =
+    document.getElementById("flowerPile");
+
+for(let i=0;i<70;i++){
+
+    const petal =
+        document.createElement("span");
+
+    petal.className =
+        "intro-petal";
+
+    const tx1 =
+        (Math.random() - .5) * 240;
+
+    const ty1 =
+        (Math.random() - .5) * 200;
+
+    const tx2 =
+        (Math.random() - .5) *
+        (window.innerWidth * .95);
+
+    const ty2 =
+        (Math.random() - .5) *
+        (window.innerHeight * .8);
+
+    const startRot =
+        (Math.random() * 160) - 80;
+
+    const rot1 =
+        (Math.random() * 360) - 180;
+
+    const rot2 =
+        (Math.random() * 800) - 400;
+
+    const scale =
+        .45 + Math.random() * .75;
+
+    petal.style.setProperty(
+        "--tx1",
+        tx1 + "px"
+    );
+
+    petal.style.setProperty(
+        "--ty1",
+        ty1 + "px"
+    );
+
+    petal.style.setProperty(
+        "--tx2",
+        tx2 + "px"
+    );
+
+    petal.style.setProperty(
+        "--ty2",
+        ty2 + "px"
+    );
+
+    petal.style.setProperty(
+        "--start-rot",
+        startRot + "deg"
+    );
+
+    petal.style.setProperty(
+        "--rot1",
+        rot1 + "deg"
+    );
+
+    petal.style.setProperty(
+        "--rot2",
+        rot2 + "deg"
+    );
+
+    petal.style.setProperty(
+        "--start-scale",
+        scale
+    );
+
+    petal.style.setProperty(
+        "--start-opacity",
+        .55 + Math.random() * .45
+    );
+
+    petal.style.setProperty(
+        "--delay",
+        (Math.random() * .75) + "s"
+    );
+
+    flowerPile.appendChild(
+        petal
+    );
 
 }
 
-cursorLoop();
+
+/* =========================================================
+   CLOSE OPENING
+========================================================= */
+
+const introScreen =
+    document.getElementById(
+        "introScreen"
+    );
+
+setTimeout(()=>{
+
+    introScreen
+        .classList
+        .add("hide");
+
+},5000);
+
+
+/* click to skip intro */
+
+introScreen.addEventListener(
+    "click",
+    ()=>{
+        introScreen
+            .classList
+            .add("hide");
+    }
+);
 
 
 /* =========================================================
-   CURSOR HOVER
+   BACKGROUND PETALS
 ========================================================= */
 
-document
-    .querySelectorAll("a,button,.card,.tag")
-    .forEach(el => {
+const petals =
+    document.getElementById("petals");
 
-        el.addEventListener("mouseenter", () => {
-            document.body.classList.add("cursor-hover");
-        });
-
-        el.addEventListener("mouseleave", () => {
-            document.body.classList.remove("cursor-hover");
-        });
-
-    });
-
-
-/* =========================================================
-   PETALS
-========================================================= */
-
-const petalLayer =
-    document.getElementById("petalLayer");
-
-const petals = [
-    "🌸",
-    "✿",
-    "❀",
-    "🍃",
-    "🌷",
-    "🪻"
-];
-
-for(let i = 0; i < 42; i++){
+for(let i=0;i<42;i++){
 
     const p =
         document.createElement("span");
 
-    p.className = "petal";
-
-    p.textContent =
-        petals[
-            Math.floor(
-                Math.random() * petals.length
-            )
-        ];
+    p.className =
+        "petal";
 
     p.style.left =
-        Math.random() * 100 + "%";
+        Math.random()*100 + "%";
 
-    p.style.fontSize =
-        (12 + Math.random() * 19) + "px";
+    p.style.width =
+        (14 + Math.random()*18) + "px";
+
+    p.style.height =
+        (9 + Math.random()*12) + "px";
+
+    p.style.setProperty(
+        "--wind",
+        (30 + Math.random()*110) + "px"
+    );
 
     p.style.animationDuration =
-        (8 + Math.random() * 10) + "s";
+        (8 + Math.random()*10) + "s";
 
     p.style.animationDelay =
-        (-Math.random() * 16) + "s";
+        (-Math.random()*15) + "s";
 
-    petalLayer.appendChild(p);
-
-}
-
-
-/* =========================================================
-   SPARKLES
-========================================================= */
-
-const sparkles =
-    document.getElementById("sparkles");
-
-for(let i = 55; i > 0; i--){
-
-    const s =
-        document.createElement("span");
-
-    s.className = "spark";
-
-    s.textContent =
-        Math.random() > .45
-        ? "✦"
-        : "·";
-
-    s.style.left =
-        Math.random() * 100 + "%";
-
-    s.style.top =
-        Math.random() * 100 + "%";
-
-    s.style.fontSize =
-        (6 + Math.random() * 14) + "px";
-
-    s.style.animationDelay =
-        (-Math.random() * 5) + "s";
-
-    s.style.animationDuration =
-        (1.8 + Math.random() * 3.1) + "s";
-
-    sparkles.appendChild(s);
+    petals.appendChild(p);
 
 }
 
 
 /* =========================================================
-   WATER PARTICLES
+   FIREFLIES
 ========================================================= */
 
-const river =
-    document.getElementById("river");
+const fireflies =
+    document.getElementById(
+        "fireflies"
+    );
 
-for(let i = 18; i > 0; i--){
+for(let i=24;i--;){
 
-    const dot =
+    const f =
         document.createElement("span");
 
-    dot.className = "water-dot";
+    f.className =
+        "firefly";
 
-    dot.style.left =
-        Math.random() * 100 + "%";
+    f.style.left =
+        Math.random()*100 + "%";
 
-    dot.style.top =
-        (10 + Math.random() * 70) + "%";
+    f.style.top =
+        (10 + Math.random()*84) + "%";
 
-    dot.style.animationDelay =
-        (-Math.random() * 5) + "s";
+    f.style.animationDuration =
+        (4 + Math.random()*5) + "s";
 
-    dot.style.animationDuration =
-        (3 + Math.random() * 4) + "s";
+    f.style.animationDelay =
+        (-Math.random()*8) + "s";
 
-    river.appendChild(dot);
+    fireflies.appendChild(f);
 
 }
 
 
 /* =========================================================
-   RIVER MOUSE LIGHT
+   3D TILT
 ========================================================= */
 
-const riverLight =
-    document.getElementById("riverLight");
+const tiltCards =
+    document.querySelectorAll(
+        ".tilt-card"
+    );
 
-const riverScene =
-    document.getElementById("riverScene");
+tiltCards.forEach(card=>{
 
-window.addEventListener("mousemove", (e) => {
+    card.addEventListener(
+        "mousemove",
+        (e)=>{
 
-    const rect =
-        riverScene.getBoundingClientRect();
+            if(window.innerWidth < 850)
+                return;
 
-    const inside =
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom &&
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right;
+            const rect =
+                card.getBoundingClientRect();
 
-    if(!inside) return;
+            const px =
+                (e.clientX - rect.left)
+                / rect.width;
 
-    riverLight.style.left =
-        (e.clientX - rect.left) + "px";
+            const py =
+                (e.clientY - rect.top)
+                / rect.height;
 
-    riverLight.style.top =
-        (e.clientY - rect.top) + "px";
+            const rx =
+                (py - .5) * -7;
 
-});
+            const ry =
+                (px - .5) * 7;
 
+            card.style.transform =
+                `perspective(1400px)
+                 rotateX(${rx}deg)
+                 rotateY(${ry}deg)
+                 translateY(-9px)`;
 
-/* =========================================================
-   RIVER RIPPLE ON MOUSE
-========================================================= */
+        }
+    );
 
-let lastRipple = 0;
-
-riverScene.addEventListener("mousemove", (e) => {
-
-    const now = Date.now();
-
-    if(now - lastRipple < 100) return;
-
-    lastRipple = now;
-
-    const rect =
-        riverScene.getBoundingClientRect();
-
-    const ripple =
-        document.createElement("span");
-
-    ripple.className = "river-ripple";
-
-    ripple.style.left =
-        (e.clientX - rect.left) + "px";
-
-    ripple.style.top =
-        (e.clientY - rect.top) + "px";
-
-    river.appendChild(ripple);
-
-    setTimeout(() => {
-        ripple.remove();
-    }, 950);
-
-});
-
-
-/* =========================================================
-   CLICK FLOWER BURST
-========================================================= */
-
-document.addEventListener("click", (e) => {
-
-    if(
-        e.target.closest(".music-player") ||
-        e.target.closest("button")
-    ){
-        return;
-    }
-
-    const burst = [
-        "🌸",
-        "✿",
-        "❀",
-        "🍃",
-        "🪻"
-    ];
-
-    for(let i = 0; i < 8; i++){
-
-        const item =
-            document.createElement("span");
-
-        item.className = "click-petal";
-
-        item.textContent =
-            burst[
-                Math.floor(
-                    Math.random() * burst.length
-                )
-            ];
-
-        item.style.left =
-            e.clientX + "px";
-
-        item.style.top =
-            e.clientY + "px";
-
-        document.body.appendChild(item);
-
-        const angle =
-            Math.random() * Math.PI * 2;
-
-        const distance =
-            60 + Math.random() * 115;
-
-        const dx =
-            Math.cos(angle) * distance;
-
-        const dy =
-            Math.sin(angle) * distance;
-
-        requestAnimationFrame(() => {
-
-            item.style.transform =
-                `translate(${dx}px,${dy}px)
-                 rotate(${Math.random()*320}deg)
-                 scale(${.65 + Math.random()*.5})`;
-
-            item.style.opacity = "0";
-
-        });
-
-        setTimeout(() => {
-            item.remove();
-        }, 1000);
-
-    }
+    card.addEventListener(
+        "mouseleave",
+        ()=>{
+            card.style.transform =
+                "perspective(1400px) rotateX(0deg) rotateY(0deg) translateY(0)";
+        }
+    );
 
 });
 
@@ -2576,130 +3083,114 @@ document.addEventListener("click", (e) => {
    HERO PARALLAX
 ========================================================= */
 
-const heroContent =
-    document.getElementById("heroContent");
-
-window.addEventListener("mousemove", (e) => {
-
-    if(window.innerWidth < 800) return;
-
-    const x =
-        e.clientX / window.innerWidth - .5;
-
-    const y =
-        e.clientY / window.innerHeight - .5;
-
-    heroContent.style.setProperty(
-        "--hero-x",
-        `${x * 12}px`
+const heroCenter =
+    document.getElementById(
+        "heroCenter"
     );
 
-    heroContent.style.setProperty(
-        "--hero-y",
-        `${y * 9}px`
-    );
+window.addEventListener(
+    "mousemove",
+    (e)=>{
 
-});
+        if(window.innerWidth < 800)
+            return;
+
+        const x =
+            (e.clientX / window.innerWidth - .5);
+
+        const y =
+            (e.clientY / window.innerHeight - .5);
+
+        heroCenter.style.transform =
+            `translate(
+                ${x * 10}px,
+                ${y * 7}px
+            )`;
+
+    }
+);
 
 
 /* =========================================================
-   3D TILT
+   SCROLL PARALLAX
 ========================================================= */
 
-document
-    .querySelectorAll(".card")
-    .forEach(card => {
+window.addEventListener(
+    "scroll",
+    ()=>{
 
-        card.addEventListener("mousemove", e => {
+        const scrolled =
+            window.scrollY;
 
-            if(window.innerWidth < 900) return;
+        const hero =
+            document.querySelector(
+                ".hero-center"
+            );
 
-            const rect =
-                card.getBoundingClientRect();
+        if(hero){
 
-            const x =
-                e.clientX - rect.left;
+            hero.style.marginTop =
+                Math.min(
+                    scrolled * .12,
+                    80
+                ) + "px";
 
-            const y =
-                e.clientY - rect.top;
+        }
 
-            const centerX =
-                rect.width / 2;
-
-            const centerY =
-                rect.height / 2;
-
-            const rotateX =
-                ((y - centerY) / centerY) * -4;
-
-            const rotateY =
-                ((x - centerX) / centerX) * 4;
-
-            card.style.transform =
-                `perspective(1300px)
-                 rotateX(${rotateX}deg)
-                 rotateY(${rotateY}deg)
-                 translateY(-9px)`;
-
-        });
-
-        card.addEventListener("mouseleave", () => {
-
-            card.style.transform =
-                "perspective(1300px) rotateX(0deg) rotateY(0deg) translateY(0)";
-
-        });
-
-    });
+    }
+);
 
 
 /* =========================================================
    SCROLL PROGRESS
 ========================================================= */
 
-const scrollLine =
-    document.getElementById("scrollLine");
-
-function updateScroll(){
-
-    const total =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
-
-    const progress =
-        total > 0
-        ? (window.scrollY / total) * 100
-        : 0;
-
-    scrollLine.style.width =
-        progress + "%";
-
-}
+const scrollBar =
+    document.getElementById(
+        "scrollBar"
+    );
 
 window.addEventListener(
     "scroll",
-    updateScroll
-);
+    ()=>{
 
-updateScroll();
+        const max =
+            document.documentElement
+                .scrollHeight -
+            window.innerHeight;
+
+        const value =
+            max > 0
+            ? (window.scrollY / max) * 100
+            : 0;
+
+        scrollBar.style.width =
+            value + "%";
+
+    }
+);
 
 
 /* =========================================================
    SCROLL REVEAL
 ========================================================= */
 
-const revealItems =
-    document.querySelectorAll(".reveal");
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
 
 const revealObserver =
     new IntersectionObserver(
-        entries => {
+        entries=>{
 
-            entries.forEach(entry => {
+            entries.forEach(entry=>{
 
                 if(entry.isIntersecting){
 
-                    entry.target.classList.add("visible");
+                    entry.target
+                        .classList
+                        .add("visible");
 
                 }
 
@@ -2711,9 +3202,333 @@ const revealObserver =
         }
     );
 
-revealItems.forEach(item => {
-    revealObserver.observe(item);
-});
+revealElements.forEach(
+    el => revealObserver.observe(el)
+);
+
+
+/* =========================================================
+   RIVER INTERACTION
+========================================================= */
+
+const riverCard =
+    document.getElementById(
+        "riverCard"
+    );
+
+const interactiveRiver =
+    document.getElementById(
+        "interactiveRiver"
+    );
+
+const waterGlow =
+    document.getElementById(
+        "waterGlow"
+    );
+
+
+riverCard.addEventListener(
+    "mousemove",
+    (e)=>{
+
+        const rect =
+            riverCard.getBoundingClientRect();
+
+        const x =
+            e.clientX - rect.left;
+
+        const y =
+            e.clientY - rect.top;
+
+        const riverRect =
+            interactiveRiver.getBoundingClientRect();
+
+        const rx =
+            e.clientX - riverRect.left;
+
+        const ry =
+            e.clientY - riverRect.top;
+
+        if(
+            ry >= 0 &&
+            ry <= riverRect.height
+        ){
+
+            waterGlow.style.setProperty(
+                "--water-x",
+                rx + "px"
+            );
+
+            waterGlow.style.setProperty(
+                "--water-y",
+                ry + "px"
+            );
+
+        }
+
+        riverCard.style.setProperty(
+            "--mouse-x",
+            x + "px"
+        );
+
+        riverCard.style.setProperty(
+            "--mouse-y",
+            y + "px"
+        );
+
+    }
+);
+
+
+/* click water ripple */
+
+interactiveRiver.addEventListener(
+    "click",
+    (e)=>{
+
+        const rect =
+            interactiveRiver
+                .getBoundingClientRect();
+
+        const ripple =
+            document.createElement(
+                "span"
+            );
+
+        ripple.className =
+            "river-ripple";
+
+        ripple.style.left =
+            (e.clientX - rect.left) + "px";
+
+        ripple.style.top =
+            (e.clientY - rect.top) + "px";
+
+        interactiveRiver.appendChild(
+            ripple
+        );
+
+        setTimeout(
+            ()=>ripple.remove(),
+            1200
+        );
+
+    }
+);
+
+
+/* =========================================================
+   GLOBAL CLICK MAGIC
+========================================================= */
+
+document.addEventListener(
+    "click",
+    (e)=>{
+
+        if(
+            e.target.closest(
+                ".music-player"
+            )
+        ){
+            return;
+        }
+
+        const symbols =
+            ["✦","·","✿","❀"];
+
+        for(let i=0;i<7;i++){
+
+            const p =
+                document.createElement(
+                    "span"
+                );
+
+            p.className =
+                "click-particle";
+
+            p.textContent =
+                symbols[
+                    Math.floor(
+                        Math.random() *
+                        symbols.length
+                    )
+                ];
+
+            p.style.left =
+                e.clientX + "px";
+
+            p.style.top =
+                e.clientY + "px";
+
+            p.style.setProperty(
+                "--dx",
+                ((Math.random()-.5)*150)
+                + "px"
+            );
+
+            p.style.setProperty(
+                "--dy",
+                ((Math.random()-.5)*150)
+                + "px"
+            );
+
+            p.style.setProperty(
+                "--rot",
+                ((Math.random()*300)-150)
+                + "deg"
+            );
+
+            document.body.appendChild(p);
+
+            setTimeout(
+                ()=>p.remove(),
+                950
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   THEME SWITCH
+========================================================= */
+
+const themeToggle =
+    document.getElementById(
+        "themeToggle"
+    );
+
+const themeText =
+    document.getElementById(
+        "themeText"
+    );
+
+let currentTheme = "spring";
+
+themeToggle.addEventListener(
+    "click",
+    ()=>{
+
+        if(
+            currentTheme === "spring"
+        ){
+
+            currentTheme =
+                "autumn";
+
+            document.body
+                .setAttribute(
+                    "data-theme",
+                    "autumn"
+                );
+
+            themeText.textContent =
+                "🌸 Spring";
+
+            document
+                .querySelector(
+                    'meta[name="theme-color"]'
+                )
+                .setAttribute(
+                    "content",
+                    "#c66e3c"
+                );
+
+        }else{
+
+            currentTheme =
+                "spring";
+
+            document.body
+                .setAttribute(
+                    "data-theme",
+                    "spring"
+                );
+
+            themeText.textContent =
+                "🍂 Autumn";
+
+            document
+                .querySelector(
+                    'meta[name="theme-color"]'
+                )
+                .setAttribute(
+                    "content",
+                    "#d77b9b"
+                );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ACTIVE NAV
+========================================================= */
+
+const navLinks =
+    document.querySelectorAll(
+        ".nav a"
+    );
+
+const trackedSections =
+    document.querySelectorAll(
+        "header[id],article[id],section[id]"
+    );
+
+const sectionObserver =
+    new IntersectionObserver(
+        entries=>{
+
+            entries.forEach(
+                entry=>{
+
+                    if(
+                        !entry.isIntersecting
+                    ){
+                        return;
+                    }
+
+                    const id =
+                        entry.target.id;
+
+                    navLinks.forEach(
+                        link=>{
+                            link.classList
+                                .remove(
+                                    "active"
+                                );
+                        }
+                    );
+
+                    const active =
+                        document.querySelector(
+                            `.nav a[href="#${id}"]`
+                        );
+
+                    if(active){
+                        active.classList
+                            .add("active");
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.5
+        }
+    );
+
+trackedSections.forEach(
+    section =>
+        sectionObserver.observe(
+            section
+        )
+);
 
 
 /* =========================================================
@@ -2721,30 +3536,40 @@ revealItems.forEach(item => {
 ========================================================= */
 
 const topBtn =
-    document.getElementById("topBtn");
+    document.getElementById(
+        "topBtn"
+    );
 
-window.addEventListener("scroll", () => {
+window.addEventListener(
+    "scroll",
+    ()=>{
 
-    if(window.scrollY > 650){
+        if(window.scrollY > 650){
 
-        topBtn.classList.add("show");
+            topBtn.classList.add(
+                "show"
+            );
 
-    }else{
+        }else{
 
-        topBtn.classList.remove("show");
+            topBtn.classList.remove(
+                "show"
+            );
+
+        }
 
     }
+);
 
-});
-
-topBtn.addEventListener("click", () => {
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-});
+topBtn.addEventListener(
+    "click",
+    ()=>{
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+    }
+);
 
 
 /* =========================================================
@@ -2764,7 +3589,8 @@ function onYouTubeIframeAPIReady(){
                 width:"1",
                 height:"1",
 
-                videoId:"xMR9tY3XfaY",
+                videoId:
+                    "xMR9tY3XfaY",
 
                 playerVars:{
                     autoplay:0,
@@ -2775,45 +3601,57 @@ function onYouTubeIframeAPIReady(){
 
                 events:{
 
-                    onReady:() => {
+                    onReady:()=>{
 
                         document
-                            .getElementById("musicBtn")
-                            .textContent = "▶";
+                            .getElementById(
+                                "musicBtn"
+                            )
+                            .textContent =
+                            "▶";
 
                     },
 
-                    onStateChange:(event) => {
+                    onStateChange:
+                        (event)=>{
 
-                        if(
-                            event.data ===
-                            YT.PlayerState.PLAYING
-                        ){
+                            if(
+                                event.data ===
+                                YT.PlayerState.PLAYING
+                            ){
 
-                            isPlaying = true;
+                                isPlaying =
+                                    true;
 
-                            document
-                                .getElementById("musicBtn")
-                                .textContent = "❚❚";
+                                document
+                                    .getElementById(
+                                        "musicBtn"
+                                    )
+                                    .textContent =
+                                    "❚❚";
+
+                            }
+
+                            if(
+                                event.data ===
+                                YT.PlayerState.PAUSED ||
+                                event.data ===
+                                YT.PlayerState.ENDED
+                            ){
+
+                                isPlaying =
+                                    false;
+
+                                document
+                                    .getElementById(
+                                        "musicBtn"
+                                    )
+                                    .textContent =
+                                    "▶";
+
+                            }
 
                         }
-
-                        else if(
-                            event.data ===
-                            YT.PlayerState.PAUSED ||
-                            event.data ===
-                            YT.PlayerState.ENDED
-                        ){
-
-                            isPlaying = false;
-
-                            document
-                                .getElementById("musicBtn")
-                                .textContent = "▶";
-
-                        }
-
-                    }
 
                 }
 
@@ -2823,46 +3661,48 @@ function onYouTubeIframeAPIReady(){
 }
 
 
-/* =========================================================
-   MUSIC BUTTON
-========================================================= */
-
 document
-    .getElementById("musicBtn")
-    .addEventListener(
-        "click",
-        () => {
+.getElementById("musicBtn")
+.addEventListener(
+    "click",
+    ()=>{
 
-            if(
-                !player ||
-                !player.playVideo
-            ) return;
+        if(
+            !player ||
+            !player.playVideo
+        ){
+            return;
+        }
 
-            if(isPlaying){
+        if(isPlaying){
 
-                player.pauseVideo();
+            player.pauseVideo();
 
-            }else{
+        }else{
 
-                player.playVideo();
-
-            }
+            player.playVideo();
 
         }
-    );
+
+    }
+);
 
 
 /* =========================================================
    LOAD YOUTUBE API
 ========================================================= */
 
-const youtubeTag =
-    document.createElement("script");
+const ytScript =
+    document.createElement(
+        "script"
+    );
 
-youtubeTag.src =
+ytScript.src =
     "https://www.youtube.com/iframe_api";
 
-document.head.appendChild(youtubeTag);
+document.head.appendChild(
+    ytScript
+);
 
 </script>
 
