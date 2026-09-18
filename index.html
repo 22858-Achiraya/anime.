@@ -13,6 +13,7 @@
 /* =========================================================
    RESET
 ========================================================= */
+
 *{
     margin:0;
     padding:0;
@@ -220,7 +221,7 @@ body.hovering .cursor-orbit{
 }
 
 /* =========================================================
-   OPENING SCREEN
+   OPENING
 ========================================================= */
 
 .opening{
@@ -257,8 +258,6 @@ body.hovering .cursor-orbit{
     opacity:0;
     visibility:hidden;
 }
-
-/* opening aurora */
 
 .opening::before,
 .opening::after{
@@ -336,8 +335,6 @@ body.hovering .cursor-orbit{
     }
 }
 
-/* opening rays */
-
 .rays{
     position:absolute;
     inset:0;
@@ -371,8 +368,6 @@ body.hovering .cursor-orbit{
 .ray.r2{transform:rotate(-12deg);opacity:.45}
 .ray.r3{transform:rotate(12deg);opacity:.55}
 .ray.r4{transform:rotate(28deg);opacity:.35}
-
-/* moon */
 
 .opening-moon{
     position:absolute;
@@ -417,13 +412,200 @@ body[data-season="autumn"] .opening-moon{
 }
 
 @keyframes moonFloat{
-    0%,100%{
-        transform:translateY(0);
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-16px)}
+}
+
+/* =========================================================
+   OPENING CONTENT
+========================================================= */
+
+.opening-center{
+    position:relative;
+
+    z-index:15;
+
+    width:min(900px,calc(100% - 30px));
+
+    text-align:center;
+}
+
+.opening-kicker{
+    color:var(--primary);
+
+    font-size:10px;
+
+    letter-spacing:5px;
+
+    font-weight:700;
+
+    opacity:0;
+
+    animation:
+        revealOpening
+        1s
+        .9s
+        forwards;
+}
+
+.opening-title{
+    margin-top:12px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(50px,9vw,108px);
+
+    line-height:.88;
+
+    color:var(--primary);
+
+    text-shadow:
+        0 12px 40px rgba(100,55,75,.16),
+        0 0 55px rgba(255,255,255,.96);
+
+    opacity:0;
+
+    animation:
+        openingTitle
+        1.5s
+        1.2s
+        cubic-bezier(.18,.85,.18,1)
+        forwards;
+}
+
+@keyframes revealOpening{
+    from{
+        opacity:0;
+        transform:translateY(14px);
     }
 
-    50%{
-        transform:translateY(-16px);
+    to{
+        opacity:.82;
+        transform:translateY(0);
     }
+}
+
+@keyframes openingTitle{
+    from{
+        opacity:0;
+
+        transform:
+            translateY(30px)
+            scale(.82);
+
+        filter:blur(10px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:blur(0);
+    }
+}
+
+.opening-sub{
+    margin-top:18px;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    opacity:0;
+
+    animation:
+        fadeOpening
+        1s
+        2.2s
+        forwards;
+}
+
+@keyframes fadeOpening{
+    to{opacity:1}
+}
+
+.enter{
+    margin-top:27px;
+
+    padding:13px 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.9);
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 16px 35px rgba(110,55,80,.2),
+        0 0 25px rgba(255,255,255,.22);
+
+    opacity:0;
+
+    animation:
+        enterButton
+        1s
+        2.8s
+        forwards;
+
+    transition:.35s ease;
+}
+
+@keyframes enterButton{
+    from{
+        opacity:0;
+        transform:
+            translateY(12px)
+            scale(.92);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.enter:hover{
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    box-shadow:
+        0 22px 42px rgba(110,55,80,.24),
+        0 0 35px rgba(255,255,255,.35);
+}
+
+.opening-note{
+    margin-top:12px;
+
+    font-size:9px;
+
+    color:var(--muted);
+
+    letter-spacing:2px;
+
+    opacity:.48;
 }
 
 /* =========================================================
@@ -525,7 +707,6 @@ body[data-season="autumn"] .opening-moon{
     }
 
     44%{
-
         transform:
             translate(
                 calc(-50% + var(--x2)),
@@ -536,7 +717,6 @@ body[data-season="autumn"] .opening-moon{
     }
 
     100%{
-
         opacity:0;
 
         transform:
@@ -549,210 +729,19 @@ body[data-season="autumn"] .opening-moon{
     }
 }
 
-/* opening center */
-
-.opening-center{
-    position:relative;
-
-    z-index:15;
-
-    width:min(900px,calc(100% - 30px));
-
-    text-align:center;
-}
-
-.opening-kicker{
-    color:var(--primary);
-
-    font-size:10px;
-
-    letter-spacing:5px;
-
-    font-weight:700;
-
-    opacity:0;
-
-    animation:
-        revealOpening
-        1s
-        .9s
-        forwards;
-}
-
-.opening-title{
-    margin-top:12px;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:
-        clamp(
-            50px,
-            9vw,
-            108px
-        );
-
-    line-height:.88;
-
-    color:var(--primary);
-
-    text-shadow:
-        0 12px 40px rgba(100,55,75,.16),
-        0 0 55px rgba(255,255,255,.96);
-
-    opacity:0;
-
-    animation:
-        openingTitle
-        1.5s
-        1.2s
-        cubic-bezier(.18,.85,.18,1)
-        forwards;
-}
-
-@keyframes revealOpening{
-    from{
-        opacity:0;
-        transform:translateY(14px);
-    }
-
-    to{
-        opacity:.82;
-        transform:translateY(0);
-    }
-}
-
-@keyframes openingTitle{
-    from{
-        opacity:0;
-        transform:
-            translateY(30px)
-            scale(.82);
-
-        filter:blur(10px);
-    }
-
-    to{
-        opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
-
-        filter:blur(0);
-    }
-}
-
-.opening-sub{
-    margin-top:18px;
-
-    color:var(--muted);
-
-    font-size:14px;
-
-    opacity:0;
-
-    animation:
-        fadeOpening
-        1s
-        2.2s
-        forwards;
-}
-
-@keyframes fadeOpening{
-    to{
-        opacity:1;
-    }
-}
-
-.enter{
-    margin-top:27px;
-
-    padding:13px 28px;
-
-    border:1px solid rgba(255,255,255,.9);
-
-    border-radius:18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary-light)
-        );
-
-    color:white;
-
-    font-family:inherit;
-
-    font-size:13px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 16px 35px rgba(110,55,80,.2),
-        0 0 25px rgba(255,255,255,.22);
-
-    opacity:0;
-
-    animation:
-        enterButton
-        1s
-        2.8s
-        forwards;
-
-    transition:.35s ease;
-}
-
-@keyframes enterButton{
-    from{
-        opacity:0;
-        transform:
-            translateY(12px)
-            scale(.92);
-    }
-
-    to{
-        opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-.enter:hover{
-    transform:
-        translateY(-5px)
-        scale(1.04);
-
-    box-shadow:
-        0 22px 42px rgba(110,55,80,.24),
-        0 0 35px rgba(255,255,255,.35);
-}
-
-.opening-note{
-    margin-top:12px;
-
-    font-size:9px;
-
-    color:var(--muted);
-
-    letter-spacing:2px;
-
-    opacity:.48;
-}
-
 /* =========================================================
    SEASON TRANSITION
 ========================================================= */
 
 .season-transition{
     position:fixed;
+
     inset:0;
 
     z-index:94000;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -820,6 +809,7 @@ body[data-season="autumn"] .opening-moon{
 .sparkles,
 .fireflies{
     position:fixed;
+
     inset:0;
 
     pointer-events:none;
@@ -890,6 +880,7 @@ body[data-season="autumn"] .opening-moon{
         transform:
             translate3d(0,-10vh,0)
             rotate(0);
+
         opacity:0;
     }
 
@@ -915,6 +906,7 @@ body[data-season="autumn"] .opening-moon{
                 0
             )
             rotate(390deg);
+
         opacity:0;
     }
 }
@@ -1024,7 +1016,9 @@ body[data-season="autumn"] .hero{
 
 .hero-aurora{
     position:absolute;
+
     inset:0;
+
     pointer-events:none;
 }
 
@@ -1155,8 +1149,6 @@ body[data-season="autumn"] .hero-aurora .c{
     }
 }
 
-/* moon */
-
 .hero-moon{
     position:absolute;
 
@@ -1215,12 +1207,16 @@ body[data-season="autumn"] .hero-moon{
     padding-top:175px;
 
     text-align:center;
+
+    transition:
+        transform .35s ease;
 }
 
 .hero-kicker{
     display:inline-flex;
 
     align-items:center;
+
     gap:10px;
 
     padding:9px 18px;
@@ -1308,6 +1304,7 @@ body[data-season="autumn"] .hero-moon{
     display:inline-flex;
 
     justify-content:center;
+
     align-items:center;
 
     min-width:175px;
@@ -1417,7 +1414,7 @@ body[data-season="autumn"] .hero-moon{
 }
 
 /* =========================================================
-   HERO RIVER
+   HERO WATER
 ========================================================= */
 
 .hero-water{
@@ -1499,6 +1496,7 @@ body[data-season="autumn"] .hero-moon{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     flex-wrap:wrap;
@@ -1601,6 +1599,7 @@ body[data-season="autumn"] .hero-moon{
 
 main{
     position:relative;
+
     z-index:30;
 }
 
@@ -1621,6 +1620,7 @@ main{
     display:inline-flex;
 
     align-items:center;
+
     gap:9px;
 
     color:var(--primary);
@@ -1808,10 +1808,9 @@ body[data-season="autumn"] .portal{
     font-size:12px;
 }
 
-/* choices */
-
 .season-choices{
     position:relative;
+
     z-index:2;
 
     display:grid;
@@ -1844,12 +1843,12 @@ body[data-season="autumn"] .portal{
 
     cursor:pointer;
 
-    font-family:inherit;
-
     transition:
         transform .4s ease,
         box-shadow .4s ease,
         background .5s ease;
+
+    font-family:inherit;
 }
 
 .choice:hover{
@@ -1906,8 +1905,6 @@ body[data-season="autumn"] .portal{
 
     letter-spacing:1.5px;
 }
-
-/* central wheel */
 
 .season-wheel{
     position:relative;
@@ -1986,11 +1983,13 @@ body[data-season="autumn"] .portal{
 
     font-weight:700;
 
-    transform:rotate(-90deg);
+    transform:
+        rotate(-90deg);
 }
 
 .portal-status{
     position:relative;
+
     z-index:2;
 
     width:max-content;
@@ -2053,6 +2052,7 @@ body[data-season="autumn"] .portal{
 
 .portal-hint{
     position:relative;
+
     z-index:2;
 
     margin-top:10px;
@@ -2124,6 +2124,7 @@ body[data-season="autumn"] .portal{
     content:"";
 
     position:absolute;
+
     inset:0;
 
     z-index:20;
@@ -2167,6 +2168,7 @@ body[data-season="autumn"] .portal{
     content:"";
 
     position:absolute;
+
     inset:0;
 
     z-index:2;
@@ -2188,6 +2190,7 @@ body[data-season="autumn"] .portal{
     height:100%;
 
     object-fit:cover;
+
     object-position:top center;
 
     transition:
@@ -2197,7 +2200,8 @@ body[data-season="autumn"] .portal{
 
 .card:hover
 .card-image img{
-    transform:scale(1.07);
+    transform:
+        scale(1.07);
 
     filter:
         saturate(1.08)
@@ -2306,6 +2310,7 @@ body[data-season="autumn"] .portal{
     height:49px;
 
     display:grid;
+
     place-items:center;
 
     border-radius:50%;
@@ -2556,7 +2561,8 @@ body[data-season="autumn"]
 
     overflow:hidden;
 
-    transform:rotate(-1deg);
+    transform:
+        rotate(-1deg);
 
     box-shadow:
         inset 0 25px 48px rgba(255,255,255,.2);
@@ -2581,6 +2587,7 @@ body[data-season="autumn"]
 }
 
 @keyframes waterCurrent{
+
     from{
         transform:translateX(-60px);
     }
@@ -2623,7 +2630,7 @@ body[data-season="autumn"]
 
     height:2px;
 
-    border-radius:99px;
+    border-radius:999px;
 
     background:
         rgba(255,255,255,.33);
@@ -2661,8 +2668,11 @@ body[data-season="autumn"]
 }
 
 @keyframes waterLine{
+
     from{
-        transform:translateX(-30px);
+        transform:
+            translateX(-30px);
+
         opacity:.1;
     }
 
@@ -2671,181 +2681,540 @@ body[data-season="autumn"]
     }
 
     to{
-        transform:translateX(60px);
+        transform:
+            translateX(60px);
+
         opacity:.1;
     }
 }
 
-/* fish */
+/* =========================================================
+   UPGRADED FISH SYSTEM
+========================================================= */
 
-.fish{
+.fish-layer{
+    position:absolute;
+    inset:0;
+    z-index:12;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+/* every fish is an individual moving object */
+
+.fish-group{
     position:absolute;
 
-    width:49px;
-    height:21px;
+    left:0;
+    top:0;
+
+    width:80px;
+    height:42px;
+
+    will-change:
+        transform;
+
+    filter:
+        drop-shadow(
+            0 5px 8px
+            rgba(50,60,60,.12)
+        );
+
+    transition:
+        filter .25s ease;
+}
+
+.fish-body{
+    position:absolute;
+
+    left:14px;
+    top:10px;
+
+    width:46px;
+    height:23px;
 
     border-radius:
-        75% 55% 55% 75%;
+        75% 55% 58% 75%;
 
     background:
         linear-gradient(
-            90deg,
-            #f4b76f,
-            #de7e4e
+            135deg,
+            var(--fish-light),
+            var(--fish-mid) 50%,
+            var(--fish-dark)
         );
 
-    z-index:10;
+    box-shadow:
+        inset 0 2px 4px rgba(255,255,255,.55),
+        inset -3px -3px 5px rgba(80,60,50,.13);
 
     animation:
-        swim
-        linear infinite;
+        fishBodyBob
+        .9s
+        ease-in-out
+        infinite;
 }
 
-.fish::before{
+.fish-body::before{
     content:"";
 
     position:absolute;
 
-    left:-14px;
-    top:1px;
+    width:15px;
+    height:15px;
 
-    width:19px;
-    height:19px;
+    right:7px;
+    top:-4px;
 
-    background:inherit;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.5),
+            transparent
+        );
+
+    clip-path:
+        polygon(
+            0 100%,
+            50% 0,
+            100% 100%
+        );
+
+    opacity:.45;
+}
+
+.fish-tail{
+    position:absolute;
+
+    left:1px;
+    top:9px;
+
+    width:20px;
+    height:24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--fish-mid),
+            var(--fish-dark)
+        );
 
     clip-path:
         polygon(
             100% 50%,
             0 0,
+            8% 50%,
             0 100%
         );
+
+    transform-origin:
+        100% 50%;
+
+    animation:
+        tailWave
+        .42s
+        ease-in-out
+        infinite;
 }
 
-.fish::after{
+.fish-fin{
+    position:absolute;
+
+    left:28px;
+    top:3px;
+
+    width:18px;
+    height:13px;
+
+    background:
+        rgba(255,255,255,.18);
+
+    clip-path:
+        polygon(
+            50% 0,
+            100% 100%,
+            0 72%
+        );
+
+    transform:
+        rotate(-13deg);
+
+    animation:
+        finWave
+        1s
+        ease-in-out
+        infinite;
+}
+
+.fish-eye{
+    position:absolute;
+
+    right:8px;
+    top:7px;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:
+        #332b29;
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.35);
+}
+
+.fish-eye::after{
     content:"";
 
     position:absolute;
 
-    right:7px;
-    top:6px;
+    width:2px;
+    height:2px;
 
-    width:3px;
-    height:3px;
+    left:1px;
+    top:1px;
 
     border-radius:50%;
 
     background:white;
 }
 
-.fish.f1{
-    left:-100px;
-    top:42%;
-
-    animation-duration:12s;
-}
-
-.fish.f2{
-    left:-120px;
-    top:67%;
-
-    animation-duration:15s;
-    animation-delay:-6s;
-
-    transform:scale(.8);
-}
-
-@keyframes swim{
-
-    0%{
-        transform:
-            translateX(0)
-            scaleX(1);
-    }
-
-    46%{
-        transform:
-            translateX(55vw)
-            translateY(-13px)
-            scaleX(1);
-    }
-
-    50%{
-        transform:
-            translateX(60vw)
-            translateY(-13px)
-            scaleX(-1);
-    }
-
-    100%{
-        transform:
-            translateX(120vw)
-            translateY(6px)
-            scaleX(-1);
-    }
-}
-
-/* lily */
-
-.lily{
+.fish-stripe{
     position:absolute;
 
-    width:72px;
-    height:35px;
+    top:6px;
+    left:20px;
+
+    width:4px;
+    height:16px;
+
+    border-radius:99px;
+
+    background:
+        rgba(255,255,255,.42);
+
+    transform:
+        rotate(-8deg);
+}
+
+.fish-stripe.s2{
+    left:27px;
+    opacity:.5;
+}
+
+.fish-stripe.s3{
+    left:34px;
+    opacity:.28;
+}
+
+/* different koi colors */
+
+.fish-orange{
+    --fish-light:#ffd69a;
+    --fish-mid:#ef9f4f;
+    --fish-dark:#bb6339;
+}
+
+.fish-white{
+    --fish-light:#fffdf5;
+    --fish-mid:#eee5d1;
+    --fish-dark:#d7a28b;
+}
+
+.fish-pink{
+    --fish-light:#ffd9e0;
+    --fish-mid:#f29eb5;
+    --fish-dark:#bd667d;
+}
+
+.fish-gold{
+    --fish-light:#ffe7a5;
+    --fish-mid:#e9ba55;
+    --fish-dark:#b17b2e;
+}
+
+.fish-shadow{
+    position:absolute;
+
+    left:11px;
+    top:34px;
+
+    width:54px;
+    height:11px;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             ellipse,
-            #8bae7f,
-            #5d845f
+            rgba(40,70,68,.19),
+            transparent 70%
         );
 
-    box-shadow:
-        0 8px 17px rgba(45,72,50,.2);
+    filter:blur(4px);
 
-    z-index:10;
+    animation:
+        fishShadow
+        .9s
+        ease-in-out
+        infinite;
 }
 
-.lily::after{
-    content:"";
+@keyframes fishBodyBob{
 
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(0);
+    }
+
+    50%{
+        transform:
+            translateY(-2px)
+            rotate(-1deg);
+    }
+}
+
+@keyframes tailWave{
+
+    0%,100%{
+        transform:
+            rotate(9deg);
+    }
+
+    50%{
+        transform:
+            rotate(-17deg);
+    }
+}
+
+@keyframes finWave{
+
+    0%,100%{
+        transform:
+            rotate(-13deg)
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            rotate(-5deg)
+            translateY(-2px);
+    }
+}
+
+@keyframes fishShadow{
+
+    0%,100%{
+        opacity:.25;
+        transform:scale(.82);
+    }
+
+    50%{
+        opacity:.48;
+        transform:scale(1);
+    }
+}
+
+/* fish bubble */
+
+.fish-bubble{
     position:absolute;
 
-    right:2px;
-    top:1px;
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.66);
+
+    background:
+        rgba(255,255,255,.1);
+
+    box-shadow:
+        0 0 4px rgba(255,255,255,.5);
+
+    opacity:0;
+
+    animation:
+        bubbleRise
+        2.8s
+        ease-out
+        infinite;
+}
+
+.fish-bubble.b1{
+    right:1px;
+    top:3px;
+    animation-delay:.4s;
+}
+
+.fish-bubble.b2{
+    right:-4px;
+    top:8px;
+    width:7px;
+    height:7px;
+    animation-delay:1.2s;
+}
+
+@keyframes bubbleRise{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translate(0,0)
+            scale(.55);
+    }
+
+    18%{
+        opacity:.7;
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translate(
+                13px,
+                -35px
+            )
+            scale(1.15);
+    }
+}
+
+/* fish highlight */
+
+.fish-highlight{
+    position:absolute;
+
+    left:21px;
+    top:14px;
 
     width:18px;
-    height:19px;
+    height:4px;
+
+    border-radius:99px;
 
     background:
         rgba(255,255,255,.56);
 
-    clip-path:
-        polygon(
-            100% 50%,
-            0 0,
-            0 100%
+    filter:blur(1px);
+
+    transform:
+        rotate(-7deg);
+}
+
+/* fish wake */
+
+.fish-wake{
+    position:absolute;
+
+    left:-13px;
+    top:17px;
+
+    width:28px;
+    height:8px;
+
+    border-top:
+        2px solid
+        rgba(255,255,255,.28);
+
+    border-radius:50%;
+
+    opacity:.4;
+
+    animation:
+        wakePulse
+        .9s
+        ease-in-out
+        infinite;
+}
+
+@keyframes wakePulse{
+
+    0%,100%{
+        transform:
+            scaleX(.7);
+
+        opacity:.15;
+    }
+
+    50%{
+        transform:
+            scaleX(1.15);
+
+        opacity:.48;
+    }
+}
+
+/* fish becomes startled */
+
+.fish-group.fish-startled{
+    filter:
+        brightness(1.2)
+        drop-shadow(
+            0 0 12px
+            rgba(255,255,255,.38)
         );
 }
 
-.lily.a{
-    left:12%;
-    top:32%;
-    transform:rotate(-12deg);
+/* little fish burst */
+
+/* =========================================================
+   FISH RIPPLE / SPLASH
+========================================================= */
+
+.fish-splash{
+    position:absolute;
+
+    width:18px;
+    height:18px;
+
+    border:
+        2px solid
+        rgba(255,255,255,.5);
+
+    border-radius:50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.3);
+
+    animation:
+        fishSplash
+        1s
+        ease-out
+        forwards;
+
+    pointer-events:none;
 }
 
-.lily.b{
-    right:15%;
-    top:49%;
-    transform:rotate(11deg);
+@keyframes fishSplash{
+
+    0%{
+        opacity:.8;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.3);
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(4.5);
+    }
 }
 
-.lily.c{
-    left:39%;
-    top:71%;
-}
+/* =========================================================
+   WATER RIPPLE
+========================================================= */
 
 .ripple{
     position:absolute;
@@ -2865,10 +3234,11 @@ body[data-season="autumn"]
 
     animation:
         ripple
-        1.2s ease-out
+        1.2s
+        ease-out
         forwards;
 
-    z-index:15;
+    z-index:20;
 
     pointer-events:none;
 }
@@ -2890,38 +3260,6 @@ body[data-season="autumn"]
 
         opacity:0;
     }
-}
-
-.river-help{
-    position:absolute;
-
-    top:210px;
-
-    left:50%;
-
-    transform:
-        translateX(-50%);
-
-    z-index:14;
-
-    padding:10px 17px;
-
-    border-radius:999px;
-
-    background:
-        rgba(255,255,255,.33);
-
-    border:
-        1px solid
-        rgba(255,255,255,.63);
-
-    backdrop-filter:blur(10px);
-
-    color:#486760;
-
-    font-size:10px;
-
-    letter-spacing:1.5px;
 }
 
 /* =========================================================
@@ -2975,6 +3313,7 @@ body[data-season="autumn"]
 }
 
 @keyframes finalFloat{
+
     0%,100%{
         transform:
             translateY(0)
@@ -3084,6 +3423,7 @@ footer::after{
 
 .footer-symbols{
     font-size:24px;
+
     letter-spacing:8px;
 }
 
@@ -3107,11 +3447,12 @@ footer p{
 
 footer a{
     color:white;
+
     font-weight:600;
 }
 
 /* =========================================================
-   MUSIC PLAYER
+   MUSIC
 ========================================================= */
 
 .music{
@@ -3170,6 +3511,7 @@ body[data-season="autumn"] .music{
 }
 
 @keyframes musicFloat{
+
     0%,100%{
         transform:translateY(0);
     }
@@ -3208,6 +3550,7 @@ body[data-season="autumn"] .music{
 }
 
 @keyframes musicSpin{
+
     from{
         transform:rotate(0);
     }
@@ -3469,7 +3812,8 @@ body[data-season="autumn"] .music{
     }
 
     .season-choices{
-        grid-template-columns:1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .season-wheel{
@@ -3477,7 +3821,8 @@ body[data-season="autumn"] .music{
     }
 
     .cards{
-        grid-template-columns:1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .card-image{
@@ -3490,6 +3835,7 @@ body[data-season="autumn"] .music{
 
     .river-help{
         top:197px;
+
         font-size:9px;
     }
 
@@ -3511,6 +3857,11 @@ body[data-season="autumn"] .music{
         height:150px;
 
         right:-20px;
+    }
+
+    .fish-group{
+        transform:
+            scale(.82);
     }
 }
 
@@ -3543,6 +3894,11 @@ body[data-season="autumn"] .music{
                 14vw,
                 68px
             );
+    }
+
+    .fish-group{
+        transform:
+            scale(.72);
     }
 }
 
@@ -3619,7 +3975,7 @@ body[data-season="autumn"] .music{
         <p class="opening-sub">
             Love &amp; Deepspace
             ·
-            A Garden Between Stars
+            A Garden Between Flowers &amp; Stars
         </p>
 
         <button
@@ -3635,8 +3991,6 @@ body[data-season="autumn"] .music{
 
     </div>
 
-
-    <!-- giant pile of petals -->
 
     <div
         class="flower-origin"
@@ -3695,11 +4049,13 @@ body[data-season="autumn"] .music{
 
     </div>
 
-
     <div class="hero-moon"></div>
 
 
-    <div class="hero-content" id="heroContent">
+    <div
+        class="hero-content"
+        id="heroContent"
+    >
 
         <div class="hero-kicker">
             ✦ FANTASY SEASONAL WORLD ✦
@@ -3744,8 +4100,6 @@ body[data-season="autumn"] .music{
     </div>
 
 
-    <!-- garden -->
-
     <div class="garden">
 
         <div class="hill"></div>
@@ -3754,15 +4108,13 @@ body[data-season="autumn"] .music{
     </div>
 
 
-    <!-- water -->
-
     <div class="hero-water"></div>
 
 </header>
 
 
 <!-- =======================================================
-     NAV
+     NAVIGATION
 ======================================================= -->
 
 <div class="nav-shell">
@@ -3802,9 +4154,11 @@ body[data-season="autumn"] .music{
             id="navSeason"
             type="button"
         >
+
             <span id="navSeasonText">
                 🍂 Autumn
             </span>
+
         </button>
 
     </nav>
@@ -3945,7 +4299,7 @@ body[data-season="autumn"] .music{
         </h2>
 
         <p>
-            ตัวละครทั้งสามอยู่ท่ามกลางสวนที่เปลี่ยนฤดูกาลได้
+            ตัวละครทั้งสามถูกวางไว้ท่ามกลางสวนแฟนตาซี
             พร้อมเอฟเฟกต์ 3D ที่ตอบสนองต่อเมาส์
         </p>
 
@@ -4000,7 +4354,9 @@ body[data-season="autumn"] .music{
 
             <div class="card-content">
 
-                <h3>Sylus</h3>
+                <h3>
+                    Sylus
+                </h3>
 
                 <div class="card-role">
                     The leader of Onychinus
@@ -4120,7 +4476,9 @@ body[data-season="autumn"] .music{
 
             <div class="card-content">
 
-                <h3>Zayne</h3>
+                <h3>
+                    Zayne
+                </h3>
 
                 <div class="card-role">
                     Akso Hospital — Cardiac Surgeon
@@ -4239,7 +4597,9 @@ body[data-season="autumn"] .music{
 
             <div class="card-content">
 
-                <h3>Caleb</h3>
+                <h3>
+                    Caleb
+                </h3>
 
                 <div class="card-role">
                     Farspace Fleet — Colonel
@@ -4321,7 +4681,7 @@ body[data-season="autumn"] .music{
 
 
 <!-- =======================================================
-     RIVER
+     INTERACTIVE RIVER
 ======================================================= -->
 
 <section
@@ -4345,15 +4705,16 @@ body[data-season="autumn"] .music{
             </h2>
 
             <p>
-                ขยับเมาส์บนผิวน้ำเพื่อให้แสงตามเมาส์
-                และคลิกเพื่อสร้างระลอกคลื่น
+                ขยับเมาส์บนสายน้ำ
+                เพื่อให้แสงสะท้อนตาม
+                และคลิกเพื่อดูปฏิกิริยาของฝูงปลา
             </p>
 
         </div>
 
 
         <div class="river-help">
-            MOVE YOUR MOUSE · CLICK THE WATER
+            MOVE YOUR MOUSE · WATCH THE KOI · CLICK THE WATER
         </div>
 
 
@@ -4369,17 +4730,14 @@ body[data-season="autumn"] .music{
                 id="waterLight"
             ></div>
 
+
             <div class="water-line w1"></div>
             <div class="water-line w2"></div>
             <div class="water-line w3"></div>
             <div class="water-line w4"></div>
 
-            <div class="lily a"></div>
-            <div class="lily b"></div>
-            <div class="lily c"></div>
 
-            <div class="fish f1"></div>
-            <div class="fish f2"></div>
+            <div class="fish-layer" id="fishLayer"></div>
 
         </div>
 
@@ -4408,8 +4766,6 @@ body[data-season="autumn"] .music{
             จากสวนดอกไม้สีชมพูในฤดูใบไม้ผลิ
             สู่สวนสีทองในฤดูใบไม้ร่วง
             โลกแห่งนี้สามารถเปลี่ยนบรรยากาศได้ทั้งระบบ
-            ตั้งแต่ท้องฟ้า Aurora สายน้ำ
-            กลีบดอกไม้ ไปจนถึงสีของ UI
         </p>
 
     </div>
@@ -4445,7 +4801,6 @@ body[data-season="autumn"] .music{
     <button
         id="musicBtn"
         type="button"
-        aria-label="เล่นหรือหยุดเพลง"
     >
         ▶
     </button>
@@ -4532,10 +4887,14 @@ body[data-season="autumn"] .music{
 ========================================================= */
 
 const cursorCore =
-    document.getElementById("cursorCore");
+    document.getElementById(
+        "cursorCore"
+    );
 
 const cursorOrbit =
-    document.getElementById("cursorOrbit");
+    document.getElementById(
+        "cursorOrbit"
+    );
 
 let mouseX =
     window.innerWidth / 2;
@@ -4543,8 +4902,11 @@ let mouseX =
 let mouseY =
     window.innerHeight / 2;
 
-let orbitX = mouseX;
-let orbitY = mouseY;
+let orbitX =
+    mouseX;
+
+let orbitY =
+    mouseY;
 
 window.addEventListener(
     "mousemove",
@@ -4582,6 +4944,7 @@ function cursorAnimation(){
     requestAnimationFrame(
         cursorAnimation
     );
+
 }
 
 cursorAnimation();
@@ -4655,6 +5018,7 @@ for(
     const y1 =
         (Math.random()-.5)*180;
 
+
     const x2 =
         Math.cos(angle) *
         distance;
@@ -4663,17 +5027,18 @@ for(
         Math.sin(angle) *
         distance;
 
+
     const x3 =
         (Math.random()-.5) *
         Math.max(
-            window.innerWidth * .95,
+            window.innerWidth*.95,
             950
         );
 
     const y3 =
         (Math.random()-.5) *
         Math.max(
-            window.innerHeight * .85,
+            window.innerHeight*.85,
             650
         );
 
@@ -4711,35 +5076,33 @@ for(
 
     petal.style.setProperty(
         "--sr",
-        (Math.random()*360)+"deg"
+        Math.random()*360+"deg"
     );
 
     petal.style.setProperty(
         "--r1",
-        (Math.random()*500-250)+"deg"
+        Math.random()*500-250+"deg"
     );
 
     petal.style.setProperty(
         "--r2",
-        (Math.random()*800-400)+"deg"
+        Math.random()*800-400+"deg"
     );
 
     petal.style.setProperty(
         "--r3",
-        (Math.random()*1200-600)+"deg"
+        Math.random()*1200-600+"deg"
     );
 
 
     petal.style.setProperty(
         "--ss",
-        .35 +
-        Math.random()*.85
+        .35+Math.random()*.85
     );
 
     petal.style.setProperty(
         "--so",
-        .55 +
-        Math.random()*.45
+        .55+Math.random()*.45
     );
 
     petal.style.setProperty(
@@ -4756,7 +5119,7 @@ for(
 
 
 /* =========================================================
-   CLOSE OPENING
+   OPENING CLOSE
 ========================================================= */
 
 const opening =
@@ -5077,7 +5440,9 @@ window.addEventListener(
 
         const percent =
             max>0
-            ? window.scrollY/max*100
+            ? window.scrollY/
+              max*
+              100
             : 0;
 
         progress.style.width =
@@ -5123,12 +5488,14 @@ document
 .querySelectorAll(".reveal")
 .forEach(
     el =>
-        revealObserver.observe(el)
+        revealObserver.observe(
+            el
+        )
 );
 
 
 /* =========================================================
-   RIVER MOUSE LIGHT
+   WATER LIGHT
 ========================================================= */
 
 const water =
@@ -5167,7 +5534,523 @@ water.addEventListener(
 
 
 /* =========================================================
-   RIVER CLICK RIPPLE
+   ENHANCED FISH SYSTEM
+========================================================= */
+
+const fishLayer =
+    document.getElementById(
+        "fishLayer"
+    );
+
+
+const fishColors = [
+    "fish-orange",
+    "fish-white",
+    "fish-pink",
+    "fish-gold"
+];
+
+
+const fishData = [];
+
+
+function randomRange(
+    min,
+    max
+){
+    return min +
+        Math.random() *
+        (max-min);
+}
+
+
+function createFish(
+    index
+){
+
+    const wrapper =
+        document.createElement(
+            "div"
+        );
+
+    wrapper.className =
+        "fish-group";
+
+
+    const body =
+        document.createElement(
+            "div"
+        );
+
+    body.className =
+        "fish-body " +
+        fishColors[
+            index %
+            fishColors.length
+        ];
+
+
+    const tail =
+        document.createElement(
+            "div"
+        );
+
+    tail.className =
+        "fish-tail";
+
+
+    const fin =
+        document.createElement(
+            "div"
+        );
+
+    fin.className =
+        "fish-fin";
+
+
+    const eye =
+        document.createElement(
+            "div"
+        );
+
+    eye.className =
+        "fish-eye";
+
+
+    const stripe1 =
+        document.createElement(
+            "div"
+        );
+
+    stripe1.className =
+        "fish-stripe";
+
+
+    const stripe2 =
+        document.createElement(
+            "div"
+        );
+
+    stripe2.className =
+        "fish-stripe s2";
+
+
+    const stripe3 =
+        document.createElement(
+            "div"
+        );
+
+    stripe3.className =
+        "fish-stripe s3";
+
+
+    const highlight =
+        document.createElement(
+            "div"
+        );
+
+    highlight.className =
+        "fish-highlight";
+
+
+    const shadow =
+        document.createElement(
+            "div"
+        );
+
+    shadow.className =
+        "fish-shadow";
+
+
+    const wake =
+        document.createElement(
+            "div"
+        );
+
+    wake.className =
+        "fish-wake";
+
+
+    const bubble1 =
+        document.createElement(
+            "div"
+        );
+
+    bubble1.className =
+        "fish-bubble b1";
+
+
+    const bubble2 =
+        document.createElement(
+            "div"
+        );
+
+    bubble2.className =
+        "fish-bubble b2";
+
+
+    body.appendChild(
+        tail
+    );
+
+    body.appendChild(
+        fin
+    );
+
+    body.appendChild(
+        eye
+    );
+
+    body.appendChild(
+        stripe1
+    );
+
+    body.appendChild(
+        stripe2
+    );
+
+    body.appendChild(
+        stripe3
+    );
+
+    body.appendChild(
+        highlight
+    );
+
+
+    wrapper.appendChild(
+        shadow
+    );
+
+    wrapper.appendChild(
+        body
+    );
+
+    wrapper.appendChild(
+        wake
+    );
+
+    wrapper.appendChild(
+        bubble1
+    );
+
+    wrapper.appendChild(
+        bubble2
+    );
+
+
+    fishLayer.appendChild(
+        wrapper
+    );
+
+
+    const rect =
+        fishLayer.getBoundingClientRect();
+
+
+    const fish = {
+
+        el:wrapper,
+
+        x:
+            randomRange(
+                -100,
+                rect.width + 100
+            ),
+
+        y:
+            randomRange(
+                65,
+                Math.max(
+                    120,
+                    rect.height - 80
+                )
+            ),
+
+        speed:
+            randomRange(
+                .28,
+                .62
+            ),
+
+        amplitude:
+            randomRange(
+                4,
+                12
+            ),
+
+        phase:
+            Math.random() *
+            Math.PI *
+            2,
+
+        size:
+            randomRange(
+                .72,
+                1.18
+            ),
+
+        direction:
+            Math.random()>.5
+            ? 1
+            : -1,
+
+        targetY:0,
+
+        startled:0,
+
+        opacity:
+            randomRange(
+                .72,
+                .94
+            )
+
+    };
+
+
+    if(
+        fish.direction === -1
+    ){
+        fish.x =
+            rect.width +
+            randomRange(
+                50,
+                180
+            );
+    }
+
+
+    fish.el.style.opacity =
+        fish.opacity;
+
+
+    fish.el.style.transform =
+        `translate3d(
+            ${fish.x}px,
+            ${fish.y}px,
+            0
+        ) scale(${fish.size})`;
+
+
+    fishData.push(
+        fish
+    );
+
+}
+
+
+/* create a real little school */
+
+for(
+    let i=0;
+    i<11;
+    i++
+){
+
+    createFish(i);
+
+}
+
+
+/* =========================================================
+   FISH ANIMATION LOOP
+========================================================= */
+
+let fishTime = 0;
+
+
+function animateFish(){
+
+    fishTime += .016;
+
+
+    const rect =
+        fishLayer.getBoundingClientRect();
+
+
+    const mouseRect =
+        water.getBoundingClientRect();
+
+
+    const relativeMouseX =
+        mouseX -
+        mouseRect.left;
+
+
+    const relativeMouseY =
+        mouseY -
+        mouseRect.top;
+
+
+    fishData.forEach(
+        (fish,index)=>{
+
+            const centerX =
+                fish.x + 40;
+
+            const centerY =
+                fish.y + 20;
+
+
+            const dx =
+                relativeMouseX -
+                centerX;
+
+            const dy =
+                relativeMouseY -
+                centerY;
+
+
+            const distance =
+                Math.sqrt(
+                    dx*dx+
+                    dy*dy
+                );
+
+
+            /* subtle attraction / curiosity */
+
+            let driftX = 0;
+            let driftY = 0;
+
+
+            if(
+                distance < 180 &&
+                relativeMouseY > 0
+            ){
+
+                driftX =
+                    dx/
+                    Math.max(
+                        distance,
+                        1
+                    ) *
+                    .08;
+
+                driftY =
+                    dy/
+                    Math.max(
+                        distance,
+                        1
+                    ) *
+                    .055;
+
+            }
+
+
+            fish.phase +=
+                .004 +
+                index*.00003;
+
+
+            fish.x +=
+                fish.speed *
+                fish.direction;
+
+
+            fish.y +=
+                driftY;
+
+
+            const bob =
+                Math.sin(
+                    fishTime*2.1 +
+                    fish.phase
+                ) *
+                fish.amplitude;
+
+
+            /* keep fish inside swimming zone */
+
+            if(
+                fish.direction === 1 &&
+                fish.x >
+                rect.width + 120
+            ){
+
+                fish.x =
+                    -140;
+
+                fish.y =
+                    randomRange(
+                        75,
+                        Math.max(
+                            120,
+                            rect.height-75
+                        )
+                    );
+
+            }
+
+
+            if(
+                fish.direction === -1 &&
+                fish.x <
+                -140
+            ){
+
+                fish.x =
+                    rect.width +
+                    140;
+
+                fish.y =
+                    randomRange(
+                        75,
+                        Math.max(
+                            120,
+                            rect.height-75
+                        )
+                    );
+
+            }
+
+
+            if(
+                fish.startled > 0
+            ){
+
+                fish.x +=
+                    fish.direction *
+                    fish.startled;
+
+                fish.startled *= .92;
+
+            }
+
+
+            /* switch visual direction */
+
+            const scaleX =
+                fish.direction === 1
+                ? 1
+                : -1;
+
+
+            fish.el.style.transform =
+                `translate3d(
+                    ${fish.x + driftX*25}px,
+                    ${fish.y + bob}px,
+                    0
+                )
+                scale(${fish.size})
+                scaleX(${scaleX})`;
+
+        }
+    );
+
+
+    requestAnimationFrame(
+        animateFish
+    );
+
+}
+
+
+animateFish();
+
+
+/* =========================================================
+   FISH REACTION TO WATER CLICK
 ========================================================= */
 
 water.addEventListener(
@@ -5177,33 +6060,120 @@ water.addEventListener(
         const rect =
             water.getBoundingClientRect();
 
-        const ripple =
+
+        const clickX =
+            event.clientX -
+            rect.left;
+
+        const clickY =
+            event.clientY -
+            rect.top;
+
+
+        fishData.forEach(
+            fish=>{
+
+                const fishX =
+                    fish.x + 40;
+
+                const fishY =
+                    fish.y + 20;
+
+
+                const dx =
+                    fishX -
+                    clickX;
+
+                const dy =
+                    fishY -
+                    clickY;
+
+
+                const distance =
+                    Math.sqrt(
+                        dx*dx+
+                        dy*dy
+                    );
+
+
+                if(
+                    distance < 220
+                ){
+
+                    const power =
+                        18 *
+                        (
+                            1 -
+                            distance/
+                            220
+                        );
+
+
+                    fish.direction =
+                        dx > 0
+                        ? 1
+                        : -1;
+
+
+                    fish.startled +=
+                        power;
+
+
+                    fish.y +=
+                        dy > 0
+                        ? 8
+                        : -8;
+
+
+                    fish.el.classList.add(
+                        "fish-startled"
+                    );
+
+
+                    setTimeout(
+                        ()=>{
+                            fish.el.classList
+                                .remove(
+                                    "fish-startled"
+                                );
+                        },
+                        320
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* create splash where clicked */
+
+        const splash =
             document.createElement(
                 "span"
             );
 
-        ripple.className =
-            "ripple";
+        splash.className =
+            "fish-splash";
 
-        ripple.style.left =
-            event.clientX-
-            rect.left+
-            "px";
 
-        ripple.style.top =
-            event.clientY-
-            rect.top+
-            "px";
+        splash.style.left =
+            clickX+"px";
+
+        splash.style.top =
+            clickY+"px";
+
 
         water.appendChild(
-            ripple
+            splash
         );
+
 
         setTimeout(
             ()=>{
-                ripple.remove();
+                splash.remove();
             },
-            1250
+            1000
         );
 
     }
@@ -5221,10 +6191,14 @@ document.addEventListener(
         if(
             event.target.closest(
                 ".music"
+            ) ||
+            event.target.closest(
+                ".season-wheel"
             )
         ){
             return;
         }
+
 
         const symbols=[
             "✦",
@@ -5232,6 +6206,7 @@ document.addEventListener(
             "·",
             "✿"
         ];
+
 
         for(
             let i=0;
@@ -5256,12 +6231,11 @@ document.addEventListener(
                 ];
 
             particle.style.left =
-                event.clientX+
-                "px";
+                event.clientX+"px";
 
             particle.style.top =
-                event.clientY+
-                "px";
+                event.clientY+"px";
+
 
             particle.style.setProperty(
                 "--dx",
@@ -5286,12 +6260,16 @@ document.addEventListener(
                 )+"deg"
             );
 
+
             document.body.appendChild(
                 particle
             );
 
+
             setTimeout(
-                ()=>particle.remove(),
+                ()=>{
+                    particle.remove();
+                },
                 950
             );
 
@@ -5349,9 +6327,12 @@ function changeSeason(
 ){
 
     if(
-        nextSeason === season
+        nextSeason ===
+        season
     ){
+
         return;
+
     }
 
 
@@ -5367,6 +6348,7 @@ function changeSeason(
 
             season =
                 nextSeason;
+
 
             document.body
                 .setAttribute(
@@ -5453,8 +6435,6 @@ function changeSeason(
 }
 
 
-/* buttons */
-
 springChoice.addEventListener(
     "click",
     ()=>{
@@ -5464,6 +6444,7 @@ springChoice.addEventListener(
     }
 );
 
+
 autumnChoice.addEventListener(
     "click",
     ()=>{
@@ -5472,6 +6453,7 @@ autumnChoice.addEventListener(
         );
     }
 );
+
 
 seasonWheel.addEventListener(
     "click",
@@ -5486,6 +6468,7 @@ seasonWheel.addEventListener(
     }
 );
 
+
 navSeason.addEventListener(
     "click",
     ()=>{
@@ -5495,6 +6478,7 @@ navSeason.addEventListener(
             ? "autumn"
             : "spring"
         );
+
 
         document
             .getElementById(
@@ -5506,6 +6490,85 @@ navSeason.addEventListener(
             });
 
     }
+);
+
+
+/* =========================================================
+   ACTIVE NAV
+========================================================= */
+
+const navLinks =
+    document.querySelectorAll(
+        ".nav a"
+    );
+
+const trackedSections =
+    document.querySelectorAll(
+        "header[id],section[id],article[id]"
+    );
+
+
+const navObserver =
+    new IntersectionObserver(
+        entries=>{
+
+            entries.forEach(
+                entry=>{
+
+                    if(
+                        !entry.isIntersecting
+                    ){
+
+                        return;
+
+                    }
+
+
+                    const id =
+                        entry.target.id;
+
+
+                    navLinks.forEach(
+                        link=>{
+                            link.classList
+                                .remove(
+                                    "active"
+                                );
+                        }
+                    );
+
+
+                    const activeLink =
+                        document.querySelector(
+                            `.nav a[href="#${id}"]`
+                        );
+
+
+                    if(activeLink){
+
+                        activeLink
+                            .classList
+                            .add(
+                                "active"
+                            );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.45
+        }
+    );
+
+
+trackedSections.forEach(
+    section =>
+        navObserver.observe(
+            section
+        )
 );
 
 
@@ -5523,41 +6586,50 @@ window.addEventListener(
     ()=>{
 
         if(
-            window.scrollY>650
+            window.scrollY >
+            650
         ){
 
-            topBtn.classList.add(
-                "show"
-            );
+            topBtn
+                .classList
+                .add(
+                    "show"
+                );
 
         }else{
 
-            topBtn.classList.remove(
-                "show"
-            );
+            topBtn
+                .classList
+                .remove(
+                    "show"
+                );
 
         }
 
     }
 );
 
+
 topBtn.addEventListener(
     "click",
     ()=>{
+
         window.scrollTo({
             top:0,
             behavior:"smooth"
         });
+
     }
 );
 
 
 /* =========================================================
-   YOUTUBE MUSIC
+   YOUTUBE PLAYER
 ========================================================= */
 
 let player;
-let isPlaying=false;
+let isPlaying =
+    false;
 
 
 function onYouTubeIframeAPIReady(){
@@ -5601,7 +6673,8 @@ function onYouTubeIframeAPIReady(){
                                 YT.PlayerState.PLAYING
                             ){
 
-                                isPlaying=true;
+                                isPlaying =
+                                    true;
 
                                 document
                                     .getElementById(
@@ -5612,6 +6685,7 @@ function onYouTubeIframeAPIReady(){
 
                             }
 
+
                             if(
                                 event.data ===
                                 YT.PlayerState.PAUSED ||
@@ -5619,7 +6693,8 @@ function onYouTubeIframeAPIReady(){
                                 YT.PlayerState.ENDED
                             ){
 
-                                isPlaying=false;
+                                isPlaying =
+                                    false;
 
                                 document
                                     .getElementById(
@@ -5652,10 +6727,15 @@ document
             !player ||
             !player.playVideo
         ){
+
             return;
+
         }
 
-        if(isPlaying){
+
+        if(
+            isPlaying
+        ){
 
             player.pauseVideo();
 
@@ -5683,6 +6763,16 @@ youtubeScript.src =
 
 document.head.appendChild(
     youtubeScript
+);
+
+
+/* =========================================================
+   INITIAL SEASON
+========================================================= */
+
+document.body.setAttribute(
+    "data-season",
+    "spring"
 );
 
 </script>
