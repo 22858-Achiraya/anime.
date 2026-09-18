@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#d77b9b">
 
-<title>Love & Deepspace — Spring Fantasy World</title>
+<title>Love & Deepspace — Cinematic Garden</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
@@ -13,6 +12,7 @@
 /* =========================================================
    RESET
 ========================================================= */
+
 *{
     margin:0;
     padding:0;
@@ -25,147 +25,159 @@ html{
 
 body{
     font-family:"Kanit","Noto Sans Thai",sans-serif;
-    color:var(--ink);
-    background:var(--bg-main);
     overflow-x:hidden;
+    color:var(--ink);
+    background:var(--page-bg);
     cursor:none;
     transition:
-        background 1s ease,
+        background 1.2s ease,
         color 1s ease;
 }
 
 /* =========================================================
-   SPRING THEME
+   SPRING VARIABLES
 ========================================================= */
+
 :root{
-    --bg-main:#f9f4fa;
 
-    --sky-top:#dff5fc;
-    --sky-mid:#e9e2fa;
-    --sky-bottom:#f8eaf1;
+    --page-bg:#f8f3f9;
 
-    --rose-deep:#91405f;
+    --sky-1:#dff6fc;
+    --sky-2:#e6def8;
+    --sky-3:#f8e6ef;
+
+    --rose-dark:#91405f;
     --rose:#d77b9b;
-    --rose-light:#f4b7ca;
+    --rose-light:#f4b6cb;
 
-    --leaf-deep:#4f785c;
-    --leaf:#82ad88;
-    --leaf-light:#bcdcbc;
+    --green-dark:#4d7558;
+    --green:#82ad88;
+    --green-light:#c5dfc4;
 
-    --blue:#8dcde4;
-    --blue-deep:#56879d;
+    --water-1:#9ad8e3;
+    --water-2:#639fb8;
+    --water-light:#e0fbff;
 
-    --lavender:#c6b5e8;
+    --gold:#dbb66f;
 
-    --water-a:#8fd3df;
-    --water-b:#6da9c3;
-    --water-glow:#d9fbff;
+    --petal-1:#fff5fa;
+    --petal-2:#efa7bf;
+    --petal-shadow:#a95b7d;
 
-    --gold:#d8b46e;
+    --ink:#544c57;
+    --muted:#7f7580;
 
-    --petal-a:#f5b7cb;
-    --petal-b:#fff1f7;
-    --petal-shadow:#bf718e;
+    --glass:rgba(255,255,255,.62);
+    --glass-heavy:rgba(255,255,255,.80);
 
-    --ink:#554d57;
-    --muted:#827781;
-    --white:#ffffff;
-
-    --glass:rgba(255,255,255,.64);
-    --glass-strong:rgba(255,255,255,.82);
-
-    --shadow:
-        0 30px 85px rgba(86,66,88,.16),
-        0 10px 25px rgba(86,66,88,.08);
+    --footer-a:#54785f;
+    --footer-b:#8b5d77;
 }
 
 /* =========================================================
-   AUTUMN THEME
+   AUTUMN VARIABLES
 ========================================================= */
-body[data-theme="autumn"]{
 
-    --bg-main:#f5eee4;
+body[data-season="autumn"]{
 
-    --sky-top:#f5d9b8;
-    --sky-mid:#e8c59f;
-    --sky-bottom:#d9a97f;
+    --page-bg:#f4ede2;
 
-    --rose-deep:#8b4f31;
-    --rose:#c66e3c;
-    --rose-light:#e5a66e;
+    --sky-1:#f1d4ae;
+    --sky-2:#e8bb91;
+    --sky-3:#d8996d;
 
-    --leaf-deep:#5a633d;
-    --leaf:#87904e;
-    --leaf-light:#c1bd7b;
+    --rose-dark:#81472f;
+    --rose:#c36b3a;
+    --rose-light:#e6a267;
 
-    --blue:#a8b890;
-    --blue-deep:#66744b;
+    --green-dark:#59663d;
+    --green:#8b9554;
+    --green-light:#c9c486;
 
-    --lavender:#c2a184;
+    --water-1:#829d91;
+    --water-2:#526f67;
+    --water-light:#d7eee0;
 
-    --water-a:#779a91;
-    --water-b:#55796f;
-    --water-glow:#d5efe1;
+    --gold:#ca994d;
 
-    --gold:#c9974a;
+    --petal-1:#ffe2a9;
+    --petal-2:#df813b;
+    --petal-shadow:#8d4b24;
 
-    --petal-a:#de8a3a;
-    --petal-b:#f6c36f;
-    --petal-shadow:#8f4d22;
+    --ink:#51483f;
+    --muted:#786b5e;
 
-    --ink:#51463c;
-    --muted:#79685b;
+    --glass:rgba(255,248,236,.64);
+    --glass-heavy:rgba(255,248,236,.82);
 
-    --glass:rgba(255,248,237,.63);
-    --glass-strong:rgba(255,248,237,.82);
-
-    --shadow:
-        0 30px 85px rgba(90,57,35,.18),
-        0 10px 25px rgba(90,57,35,.08);
+    --footer-a:#58603d;
+    --footer-b:#8b583d;
 }
 
 /* =========================================================
-   PAGE TRANSITION
+   SCROLL BAR
 ========================================================= */
-body::before{
-    content:"";
+
+.scroll-progress{
     position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:99990;
+    top:0;
+    left:0;
+    height:5px;
+    width:0;
+    z-index:100001;
+
     background:
-        radial-gradient(circle at 50% 50%, transparent 0 25%, rgba(255,255,255,.08) 55%, transparent 72%);
-    opacity:.55;
-    mix-blend-mode:screen;
+        linear-gradient(
+            90deg,
+            #8ccfe1,
+            #c7b7ea,
+            #df809f,
+            #82ae88
+        );
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,.9),
+        0 0 25px rgba(215,123,155,.65);
 }
 
 /* =========================================================
    CUSTOM CURSOR
 ========================================================= */
+
 .cursor-dot{
     position:fixed;
     width:15px;
     height:15px;
     border-radius:50%;
+
     background:
-        radial-gradient(circle,#fff 0%,#ffe2eb 45%,var(--rose) 100%);
+        radial-gradient(
+            circle,
+            #fff,
+            #ffe4ec 42%,
+            var(--rose) 100%
+        );
+
     box-shadow:
-        0 0 12px #fff,
-        0 0 30px rgba(215,123,155,.8);
-    transform:translate(-50%,-50%);
+        0 0 13px #fff,
+        0 0 32px rgba(215,123,155,.72);
+
     pointer-events:none;
     z-index:100000;
+    transform:translate(-50%,-50%);
 }
 
 .cursor-ring{
     position:fixed;
-    width:45px;
-    height:45px;
+    width:42px;
+    height:42px;
     border-radius:50%;
-    border:1px solid rgba(145,64,95,.38);
-    transform:translate(-50%,-50%);
+    border:1px solid rgba(145,64,95,.4);
+
     pointer-events:none;
     z-index:99999;
+    transform:translate(-50%,-50%);
+
     transition:
         width .25s ease,
         height .25s ease,
@@ -178,38 +190,16 @@ body.cursor-hover .cursor-dot{
 }
 
 body.cursor-hover .cursor-ring{
-    width:67px;
-    height:67px;
+    width:68px;
+    height:68px;
     border-color:var(--rose);
 }
 
 /* =========================================================
-   SCROLL PROGRESS
+   CINEMATIC OPENING
 ========================================================= */
-.scroll-bar{
-    position:fixed;
-    left:0;
-    top:0;
-    height:4px;
-    width:0%;
-    z-index:100001;
-    background:
-        linear-gradient(
-            90deg,
-            var(--blue),
-            var(--lavender),
-            var(--rose),
-            var(--leaf)
-        );
-    box-shadow:
-        0 0 10px rgba(255,255,255,.85),
-        0 0 22px var(--rose);
-}
 
-/* =========================================================
-   OPENING SCENE
-========================================================= */
-.intro-screen{
+.opening{
     position:fixed;
     inset:0;
     z-index:95000;
@@ -217,259 +207,546 @@ body.cursor-hover .cursor-ring{
     align-items:center;
     justify-content:center;
     overflow:hidden;
+
     background:
-        radial-gradient(circle at 50% 35%,rgba(255,255,255,.95),transparent 25%),
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255,255,255,.98),
+            transparent 25%
+        ),
         linear-gradient(
-            135deg,
-            var(--sky-top),
-            var(--sky-mid),
-            var(--sky-bottom)
+            150deg,
+            var(--sky-1),
+            var(--sky-2),
+            var(--sky-3)
         );
+
     transition:
-        opacity 1s ease,
-        visibility 1s ease;
+        opacity 1.5s ease,
+        visibility 1.5s ease;
 }
 
-.intro-screen.hide{
+.opening.hide{
     opacity:0;
     visibility:hidden;
 }
 
-.intro-aura{
+/* opening aurora */
+
+.opening-aurora{
     position:absolute;
-    width:700px;
-    height:700px;
+    inset:-20%;
+    pointer-events:none;
+}
+
+.opening-aurora::before,
+.opening-aurora::after{
+    content:"";
+    position:absolute;
+    width:120%;
+    height:220px;
+    left:-10%;
     border-radius:50%;
+    filter:blur(35px);
+    mix-blend-mode:screen;
+}
+
+.opening-aurora::before{
+    top:8%;
     background:
         radial-gradient(
-            circle,
-            rgba(255,255,255,.85),
-            rgba(255,255,255,.25) 35%,
+            ellipse,
+            rgba(145,238,211,.58),
             transparent 68%
         );
-    animation:introAura 5s ease-in-out infinite;
+    transform:rotate(-4deg);
+    animation:openAurora1 11s ease-in-out infinite;
 }
 
-@keyframes introAura{
+.opening-aurora::after{
+    top:17%;
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(201,183,243,.62),
+            transparent 68%
+        );
+    transform:rotate(5deg);
+    animation:openAurora2 15s ease-in-out infinite;
+}
+
+@keyframes openAurora1{
+
     0%,100%{
-        transform:scale(.92);
-        opacity:.7;
+        transform:
+            translateX(-6%)
+            rotate(-4deg);
     }
+
     50%{
-        transform:scale(1.08);
-        opacity:1;
+        transform:
+            translateX(8%)
+            rotate(4deg);
     }
 }
 
-.intro-content{
+@keyframes openAurora2{
+
+    0%,100%{
+        transform:
+            translateX(5%)
+            rotate(5deg);
+    }
+
+    50%{
+        transform:
+            translateX(-7%)
+            rotate(-3deg);
+    }
+}
+
+/* opening moon */
+
+.opening-moon{
+    position:absolute;
+    width:250px;
+    height:250px;
+    top:10%;
+    right:9%;
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff,
+            #fff8fb 25%,
+            #edcbd9 68%,
+            #bd91aa
+        );
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,.98),
+        0 0 100px rgba(255,255,255,.55);
+
+    opacity:.58;
+
+    animation:
+        openingMoonFloat
+        8s ease-in-out infinite;
+}
+
+body[data-season="autumn"] .opening-moon{
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fffef0,
+            #f7e3bb 27%,
+            #d3aa70 69%,
+            #9e6c40
+        );
+}
+
+@keyframes openingMoonFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-17px);
+    }
+}
+
+/* opening light rays */
+
+.light-rays{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.light-ray{
+    position:absolute;
+    width:150px;
+    height:850px;
+    left:50%;
+    top:-250px;
+    transform-origin:center bottom;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255,255,255,.0),
+            rgba(255,255,255,.18),
+            transparent
+        );
+
+    filter:blur(10px);
+    opacity:.4;
+}
+
+.light-ray.r1{
+    transform:rotate(-26deg);
+}
+
+.light-ray.r2{
+    transform:rotate(-11deg);
+    opacity:.27;
+}
+
+.light-ray.r3{
+    transform:rotate(14deg);
+    opacity:.34;
+}
+
+.light-ray.r4{
+    transform:rotate(29deg);
+    opacity:.22;
+}
+
+/* =========================================================
+   OPENING CONTENT
+========================================================= */
+
+.opening-content{
     position:relative;
-    z-index:3;
-    text-align:center;
+    z-index:10;
     width:min(900px,calc(100% - 30px));
+    text-align:center;
 }
 
-.intro-small{
-    color:var(--rose-deep);
-    font-size:11px;
+.opening-mini{
+    font-size:10px;
     letter-spacing:5px;
+    color:var(--rose-dark);
     font-weight:700;
-    margin-bottom:12px;
-    opacity:.8;
+    margin-bottom:11px;
+    opacity:.82;
 }
 
-.intro-title{
+.opening-title{
     font-family:"Playfair Display",serif;
-    font-size:clamp(45px,8vw,95px);
-    line-height:.95;
-    color:var(--rose-deep);
+    font-size:clamp(48px,9vw,106px);
+    line-height:.9;
+    color:var(--rose-dark);
+
     text-shadow:
-        0 10px 35px rgba(120,70,90,.18),
-        0 0 40px rgba(255,255,255,.9);
+        0 11px 35px rgba(116,66,90,.18),
+        0 0 46px rgba(255,255,255,.95);
+
+    opacity:0;
+
+    animation:
+        openingTitle 1.7s 1.1s
+        cubic-bezier(.2,.85,.2,1)
+        forwards;
 }
 
-.intro-sub{
-    margin-top:17px;
+@keyframes openingTitle{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(25px)
+            scale(.9);
+        filter:blur(9px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+        filter:blur(0);
+    }
+}
+
+.opening-sub{
+    margin-top:18px;
     color:var(--muted);
     font-size:14px;
-    letter-spacing:.5px;
+    opacity:0;
+    animation:fadeIn .9s 2.1s forwards;
 }
+
+@keyframes fadeIn{
+    to{opacity:1}
+}
+
+/* =========================================================
+   FLOWER PILE
+========================================================= */
 
 .flower-pile{
     position:absolute;
     left:50%;
-    top:54%;
+    top:61%;
     width:0;
     height:0;
-    z-index:2;
+    z-index:4;
 }
 
 .intro-petal{
     position:absolute;
     left:0;
     top:0;
-    width:42px;
-    height:28px;
+
+    width:55px;
+    height:34px;
+
     border-radius:
-        70% 12% 70% 12%;
+        80% 12% 80% 12%;
+
     background:
         linear-gradient(
             135deg,
-            var(--petal-b),
-            var(--petal-a)
+            var(--petal-1),
+            var(--petal-2)
         );
+
     box-shadow:
-        inset 0 2px 4px rgba(255,255,255,.75),
-        inset -3px -4px 7px rgba(150,80,110,.16),
-        0 5px 12px rgba(110,70,90,.15);
+        inset 0 2px 7px rgba(255,255,255,.9),
+        inset -4px -5px 10px rgba(135,70,95,.18),
+        0 8px 17px rgba(80,55,70,.18);
+
     transform:
         translate(-50%,-50%)
-        rotate(var(--start-rot))
-        scale(var(--start-scale));
-    opacity:var(--start-opacity);
+        rotate(var(--rot-start))
+        scale(var(--scale-start));
+
+    opacity:var(--opacity-start);
+
     animation:
-        scatterFlower 4.2s
-        cubic-bezier(.2,.72,.15,1)
+        flowerExplosion
+        5.4s
+        var(--delay)
+        cubic-bezier(.15,.85,.1,1)
         forwards;
-    animation-delay:var(--delay);
 }
 
 .intro-petal::after{
     content:"";
     position:absolute;
-    width:80%;
+    width:75%;
     height:2px;
-    left:10%;
-    top:50%;
+    left:12%;
+    top:51%;
     border-radius:99px;
-    background:rgba(255,255,255,.7);
+    background:rgba(255,255,255,.72);
     filter:blur(1px);
 }
 
-@keyframes scatterFlower{
+@keyframes flowerExplosion{
 
     0%{
+        opacity:var(--opacity-start);
+
         transform:
             translate(-50%,-50%)
-            rotate(var(--start-rot))
-            scale(var(--start-scale));
-        opacity:var(--start-opacity);
+            rotate(var(--rot-start))
+            scale(var(--scale-start));
     }
 
-    22%{
+    18%{
+        opacity:1;
+
         transform:
             translate(
-                calc(-50% + var(--tx1)),
-                calc(-50% + var(--ty1))
+                calc(-50% + var(--x1)),
+                calc(-50% + var(--y1))
             )
-            rotate(calc(var(--rot1)))
-            scale(1.1);
-        opacity:1;
+            rotate(var(--rot1))
+            scale(1.14);
+    }
+
+    48%{
+
+        transform:
+            translate(
+                calc(-50% + var(--x2)),
+                calc(-50% + var(--y2))
+            )
+            rotate(var(--rot2))
+            scale(1);
     }
 
     100%{
+        opacity:0;
+
         transform:
             translate(
-                calc(-50% + var(--tx2)),
-                calc(-50% + var(--ty2))
+                calc(-50% + var(--x3)),
+                calc(-50% + var(--y3))
             )
-            rotate(var(--rot2))
+            rotate(var(--rot3))
             scale(.2);
-        opacity:0;
     }
 }
 
-.intro-hint{
-    margin-top:28px;
-    color:var(--muted);
-    font-size:11px;
-    letter-spacing:2px;
-    opacity:.72;
-    animation:hintPulse 2s ease-in-out infinite;
+/* =========================================================
+   ENTER BUTTON
+========================================================= */
+
+.enter-button{
+    position:relative;
+    z-index:12;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+
+    margin-top:29px;
+    padding:13px 27px;
+
+    border:1px solid rgba(255,255,255,.85);
+    border-radius:18px;
+
+    color:white;
+    background:
+        linear-gradient(
+            135deg,
+            var(--rose-dark),
+            var(--rose)
+        );
+
+    box-shadow:
+        0 15px 35px rgba(112,57,82,.2),
+        0 0 20px rgba(255,255,255,.28);
+
+    cursor:pointer;
+    font-family:inherit;
+    font-size:13px;
+    font-weight:600;
+
+    opacity:0;
+    animation:
+        enterAppear
+        1s
+        2.8s
+        forwards;
+
+    transition:.35s ease;
 }
 
-@keyframes hintPulse{
-    0%,100%{opacity:.35}
-    50%{opacity:1}
+@keyframes enterAppear{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(15px)
+            scale(.92);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.enter-button:hover{
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    box-shadow:
+        0 22px 40px rgba(112,57,82,.24),
+        0 0 30px rgba(255,255,255,.35);
+}
+
+.opening-skip{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:9px;
+    letter-spacing:2px;
+    opacity:.5;
 }
 
 /* =========================================================
-   BACKGROUND PARTICLES
+   BACKGROUND PETALS
 ========================================================= */
-.particle-layer,
+
 .petal-layer,
+.sparkle-layer,
 .firefly-layer{
     position:fixed;
     inset:0;
-    pointer-events:none;
     overflow:hidden;
-}
-
-.particle-layer{
-    z-index:2;
+    pointer-events:none;
 }
 
 .petal-layer{
     z-index:4;
 }
 
-.firefly-layer{
+.sparkle-layer{
     z-index:3;
 }
 
-.petal{
+.firefly-layer{
+    z-index:2;
+}
+
+.falling-petal{
     position:absolute;
-    top:-40px;
-    width:26px;
+    top:-50px;
+    width:25px;
     height:16px;
+
     border-radius:
-        75% 15% 75% 15%;
+        80% 12% 80% 12%;
+
     background:
         linear-gradient(
             135deg,
-            var(--petal-b),
-            var(--petal-a)
+            var(--petal-1),
+            var(--petal-2)
         );
+
     box-shadow:
         inset 0 1px 4px rgba(255,255,255,.85),
-        inset -2px -2px 5px var(--petal-shadow),
-        0 3px 10px rgba(90,60,70,.14);
+        inset -2px -3px 5px var(--petal-shadow),
+        0 4px 10px rgba(80,60,70,.15);
+
     opacity:.72;
+
     animation:
-        fallingPetal
-        linear infinite;
+        fall linear infinite;
 }
 
-.petal::after{
+.falling-petal::after{
     content:"";
     position:absolute;
-    left:14%;
-    right:14%;
+    left:12%;
+    right:12%;
     top:49%;
     height:1px;
-    background:rgba(255,255,255,.8);
+    background:rgba(255,255,255,.75);
 }
 
-@keyframes fallingPetal{
+@keyframes fall{
 
     0%{
         transform:
             translate3d(0,-10vh,0)
-            rotate(0deg);
+            rotate(0);
         opacity:0;
     }
 
     10%{
-        opacity:.82;
+        opacity:.85;
     }
 
     50%{
         transform:
             translate3d(
                 var(--wind),
-                54vh,
+                55vh,
                 0
             )
-            rotate(180deg);
+            rotate(190deg);
     }
 
     100%{
@@ -479,291 +756,421 @@ body.cursor-hover .cursor-ring{
                 112vh,
                 0
             )
-            rotate(380deg);
+            rotate(390deg);
+
         opacity:0;
     }
 }
+
+/* =========================================================
+   SPARKLES
+========================================================= */
+
+.sparkle{
+    position:absolute;
+    color:white;
+
+    text-shadow:
+        0 0 7px #fff,
+        0 0 20px rgba(215,123,155,.7);
+
+    animation:
+        sparklePulse
+        ease-in-out infinite;
+}
+
+@keyframes sparklePulse{
+
+    0%,100%{
+        opacity:.1;
+        transform:
+            scale(.5)
+            rotate(0);
+    }
+
+    50%{
+        opacity:1;
+        transform:
+            scale(1.35)
+            rotate(90deg);
+    }
+}
+
+/* =========================================================
+   FIREFLIES
+========================================================= */
 
 .firefly{
     position:absolute;
     width:5px;
     height:5px;
     border-radius:50%;
-    background:#fff7a9;
+
+    background:#fff5a7;
+
     box-shadow:
-        0 0 8px #fff7a9,
-        0 0 22px rgba(255,237,147,.75);
+        0 0 8px #fff5a7,
+        0 0 23px rgba(255,239,145,.8);
+
     animation:
-        fireflyFloat
+        flyFloat
         ease-in-out infinite;
 }
 
-@keyframes fireflyFloat{
+@keyframes flyFloat{
+
     0%,100%{
-        transform:translateY(0) scale(.55);
-        opacity:.18;
+        opacity:.15;
+        transform:
+            translateY(0)
+            scale(.55);
     }
+
     50%{
-        transform:translateY(-35px) scale(1.3);
         opacity:1;
+        transform:
+            translateY(-35px)
+            scale(1.3);
     }
 }
 
 /* =========================================================
-   AURORA
+   HERO WORLD
 ========================================================= */
-.aurora{
-    position:absolute;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-}
 
-.aurora-band{
-    position:absolute;
-    width:140%;
-    height:240px;
-    left:-20%;
-    border-radius:50%;
-    filter:blur(30px);
-    opacity:.47;
-    mix-blend-mode:screen;
-}
-
-.aurora-one{
-    top:5%;
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(173,238,220,.7),
-            transparent 65%
-        );
-    animation:auroraMove1 13s ease-in-out infinite;
-}
-
-.aurora-two{
-    top:9%;
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(207,188,245,.65),
-            transparent 66%
-        );
-    animation:auroraMove2 17s ease-in-out infinite;
-}
-
-.aurora-three{
-    top:18%;
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(247,188,215,.52),
-            transparent 62%
-        );
-    animation:auroraMove3 20s ease-in-out infinite;
-}
-
-body[data-theme="autumn"] .aurora-one{
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(215,226,164,.42),
-            transparent 65%
-        );
-}
-
-body[data-theme="autumn"] .aurora-two{
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(243,194,145,.38),
-            transparent 66%
-        );
-}
-
-body[data-theme="autumn"] .aurora-three{
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(236,138,91,.28),
-            transparent 62%
-        );
-}
-
-@keyframes auroraMove1{
-    0%,100%{transform:translateX(-4%) rotate(-2deg)}
-    50%{transform:translateX(8%) rotate(3deg)}
-}
-
-@keyframes auroraMove2{
-    0%,100%{transform:translateX(4%) rotate(3deg)}
-    50%{transform:translateX(-8%) rotate(-3deg)}
-}
-
-@keyframes auroraMove3{
-    0%,100%{transform:translateX(-2%) scale(1)}
-    50%{transform:translateX(6%) scale(1.08)}
-}
-
-/* =========================================================
-   HERO
-========================================================= */
-.hero{
+.hero-world{
     position:relative;
-    min-height:930px;
+    min-height:950px;
     overflow:hidden;
-    padding:120px 20px 0;
+
     background:
         linear-gradient(
             180deg,
-            var(--sky-top) 0%,
-            var(--sky-mid) 40%,
-            var(--sky-bottom) 68%,
-            #d9efdf 100%
+            var(--sky-1) 0%,
+            var(--sky-2) 44%,
+            var(--sky-3) 71%,
+            #d6ebda 100%
         );
 }
 
-.hero::after{
+.hero-world::after{
     content:"";
     position:absolute;
     left:0;
     right:0;
     bottom:0;
-    height:300px;
+    height:280px;
+
     background:
         linear-gradient(
             to top,
-            rgba(69,103,72,.2),
+            rgba(50,86,57,.34),
             transparent
         );
+
     pointer-events:none;
 }
 
-.moon{
+/* =========================================================
+   AURORA
+========================================================= */
+
+.aurora{
     position:absolute;
-    width:180px;
-    height:180px;
+    inset:0;
+    pointer-events:none;
+}
+
+.aurora-band{
+    position:absolute;
+    width:145%;
+    height:240px;
+    left:-22%;
+
     border-radius:50%;
-    right:7%;
-    top:110px;
+    filter:blur(34px);
+    opacity:.48;
+    mix-blend-mode:screen;
+}
+
+.aurora-a{
+    top:7%;
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(158,238,211,.72),
+            transparent 67%
+        );
+
+    animation:
+        auroraMoveA
+        13s ease-in-out infinite;
+}
+
+.aurora-b{
+    top:14%;
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(208,186,246,.66),
+            transparent 67%
+        );
+
+    animation:
+        auroraMoveB
+        16s ease-in-out infinite;
+}
+
+.aurora-c{
+    top:22%;
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(246,180,209,.48),
+            transparent 66%
+        );
+
+    animation:
+        auroraMoveC
+        20s ease-in-out infinite;
+}
+
+body[data-season="autumn"] .aurora-a{
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(210,224,159,.42),
+            transparent 67%
+        );
+}
+
+body[data-season="autumn"] .aurora-b{
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(238,186,137,.4),
+            transparent 67%
+        );
+}
+
+body[data-season="autumn"] .aurora-c{
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(227,122,79,.3),
+            transparent 66%
+        );
+}
+
+@keyframes auroraMoveA{
+    0%,100%{
+        transform:
+            translateX(-5%)
+            rotate(-3deg);
+    }
+
+    50%{
+        transform:
+            translateX(8%)
+            rotate(4deg);
+    }
+}
+
+@keyframes auroraMoveB{
+    0%,100%{
+        transform:
+            translateX(6%)
+            rotate(3deg);
+    }
+
+    50%{
+        transform:
+            translateX(-8%)
+            rotate(-4deg);
+    }
+}
+
+@keyframes auroraMoveC{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+/* =========================================================
+   MOON
+========================================================= */
+
+.hero-moon{
+    position:absolute;
+    width:200px;
+    height:200px;
+    top:90px;
+    right:8%;
+    border-radius:50%;
+
     background:
         radial-gradient(
             circle at 35% 30%,
             #fff,
             #fff8fb 25%,
-            #ead5df 68%,
-            #caa5b7 100%
+            #ead0dd 67%,
+            #b888a0 100%
         );
+
     box-shadow:
-        0 0 30px rgba(255,255,255,.95),
-        0 0 90px rgba(255,255,255,.48);
-    opacity:.65;
-    animation:moonFloat 8s ease-in-out infinite;
+        0 0 30px rgba(255,255,255,.97),
+        0 0 80px rgba(255,255,255,.42);
+
+    opacity:.64;
+    animation:
+        moonDrift
+        8s ease-in-out infinite;
 }
 
-body[data-theme="autumn"] .moon{
+body[data-season="autumn"] .hero-moon{
     background:
         radial-gradient(
             circle at 35% 30%,
-            #fffbe9,
-            #f4e4bb 30%,
-            #d5ad72 72%,
-            #a87743
+            #fffdea,
+            #f5dfbb 27%,
+            #d0a66a 69%,
+            #9c693d
         );
 }
 
-@keyframes moonFloat{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-18px)}
+@keyframes moonDrift{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-17px);
+    }
 }
 
 /* =========================================================
-   GARDEN SILHOUETTES
+   HERO GARDEN
 ========================================================= */
-.garden-back{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:145px;
-    height:180px;
-    background:
-        linear-gradient(
-            to top,
-            rgba(55,93,62,.45),
-            rgba(89,130,94,.2),
-            transparent
-        );
-    clip-path:
-        polygon(
-            0 67%,4% 59%,7% 66%,11% 48%,15% 60%,
-            20% 42%,25% 60%,30% 46%,35% 64%,
-            41% 41%,47% 60%,54% 37%,60% 62%,
-            66% 49%,72% 65%,78% 43%,83% 61%,
-            89% 47%,94% 64%,100% 48%,
-            100% 100%,0 100%
-        );
-    opacity:.65;
-}
 
-.garden-front{
+.garden-layer{
     position:absolute;
     left:-3%;
     right:-3%;
-    bottom:78px;
-    height:180px;
+    bottom:105px;
+}
+
+.garden-hill{
+    height:190px;
+
     background:
         linear-gradient(
             to top,
-            rgba(54,97,59,.75),
-            rgba(84,132,85,.37),
+            rgba(53,94,61,.7),
+            rgba(90,135,90,.32),
             transparent
         );
+
     clip-path:
         polygon(
-            0 70%,5% 57%,10% 70%,17% 48%,22% 67%,
-            30% 46%,37% 66%,44% 53%,50% 70%,
-            60% 44%,66% 65%,72% 49%,80% 69%,
-            87% 43%,94% 65%,100% 50%,
-            100% 100%,0 100%
+            0 72%,
+            6% 59%,
+            11% 69%,
+            18% 46%,
+            24% 68%,
+            32% 43%,
+            38% 65%,
+            46% 49%,
+            52% 68%,
+            60% 42%,
+            66% 63%,
+            74% 45%,
+            80% 67%,
+            88% 43%,
+            94% 65%,
+            100% 48%,
+            100% 100%,
+            0 100%
         );
 }
 
+.garden-hill.back{
+    opacity:.45;
+    transform:scale(1.05);
+}
+
+.garden-hill.front{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-25px;
+    opacity:.85;
+}
+
 /* =========================================================
-   HERO CONTENT
+   HERO CENTER
 ========================================================= */
+
 .hero-center{
     position:relative;
-    z-index:8;
-    width:min(1100px,100%);
+    z-index:20;
+
+    width:min(1050px,calc(100% - 30px));
+
     margin:auto;
+    padding-top:155px;
+
     text-align:center;
-    padding-top:80px;
+
+    transition:
+        transform .35s ease;
 }
 
 .hero-kicker{
     display:inline-flex;
-    gap:10px;
     align-items:center;
-    padding:8px 18px;
+    gap:10px;
+
+    padding:9px 18px;
+
     border-radius:999px;
-    background:rgba(255,255,255,.66);
-    border:1px solid rgba(255,255,255,.85);
-    backdrop-filter:blur(13px);
-    color:var(--rose-deep);
+
+    background:rgba(255,255,255,.63);
+    border:1px solid rgba(255,255,255,.88);
+
+    backdrop-filter:blur(14px);
+
+    color:var(--rose-dark);
+
     font-size:10px;
+    font-weight:700;
     letter-spacing:3px;
-    box-shadow:0 10px 26px rgba(90,72,90,.08);
+
+    box-shadow:
+        0 11px 25px rgba(80,65,80,.08);
 }
 
 .hero-title{
-    margin-top:22px;
+    margin-top:23px;
+
     font-family:"Playfair Display",serif;
-    font-size:clamp(62px,10vw,130px);
-    line-height:.86;
-    color:var(--rose-deep);
+
+    font-size:
+        clamp(
+            62px,
+            10vw,
+            132px
+        );
+
+    line-height:.85;
+
+    color:var(--rose-dark);
+
     text-shadow:
-        0 12px 42px rgba(115,68,90,.18),
-        0 0 50px rgba(255,255,255,.95);
+        0 12px 45px rgba(110,65,85,.17),
+        0 0 55px rgba(255,255,255,.94);
 }
 
 .hero-title span{
@@ -771,218 +1178,227 @@ body[data-theme="autumn"] .moon{
 }
 
 .hero-subtitle{
-    margin-top:20px;
-    color:#756b78;
+    margin-top:23px;
+
+    color:#766d79;
+
     font-size:17px;
-    letter-spacing:2px;
+
+    letter-spacing:3px;
 }
 
 .hero-copy{
-    max-width:780px;
-    margin:23px auto 0;
-    line-height:2;
+    width:min(790px,100%);
+    margin:22px auto 0;
+
+    color:#69616b;
+
     font-size:14px;
-    color:#6b636d;
+    line-height:2;
 }
 
-.hero-actions{
+.hero-buttons{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
+
     gap:12px;
-    margin-top:32px;
+
+    margin-top:30px;
 }
 
-.hero-btn{
+.hero-button{
     position:relative;
+
+    min-width:175px;
+
     padding:13px 22px;
+
     border-radius:18px;
+
     text-decoration:none;
+
     font-size:13px;
     font-weight:600;
+
     overflow:hidden;
+
     transition:.35s ease;
-    backdrop-filter:blur(12px);
 }
 
-.hero-btn.primary{
-    color:#fff;
+.hero-button.primary{
+    color:white;
+
     background:
         linear-gradient(
             135deg,
-            var(--rose-deep),
+            var(--rose-dark),
             var(--rose)
         );
-    box-shadow:0 16px 30px rgba(130,62,92,.18);
+
+    box-shadow:
+        0 16px 33px rgba(110,57,80,.19);
 }
 
-.hero-btn.secondary{
-    color:var(--rose-deep);
-    background:rgba(255,255,255,.65);
-    border:1px solid rgba(255,255,255,.9);
+.hero-button.secondary{
+    color:var(--rose-dark);
+
+    background:rgba(255,255,255,.64);
+
+    border:
+        1px solid
+        rgba(255,255,255,.92);
 }
 
-.hero-btn::before{
+.hero-button::before{
     content:"";
     position:absolute;
     inset:0;
+
     background:
         linear-gradient(
             120deg,
-            transparent 25%,
+            transparent 30%,
             rgba(255,255,255,.65) 50%,
-            transparent 72%
+            transparent 70%
         );
+
     transform:translateX(-130%);
-    transition:.75s ease;
+
+    transition:.8s ease;
 }
 
-.hero-btn:hover{
-    transform:translateY(-5px) scale(1.03);
+.hero-button:hover{
+    transform:
+        translateY(-5px)
+        scale(1.03);
 }
 
-.hero-btn:hover::before{
+.hero-button:hover::before{
     transform:translateX(130%);
 }
 
 /* =========================================================
-   HERO DECOR
+   FLOWER PARTICLES IN HERO
 ========================================================= */
-.sky-petal{
+
+.hero-petal{
     position:absolute;
+
     width:18px;
     height:11px;
-    border-radius:80% 15% 80% 15%;
+
+    border-radius:
+        80% 12% 80% 12%;
+
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.95),
-            var(--petal-a)
+            var(--petal-1),
+            var(--petal-2)
         );
+
     box-shadow:
-        0 2px 8px rgba(110,70,80,.14),
-        inset 0 1px 2px rgba(255,255,255,.9);
-    animation:skyFloat 6s ease-in-out infinite;
+        0 2px 8px rgba(100,60,80,.12),
+        inset 0 1px 3px rgba(255,255,255,.8);
+
+    animation:
+        heroPetalFloat
+        6s ease-in-out infinite;
 }
 
-@keyframes skyFloat{
+.hero-petal.p1{left:9%;top:35%;animation-delay:-1s}
+.hero-petal.p2{left:20%;top:21%;animation-delay:-3s}
+.hero-petal.p3{left:30%;top:40%;animation-delay:-2s}
+.hero-petal.p4{right:20%;top:24%;animation-delay:-4s}
+.hero-petal.p5{right:10%;top:38%;animation-delay:-1.5s}
+.hero-petal.p6{right:30%;top:17%;animation-delay:-5s}
+
+@keyframes heroPetalFloat{
     0%,100%{
-        transform:translateY(0) rotate(-6deg);
+        transform:
+            translateY(0)
+            rotate(-5deg);
     }
+
     50%{
-        transform:translateY(-17px) rotate(8deg);
+        transform:
+            translateY(-16px)
+            rotate(8deg);
     }
 }
-
-.sky-petal.p1{left:10%;top:31%;animation-delay:-1s}
-.sky-petal.p2{left:18%;top:18%;animation-delay:-3s}
-.sky-petal.p3{right:17%;top:39%;animation-delay:-2s}
-.sky-petal.p4{right:8%;top:24%;animation-delay:-4s}
-.sky-petal.p5{left:27%;top:44%;animation-delay:-4.5s}
-.sky-petal.p6{right:28%;top:20%;animation-delay:-5s}
 
 /* =========================================================
-   RIVER BASIN
+   HERO RIVER
 ========================================================= */
-.river-basin{
+
+.hero-river{
     position:absolute;
-    left:-8%;
-    right:-8%;
-    bottom:-85px;
-    height:260px;
-    transform:rotate(-1deg);
+
+    left:-7%;
+    right:-7%;
+    bottom:-120px;
+
+    height:280px;
+
+    border-radius:
+        50% 50% 0 0;
+
     background:
         linear-gradient(
-            180deg,
-            rgba(208,248,246,.6),
-            var(--water-a) 34%,
-            var(--water-b) 100%
+            170deg,
+            var(--water-light),
+            var(--water-1) 34%,
+            var(--water-2) 100%
         );
-    border-radius:50% 50% 0 0;
-    box-shadow:
-        0 -18px 50px rgba(80,130,130,.16),
-        inset 0 18px 30px rgba(255,255,255,.25);
+
     overflow:hidden;
-    z-index:5;
+
+    box-shadow:
+        inset 0 18px 32px rgba(255,255,255,.23),
+        0 -20px 55px rgba(76,123,128,.15);
+
+    z-index:12;
 }
 
-.river-basin::before{
-    content:"";
+.hero-river-flow{
     position:absolute;
-    inset:0;
+    inset:-30%;
+
     background:
         repeating-linear-gradient(
             8deg,
-            transparent 0 22px,
-            rgba(255,255,255,.18) 24px 28px,
-            transparent 30px 48px
+            transparent 0 24px,
+            rgba(255,255,255,.18) 27px 31px,
+            transparent 34px 53px
         );
-    opacity:.8;
-    animation:waterFlow 8s linear infinite;
+
+    animation:
+        waterFlow
+        7s linear infinite;
 }
 
 @keyframes waterFlow{
-    from{transform:translateX(-40px)}
-    to{transform:translateX(40px)}
-}
-
-.river-shine{
-    position:absolute;
-    width:420px;
-    height:120px;
-    left:50%;
-    top:28px;
-    transform:translateX(-50%);
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(255,255,255,.42),
-            transparent 68%
-        );
-    filter:blur(8px);
-    animation:riverShimmer 5s ease-in-out infinite;
-}
-
-@keyframes riverShimmer{
-    0%,100%{transform:translateX(-50%) scale(.9);opacity:.5}
-    50%{transform:translateX(-50%) scale(1.15);opacity:1}
-}
-
-/* =========================================================
-   WATER RIPPLE
-========================================================= */
-.river-ripple{
-    position:absolute;
-    width:20px;
-    height:20px;
-    border:2px solid rgba(255,255,255,.72);
-    border-radius:50%;
-    transform:translate(-50%,-50%) scale(.2);
-    animation:waterRipple 1.15s ease-out forwards;
-    pointer-events:none;
-    z-index:5;
-}
-
-@keyframes waterRipple{
-    0%{
-        transform:translate(-50%,-50%) scale(.2);
-        opacity:.95;
+    from{
+        transform:translateX(-55px);
     }
-    100%{
-        transform:translate(-50%,-50%) scale(8);
-        opacity:0;
+    to{
+        transform:translateX(55px);
     }
 }
 
 /* =========================================================
-   NAV
+   NAVIGATION
 ========================================================= */
-.nav-wrap{
+
+.nav-shell{
     position:sticky;
     top:12px;
-    z-index:7000;
-    width:min(1040px,calc(100% - 26px));
-    margin:-28px auto 0;
+    z-index:8000;
+
+    width:min(1080px,calc(100% - 28px));
+
+    margin:-25px auto 0;
 }
 
 .nav{
@@ -990,102 +1406,137 @@ body[data-theme="autumn"] .moon{
     align-items:center;
     justify-content:center;
     flex-wrap:wrap;
+
     gap:7px;
+
     padding:8px;
-    border-radius:22px;
-    background:rgba(255,255,255,.6);
-    border:1px solid rgba(255,255,255,.9);
-    backdrop-filter:blur(20px);
-    box-shadow:0 17px 40px rgba(76,62,78,.12);
+
+    border-radius:23px;
+
+    background:rgba(255,255,255,.61);
+
+    border:
+        1px solid
+        rgba(255,255,255,.93);
+
+    backdrop-filter:blur(22px);
+
+    box-shadow:
+        0 18px 40px rgba(74,61,76,.12);
 }
 
 .nav a,
-.theme-toggle{
+.nav-theme-mini{
     position:relative;
+
     border:0;
-    padding:11px 15px;
+
+    padding:10px 14px;
+
     border-radius:14px;
+
     background:transparent;
-    color:#625964;
+
+    color:#655d66;
+
     text-decoration:none;
-    cursor:pointer;
+
     font-family:inherit;
-    font-size:12px;
+
+    font-size:11px;
     font-weight:600;
+
+    cursor:pointer;
+
     transition:.3s ease;
 }
 
 .nav a::before,
-.theme-toggle::before{
+.nav-theme-mini::before{
     content:"";
     position:absolute;
     inset:0;
+
     border-radius:inherit;
+
     background:
         linear-gradient(
             135deg,
             rgba(215,123,155,.18),
-            rgba(128,169,135,.13)
+            rgba(128,169,135,.14)
         );
+
     transform:scale(.7);
     opacity:0;
+
     transition:.3s ease;
 }
 
 .nav a:hover,
 .nav a.active,
-.theme-toggle:hover{
-    color:var(--rose-deep);
+.nav-theme-mini:hover{
+    color:var(--rose-dark);
     transform:translateY(-2px);
 }
 
 .nav a:hover::before,
 .nav a.active::before,
-.theme-toggle:hover::before{
+.nav-theme-mini:hover::before{
     transform:scale(1);
     opacity:1;
 }
 
 .nav a span,
-.theme-toggle span{
+.nav-theme-mini span{
     position:relative;
     z-index:2;
 }
 
 /* =========================================================
-   SECTION
+   PAGE CONTENT
 ========================================================= */
+
 main{
     position:relative;
-    z-index:20;
+    z-index:30;
 }
+
+/* =========================================================
+   SECTION TITLES
+========================================================= */
 
 .section{
-    position:relative;
     width:min(1160px,calc(100% - 30px));
-    margin:0 auto;
+    margin-left:auto;
+    margin-right:auto;
 }
 
-.section-header{
+.section-heading{
     text-align:center;
-    margin-top:90px;
+    margin-top:95px;
 }
 
-.kicker{
+.section-kicker{
     display:inline-flex;
     align-items:center;
-    gap:10px;
-    color:var(--rose-deep);
+    gap:9px;
+
+    color:var(--rose-dark);
+
     font-size:10px;
-    letter-spacing:3px;
+
     font-weight:700;
+
+    letter-spacing:3px;
 }
 
-.kicker::before,
-.kicker::after{
+.section-kicker::before,
+.section-kicker::after{
     content:"";
+
     width:45px;
     height:1px;
+
     background:
         linear-gradient(
             90deg,
@@ -1094,7 +1545,7 @@ main{
         );
 }
 
-.kicker::after{
+.section-kicker::after{
     background:
         linear-gradient(
             90deg,
@@ -1103,57 +1554,440 @@ main{
         );
 }
 
-.section-header h2{
-    margin-top:11px;
+.section-heading h2{
+    margin-top:10px;
+
     font-family:"Playfair Display",serif;
-    font-size:clamp(35px,5vw,57px);
-    color:var(--leaf-deep);
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            58px
+        );
+
+    color:var(--green-dark);
 }
 
-.section-header p{
-    width:min(780px,100%);
+.section-heading p{
+    width:min(760px,100%);
+
     margin:15px auto 0;
+
     color:var(--muted);
+
     line-height:1.95;
+
     font-size:14px;
 }
 
 /* =========================================================
-   CHARACTERS
+   SEASON SWITCH - VERY OBVIOUS
 ========================================================= */
-.characters{
-    margin-top:44px;
+
+.season-section{
+    margin-top:75px;
+}
+
+.season-gate{
+    position:relative;
+    padding:27px;
+
+    border-radius:35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.78),
+            rgba(247,239,252,.64),
+            rgba(239,249,242,.65)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.94);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 28px 75px rgba(83,67,84,.14);
+
+    overflow:hidden;
+}
+
+body[data-season="autumn"] .season-gate{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,248,237,.8),
+            rgba(250,232,209,.62),
+            rgba(236,240,219,.65)
+        );
+}
+
+.season-glow{
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    filter:blur(15px);
+
+    opacity:.25;
+
+    pointer-events:none;
+}
+
+.season-glow.left{
+    left:-140px;
+    top:-160px;
+
+    background:
+        radial-gradient(
+            circle,
+            var(--rose),
+            transparent 70%
+        );
+}
+
+.season-glow.right{
+    right:-140px;
+    bottom:-170px;
+
+    background:
+        radial-gradient(
+            circle,
+            var(--green),
+            transparent 70%
+        );
+}
+
+.season-content{
+    position:relative;
+    z-index:2;
+
+    text-align:center;
+}
+
+.season-label{
+    font-size:10px;
+    letter-spacing:4px;
+    color:var(--rose-dark);
+    font-weight:700;
+}
+
+.season-title{
+    margin-top:7px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:
+        clamp(
+            28px,
+            4vw,
+            42px
+        );
+
+    color:var(--ink);
+}
+
+.season-subtitle{
+    margin-top:5px;
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+.season-switch{
+    width:min(760px,100%);
+
+    margin:25px auto 0;
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:1fr 90px 1fr;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+/* big buttons */
+
+.season-choice{
+    position:relative;
+
+    min-height:86px;
+
+    padding:12px 20px;
+
+    border:1px solid rgba(255,255,255,.9);
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.64);
+
+    cursor:pointer;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        background .5s ease,
+        border-color .5s ease;
+
+    font-family:inherit;
+}
+
+.season-choice:hover{
+    transform:translateY(-4px);
+}
+
+.season-choice.active{
+    box-shadow:
+        0 15px 30px rgba(80,65,80,.13),
+        0 0 28px rgba(255,255,255,.65);
+
+    border-color:
+        rgba(255,255,255,1);
+}
+
+.spring-choice.active{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,225,236,.94),
+            rgba(235,249,241,.9)
+        );
+}
+
+.autumn-choice.active{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,224,187,.94),
+            rgba(233,237,198,.9)
+        );
+}
+
+.season-choice .icon{
+    font-size:31px;
+    display:block;
+}
+
+.season-choice strong{
+    display:block;
+
+    margin-top:3px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:19px;
+
+    color:var(--ink);
+}
+
+.season-choice small{
+    color:var(--muted);
+    font-size:9px;
+    letter-spacing:1px;
+}
+
+/* slider */
+
+.season-slider{
+    position:relative;
+
+    width:78px;
+    height:78px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.93);
+
+    background:
+        conic-gradient(
+            from 0deg,
+            #f4b7cb,
+            #c9b9e9,
+            #a9d7df,
+            #efbd8b,
+            #d8854b,
+            #f4b7cb
+        );
+
+    box-shadow:
+        0 9px 23px rgba(80,65,80,.14),
+        0 0 30px rgba(255,255,255,.5);
+
+    cursor:pointer;
+
+    transition:
+        transform .6s cubic-bezier(.2,.8,.2,1);
+}
+
+.season-slider.autumn{
+    transform:rotate(180deg);
+}
+
+.season-slider::before{
+    content:"";
+
+    position:absolute;
+    inset:7px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            white,
+            rgba(255,255,255,.67) 45%,
+            rgba(255,255,255,.35)
+        );
+
+    backdrop-filter:blur(7px);
+}
+
+.season-slider::after{
+    content:"↕";
+
+    position:absolute;
+
+    inset:0;
+
+    display:grid;
+    place-items:center;
+
+    color:var(--rose-dark);
+
+    font-size:21px;
+    font-weight:700;
+
+    transform:rotate(-90deg);
+}
+
+.season-status{
+    margin-top:17px;
+
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:8px 17px;
+
+    border-radius:999px;
+
+    color:var(--rose-dark);
+
+    background:rgba(255,255,255,.68);
+
+    border:1px solid rgba(255,255,255,.9);
+
+    font-size:11px;
+
+    box-shadow:
+        0 9px 20px rgba(80,65,80,.07);
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+
+    background:var(--rose);
+
+    box-shadow:
+        0 0 10px var(--rose);
+
+    animation:
+        statusPulse
+        1.8s ease-in-out infinite;
+}
+
+@keyframes statusPulse{
+
+    0%,100%{
+        transform:scale(.75);
+        opacity:.5;
+    }
+
+    50%{
+        transform:scale(1.25);
+        opacity:1;
+    }
+}
+
+.season-hint{
+    margin-top:11px;
+
+    font-size:10px;
+
+    color:var(--muted);
+
+    letter-spacing:1px;
+}
+
+/* =========================================================
+   CHARACTER CARDS
+========================================================= */
+
+.characters{
+    margin-top:43px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:28px;
+
     perspective:1600px;
 }
 
-.card{
+.character-card{
     position:relative;
-    border-radius:34px;
+
     overflow:hidden;
+
+    border-radius:34px;
+
     background:var(--glass);
-    border:1px solid rgba(255,255,255,.92);
-    backdrop-filter:blur(15px);
-    box-shadow:var(--shadow);
+
+    border:
+        1px solid
+        rgba(255,255,255,.94);
+
+    backdrop-filter:blur(16px);
+
+    box-shadow:
+        0 30px 75px rgba(79,63,81,.16);
+
     transform-style:preserve-3d;
+
     transition:
         transform .18s ease,
         box-shadow .35s ease;
+
     opacity:0;
     transform:translateY(35px);
 }
 
-.card.visible{
+.character-card.visible{
     opacity:1;
     transform:translateY(0);
 }
 
-.card::before{
+.character-card::before{
     content:"";
+
     position:absolute;
     inset:0;
+
     background:
         linear-gradient(
             120deg,
@@ -1161,587 +1995,968 @@ main{
             rgba(255,255,255,.62) 48%,
             transparent 66%
         );
+
     transform:translateX(-130%);
-    transition:.85s ease;
+
+    transition:.9s ease;
+
     pointer-events:none;
+
     z-index:20;
 }
 
-.card:hover::before{
+.character-card:hover::before{
     transform:translateX(130%);
 }
 
-.card:hover{
+.character-card:hover{
     box-shadow:
-        0 42px 100px rgba(78,59,79,.22),
-        0 0 38px rgba(255,255,255,.7);
+        0 42px 100px rgba(75,59,77,.21),
+        0 0 35px rgba(255,255,255,.64);
 }
 
-.card-image{
+.character-image-wrap{
     position:relative;
-    height:420px;
+
+    height:425px;
+
     overflow:hidden;
 }
 
-.card-image::after{
+.character-image-wrap::after{
     content:"";
+
     position:absolute;
     inset:0;
+
     background:
         linear-gradient(
             to top,
-            rgba(36,28,37,.4),
-            transparent 44%
+            rgba(35,29,36,.39),
+            transparent 45%
         );
+
     z-index:2;
 }
 
-.card-image img{
+.character-image-wrap img{
     position:absolute;
     inset:0;
+
     width:100%;
     height:100%;
+
     object-fit:cover;
     object-position:top center;
+
     transition:
         transform .8s cubic-bezier(.2,.8,.2,1),
         filter .8s ease;
 }
 
-.card:hover .card-image img{
+.character-card:hover
+.character-image-wrap img{
     transform:scale(1.07);
-    filter:saturate(1.08) brightness(1.04);
+
+    filter:
+        saturate(1.07)
+        brightness(1.04);
 }
 
-.card-badge{
+.card-number{
     position:absolute;
-    left:16px;
+
     top:16px;
-    z-index:7;
+    left:16px;
+
+    z-index:8;
+
     padding:7px 12px;
+
     border-radius:999px;
-    font-size:9px;
-    letter-spacing:1.5px;
+
     color:white;
-    background:rgba(55,47,56,.42);
-    border:1px solid rgba(255,255,255,.66);
+
+    background:
+        rgba(48,42,50,.43);
+
+    border:
+        1px solid
+        rgba(255,255,255,.66);
+
     backdrop-filter:blur(9px);
+
+    font-size:9px;
+
+    letter-spacing:1.5px;
 }
 
 .card-mood{
     position:absolute;
-    right:16px;
+
     top:16px;
-    z-index:7;
+    right:16px;
+
+    z-index:8;
+
     padding:7px 11px;
+
     border-radius:999px;
-    font-size:9px;
-    letter-spacing:1px;
+
     color:white;
-    background:rgba(55,47,56,.4);
-    border:1px solid rgba(255,255,255,.62);
+
+    background:
+        rgba(48,42,50,.40);
+
+    border:
+        1px solid
+        rgba(255,255,255,.62);
+
     backdrop-filter:blur(9px);
+
+    font-size:9px;
+
+    letter-spacing:1px;
 }
 
 .card-name{
     position:absolute;
+
+    z-index:8;
+
     left:20px;
-    bottom:18px;
-    z-index:7;
+    bottom:19px;
+
     color:white;
 }
 
 .card-name small{
     display:block;
+
     font-size:9px;
+
     letter-spacing:2px;
-    opacity:.76;
+
+    opacity:.74;
 }
 
 .card-name strong{
     display:block;
+
     font-family:"Playfair Display",serif;
-    font-size:36px;
+
+    font-size:37px;
+
     line-height:1;
-    text-shadow:0 5px 20px rgba(30,20,30,.25);
+
+    text-shadow:
+        0 5px 22px rgba(20,15,20,.33);
 }
 
 .card-symbol{
     position:absolute;
-    right:18px;
+
+    right:19px;
     bottom:20px;
-    z-index:7;
-    width:48px;
-    height:48px;
+
+    width:49px;
+    height:49px;
+
+    z-index:8;
+
     display:grid;
     place-items:center;
+
     border-radius:50%;
+
     color:white;
-    background:rgba(255,255,255,.14);
-    border:1px solid rgba(255,255,255,.62);
-    backdrop-filter:blur(9px);
+
+    background:
+        rgba(255,255,255,.14);
+
+    border:
+        1px solid
+        rgba(255,255,255,.64);
+
+    backdrop-filter:blur(8px);
 }
 
-.card-info{
-    padding:26px 24px 28px;
+.character-content{
+    padding:26px 24px 29px;
 }
 
-.card-info h3{
+.character-content h3{
     font-family:"Playfair Display",serif;
-    color:var(--rose-deep);
+
+    color:var(--rose-dark);
+
     font-size:29px;
 }
 
-.card-tag{
+.character-tagline{
+    margin-top:2px;
+
     color:var(--muted);
+
     font-size:12px;
-    margin-top:3px;
+
     margin-bottom:18px;
 }
 
-.meta{
+.character-meta{
     display:grid;
     gap:7px;
 }
 
-.meta-row{
+.character-row{
     display:grid;
-    grid-template-columns:86px 1fr;
-    gap:7px;
-    font-size:12.5px;
-    line-height:1.55;
+
+    grid-template-columns:
+        88px 1fr;
+
+    gap:8px;
+
     padding-bottom:6px;
-    border-bottom:1px dashed rgba(100,100,100,.12);
+
+    border-bottom:
+        1px dashed
+        rgba(90,90,90,.12);
+
+    font-size:12.5px;
+
+    line-height:1.55;
 }
 
-.meta-row b{
-    color:var(--leaf-deep);
+.character-row b{
+    color:var(--green-dark);
 }
 
-.card-description{
-    margin-top:16px;
-    color:#69616b;
+.character-description{
+    margin-top:17px;
+
+    color:#6d6570;
+
     font-size:13px;
+
     line-height:1.9;
 }
 
 .tags{
     display:flex;
     flex-wrap:wrap;
+
     gap:7px;
+
     margin-top:17px;
 }
 
 .tag{
     padding:7px 10px;
+
     border-radius:999px;
-    font-size:10px;
-    color:var(--leaf-deep);
+
     background:
         linear-gradient(
             135deg,
-            rgba(238,248,239,.95),
-            rgba(255,240,246,.9)
+            rgba(237,248,239,.94),
+            rgba(255,239,246,.9)
         );
-    border:1px solid rgba(128,169,135,.14);
+
+    color:var(--green-dark);
+
+    border:
+        1px solid
+        rgba(128,169,135,.14);
+
+    font-size:10px;
+
     transition:.25s ease;
 }
 
 .tag:hover{
     transform:translateY(-3px);
+
+    box-shadow:
+        0 8px 17px rgba(90,110,95,.11);
 }
 
 /* =========================================================
-   INTERACTIVE RIVER SCENE
+   RIVER SECTION
 ========================================================= */
+
 .river-section{
-    margin-top:100px;
+    margin-top:95px;
 }
 
-.river-card{
+.river-world{
     position:relative;
-    min-height:560px;
-    border-radius:40px;
+
+    min-height:590px;
+
+    border-radius:42px;
+
     overflow:hidden;
+
     background:
         linear-gradient(
             180deg,
-            #bdded6,
-            #9ecbc0 30%,
-            #77a89f 100%
+            #b7ddd5,
+            #9dc8bb 34%,
+            #668f87 100%
         );
-    border:1px solid rgba(255,255,255,.72);
+
+    border:
+        1px solid
+        rgba(255,255,255,.75);
+
     box-shadow:
-        0 35px 90px rgba(63,86,82,.19);
+        0 36px 95px rgba(59,82,77,.2);
 }
 
-.river-card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(
-            circle at 20% 25%,
-            rgba(255,255,255,.3),
-            transparent 18%
-        ),
-        radial-gradient(
-            circle at 80% 35%,
-            rgba(255,255,255,.2),
-            transparent 18%
-        );
-}
-
-.river-title{
-    position:absolute;
-    top:34px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:9;
-    width:min(800px,calc(100% - 40px));
-    text-align:center;
-}
-
-.river-title .kicker{
-    color:#47695e;
-}
-
-body[data-theme="autumn"] .river-title .kicker{
-    color:#5e6747;
-}
-
-.river-title h2{
-    margin-top:8px;
-    font-family:"Playfair Display",serif;
-    font-size:clamp(35px,5vw,54px);
-    color:#315a54;
-    text-shadow:0 3px 16px rgba(255,255,255,.35);
-}
-
-body[data-theme="autumn"] .river-title h2{
-    color:#4e6042;
-}
-
-.river-title p{
-    margin-top:8px;
-    font-size:13px;
-    line-height:1.8;
-    color:#4d6962;
-}
-
-.river{
-    position:absolute;
-    left:-8%;
-    right:-8%;
-    bottom:-110px;
-    height:330px;
-    border-radius:50% 50% 0 0;
+body[data-season="autumn"] .river-world{
     background:
         linear-gradient(
-            170deg,
-            var(--water-a),
-            var(--water-b)
+            180deg,
+            #cbd6b6,
+            #9baa83 36%,
+            #6c785a 100%
         );
-    overflow:hidden;
-    transform:rotate(-1deg);
-    box-shadow:
-        inset 0 18px 40px rgba(255,255,255,.2);
 }
 
-.river-flow{
+.river-aura{
     position:absolute;
-    inset:-30%;
-    background:
-        repeating-linear-gradient(
-            8deg,
-            transparent 0 26px,
-            rgba(255,255,255,.18) 28px 32px,
-            transparent 34px 53px
-        );
-    animation:riverCurrent 7s linear infinite;
-}
 
-@keyframes riverCurrent{
-    from{transform:translateX(-50px)}
-    to{transform:translateX(50px)}
-}
+    width:650px;
+    height:330px;
 
-.water-glow{
-    position:absolute;
-    width:420px;
-    height:260px;
+    left:50%;
+    top:20px;
+
+    transform:translateX(-50%);
+
     border-radius:50%;
-    left:var(--water-x,50%);
-    top:var(--water-y,40%);
-    transform:translate(-50%,-50%);
+
     background:
         radial-gradient(
             ellipse,
             rgba(255,255,255,.32),
-            transparent 67%
+            transparent 68%
         );
+
+    filter:blur(13px);
+}
+
+.river-title{
+    position:absolute;
+
+    top:34px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(800px,calc(100% - 40px));
+
+    z-index:10;
+
+    text-align:center;
+}
+
+.river-title h2{
+    margin-top:7px;
+
+    font-family:"Playfair Display",serif;
+
+    color:#365b55;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            57px
+        );
+}
+
+body[data-season="autumn"]
+.river-title h2{
+    color:#526340;
+}
+
+.river-title p{
+    margin-top:8px;
+
+    color:#4f6862;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+/* interactive water */
+
+.water{
+    position:absolute;
+
+    left:-8%;
+    right:-8%;
+
+    bottom:-130px;
+
+    height:390px;
+
+    border-radius:
+        50% 50% 0 0;
+
+    background:
+        linear-gradient(
+            170deg,
+            var(--water-light),
+            var(--water-1) 35%,
+            var(--water-2)
+        );
+
+    overflow:hidden;
+
+    transform:rotate(-1deg);
+
+    box-shadow:
+        inset 0 20px 45px rgba(255,255,255,.2);
+}
+
+.water-flow{
+    position:absolute;
+    inset:-35%;
+
+    background:
+        repeating-linear-gradient(
+            8deg,
+            transparent 0 27px,
+            rgba(255,255,255,.19) 29px 33px,
+            transparent 35px 55px
+        );
+
+    animation:
+        waterCurrent
+        7s linear infinite;
+}
+
+@keyframes waterCurrent{
+    from{
+        transform:translateX(-60px);
+    }
+    to{
+        transform:translateX(60px);
+    }
+}
+
+.water-glow{
+    position:absolute;
+
+    width:440px;
+    height:280px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,255,255,.36),
+            transparent 68%
+        );
+
     filter:blur(10px);
+
     pointer-events:none;
+
     transition:
         left .2s ease,
         top .2s ease;
 }
 
-.water-line{
+/* fish */
+
+.fish{
     position:absolute;
-    height:2px;
-    background:rgba(255,255,255,.3);
-    border-radius:99px;
-    filter:blur(.5px);
-    animation:waterLine 4s linear infinite;
+
+    width:48px;
+    height:21px;
+
+    border-radius:
+        75% 55% 55% 75%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f1b06d,
+            #de7f4e
+        );
+
+    box-shadow:
+        0 4px 10px rgba(60,60,60,.14);
+
+    z-index:7;
+
+    animation:
+        swim
+        linear infinite;
 }
 
-.water-line.l1{width:170px;top:38%;left:10%}
-.water-line.l2{width:110px;top:52%;left:56%;animation-delay:-1.1s}
-.water-line.l3{width:240px;top:66%;left:34%;animation-delay:-2s}
-.water-line.l4{width:125px;top:76%;left:78%;animation-delay:-.5s}
+.fish::before{
+    content:"";
 
-@keyframes waterLine{
+    position:absolute;
+
+    left:-14px;
+    top:1px;
+
+    width:19px;
+    height:19px;
+
+    background:inherit;
+
+    clip-path:
+        polygon(
+            100% 50%,
+            0 0,
+            0 100%
+        );
+}
+
+.fish::after{
+    content:"";
+
+    position:absolute;
+
+    right:7px;
+    top:6px;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#fff;
+}
+
+.fish.f1{
+    top:42%;
+    left:-100px;
+    animation-duration:12s;
+}
+
+.fish.f2{
+    top:67%;
+    left:-120px;
+    animation-duration:15s;
+    animation-delay:-6s;
+    transform:scale(.8);
+}
+
+@keyframes swim{
+
+    0%{
+        transform:
+            translateX(0)
+            scaleX(1);
+    }
+
+    46%{
+        transform:
+            translateX(54vw)
+            translateY(-13px)
+            scaleX(1);
+    }
+
+    50%{
+        transform:
+            translateX(59vw)
+            translateY(-13px)
+            scaleX(-1);
+    }
+
+    100%{
+        transform:
+            translateX(120vw)
+            translateY(6px)
+            scaleX(-1);
+    }
+}
+
+/* lily pads */
+
+.lily{
+    position:absolute;
+
+    width:72px;
+    height:35px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            #87ad7d,
+            #5d865f
+        );
+
+    box-shadow:
+        0 8px 15px rgba(52,77,55,.18);
+
+    z-index:8;
+}
+
+.lily::after{
+    content:"";
+
+    position:absolute;
+
+    right:3px;
+    top:1px;
+
+    width:18px;
+    height:19px;
+
+    background:
+        rgba(255,255,255,.58);
+
+    clip-path:
+        polygon(
+            100% 50%,
+            0 0,
+            0 100%
+        );
+}
+
+.lily.l1{
+    left:13%;
+    top:34%;
+    transform:rotate(-11deg);
+}
+
+.lily.l2{
+    right:15%;
+    top:50%;
+    transform:rotate(13deg);
+}
+
+.lily.l3{
+    left:39%;
+    top:71%;
+}
+
+.water-line{
+    position:absolute;
+
+    height:2px;
+
+    background:
+        rgba(255,255,255,.31);
+
+    border-radius:999px;
+
+    filter:blur(.5px);
+
+    animation:
+        waterShine
+        4s linear infinite;
+}
+
+.water-line.l1{
+    width:190px;
+    top:36%;
+    left:10%;
+}
+
+.water-line.l2{
+    width:130px;
+    top:49%;
+    left:57%;
+    animation-delay:-1.2s;
+}
+
+.water-line.l3{
+    width:230px;
+    top:65%;
+    left:32%;
+    animation-delay:-2.1s;
+}
+
+.water-line.l4{
+    width:140px;
+    top:78%;
+    left:77%;
+    animation-delay:-.5s;
+}
+
+@keyframes waterShine{
+
     from{
         transform:translateX(-30px);
         opacity:.1;
     }
+
     50%{
         opacity:.7;
     }
+
     to{
         transform:translateX(60px);
         opacity:.1;
     }
 }
 
-.lily{
+.river-message{
     position:absolute;
-    z-index:6;
-    width:70px;
-    height:34px;
-    border-radius:50%;
-    background:
-        radial-gradient(
-            ellipse,
-            #86ac7a 0%,
-            #628864 100%
-        );
-    box-shadow:
-        0 8px 16px rgba(48,76,54,.2);
-}
 
-.lily::after{
-    content:"";
-    position:absolute;
-    width:17px;
-    height:17px;
-    right:5px;
-    top:3px;
-    background:rgba(255,255,255,.6);
-    clip-path:polygon(0 0,100% 50%,0 100%);
-}
+    z-index:12;
 
-.lily.l1{left:13%;top:33%;transform:rotate(-13deg)}
-.lily.l2{right:15%;top:47%;transform:rotate(12deg)}
-.lily.l3{left:38%;top:70%;transform:rotate(-5deg)}
-
-.fish{
-    position:absolute;
-    z-index:7;
-    width:45px;
-    height:20px;
-    border-radius:70% 55% 55% 70%;
-    background:
-        linear-gradient(
-            90deg,
-            #f3c181,
-            #e08d5d
-        );
-    box-shadow:0 3px 8px rgba(70,70,70,.15);
-    animation:fishSwim 9s linear infinite;
-}
-
-.fish::before{
-    content:"";
-    position:absolute;
-    width:18px;
-    height:18px;
-    left:-12px;
-    top:1px;
-    background:inherit;
-    clip-path:polygon(100% 50%,0 0,0 100%);
-}
-
-.fish::after{
-    content:"";
-    position:absolute;
-    right:7px;
-    top:6px;
-    width:3px;
-    height:3px;
-    border-radius:50%;
-    background:#fff;
-    box-shadow:0 0 0 1px rgba(60,50,50,.35);
-}
-
-.fish.f1{
-    top:42%;
-    left:-80px;
-    animation-duration:11s;
-}
-
-.fish.f2{
-    top:66%;
-    left:-110px;
-    animation-duration:14s;
-    animation-delay:-6s;
-    transform:scale(.8);
-}
-
-@keyframes fishSwim{
-    0%{transform:translateX(0) scale(1)}
-    45%{transform:translateX(53vw) translateY(-13px) scale(1)}
-    50%{transform:translateX(58vw) translateY(-13px) scaleX(-1)}
-    100%{transform:translateX(120vw) translateY(7px) scaleX(-1)}
-}
-
-.river-help{
-    position:absolute;
     left:50%;
     top:205px;
+
     transform:translateX(-50%);
-    z-index:10;
-    padding:11px 17px;
+
+    padding:10px 18px;
+
     border-radius:999px;
-    background:rgba(255,255,255,.35);
-    border:1px solid rgba(255,255,255,.6);
-    backdrop-filter:blur(10px);
-    color:#45665f;
-    font-size:11px;
-    letter-spacing:1px;
+
+    background:
+        rgba(255,255,255,.34);
+
+    border:
+        1px solid
+        rgba(255,255,255,.6);
+
+    backdrop-filter:blur(11px);
+
+    color:#46665f;
+
+    font-size:10px;
+
+    letter-spacing:1.5px;
+}
+
+/* ripple */
+
+.ripple{
+    position:absolute;
+
+    width:20px;
+    height:20px;
+
+    border:
+        2px solid
+        rgba(255,255,255,.78);
+
+    border-radius:50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.2);
+
+    animation:
+        rippleExpand
+        1.15s
+        ease-out
+        forwards;
+
+    z-index:20;
+
+    pointer-events:none;
+}
+
+@keyframes rippleExpand{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            scale(.2);
+
+        opacity:1;
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            scale(8);
+
+        opacity:0;
+    }
 }
 
 /* =========================================================
-   MAGIC PANEL
+   FINAL MESSAGE
 ========================================================= */
-.magic-panel{
-    margin-top:75px;
-    padding:43px;
+
+.final-panel{
+    margin-top:80px;
+
+    padding:48px 30px;
+
     border-radius:35px;
+
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.75),
-            rgba(249,242,255,.53),
-            rgba(237,249,241,.58)
+            rgba(255,255,255,.77),
+            rgba(245,239,251,.6),
+            rgba(237,249,241,.6)
         );
-    border:1px solid rgba(255,255,255,.9);
+
+    border:
+        1px solid
+        rgba(255,255,255,.93);
+
     backdrop-filter:blur(16px);
-    box-shadow:var(--shadow);
+
+    box-shadow:
+        0 28px 75px rgba(80,65,82,.13);
+
     text-align:center;
 }
 
-.magic-icon{
-    font-size:38px;
-    margin-bottom:8px;
-    animation:magicPulse 2.8s ease-in-out infinite;
+body[data-season="autumn"]
+.final-panel{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,248,237,.8),
+            rgba(251,233,211,.62),
+            rgba(235,241,219,.62)
+        );
 }
 
-@keyframes magicPulse{
+.final-panel .magic-icon{
+    font-size:38px;
+    animation:
+        magicFloat
+        3s ease-in-out infinite;
+}
+
+@keyframes magicFloat{
     0%,100%{
-        transform:translateY(0) scale(.95);
+        transform:
+            translateY(0)
+            scale(.95);
     }
     50%{
-        transform:translateY(-5px) scale(1.08);
+        transform:
+            translateY(-6px)
+            scale(1.08);
     }
 }
 
-.magic-panel h2{
+.final-panel h2{
+    margin-top:7px;
+
     font-family:"Playfair Display",serif;
-    color:var(--rose-deep);
-    font-size:32px;
+
+    color:var(--rose-dark);
+
+    font-size:
+        clamp(
+            29px,
+            4vw,
+            42px
+        );
 }
 
-.magic-panel p{
-    max-width:820px;
-    margin:12px auto 0;
+.final-panel p{
+    width:min(800px,100%);
+
+    margin:13px auto 0;
+
     color:var(--muted);
-    line-height:1.95;
+
     font-size:14px;
+
+    line-height:1.95;
 }
 
 /* =========================================================
    FOOTER
 ========================================================= */
+
 footer{
     position:relative;
-    z-index:20;
-    margin-top:90px;
-    padding:75px 20px 55px;
-    text-align:center;
-    overflow:hidden;
-    color:white;
-    background:
-        linear-gradient(
-            135deg,
-            var(--leaf-deep),
-            var(--rose-deep),
-            #6d8797
-        );
-}
 
-body[data-theme="autumn"] footer{
+    z-index:30;
+
+    margin-top:90px;
+
+    padding:76px 20px 52px;
+
+    text-align:center;
+
+    color:white;
+
+    overflow:hidden;
+
     background:
         linear-gradient(
             135deg,
-            #596341,
-            #8b593f,
-            #6b6950
+            var(--footer-a),
+            var(--footer-b),
+            #67879b
         );
+
+    box-shadow:
+        0 -22px 55px rgba(75,62,76,.13);
 }
 
 footer::before,
 footer::after{
     content:"";
+
     position:absolute;
-    width:350px;
-    height:350px;
+
+    width:360px;
+    height:360px;
+
     border-radius:50%;
+
     background:
         radial-gradient(
             circle,
-            rgba(255,255,255,.14),
+            rgba(255,255,255,.13),
             transparent 70%
         );
 }
 
 footer::before{
-    left:-130px;
-    top:-140px;
+    left:-140px;
+    top:-150px;
 }
 
 footer::after{
-    right:-110px;
-    bottom:-140px;
+    right:-140px;
+    bottom:-150px;
 }
 
-.footer-flower{
+.footer-symbols{
     font-size:25px;
     letter-spacing:8px;
 }
 
 footer h3{
-    margin-top:12px;
+    margin-top:13px;
+
     font-family:"Playfair Display",serif;
+
     font-size:31px;
 }
 
 footer p{
     margin-top:7px;
+
     font-size:13px;
+
     line-height:1.8;
-    opacity:.9;
+
+    opacity:.92;
 }
 
 footer a{
@@ -1750,70 +2965,106 @@ footer a{
 }
 
 /* =========================================================
-   MUSIC PLAYER
+   MUSIC
 ========================================================= */
+
 .music-player{
     position:fixed;
+
     right:20px;
     bottom:20px;
+
     width:350px;
-    min-height:80px;
-    z-index:9999;
+
+    min-height:79px;
+
+    z-index:9998;
+
     display:flex;
     align-items:center;
+
     gap:11px;
+
     padding:10px 12px;
+
     border-radius:25px;
+
     background:
         linear-gradient(
             135deg,
-            rgba(143,70,99,.95),
-            rgba(77,120,86,.95)
+            rgba(144,73,100,.95),
+            rgba(75,117,84,.95)
         );
-    border:1px solid rgba(255,255,255,.85);
-    box-shadow:
-        0 0 22px rgba(255,255,255,.46),
-        0 20px 44px rgba(54,44,54,.23);
+
+    border:
+        1px solid
+        rgba(255,255,255,.87);
+
     backdrop-filter:blur(18px);
-    animation:musicFloat 4s ease-in-out infinite;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.46),
+        0 20px 45px rgba(50,40,50,.25);
+
+    animation:
+        musicFloat
+        4s ease-in-out infinite;
 }
 
-body[data-theme="autumn"] .music-player{
+body[data-season="autumn"]
+.music-player{
     background:
         linear-gradient(
             135deg,
-            rgba(137,82,49,.95),
-            rgba(86,103,60,.95)
+            rgba(138,78,44,.96),
+            rgba(83,101,57,.96)
         );
 }
 
 @keyframes musicFloat{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-5px)}
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
 }
 
 .music-disc{
     width:49px;
     height:49px;
     min-width:49px;
-    border-radius:50%;
+
     display:grid;
     place-items:center;
+
+    border-radius:50%;
+
     background:
         radial-gradient(
             circle at 33% 28%,
-            #fff,
-            #f0b3c9 40%,
-            #9e4d70 100%
+            white,
+            #efb2c9 42%,
+            #9d4d70
         );
+
     box-shadow:
-        0 0 20px rgba(255,255,255,.7);
-    animation:spinMusic 6s linear infinite;
+        0 0 20px rgba(255,255,255,.74);
+
+    animation:
+        musicSpin
+        6s linear infinite;
 }
 
-@keyframes spinMusic{
-    from{transform:rotate(0deg)}
-    to{transform:rotate(360deg)}
+@keyframes musicSpin{
+    from{
+        transform:rotate(0);
+    }
+    to{
+        transform:rotate(360deg);
+    }
 }
 
 .music-text{
@@ -1824,15 +3075,20 @@ body[data-theme="autumn"] .music-player{
 
 .music-text small{
     display:block;
+
     font-size:8px;
     letter-spacing:2px;
+
     opacity:.72;
 }
 
 .music-text strong{
     display:block;
+
     margin-top:2px;
+
     font-size:12px;
+
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
@@ -1841,14 +3097,24 @@ body[data-theme="autumn"] .music-player{
 #musicBtn{
     width:43px;
     height:43px;
+
     min-width:43px;
+
     border:0;
+
     border-radius:50%;
-    cursor:pointer;
+
     background:white;
-    color:var(--rose-deep);
+
+    color:var(--rose-dark);
+
+    cursor:pointer;
+
     font-size:15px;
-    box-shadow:0 0 20px rgba(255,255,255,.75);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.75);
+
     transition:.3s ease;
 }
 
@@ -1858,33 +3124,54 @@ body[data-theme="autumn"] .music-player{
 
 #youtubePlayer{
     position:absolute;
-    left:-9999px;
-    top:-9999px;
+
     width:1px;
     height:1px;
+
+    left:-9999px;
+    top:-9999px;
+
     opacity:0;
 }
 
 /* =========================================================
-   BACK TO TOP
+   TOP BUTTON
 ========================================================= */
+
 .top-btn{
     position:fixed;
-    right:24px;
+
+    right:22px;
     bottom:120px;
-    width:44px;
-    height:44px;
-    border:1px solid rgba(255,255,255,.9);
+
+    width:45px;
+    height:45px;
+
     border-radius:50%;
-    background:rgba(255,255,255,.7);
-    color:var(--rose-deep);
-    backdrop-filter:blur(12px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.9);
+
+    background:
+        rgba(255,255,255,.72);
+
+    backdrop-filter:blur(13px);
+
+    color:var(--rose-dark);
+
     cursor:pointer;
+
     z-index:9000;
+
     opacity:0;
-    transform:translateY(15px);
+
+    transform:translateY(18px);
+
     transition:.35s ease;
-    box-shadow:0 12px 27px rgba(81,66,81,.14);
+
+    box-shadow:
+        0 12px 26px rgba(80,65,80,.14);
 }
 
 .top-btn.show{
@@ -1893,27 +3180,46 @@ body[data-theme="autumn"] .music-player{
 }
 
 .top-btn:hover{
-    transform:translateY(-4px) scale(1.05);
+    transform:
+        translateY(-4px)
+        scale(1.05);
 }
 
 /* =========================================================
-   CLICK MAGIC
+   CLICK SPARK
 ========================================================= */
-.click-particle{
+
+.click-spark{
     position:fixed;
+
     pointer-events:none;
-    z-index:100001;
+
+    z-index:100002;
+
     font-size:17px;
+
     color:var(--rose);
-    animation:clickBurst .9s ease-out forwards;
+
+    animation:
+        sparkBurst
+        .9s
+        ease-out
+        forwards;
 }
 
-@keyframes clickBurst{
+@keyframes sparkBurst{
+
     0%{
-        transform:translate(-50%,-50%) scale(.5);
         opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.5);
     }
+
     100%{
+        opacity:0;
+
         transform:
             translate(
                 calc(-50% + var(--dx)),
@@ -1921,46 +3227,50 @@ body[data-theme="autumn"] .music-player{
             )
             rotate(var(--rot))
             scale(1.4);
-        opacity:0;
     }
 }
 
 /* =========================================================
    REVEAL
 ========================================================= */
+
 .reveal{
     opacity:0;
-    transform:translateY(45px);
+
+    transform:
+        translateY(42px);
+
     transition:
         opacity 1s ease,
-        transform 1s cubic-bezier(.2,.8,.2,1);
+        transform
+        1s cubic-bezier(.2,.8,.2,1);
 }
 
 .reveal.visible{
     opacity:1;
-    transform:translateY(0);
+
+    transform:
+        translateY(0);
 }
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
+
 @media(max-width:1000px){
 
     .characters{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
-    .moon{
-        width:130px;
-        height:130px;
-    }
-
-    .hero{
-        min-height:850px;
+    .hero-moon{
+        width:150px;
+        height:150px;
     }
 }
 
-@media(max-width:700px){
+@media(max-width:720px){
 
     body{
         cursor:auto;
@@ -1971,84 +3281,127 @@ body[data-theme="autumn"] .music-player{
         display:none;
     }
 
-    .hero{
-        min-height:800px;
-        padding-top:95px;
+    .hero-world{
+        min-height:850px;
+    }
+
+    .hero-center{
+        padding-top:135px;
     }
 
     .hero-title{
-        font-size:clamp(53px,16vw,85px);
+        font-size:
+            clamp(
+                54px,
+                15vw,
+                86px
+            );
     }
 
-    .moon{
-        right:-20px;
-        top:80px;
-        width:100px;
-        height:100px;
+    .hero-moon{
+        width:110px;
+        height:110px;
+
+        right:-15px;
+        top:75px;
+    }
+
+    .nav-shell{
+        top:7px;
+    }
+
+    .nav a,
+    .nav-theme-mini{
+        padding:9px 9px;
+        font-size:9.5px;
+    }
+
+    .season-switch{
+        grid-template-columns:
+            1fr;
+    }
+
+    .season-slider{
+        margin:auto;
+        transform:none;
+    }
+
+    .season-slider.autumn{
+        transform:rotate(180deg);
     }
 
     .characters{
         grid-template-columns:1fr;
     }
 
-    .card-image{
-        height:390px;
-    }
-
-    .river-card{
-        min-height:520px;
+    .river-world{
+        min-height:530px;
     }
 
     .river-title{
-        top:32px;
+        top:30px;
     }
 
-    .river-help{
-        top:198px;
+    .river-message{
+        top:195px;
+        font-size:9px;
     }
 
     .music-player{
         width:calc(100% - 24px);
+
         right:12px;
         bottom:12px;
     }
 
     .top-btn{
-        right:15px;
-        bottom:104px;
+        right:14px;
+        bottom:105px;
     }
 
-    .magic-panel{
-        padding:30px 20px;
-    }
+    .opening-moon{
+        width:150px;
+        height:150px;
 
-    .intro-title{
-        font-size:clamp(45px,14vw,72px);
+        right:-20px;
     }
 }
 
 @media(max-width:450px){
 
-    .hero-actions{
+    .hero-buttons{
         flex-direction:column;
     }
 
-    .hero-btn{
+    .hero-button{
         width:100%;
     }
 
-    .nav a,
-    .theme-toggle{
-        font-size:10px;
-        padding:9px 10px;
+    .character-image-wrap{
+        height:345px;
     }
 
-    .card-image{
-        height:340px;
+    .character-content{
+        padding:
+            24px 20px
+            27px;
     }
 
-    .card-name strong{
-        font-size:29px;
+    .season-gate{
+        padding:20px 15px;
+    }
+
+    .season-choice{
+        min-height:79px;
+    }
+
+    .opening-title{
+        font-size:
+            clamp(
+                43px,
+                14vw,
+                67px
+            );
     }
 }
 
@@ -2066,90 +3419,173 @@ body[data-theme="autumn"] .music-player{
 </style>
 </head>
 
-<body data-theme="spring">
+
+<body data-season="spring">
+
 
 <!-- =========================================================
-     SCROLL BAR
+     SCROLL PROGRESS
 ========================================================= -->
-<div class="scroll-bar" id="scrollBar"></div>
+
+<div
+    class="scroll-progress"
+    id="scrollProgress"
+></div>
+
 
 <!-- =========================================================
      CURSOR
 ========================================================= -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+
+<div
+    class="cursor-dot"
+    id="cursorDot"
+></div>
+
+<div
+    class="cursor-ring"
+    id="cursorRing"
+></div>
 
 
 <!-- =========================================================
-     OPENING SCENE
+     CINEMATIC OPENING
 ========================================================= -->
-<section class="intro-screen" id="introScreen">
 
-    <div class="intro-aura"></div>
+<section
+    class="opening"
+    id="opening"
+>
 
-    <div class="intro-content">
+    <div class="opening-aurora"></div>
 
-        <div class="intro-small">
-            WELCOME TO
+    <div class="opening-moon"></div>
+
+    <div class="light-rays">
+
+        <div class="light-ray r1"></div>
+        <div class="light-ray r2"></div>
+        <div class="light-ray r3"></div>
+        <div class="light-ray r4"></div>
+
+    </div>
+
+
+    <div class="opening-content">
+
+        <div class="opening-mini">
+            WELCOME TO THE GARDEN
         </div>
 
-        <h1 class="intro-title">
-            Spring Garden
+        <h1 class="opening-title">
+            Spring Fantasy
         </h1>
 
-        <p class="intro-sub">
-            Love &amp; Deepspace · A Fantasy Journey
+        <p class="opening-sub">
+            Love &amp; Deepspace · A World Between Flowers &amp; Stars
         </p>
 
-        <div class="intro-hint">
-            ✦ THE GARDEN IS BLOOMING ✦
+        <button
+            class="enter-button"
+            id="enterButton"
+        >
+            ✦ Enter the Garden
+        </button>
+
+        <div class="opening-skip">
+            CLICK ANYWHERE TO ENTER
         </div>
 
     </div>
 
-    <div class="flower-pile" id="flowerPile"></div>
+
+    <!-- flower pile -->
+
+    <div
+        class="flower-pile"
+        id="flowerPile"
+    ></div>
 
 </section>
 
 
 <!-- =========================================================
-     BACKGROUND PARTICLES
+     PARTICLES
 ========================================================= -->
-<div class="particle-layer" id="particles"></div>
-<div class="petal-layer" id="petals"></div>
-<div class="firefly-layer" id="fireflies"></div>
+
+<div
+    class="petal-layer"
+    id="petalLayer"
+></div>
+
+<div
+    class="sparkle-layer"
+    id="sparkleLayer"
+></div>
+
+<div
+    class="firefly-layer"
+    id="fireflyLayer"
+></div>
 
 
 <!-- =========================================================
-     HERO
+     HERO WORLD
 ========================================================= -->
-<header class="hero" id="top">
+
+<header
+    class="hero-world"
+    id="top"
+>
 
     <div class="aurora">
-        <div class="aurora-band aurora-one"></div>
-        <div class="aurora-band aurora-two"></div>
-        <div class="aurora-band aurora-three"></div>
+
+        <div class="aurora-band aurora-a"></div>
+        <div class="aurora-band aurora-b"></div>
+        <div class="aurora-band aurora-c"></div>
+
     </div>
 
-    <div class="moon"></div>
 
-    <!-- Floating illuminated petals -->
-    <div class="sky-petal p1"></div>
-    <div class="sky-petal p2"></div>
-    <div class="sky-petal p3"></div>
-    <div class="sky-petal p4"></div>
-    <div class="sky-petal p5"></div>
-    <div class="sky-petal p6"></div>
+    <div class="hero-moon"></div>
 
-    <div class="hero-center" id="heroCenter">
+
+    <!-- floating petals -->
+
+    <div class="hero-petal p1"></div>
+    <div class="hero-petal p2"></div>
+    <div class="hero-petal p3"></div>
+    <div class="hero-petal p4"></div>
+    <div class="hero-petal p5"></div>
+    <div class="hero-petal p6"></div>
+
+
+    <!-- garden -->
+
+    <div class="garden-layer">
+
+        <div class="garden-hill back"></div>
+        <div class="garden-hill front"></div>
+
+    </div>
+
+
+    <!-- hero text -->
+
+    <div
+        class="hero-center"
+        id="heroCenter"
+    >
 
         <div class="hero-kicker">
-            ✦ SPRING FANTASY WORLD ✦
+            ✦ SEASONAL FANTASY WORLD ✦
         </div>
 
         <h1 class="hero-title">
+
             <span>Love &amp;</span>
             <span>Deepspace</span>
+
         </h1>
 
         <div class="hero-subtitle">
@@ -2157,46 +3593,61 @@ body[data-theme="autumn"] .music-player{
         </div>
 
         <p class="hero-copy">
-            ยินดีต้อนรับสู่สวนแห่งความฝัน
-            ที่แสง Aurora ส่องผ่านท้องฟ้า
-            กลีบดอกไม้ล่องลอยเหนือสายน้ำ
-            และตัวละครทั้งสามปรากฏขึ้นท่ามกลางสวนแฟนตาซี
+
+            ยินดีต้อนรับเข้าสู่สวนแฟนตาซี
+            ที่ดอกไม้ ลำธาร แสง Aurora
+            และดวงดาวมาบรรจบกัน
+            ทุกการเคลื่อนไหวของเมาส์
+            จะทำให้โลกแห่งนี้มีชีวิตขึ้นมา
+
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-buttons">
 
-            <a href="#characters" class="hero-btn primary">
-                ✦ Explore Characters
+            <a
+                href="#characters"
+                class="hero-button primary"
+            >
+                🌸 Explore Characters
             </a>
 
-            <a href="#river" class="hero-btn secondary">
-                🌊 Discover the River
+            <a
+                href="#season"
+                class="hero-button secondary"
+            >
+                🍂 Change Season
             </a>
 
         </div>
 
     </div>
 
-    <div class="garden-back"></div>
-    <div class="garden-front"></div>
 
-    <!-- Decorative river -->
-    <div class="river-basin" id="heroRiver">
-        <div class="river-shine"></div>
+    <!-- river -->
+
+    <div class="hero-river">
+
+        <div class="hero-river-flow"></div>
+
     </div>
 
 </header>
 
 
 <!-- =========================================================
-     NAVIGATION
+     NAV
 ========================================================= -->
-<div class="nav-wrap">
+
+<div class="nav-shell">
 
     <nav class="nav">
 
         <a href="#top">
             <span>🏡 Home</span>
+        </a>
+
+        <a href="#season">
+            <span>🌸 Seasons</span>
         </a>
 
         <a href="#characters">
@@ -2220,12 +3671,12 @@ body[data-theme="autumn"] .music-player{
         </a>
 
         <button
-            class="theme-toggle"
-            id="themeToggle"
+            class="nav-theme-mini"
+            id="miniThemeButton"
             type="button"
         >
-            <span id="themeText">
-                🍂 Autumn
+            <span id="miniThemeText">
+                🌸 Spring
             </span>
         </button>
 
@@ -2237,417 +3688,640 @@ body[data-theme="autumn"] .music-player{
 <!-- =========================================================
      MAIN
 ========================================================= -->
+
 <main>
 
-    <!-- =====================================================
-         CHARACTERS
-    ====================================================== -->
-    <section class="section" id="characters">
 
-        <div class="section-header reveal">
+<!-- =========================================================
+     SEASON SECTION
+========================================================= -->
 
-            <div class="kicker">
-                CHARACTER COLLECTION
+<section
+    class="section season-section reveal"
+    id="season"
+>
+
+    <div class="season-gate">
+
+        <div class="season-glow left"></div>
+        <div class="season-glow right"></div>
+
+
+        <div class="season-content">
+
+            <div class="season-label">
+                ✦ SEASON GATE ✦
             </div>
 
-            <h2>
-                Three Souls in the Garden
+            <h2 class="season-title">
+                Choose Your Garden
             </h2>
 
-            <p>
-                ตัวละครทั้งสามถูกนำเข้าสู่โลกฤดูใบไม้ผลิ
-                ที่เต็มไปด้วยกลีบดอกไม้ แสงเงา และธรรมชาติ
-                พร้อมเอฟเฟกต์ 3D และการเคลื่อนไหวตามเมาส์
+            <p class="season-subtitle">
+                โลกใบนี้มี 2 ฤดู — กดเลือกเพื่อเปลี่ยนบรรยากาศทั้งเว็บไซต์
             </p>
 
-        </div>
-
-
-        <div class="characters">
 
-            <!-- =================================================
-                 SYLUS
-            ================================================== -->
-            <article
-                class="card tilt-card reveal"
-                id="sylus"
-                data-depth="16"
-            >
-
-                <div class="card-image">
+            <div class="season-switch">
 
-                    <div class="card-badge">
-                        CHARACTER 01
-                    </div>
+                <!-- SPRING -->
 
-                    <div class="card-mood">
-                        MYSTERIOUS BLOOM
-                    </div>
+                <button
+                    class="season-choice spring-choice active"
+                    id="springChoice"
+                    type="button"
+                >
 
-                    <img
-                        src="https://r.res.easebar.com/pic/20250609/f40ad552-296b-4f97-a398-1c6c3a6999ba.png"
-                        alt="Sylus from Love and Deepspace"
-                        loading="lazy"
-                        referrerpolicy="no-referrer"
-                        onerror="this.style.display='none'"
-                    >
-
-                    <div class="card-name">
-                        <small>THE LEADER</small>
-                        <strong>Sylus</strong>
-                    </div>
-
-                    <div class="card-symbol">
-                        ♟
-                    </div>
-
-                </div>
-
-                <div class="card-info">
+                    <span class="icon">
+                        🌸
+                    </span>
 
-                    <h3>Sylus</h3>
+                    <strong>
+                        SPRING
+                    </strong>
 
-                    <div class="card-tag">
-                        The leader of Onychinus
-                    </div>
+                    <small>
+                        BLOOMING GARDEN
+                    </small>
 
-                    <div class="meta">
+                </button>
 
-                        <div class="meta-row">
-                            <b>Age</b>
-                            <span>28</span>
-                        </div>
 
-                        <div class="meta-row">
-                            <b>Height</b>
-                            <span>190 cm</span>
-                        </div>
+                <!-- CENTER SWITCH -->
 
-                        <div class="meta-row">
-                            <b>Birthday</b>
-                            <span>April 18</span>
-                        </div>
+                <button
+                    class="season-slider"
+                    id="seasonSlider"
+                    type="button"
+                    aria-label="เปลี่ยนฤดู"
+                ></button>
 
-                        <div class="meta-row">
-                            <b>Sign</b>
-                            <span>Aries</span>
-                        </div>
 
-                        <div class="meta-row">
-                            <b>Evol</b>
-                            <span>Energy Manipulation</span>
-                        </div>
-
-                        <div class="meta-row">
-                            <b>Workplace</b>
-                            <span>Onychinus</span>
-                        </div>
-
-                    </div>
+                <!-- AUTUMN -->
 
-                    <p class="card-description">
-                        Sylus เป็นผู้นำของ Onychinus
-                        มีบุคลิกมั่นใจ พูดตรง
-                        สุขุมในสถานการณ์กดดัน
-                        และมีแนวคิดเชิงวิเคราะห์
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">Silver Hair</span>
-                        <span class="tag">Red Eyes</span>
-                        <span class="tag">Crow</span>
-                        <span class="tag">Mysterious</span>
-                    </div>
-
-                </div>
-
-            </article>
+                <button
+                    class="season-choice autumn-choice"
+                    id="autumnChoice"
+                    type="button"
+                >
 
+                    <span class="icon">
+                        🍂
+                    </span>
 
-            <!-- =================================================
-                 ZAYNE
-            ================================================== -->
-            <article
-                class="card tilt-card reveal"
-                id="zayne"
-                data-depth="16"
-            >
+                    <strong>
+                        AUTUMN
+                    </strong>
 
-                <div class="card-image">
+                    <small>
+                        GOLDEN GARDEN
+                    </small>
 
-                    <div class="card-badge">
-                        CHARACTER 02
-                    </div>
+                </button>
 
-                    <div class="card-mood">
-                        WINTER → SPRING
-                    </div>
+            </div>
 
-                    <img
-                        src="https://pbs.twimg.com/media/GB7n-3bawAA-aA2.jpg"
-                        alt="Zayne from Love and Deepspace"
-                        loading="lazy"
-                        referrerpolicy="no-referrer"
-                        onerror="this.style.display='none'"
-                    >
-
-                    <div class="card-name">
-                        <small>THE DOCTOR</small>
-                        <strong>Zayne</strong>
-                    </div>
-
-                    <div class="card-symbol">
-                        ❄
-                    </div>
-
-                </div>
-
-                <div class="card-info">
 
-                    <h3>Zayne</h3>
+            <div class="season-status">
 
-                    <div class="card-tag">
-                        Akso Hospital — Cardiac Surgeon
-                    </div>
+                <span
+                    class="status-dot"
+                ></span>
 
-                    <div class="meta">
+                <span id="seasonStatus">
+                    CURRENT SEASON : SPRING
+                </span>
 
-                        <div class="meta-row">
-                            <b>Age</b>
-                            <span>27</span>
-                        </div>
+            </div>
 
-                        <div class="meta-row">
-                            <b>Height</b>
-                            <span>186 cm</span>
-                        </div>
 
-                        <div class="meta-row">
-                            <b>Birthday</b>
-                            <span>September 5</span>
-                        </div>
-
-                        <div class="meta-row">
-                            <b>Sign</b>
-                            <span>Virgo</span>
-                        </div>
-
-                        <div class="meta-row">
-                            <b>Evol</b>
-                            <span>Ice</span>
-                        </div>
-
-                        <div class="meta-row">
-                            <b>Workplace</b>
-                            <span>Akso Hospital</span>
-                        </div>
-
-                    </div>
-
-                    <p class="card-description">
-                        Zayne เป็นศัลยแพทย์หัวใจ
-                        มีบุคลิกสุขุม ตรงไปตรงมา
-                        เป็นมืออาชีพและใส่ใจคนรอบตัว
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">Ice Evol</span>
-                        <span class="tag">Cardiac Surgeon</span>
-                        <span class="tag">Sweet Treats</span>
-                        <span class="tag">Calm</span>
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- =================================================
-                 CALEB
-            ================================================== -->
-            <article
-                class="card tilt-card reveal"
-                id="caleb"
-                data-depth="16"
-            >
-
-                <div class="card-image">
-
-                    <div class="card-badge">
-                        CHARACTER 03
-                    </div>
-
-                    <div class="card-mood">
-                        SUNLIT BLOOM
-                    </div>
-
-                    <img
-                        src="https://otome.com/wp-content/uploads/2025/01/Love-and-Deepspace-Caleb-Close-Up-1.png"
-                        alt="Caleb from Love and Deepspace"
-                        loading="lazy"
-                        referrerpolicy="no-referrer"
-                        onerror="this.style.display='none'"
-                    >
-
-                    <div class="card-name">
-                        <small>THE COLONEL</small>
-                        <strong>Caleb</strong>
-                    </div>
-
-                    <div class="card-symbol">
-                        ✦
-                    </div>
-
-                </div>
-
-                <div class="card-info">
-
-                    <h3>Caleb</h3>
-
-                    <div class="card-tag">
-                        Farspace Fleet — Colonel
-                    </div>
-
-                    <div class="meta">
-
-                        <div class="meta-row">
-                            <b>Age</b>
-                            <span>25</span>
-                        </div>
-
-                        <div class="meta-row">
-                            <b>Height</b>
-                            <span>188 cm</span>
-                        </div>
-
-                        <div class="meta-row">
-                            <b>Birthday</b>
-                            <span>June 13</span>
-                        </div>
-
-                        <div class="meta-row">
-                            <b>Sign</b>
-                            <span>Gemini</span>
-                        </div>
-
-                        <div class="meta-row">
-                            <b>Evol</b>
-                            <span>Gravity Manipulation</span>
-                        </div>
-
-                        <div class="meta-row">
-                            <b>Workplace</b>
-                            <span>Farspace Fleet</span>
-                        </div>
-
-                    </div>
-
-                    <p class="card-description">
-                        Caleb เคยเป็นนักบินรบของ DAA
-                        และปัจจุบันเป็น Colonel
-                        แห่ง Farspace Fleet
-                        มีทั้งความใจดี ขี้เล่น และปกป้องคนสำคัญ
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">Gravity</span>
-                        <span class="tag">Fighter Pilot</span>
-                        <span class="tag">Protective</span>
-                        <span class="tag">Sunlit</span>
-                    </div>
-
-                </div>
-
-            </article>
+            <div class="season-hint">
+                CLICK SPRING / AUTUMN TO TRANSFORM THE WORLD
+            </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CHARACTER HEADER
+========================================================= -->
+
+<section
+    class="section"
+    id="characters"
+>
+
+    <div class="section-heading reveal">
+
+        <div class="section-kicker">
+            CHARACTER COLLECTION
+        </div>
+
+        <h2>
+            Three Souls in the Garden
+        </h2>
+
+        <p>
+            ตัวละครทั้งสามถูกวางไว้ท่ามกลางสวนแฟนตาซี
+            พร้อมแสง เงา และเอฟเฟกต์ 3D
+            ที่ตอบสนองต่อการเคลื่อนไหวของเมาส์
+        </p>
+
+    </div>
 
 
     <!-- =====================================================
-         RIVER
+         CHARACTER CARDS
     ====================================================== -->
-    <section
-        class="section river-section reveal"
-        id="river"
-    >
 
-        <div class="river-card" id="riverCard">
+    <div class="characters">
 
-            <div class="river-title">
 
-                <div class="kicker">
-                    SECRET GARDEN
+        <!-- SYLUS -->
+
+        <article
+            class="character-card tilt-card reveal"
+            id="sylus"
+        >
+
+            <div class="character-image-wrap">
+
+                <div class="card-number">
+                    CHARACTER 01
                 </div>
 
-                <h2>
-                    River of Memories
-                </h2>
+                <div class="card-mood">
+                    MYSTERIOUS BLOOM
+                </div>
 
-                <p>
-                    ขยับเมาส์เหนือสายน้ำเพื่อให้แสงสะท้อนตามเคลื่อนไหว
-                    และคลิกลงบนแม่น้ำเพื่อสร้างระลอกน้ำ
+                <img
+                    src="https://r.res.easebar.com/pic/20250609/f40ad552-296b-4f97-a398-1c6c3a6999ba.png"
+                    alt="Sylus from Love and Deepspace"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.style.display='none'"
+                >
+
+                <div class="card-name">
+
+                    <small>
+                        THE LEADER
+                    </small>
+
+                    <strong>
+                        Sylus
+                    </strong>
+
+                </div>
+
+                <div class="card-symbol">
+                    ♟
+                </div>
+
+            </div>
+
+
+            <div class="character-content">
+
+                <h3>
+                    Sylus
+                </h3>
+
+                <div class="character-tagline">
+                    The leader of Onychinus
+                </div>
+
+
+                <div class="character-meta">
+
+                    <div class="character-row">
+                        <b>Age</b>
+                        <span>28</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Height</b>
+                        <span>190 cm</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Birthday</b>
+                        <span>April 18</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Sign</b>
+                        <span>Aries</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Evol</b>
+                        <span>Energy Manipulation</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Workplace</b>
+                        <span>Onychinus</span>
+                    </div>
+
+                </div>
+
+
+                <p class="character-description">
+
+                    Sylus เป็นผู้นำของ Onychinus
+                    มีบุคลิกมั่นใจ พูดตรง
+                    สุขุมในสถานการณ์กดดัน
+                    และมีแนวคิดเชิงวิเคราะห์
+
                 </p>
 
-            </div>
 
-            <div class="river-help">
-                MOVE YOUR MOUSE · TOUCH THE WATER
-            </div>
+                <div class="tags">
 
+                    <span class="tag">
+                        🖤 Silver Hair
+                    </span>
 
-            <div class="river" id="interactiveRiver">
+                    <span class="tag">
+                        ❤️ Red Eyes
+                    </span>
 
-                <div class="river-flow"></div>
+                    <span class="tag">
+                        🐦 Crow
+                    </span>
 
-                <div class="water-glow" id="waterGlow"></div>
+                    <span class="tag">
+                        ✦ Mysterious
+                    </span>
 
-                <div class="water-line l1"></div>
-                <div class="water-line l2"></div>
-                <div class="water-line l3"></div>
-                <div class="water-line l4"></div>
-
-                <div class="lily l1"></div>
-                <div class="lily l2"></div>
-                <div class="lily l3"></div>
-
-                <div class="fish f1"></div>
-                <div class="fish f2"></div>
+                </div>
 
             </div>
 
-        </div>
-
-    </section>
+        </article>
 
 
-    <!-- =====================================================
-         MAGIC PANEL
-    ====================================================== -->
-    <section class="section reveal">
+        <!-- ZAYNE -->
 
-        <div class="magic-panel">
+        <article
+            class="character-card tilt-card reveal"
+            id="zayne"
+        >
 
-            <div class="magic-icon">
-                ✦
+            <div class="character-image-wrap">
+
+                <div class="card-number">
+                    CHARACTER 02
+                </div>
+
+                <div class="card-mood">
+                    WINTER → SPRING
+                </div>
+
+                <img
+                    src="https://pbs.twimg.com/media/GB7n-3bawAA-aA2.jpg"
+                    alt="Zayne from Love and Deepspace"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.style.display='none'"
+                >
+
+                <div class="card-name">
+
+                    <small>
+                        THE DOCTOR
+                    </small>
+
+                    <strong>
+                        Zayne
+                    </strong>
+
+                </div>
+
+                <div class="card-symbol">
+                    ❄
+                </div>
+
+            </div>
+
+
+            <div class="character-content">
+
+                <h3>
+                    Zayne
+                </h3>
+
+                <div class="character-tagline">
+                    Akso Hospital — Cardiac Surgeon
+                </div>
+
+
+                <div class="character-meta">
+
+                    <div class="character-row">
+                        <b>Age</b>
+                        <span>27</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Height</b>
+                        <span>186 cm</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Birthday</b>
+                        <span>September 5</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Sign</b>
+                        <span>Virgo</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Evol</b>
+                        <span>Ice</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Workplace</b>
+                        <span>Akso Hospital</span>
+                    </div>
+
+                </div>
+
+
+                <p class="character-description">
+
+                    Zayne เป็นศัลยแพทย์หัวใจ
+                    มีบุคลิกสุขุม ตรงไปตรงมา
+                    เป็นมืออาชีพและใส่ใจคนรอบตัว
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        ❄️ Ice Evol
+                    </span>
+
+                    <span class="tag">
+                        🩺 Cardiac Surgeon
+                    </span>
+
+                    <span class="tag">
+                        🍫 Sweet Treats
+                    </span>
+
+                    <span class="tag">
+                        ✦ Calm
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CALEB -->
+
+        <article
+            class="character-card tilt-card reveal"
+            id="caleb"
+        >
+
+            <div class="character-image-wrap">
+
+                <div class="card-number">
+                    CHARACTER 03
+                </div>
+
+                <div class="card-mood">
+                    SUNLIT BLOOM
+                </div>
+
+                <img
+                    src="https://otome.com/wp-content/uploads/2025/01/Love-and-Deepspace-Caleb-Close-Up-1.png"
+                    alt="Caleb from Love and Deepspace"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="this.style.display='none'"
+                >
+
+                <div class="card-name">
+
+                    <small>
+                        THE COLONEL
+                    </small>
+
+                    <strong>
+                        Caleb
+                    </strong>
+
+                </div>
+
+                <div class="card-symbol">
+                    ✦
+                </div>
+
+            </div>
+
+
+            <div class="character-content">
+
+                <h3>
+                    Caleb
+                </h3>
+
+                <div class="character-tagline">
+                    Farspace Fleet — Colonel
+                </div>
+
+
+                <div class="character-meta">
+
+                    <div class="character-row">
+                        <b>Age</b>
+                        <span>25</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Height</b>
+                        <span>188 cm</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Birthday</b>
+                        <span>June 13</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Sign</b>
+                        <span>Gemini</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Evol</b>
+                        <span>Gravity Manipulation</span>
+                    </div>
+
+                    <div class="character-row">
+                        <b>Workplace</b>
+                        <span>Farspace Fleet</span>
+                    </div>
+
+                </div>
+
+
+                <p class="character-description">
+
+                    Caleb เคยเป็นนักบินรบของ DAA
+                    และปัจจุบันเป็น Colonel
+                    แห่ง Farspace Fleet
+                    มีทั้งความใจดี ขี้เล่น
+                    และปกป้องคนสำคัญ
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        🌌 Gravity
+                    </span>
+
+                    <span class="tag">
+                        ✈️ Fighter Pilot
+                    </span>
+
+                    <span class="tag">
+                        🌼 Protective
+                    </span>
+
+                    <span class="tag">
+                        ✦ Sunlit
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RIVER
+========================================================= -->
+
+<section
+    class="section river-section reveal"
+    id="river"
+>
+
+    <div class="river-world" id="riverWorld">
+
+        <div class="river-aura"></div>
+
+
+        <div class="river-title">
+
+            <div class="section-kicker">
+                INTERACTIVE WATER
             </div>
 
             <h2>
-                One Garden, Two Seasons
+                River of Memories
             </h2>
 
             <p>
-                เว็บไซต์นี้สามารถสลับบรรยากาศระหว่าง
-                <b>Spring Garden</b> และ <b>Autumn Garden</b>
-                ได้ทันที โดยเปลี่ยนสีท้องฟ้า กลีบดอกไม้
-                สายน้ำ แสง Aurora และบรรยากาศโดยรวม
-                ให้เข้ากับฤดูกาลนั้น
+                เลื่อนเมาส์เหนือแม่น้ำ
+                เพื่อให้แสงสะท้อนวิ่งตาม
+                และคลิกลงบนสายน้ำเพื่อสร้างระลอกคลื่น
             </p>
 
         </div>
 
-    </section>
+
+        <div class="river-message">
+            MOVE · TOUCH · CLICK THE WATER
+        </div>
+
+
+        <div
+            class="water"
+            id="water"
+        >
+
+            <div class="water-flow"></div>
+
+            <div
+                class="water-glow"
+                id="waterGlow"
+            ></div>
+
+
+            <div class="water-line l1"></div>
+            <div class="water-line l2"></div>
+            <div class="water-line l3"></div>
+            <div class="water-line l4"></div>
+
+
+            <div class="lily l1"></div>
+            <div class="lily l2"></div>
+            <div class="lily l3"></div>
+
+
+            <div class="fish f1"></div>
+            <div class="fish f2"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FINAL PANEL
+========================================================= -->
+
+<section class="section reveal">
+
+    <div class="final-panel">
+
+        <div class="magic-icon">
+            ✦
+        </div>
+
+        <h2>
+            Two Seasons, One Fantasy
+        </h2>
+
+        <p>
+            ฤดูใบไม้ผลิเต็มไปด้วยกลีบดอกไม้
+            แสง Aurora และสวนที่กำลังผลิบาน
+            ขณะที่ฤดูใบไม้ร่วงเปลี่ยนโลกให้กลายเป็น
+            สวนสีทอง แสงอุ่น และบรรยากาศลึกลับ
+            โดยทุกอย่างในเว็บไซต์สามารถเปลี่ยนไปพร้อมกัน
+            ด้วยระบบ Season Gate ด้านบน
+        </p>
+
+    </div>
+
+</section>
+
 
 </main>
 
@@ -2655,6 +4329,7 @@ body[data-theme="autumn"] .music-player{
 <!-- =========================================================
      MUSIC PLAYER
 ========================================================= -->
+
 <section class="music-player">
 
     <div class="music-disc">
@@ -2662,10 +4337,15 @@ body[data-theme="autumn"] .music-player{
     </div>
 
     <div class="music-text">
-        <small>SPRING MUSIC</small>
+
+        <small>
+            GARDEN MUSIC
+        </small>
+
         <strong>
             Love &amp; Deepspace • YouTube
         </strong>
+
     </div>
 
     <button
@@ -2682,8 +4362,9 @@ body[data-theme="autumn"] .music-player{
 
 
 <!-- =========================================================
-     BACK TO TOP
+     TOP BUTTON
 ========================================================= -->
+
 <button
     class="top-btn"
     id="topBtn"
@@ -2696,9 +4377,10 @@ body[data-theme="autumn"] .music-player{
 <!-- =========================================================
      FOOTER
 ========================================================= -->
+
 <footer>
 
-    <div class="footer-flower">
+    <div class="footer-symbols">
         ✦ ❀ ✦ 🌿 ✦ 🦋 ✦
     </div>
 
@@ -2707,14 +4389,15 @@ body[data-theme="autumn"] .music-player{
     </h3>
 
     <p>
-        Spring Fantasy World
+        Cinematic Spring &amp; Autumn Garden
     </p>
 
     <p>
-        Fan-made page • Spring / Autumn Interactive Theme
+        Fan-made page • Interactive Fantasy Theme
     </p>
 
     <p>
+
         <a
             href="https://loveanddeepspace.fandom.com/wiki/Sylus"
             target="_blank"
@@ -2722,7 +4405,9 @@ body[data-theme="autumn"] .music-player{
         >
             Sylus Wiki
         </a>
+
         ·
+
         <a
             href="https://loveanddeepspace.fandom.com/wiki/Zayne"
             target="_blank"
@@ -2730,7 +4415,9 @@ body[data-theme="autumn"] .music-player{
         >
             Zayne Wiki
         </a>
+
         ·
+
         <a
             href="https://loveanddeepspace.fandom.com/wiki/Caleb"
             target="_blank"
@@ -2738,6 +4425,7 @@ body[data-theme="autumn"] .music-player{
         >
             Caleb Wiki
         </a>
+
     </p>
 
 </footer>
@@ -2750,29 +4438,47 @@ body[data-theme="autumn"] .music-player{
 ========================================================= */
 
 const cursorDot =
-    document.getElementById("cursorDot");
+    document.getElementById(
+        "cursorDot"
+    );
 
 const cursorRing =
-    document.getElementById("cursorRing");
+    document.getElementById(
+        "cursorRing"
+    );
 
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
+let mouseX =
+    window.innerWidth / 2;
 
-let ringX = mouseX;
-let ringY = mouseY;
+let mouseY =
+    window.innerHeight / 2;
 
-window.addEventListener("mousemove",(e)=>{
+let ringX =
+    mouseX;
 
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+let ringY =
+    mouseY;
 
-    cursorDot.style.left =
-        mouseX + "px";
 
-    cursorDot.style.top =
-        mouseY + "px";
+window.addEventListener(
+    "mousemove",
+    (event)=>{
 
-});
+        mouseX =
+            event.clientX;
+
+        mouseY =
+            event.clientY;
+
+        cursorDot.style.left =
+            mouseX + "px";
+
+        cursorDot.style.top =
+            mouseY + "px";
+
+    }
+);
+
 
 function animateCursor(){
 
@@ -2797,120 +4503,166 @@ animateCursor();
 
 
 document
-.querySelectorAll("a,button,.card,.tag,.river-card")
-.forEach(el=>{
+.querySelectorAll(
+    "a,button,.character-card,.tag,.river-world,.season-choice"
+)
+.forEach(
+    element=>{
 
-    el.addEventListener(
-        "mouseenter",
-        ()=>{
-            document.body
-                .classList
-                .add("cursor-hover");
-        }
-    );
+        element.addEventListener(
+            "mouseenter",
+            ()=>{
+                document.body
+                    .classList
+                    .add("cursor-hover");
+            }
+        );
 
-    el.addEventListener(
-        "mouseleave",
-        ()=>{
-            document.body
-                .classList
-                .remove("cursor-hover");
-        }
-    );
+        element.addEventListener(
+            "mouseleave",
+            ()=>{
+                document.body
+                    .classList
+                    .remove("cursor-hover");
+            }
+        );
 
-});
+    }
+);
 
 
 /* =========================================================
-   OPENING FLOWER PILE
+   OPENING FLOWER EXPLOSION
 ========================================================= */
 
 const flowerPile =
-    document.getElementById("flowerPile");
+    document.getElementById(
+        "flowerPile"
+    );
 
-for(let i=0;i<70;i++){
+for(let i=0;i<100;i++){
 
     const petal =
-        document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
     petal.className =
         "intro-petal";
 
-    const tx1 =
-        (Math.random() - .5) * 240;
 
-    const ty1 =
-        (Math.random() - .5) * 200;
+    const x1 =
+        (Math.random() - .5) * 220;
 
-    const tx2 =
+    const y1 =
+        (Math.random() - .5) * 160;
+
+
+    const angle =
+        Math.random() *
+        Math.PI *
+        2;
+
+
+    const distance =
+        180 +
+        Math.random() * 330;
+
+
+    const x2 =
+        Math.cos(angle) *
+        distance;
+
+    const y2 =
+        Math.sin(angle) *
+        distance;
+
+
+    const x3 =
         (Math.random() - .5) *
-        (window.innerWidth * .95);
+        Math.max(
+            window.innerWidth * .95,
+            900
+        );
 
-    const ty2 =
+    const y3 =
         (Math.random() - .5) *
-        (window.innerHeight * .8);
+        Math.max(
+            window.innerHeight * .8,
+            600
+        );
 
-    const startRot =
-        (Math.random() * 160) - 80;
-
-    const rot1 =
-        (Math.random() * 360) - 180;
-
-    const rot2 =
-        (Math.random() * 800) - 400;
-
-    const scale =
-        .45 + Math.random() * .75;
 
     petal.style.setProperty(
-        "--tx1",
-        tx1 + "px"
+        "--x1",
+        x1 + "px"
     );
 
     petal.style.setProperty(
-        "--ty1",
-        ty1 + "px"
+        "--y1",
+        y1 + "px"
     );
 
     petal.style.setProperty(
-        "--tx2",
-        tx2 + "px"
+        "--x2",
+        x2 + "px"
     );
 
     petal.style.setProperty(
-        "--ty2",
-        ty2 + "px"
+        "--y2",
+        y2 + "px"
     );
 
     petal.style.setProperty(
-        "--start-rot",
-        startRot + "deg"
+        "--x3",
+        x3 + "px"
+    );
+
+    petal.style.setProperty(
+        "--y3",
+        y3 + "px"
+    );
+
+
+    petal.style.setProperty(
+        "--rot-start",
+        (Math.random()*360)+"deg"
     );
 
     petal.style.setProperty(
         "--rot1",
-        rot1 + "deg"
+        (Math.random()*600-300)+"deg"
     );
 
     petal.style.setProperty(
         "--rot2",
-        rot2 + "deg"
+        (Math.random()*800-400)+"deg"
     );
 
     petal.style.setProperty(
-        "--start-scale",
-        scale
+        "--rot3",
+        (Math.random()*1100-550)+"deg"
+    );
+
+
+    petal.style.setProperty(
+        "--scale-start",
+        .35 +
+        Math.random() * .8
     );
 
     petal.style.setProperty(
-        "--start-opacity",
-        .55 + Math.random() * .45
+        "--opacity-start",
+        .55 +
+        Math.random() * .45
     );
+
 
     petal.style.setProperty(
         "--delay",
-        (Math.random() * .75) + "s"
+        Math.random() * .9 + "s"
     );
+
 
     flowerPile.appendChild(
         petal
@@ -2920,32 +4672,52 @@ for(let i=0;i<70;i++){
 
 
 /* =========================================================
-   CLOSE OPENING
+   OPENING CLOSE
 ========================================================= */
 
-const introScreen =
+const opening =
     document.getElementById(
-        "introScreen"
+        "opening"
     );
 
-setTimeout(()=>{
+const enterButton =
+    document.getElementById(
+        "enterButton"
+    );
 
-    introScreen
-        .classList
-        .add("hide");
+function closeOpening(){
 
-},5000);
+    opening.classList.add(
+        "hide"
+    );
 
+}
 
-/* click to skip intro */
-
-introScreen.addEventListener(
+enterButton.addEventListener(
     "click",
-    ()=>{
-        introScreen
-            .classList
-            .add("hide");
+    closeOpening
+);
+
+opening.addEventListener(
+    "click",
+    (event)=>{
+
+        if(
+            event.target ===
+            opening
+        ){
+            closeOpening();
+        }
+
     }
+);
+
+
+/* automatic opening close */
+
+setTimeout(
+    closeOpening,
+    7200
 );
 
 
@@ -2953,38 +4725,104 @@ introScreen.addEventListener(
    BACKGROUND PETALS
 ========================================================= */
 
-const petals =
-    document.getElementById("petals");
-
-for(let i=0;i<42;i++){
-
-    const p =
-        document.createElement("span");
-
-    p.className =
-        "petal";
-
-    p.style.left =
-        Math.random()*100 + "%";
-
-    p.style.width =
-        (14 + Math.random()*18) + "px";
-
-    p.style.height =
-        (9 + Math.random()*12) + "px";
-
-    p.style.setProperty(
-        "--wind",
-        (30 + Math.random()*110) + "px"
+const petalLayer =
+    document.getElementById(
+        "petalLayer"
     );
 
-    p.style.animationDuration =
-        (8 + Math.random()*10) + "s";
+for(let i=0;i<50;i++){
 
-    p.style.animationDelay =
-        (-Math.random()*15) + "s";
+    const petal =
+        document.createElement(
+            "span"
+        );
 
-    petals.appendChild(p);
+    petal.className =
+        "falling-petal";
+
+    petal.style.left =
+        Math.random()*100 + "%";
+
+    petal.style.width =
+        13 +
+        Math.random()*19 +
+        "px";
+
+    petal.style.height =
+        9 +
+        Math.random()*12 +
+        "px";
+
+    petal.style.setProperty(
+        "--wind",
+        (35 +
+        Math.random()*120) +
+        "px"
+    );
+
+    petal.style.animationDuration =
+        8 +
+        Math.random()*10 +
+        "s";
+
+    petal.style.animationDelay =
+        (-Math.random()*17) +
+        "s";
+
+    petalLayer.appendChild(
+        petal
+    );
+
+}
+
+
+/* =========================================================
+   SPARKLES
+========================================================= */
+
+const sparkleLayer =
+    document.getElementById(
+        "sparkleLayer"
+    );
+
+for(let i=45;i--;){
+
+    const sparkle =
+        document.createElement(
+            "span"
+        );
+
+    sparkle.className =
+        "sparkle";
+
+    sparkle.textContent =
+        Math.random() > .45
+        ? "✦"
+        : "·";
+
+    sparkle.style.left =
+        Math.random()*100 + "%";
+
+    sparkle.style.top =
+        Math.random()*100 + "%";
+
+    sparkle.style.fontSize =
+        7 +
+        Math.random()*15 +
+        "px";
+
+    sparkle.style.animationDuration =
+        1.7 +
+        Math.random()*3 +
+        "s";
+
+    sparkle.style.animationDelay =
+        (-Math.random()*4) +
+        "s";
+
+    sparkleLayer.appendChild(
+        sparkle
+    );
 
 }
 
@@ -2993,89 +4831,112 @@ for(let i=0;i<42;i++){
    FIREFLIES
 ========================================================= */
 
-const fireflies =
+const fireflyLayer =
     document.getElementById(
-        "fireflies"
+        "fireflyLayer"
     );
 
-for(let i=24;i--;){
+for(let i=25;i--;){
 
-    const f =
-        document.createElement("span");
+    const firefly =
+        document.createElement(
+            "span"
+        );
 
-    f.className =
+    firefly.className =
         "firefly";
 
-    f.style.left =
+    firefly.style.left =
         Math.random()*100 + "%";
 
-    f.style.top =
-        (10 + Math.random()*84) + "%";
+    firefly.style.top =
+        (8 +
+        Math.random()*84) +
+        "%";
 
-    f.style.animationDuration =
-        (4 + Math.random()*5) + "s";
+    firefly.style.animationDuration =
+        4 +
+        Math.random()*5 +
+        "s";
 
-    f.style.animationDelay =
-        (-Math.random()*8) + "s";
+    firefly.style.animationDelay =
+        (-Math.random()*8) +
+        "s";
 
-    fireflies.appendChild(f);
+    fireflyLayer.appendChild(
+        firefly
+    );
 
 }
 
 
 /* =========================================================
-   3D TILT
+   CHARACTER 3D TILT
 ========================================================= */
 
-const tiltCards =
+const cards =
     document.querySelectorAll(
         ".tilt-card"
     );
 
-tiltCards.forEach(card=>{
+cards.forEach(
+    card=>{
 
-    card.addEventListener(
-        "mousemove",
-        (e)=>{
+        card.addEventListener(
+            "mousemove",
+            (event)=>{
 
-            if(window.innerWidth < 850)
-                return;
+                if(
+                    window.innerWidth < 850
+                ){
+                    return;
+                }
 
-            const rect =
-                card.getBoundingClientRect();
+                const rect =
+                    card.getBoundingClientRect();
 
-            const px =
-                (e.clientX - rect.left)
-                / rect.width;
 
-            const py =
-                (e.clientY - rect.top)
-                / rect.height;
+                const px =
+                    (event.clientX -
+                    rect.left) /
+                    rect.width;
 
-            const rx =
-                (py - .5) * -7;
 
-            const ry =
-                (px - .5) * 7;
+                const py =
+                    (event.clientY -
+                    rect.top) /
+                    rect.height;
 
-            card.style.transform =
-                `perspective(1400px)
-                 rotateX(${rx}deg)
-                 rotateY(${ry}deg)
-                 translateY(-9px)`;
 
-        }
-    );
+                const rotateX =
+                    (py - .5) * -7;
 
-    card.addEventListener(
-        "mouseleave",
-        ()=>{
-            card.style.transform =
-                "perspective(1400px) rotateX(0deg) rotateY(0deg) translateY(0)";
-        }
-    );
+                const rotateY =
+                    (px - .5) * 7;
 
-});
+
+                card.style.transform =
+                    `perspective(1400px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-8px)`;
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            ()=>{
+
+                card.style.transform =
+                    "perspective(1400px) rotateX(0deg) rotateY(0deg) translateY(0)";
+
+            }
+        );
+
+    }
+);
 
 
 /* =========================================================
@@ -3089,21 +4950,29 @@ const heroCenter =
 
 window.addEventListener(
     "mousemove",
-    (e)=>{
+    (event)=>{
 
-        if(window.innerWidth < 800)
+        if(
+            window.innerWidth < 800
+        ){
             return;
+        }
 
         const x =
-            (e.clientX / window.innerWidth - .5);
+            event.clientX /
+            window.innerWidth -
+            .5;
 
         const y =
-            (e.clientY / window.innerHeight - .5);
+            event.clientY /
+            window.innerHeight -
+            .5;
+
 
         heroCenter.style.transform =
             `translate(
-                ${x * 10}px,
-                ${y * 7}px
+                ${x*9}px,
+                ${y*7}px
             )`;
 
     }
@@ -3118,21 +4987,20 @@ window.addEventListener(
     "scroll",
     ()=>{
 
-        const scrolled =
+        const scroll =
             window.scrollY;
 
-        const hero =
+        const moon =
             document.querySelector(
-                ".hero-center"
+                ".hero-moon"
             );
 
-        if(hero){
+        if(moon){
 
-            hero.style.marginTop =
-                Math.min(
-                    scrolled * .12,
-                    80
-                ) + "px";
+            moon.style.transform =
+                `translateY(
+                    ${scroll*.09}px
+                )`;
 
         }
 
@@ -3144,34 +5012,39 @@ window.addEventListener(
    SCROLL PROGRESS
 ========================================================= */
 
-const scrollBar =
+const scrollProgress =
     document.getElementById(
-        "scrollBar"
+        "scrollProgress"
     );
 
 window.addEventListener(
     "scroll",
     ()=>{
 
-        const max =
+        const pageHeight =
             document.documentElement
                 .scrollHeight -
             window.innerHeight;
 
-        const value =
-            max > 0
-            ? (window.scrollY / max) * 100
+
+        const percentage =
+            pageHeight > 0
+            ? (
+                window.scrollY /
+                pageHeight
+              ) * 100
             : 0;
 
-        scrollBar.style.width =
-            value + "%";
+
+        scrollProgress.style.width =
+            percentage + "%";
 
     }
 );
 
 
 /* =========================================================
-   SCROLL REVEAL
+   REVEAL
 ========================================================= */
 
 const revealElements =
@@ -3183,26 +5056,33 @@ const revealObserver =
     new IntersectionObserver(
         entries=>{
 
-            entries.forEach(entry=>{
+            entries.forEach(
+                entry=>{
 
-                if(entry.isIntersecting){
+                    if(
+                        entry.isIntersecting
+                    ){
 
-                    entry.target
-                        .classList
-                        .add("visible");
+                        entry.target
+                            .classList
+                            .add("visible");
+
+                    }
 
                 }
-
-            });
+            );
 
         },
         {
-            threshold:.16
+            threshold:.14
         }
     );
 
 revealElements.forEach(
-    el => revealObserver.observe(el)
+    element =>
+        revealObserver.observe(
+            element
+        )
 );
 
 
@@ -3210,14 +5090,9 @@ revealElements.forEach(
    RIVER INTERACTION
 ========================================================= */
 
-const riverCard =
+const water =
     document.getElementById(
-        "riverCard"
-    );
-
-const interactiveRiver =
-    document.getElementById(
-        "interactiveRiver"
+        "water"
     );
 
 const waterGlow =
@@ -3226,68 +5101,42 @@ const waterGlow =
     );
 
 
-riverCard.addEventListener(
+water.addEventListener(
     "mousemove",
-    (e)=>{
+    (event)=>{
 
         const rect =
-            riverCard.getBoundingClientRect();
+            water.getBoundingClientRect();
+
 
         const x =
-            e.clientX - rect.left;
+            event.clientX -
+            rect.left;
 
         const y =
-            e.clientY - rect.top;
+            event.clientY -
+            rect.top;
 
-        const riverRect =
-            interactiveRiver.getBoundingClientRect();
 
-        const rx =
-            e.clientX - riverRect.left;
+        waterGlow.style.left =
+            x + "px";
 
-        const ry =
-            e.clientY - riverRect.top;
-
-        if(
-            ry >= 0 &&
-            ry <= riverRect.height
-        ){
-
-            waterGlow.style.setProperty(
-                "--water-x",
-                rx + "px"
-            );
-
-            waterGlow.style.setProperty(
-                "--water-y",
-                ry + "px"
-            );
-
-        }
-
-        riverCard.style.setProperty(
-            "--mouse-x",
-            x + "px"
-        );
-
-        riverCard.style.setProperty(
-            "--mouse-y",
-            y + "px"
-        );
+        waterGlow.style.top =
+            y + "px";
 
     }
 );
 
 
-/* click water ripple */
+/* click water */
 
-interactiveRiver.addEventListener(
+water.addEventListener(
     "click",
-    (e)=>{
+    (event)=>{
 
         const rect =
-            interactiveRiver
-                .getBoundingClientRect();
+            water.getBoundingClientRect();
+
 
         const ripple =
             document.createElement(
@@ -3295,20 +5144,30 @@ interactiveRiver.addEventListener(
             );
 
         ripple.className =
-            "river-ripple";
+            "ripple";
+
 
         ripple.style.left =
-            (e.clientX - rect.left) + "px";
+            event.clientX -
+            rect.left +
+            "px";
+
 
         ripple.style.top =
-            (e.clientY - rect.top) + "px";
+            event.clientY -
+            rect.top +
+            "px";
 
-        interactiveRiver.appendChild(
+
+        water.appendChild(
             ripple
         );
 
+
         setTimeout(
-            ()=>ripple.remove(),
+            ()=>{
+                ripple.remove();
+            },
             1200
         );
 
@@ -3317,35 +5176,48 @@ interactiveRiver.addEventListener(
 
 
 /* =========================================================
-   GLOBAL CLICK MAGIC
+   CLICK MAGIC
 ========================================================= */
 
 document.addEventListener(
     "click",
-    (e)=>{
+    (event)=>{
 
         if(
-            e.target.closest(
+            event.target.closest(
                 ".music-player"
+            ) ||
+            event.target.closest(
+                ".season-slider"
             )
         ){
             return;
         }
 
-        const symbols =
-            ["✦","·","✿","❀"];
 
-        for(let i=0;i<7;i++){
+        const symbols = [
+            "✦",
+            "✧",
+            "·",
+            "✿"
+        ];
 
-            const p =
+
+        for(
+            let i=0;
+            i<7;
+            i++
+        ){
+
+            const spark =
                 document.createElement(
                     "span"
                 );
 
-            p.className =
-                "click-particle";
+            spark.className =
+                "click-spark";
 
-            p.textContent =
+            spark.textContent =
                 symbols[
                     Math.floor(
                         Math.random() *
@@ -3353,34 +5225,47 @@ document.addEventListener(
                     )
                 ];
 
-            p.style.left =
-                e.clientX + "px";
 
-            p.style.top =
-                e.clientY + "px";
+            spark.style.left =
+                event.clientX + "px";
 
-            p.style.setProperty(
+            spark.style.top =
+                event.clientY + "px";
+
+
+            spark.style.setProperty(
                 "--dx",
-                ((Math.random()-.5)*150)
-                + "px"
+                (
+                    (Math.random()-.5)
+                    * 160
+                ) + "px"
             );
 
-            p.style.setProperty(
+            spark.style.setProperty(
                 "--dy",
-                ((Math.random()-.5)*150)
-                + "px"
+                (
+                    (Math.random()-.5)
+                    * 160
+                ) + "px"
             );
 
-            p.style.setProperty(
+            spark.style.setProperty(
                 "--rot",
-                ((Math.random()*300)-150)
-                + "deg"
+                (
+                    Math.random()*360
+                ) + "deg"
             );
 
-            document.body.appendChild(p);
+
+            document.body.appendChild(
+                spark
+            );
+
 
             setTimeout(
-                ()=>p.remove(),
+                ()=>{
+                    spark.remove();
+                },
                 950
             );
 
@@ -3391,74 +5276,184 @@ document.addEventListener(
 
 
 /* =========================================================
-   THEME SWITCH
+   SEASON SWITCH
 ========================================================= */
 
-const themeToggle =
+const springChoice =
     document.getElementById(
-        "themeToggle"
+        "springChoice"
     );
 
-const themeText =
+const autumnChoice =
     document.getElementById(
-        "themeText"
+        "autumnChoice"
     );
 
-let currentTheme = "spring";
+const seasonSlider =
+    document.getElementById(
+        "seasonSlider"
+    );
 
-themeToggle.addEventListener(
+const seasonStatus =
+    document.getElementById(
+        "seasonStatus"
+    );
+
+const miniThemeButton =
+    document.getElementById(
+        "miniThemeButton"
+    );
+
+const miniThemeText =
+    document.getElementById(
+        "miniThemeText"
+    );
+
+
+let currentSeason =
+    "spring";
+
+
+function setSeason(
+    season
+){
+
+    currentSeason =
+        season;
+
+
+    document.body.setAttribute(
+        "data-season",
+        season
+    );
+
+
+    if(
+        season === "spring"
+    ){
+
+        springChoice
+            .classList
+            .add("active");
+
+        autumnChoice
+            .classList
+            .remove("active");
+
+        seasonSlider
+            .classList
+            .remove("autumn");
+
+        seasonStatus.textContent =
+            "CURRENT SEASON : SPRING";
+
+        miniThemeText.textContent =
+            "🍂 Autumn";
+
+        document
+            .querySelector(
+                'meta[name="theme-color"]'
+            )
+            ?.setAttribute(
+                "content",
+                "#d77b9b"
+            );
+
+    }else{
+
+        springChoice
+            .classList
+            .remove("active");
+
+        autumnChoice
+            .classList
+            .add("active");
+
+        seasonSlider
+            .classList
+            .add("autumn");
+
+        seasonStatus.textContent =
+            "CURRENT SEASON : AUTUMN";
+
+        miniThemeText.textContent =
+            "🌸 Spring";
+
+        document
+            .querySelector(
+                'meta[name="theme-color"]'
+            )
+            ?.setAttribute(
+                "content",
+                "#c36b3a"
+            );
+
+    }
+
+}
+
+
+/* Spring */
+
+springChoice.addEventListener(
+    "click",
+    ()=>{
+        setSeason(
+            "spring"
+        );
+    }
+);
+
+
+/* Autumn */
+
+autumnChoice.addEventListener(
+    "click",
+    ()=>{
+        setSeason(
+            "autumn"
+        );
+    }
+);
+
+
+/* Center slider */
+
+seasonSlider.addEventListener(
     "click",
     ()=>{
 
-        if(
-            currentTheme === "spring"
-        ){
+        setSeason(
+            currentSeason === "spring"
+            ? "autumn"
+            : "spring"
+        );
 
-            currentTheme =
-                "autumn";
+    }
+);
 
-            document.body
-                .setAttribute(
-                    "data-theme",
-                    "autumn"
-                );
 
-            themeText.textContent =
-                "🌸 Spring";
+/* Mini switch */
 
-            document
-                .querySelector(
-                    'meta[name="theme-color"]'
-                )
-                .setAttribute(
-                    "content",
-                    "#c66e3c"
-                );
+miniThemeButton.addEventListener(
+    "click",
+    ()=>{
 
-        }else{
+        setSeason(
+            currentSeason === "spring"
+            ? "autumn"
+            : "spring"
+        );
 
-            currentTheme =
-                "spring";
 
-            document.body
-                .setAttribute(
-                    "data-theme",
-                    "spring"
-                );
-
-            themeText.textContent =
-                "🍂 Autumn";
-
-            document
-                .querySelector(
-                    'meta[name="theme-color"]'
-                )
-                .setAttribute(
-                    "content",
-                    "#d77b9b"
-                );
-
-        }
+        document
+            .getElementById(
+                "season"
+            )
+            .scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
 
     }
 );
@@ -3475,10 +5470,11 @@ const navLinks =
 
 const trackedSections =
     document.querySelectorAll(
-        "header[id],article[id],section[id]"
+        "header[id],section[id],article[id]"
     );
 
-const sectionObserver =
+
+const navObserver =
     new IntersectionObserver(
         entries=>{
 
@@ -3491,8 +5487,10 @@ const sectionObserver =
                         return;
                     }
 
+
                     const id =
                         entry.target.id;
+
 
                     navLinks.forEach(
                         link=>{
@@ -3503,14 +5501,21 @@ const sectionObserver =
                         }
                     );
 
-                    const active =
+
+                    const activeLink =
                         document.querySelector(
                             `.nav a[href="#${id}"]`
                         );
 
-                    if(active){
-                        active.classList
-                            .add("active");
+
+                    if(activeLink){
+
+                        activeLink
+                            .classList
+                            .add(
+                                "active"
+                            );
+
                     }
 
                 }
@@ -3518,20 +5523,21 @@ const sectionObserver =
 
         },
         {
-            threshold:.5
+            threshold:.45
         }
     );
 
+
 trackedSections.forEach(
     section =>
-        sectionObserver.observe(
+        navObserver.observe(
             section
         )
 );
 
 
 /* =========================================================
-   BACK TO TOP
+   TOP BUTTON
 ========================================================= */
 
 const topBtn =
@@ -3543,40 +5549,46 @@ window.addEventListener(
     "scroll",
     ()=>{
 
-        if(window.scrollY > 650){
+        if(
+            window.scrollY > 600
+        ){
 
-            topBtn.classList.add(
-                "show"
-            );
+            topBtn
+                .classList
+                .add("show");
 
         }else{
 
-            topBtn.classList.remove(
-                "show"
-            );
+            topBtn
+                .classList
+                .remove("show");
 
         }
 
     }
 );
 
+
 topBtn.addEventListener(
     "click",
     ()=>{
+
         window.scrollTo({
             top:0,
             behavior:"smooth"
         });
+
     }
 );
 
 
 /* =========================================================
-   YOUTUBE MUSIC
+   YOUTUBE PLAYER
 ========================================================= */
 
 let player;
 let isPlaying = false;
+
 
 function onYouTubeIframeAPIReady(){
 
@@ -3631,6 +5643,7 @@ function onYouTubeIframeAPIReady(){
 
                             }
 
+
                             if(
                                 event.data ===
                                 YT.PlayerState.PAUSED ||
@@ -3660,8 +5673,14 @@ function onYouTubeIframeAPIReady(){
 }
 
 
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
 document
-.getElementById("musicBtn")
+.getElementById(
+    "musicBtn"
+)
 .addEventListener(
     "click",
     ()=>{
@@ -3672,6 +5691,7 @@ document
         ){
             return;
         }
+
 
         if(isPlaying){
 
@@ -3691,16 +5711,25 @@ document
    LOAD YOUTUBE API
 ========================================================= */
 
-const ytScript =
+const youtubeScript =
     document.createElement(
         "script"
     );
 
-ytScript.src =
+youtubeScript.src =
     "https://www.youtube.com/iframe_api";
 
 document.head.appendChild(
-    ytScript
+    youtubeScript
+);
+
+
+/* =========================================================
+   INITIAL SEASON
+========================================================= */
+
+setSeason(
+    "spring"
 );
 
 </script>
