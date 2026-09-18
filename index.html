@@ -2,19 +2,21 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#d77b9b">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#b45a84" />
 
-  <title>Love & Deepspace — Eternal Spring Palace</title>
+  <title>Love & Deepspace — Spring Fantasy Garden</title>
 
   <style>
+    /* =========================================================
+       GOOGLE FONTS
+    ========================================================= */
     @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
     /* =========================================================
        RESET
     ========================================================= */
-
     * {
       margin: 0;
       padding: 0;
@@ -26,253 +28,116 @@
     }
 
     body {
-      font-family: "Kanit", sans-serif;
-      color: #534956;
+      font-family: "Kanit", "Noto Sans Thai", sans-serif;
+      color: #544957;
+      min-height: 100vh;
       overflow-x: hidden;
-      background:
-        linear-gradient(
-          180deg,
-          #fff7fb 0%,
-          #f6effa 28%,
-          #edf8f3 55%,
-          #eef7fd 77%,
-          #fbf2f7 100%
-        );
       cursor: none;
+
+      background:
+        radial-gradient(circle at 15% 8%, rgba(255,255,255,.95), transparent 22%),
+        radial-gradient(circle at 85% 10%, rgba(215,185,237,.32), transparent 24%),
+        radial-gradient(circle at 75% 72%, rgba(171,222,201,.3), transparent 28%),
+        radial-gradient(circle at 20% 88%, rgba(247,183,208,.25), transparent 25%),
+        linear-gradient(
+          135deg,
+          #fff6fb 0%,
+          #f6eef9 24%,
+          #eaf8f0 48%,
+          #eaf7fd 72%,
+          #fff1f7 100%
+        );
+
+      background-size: 300% 300%;
+      animation: pageGradient 20s ease infinite;
     }
 
     ::selection {
-      background: rgba(215,123,155,.28);
-      color: #633b51;
+      background: rgba(180,90,132,.2);
+      color: #402b38;
     }
 
+    @keyframes pageGradient {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* =========================================================
+       COLOR SYSTEM
+    ========================================================= */
     :root {
-      --rose-deep: #934365;
-      --rose: #d77b9b;
-      --rose-light: #f5bfd0;
+      --rose-deep: #8d3d61;
+      --rose: #d77d9e;
+      --rose-light: #f4b8cb;
       --rose-pale: #fff0f6;
 
-      --green-deep: #4d7357;
-      --green: #80aa89;
-      --green-light: #c3dfc5;
+      --leaf-deep: #476f55;
+      --leaf: #7ca986;
+      --leaf-light: #b7d9ba;
 
-      --blue: #95cde2;
-      --blue-deep: #628fa6;
+      --sky: #8ac6df;
+      --sky-deep: #507e96;
 
-      --lavender: #cdbceb;
-      --purple: #8468aa;
+      --lavender: #c6b8e8;
+      --lavender-deep: #7b67a8;
 
-      --gold: #d7b77a;
-      --gold-light: #f4dfaa;
+      --gold: #d7b777;
+      --gold-light: #f1dca9;
 
+      --ink: #544957;
+      --muted: #7b707d;
       --white: #fff;
-      --ink: #534956;
-      --muted: #7e7380;
-
-      --glass:
-        rgba(255,255,255,.62);
-
-      --glass-strong:
-        rgba(255,255,255,.82);
 
       --shadow:
-        0 30px 80px rgba(76,61,78,.16);
+        0 28px 75px rgba(89, 69, 89, .16),
+        0 10px 25px rgba(89, 69, 89, .07);
 
       --shadow-deep:
-        0 40px 110px rgba(71,54,72,.24);
+        0 38px 100px rgba(73, 55, 73, .22),
+        0 10px 28px rgba(255,255,255,.42);
     }
 
     /* =========================================================
-       PRELOADER / SPRING GATE
+       SCROLL PROGRESS
     ========================================================= */
-
-    .spring-gate {
+    .scroll-progress {
       position: fixed;
-      inset: 0;
-      z-index: 999999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 50% 42%, rgba(255,255,255,.95), transparent 25%),
-        radial-gradient(circle at 25% 60%, rgba(246,182,207,.35), transparent 30%),
-        radial-gradient(circle at 75% 60%, rgba(184,216,200,.35), transparent 30%),
-        linear-gradient(
-          135deg,
-          #fff5fa,
-          #f3eafa,
-          #edf8f2,
-          #eef8fd
-        );
-      transition:
-        opacity 1.1s ease,
-        visibility 1.1s ease;
-    }
-
-    .spring-gate.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .gate-aura {
-      position: absolute;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      background:
-        radial-gradient(
-          circle,
-          rgba(255,255,255,.95) 0%,
-          rgba(246,187,210,.35) 32%,
-          transparent 70%
-        );
-      animation: auraPulse 4s ease-in-out infinite;
-    }
-
-    @keyframes auraPulse {
-      0%,100% {
-        transform: scale(.92);
-        opacity: .75;
-      }
-      50% {
-        transform: scale(1.08);
-        opacity: 1;
-      }
-    }
-
-    .gate-ring {
-      position: absolute;
-      width: 430px;
-      height: 430px;
-      border: 1px solid rgba(168,104,136,.22);
-      border-radius: 50%;
-      box-shadow:
-        0 0 45px rgba(215,123,155,.15),
-        inset 0 0 35px rgba(255,255,255,.9);
-      animation: gateSpin 25s linear infinite;
-    }
-
-    .gate-ring::before,
-    .gate-ring::after {
-      content: "✦";
-      position: absolute;
-      color: #d77b9b;
-      font-size: 17px;
-      text-shadow: 0 0 13px rgba(215,123,155,.45);
-    }
-
-    .gate-ring::before {
-      left: 15px;
-      top: 25%;
-    }
-
-    .gate-ring::after {
-      right: 25px;
-      bottom: 19%;
-    }
-
-    @keyframes gateSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .gate-content {
-      position: relative;
-      z-index: 4;
-      width: min(700px, 92%);
-      text-align: center;
-    }
-
-    .gate-flower {
-      font-size: 54px;
-      margin-bottom: 12px;
-      animation:
-        flowerFloat 4s ease-in-out infinite;
-    }
-
-    .gate-mini {
-      display: inline-flex;
-      gap: 12px;
-      align-items: center;
-      padding: 8px 16px;
-      border-radius: 999px;
-      color: var(--rose-deep);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      background: rgba(255,255,255,.65);
-      border: 1px solid rgba(255,255,255,.9);
-      backdrop-filter: blur(15px);
-      box-shadow: 0 12px 28px rgba(82,64,82,.08);
-    }
-
-    .gate-title {
-      margin: 20px 0 13px;
-      font-family: "Playfair Display", serif;
-      font-size: clamp(48px, 8vw, 88px);
-      line-height: .95;
-      color: var(--rose-deep);
-      text-shadow:
-        0 12px 40px rgba(145,63,99,.12),
-        0 0 45px rgba(255,255,255,.85);
-    }
-
-    .gate-sub {
-      max-width: 570px;
-      margin: auto;
-      color: #756a77;
-      font-size: 14px;
-      line-height: 1.9;
-    }
-
-    .enter-btn {
-      margin-top: 30px;
-      padding: 15px 34px;
-      border: 1px solid rgba(255,255,255,.9);
-      border-radius: 20px;
+      inset: 0 0 auto 0;
+      width: 0%;
+      height: 4px;
+      z-index: 100000;
       background:
         linear-gradient(
-          135deg,
-          #a84f72,
-          #d77b9b,
-          #c8b8e8
+          90deg,
+          #8ac6df,
+          #c6b8e8,
+          #d77d9e,
+          #7ca986,
+          #f0d596
         );
-      color: white;
-      font-family: inherit;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
       box-shadow:
-        0 15px 30px rgba(129,74,101,.2),
-        0 0 35px rgba(255,255,255,.35);
-      transition: .35s ease;
-    }
-
-    .enter-btn:hover {
-      transform: translateY(-5px) scale(1.04);
-      box-shadow:
-        0 22px 42px rgba(129,74,101,.25),
-        0 0 45px rgba(255,255,255,.58);
+        0 0 10px rgba(255,255,255,.9),
+        0 0 25px rgba(215,125,158,.35);
     }
 
     /* =========================================================
-       CURSOR
+       CUSTOM CURSOR
     ========================================================= */
-
-    .cursor-dot {
+    .cursor-main {
       position: fixed;
-      width: 13px;
-      height: 13px;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
-      background:
-        radial-gradient(circle, #fff, #ffd5e4 42%, #d77b9b);
-      box-shadow:
-        0 0 12px #fff,
-        0 0 28px rgba(215,123,155,.7);
       pointer-events: none;
-      z-index: 1000000;
+      z-index: 999999;
       transform: translate(-50%, -50%);
+      background:
+        radial-gradient(circle, #fff 0%, #ffe3ed 42%, #d77d9e 100%);
+      box-shadow:
+        0 0 12px rgba(255,255,255,.95),
+        0 0 30px rgba(215,125,158,.65);
+      transition: width .2s ease, height .2s ease;
     }
 
     .cursor-ring {
@@ -280,56 +145,126 @@
       width: 42px;
       height: 42px;
       border-radius: 50%;
-      border: 1px solid rgba(215,123,155,.5);
       pointer-events: none;
-      z-index: 999999;
+      z-index: 999998;
       transform: translate(-50%, -50%);
+      border: 1px solid rgba(141,61,97,.45);
+      box-shadow: 0 0 25px rgba(215,125,158,.12);
       transition:
-        width .25s ease,
-        height .25s ease,
-        border-color .25s ease;
+        width .2s ease,
+        height .2s ease,
+        border-color .2s ease;
     }
 
-    body.hovering .cursor-dot {
-      width: 24px;
-      height: 24px;
+    body.cursor-hover .cursor-main {
+      width: 26px;
+      height: 26px;
     }
 
-    body.hovering .cursor-ring {
-      width: 62px;
-      height: 62px;
-      border-color: rgba(145,63,99,.75);
+    body.cursor-hover .cursor-ring {
+      width: 61px;
+      height: 61px;
+      border-color: rgba(215,125,158,.72);
     }
 
     /* =========================================================
-       SCROLL BAR
+       AURORA
     ========================================================= */
-
-    .scroll-progress {
+    .aurora {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 4px;
-      z-index: 1000001;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+      mix-blend-mode: screen;
+    }
+
+    .aurora-layer {
+      position: absolute;
+      width: 160%;
+      height: 48%;
+      left: -30%;
+      border-radius: 50%;
+      filter: blur(38px);
+      opacity: .32;
+      transform-origin: center;
+    }
+
+    .aurora-1 {
+      top: 4%;
       background:
         linear-gradient(
-          90deg,
-          #8fc7df,
-          #c7b6e7,
-          #d77b9b,
-          #80aa89,
-          #d7b77a
+          105deg,
+          transparent 8%,
+          rgba(122,226,195,.45) 24%,
+          rgba(186,152,241,.36) 45%,
+          rgba(245,145,198,.36) 65%,
+          transparent 84%
         );
-      box-shadow:
-        0 0 10px rgba(255,255,255,.8),
-        0 0 30px rgba(215,123,155,.45);
+      transform: rotate(-7deg);
+      animation: auroraMove1 15s ease-in-out infinite alternate;
+    }
+
+    .aurora-2 {
+      top: 13%;
+      background:
+        linear-gradient(
+          110deg,
+          transparent 15%,
+          rgba(117,202,231,.3) 28%,
+          rgba(223,153,207,.4) 48%,
+          rgba(168,232,195,.34) 69%,
+          transparent 88%
+        );
+      transform: rotate(8deg);
+      animation: auroraMove2 19s ease-in-out infinite alternate;
+    }
+
+    .aurora-3 {
+      top: 23%;
+      background:
+        linear-gradient(
+          100deg,
+          transparent 10%,
+          rgba(198,178,242,.24) 32%,
+          rgba(255,189,214,.27) 53%,
+          rgba(149,226,201,.24) 72%,
+          transparent 87%
+        );
+      transform: rotate(-4deg);
+      animation: auroraMove3 22s ease-in-out infinite alternate;
+    }
+
+    @keyframes auroraMove1 {
+      0% {
+        transform: translateX(-4%) rotate(-7deg) scaleY(.92);
+      }
+      100% {
+        transform: translateX(8%) rotate(-2deg) scaleY(1.08);
+      }
+    }
+
+    @keyframes auroraMove2 {
+      0% {
+        transform: translateX(5%) rotate(8deg) scaleY(1);
+      }
+      100% {
+        transform: translateX(-9%) rotate(2deg) scaleY(.84);
+      }
+    }
+
+    @keyframes auroraMove3 {
+      0% {
+        transform: translateX(-7%) rotate(-4deg);
+      }
+      100% {
+        transform: translateX(10%) rotate(5deg);
+      }
     }
 
     /* =========================================================
-       AMBIENT
+       AMBIENT LIGHT BLOBS
     ========================================================= */
-
     .ambient {
       position: fixed;
       inset: 0;
@@ -338,37 +273,38 @@
       z-index: 0;
     }
 
-    .ambient-orb {
+    .ambient-blob {
       position: absolute;
       border-radius: 50%;
-      filter: blur(9px);
+      filter: blur(12px);
+      opacity: .38;
       animation: ambientFloat 14s ease-in-out infinite;
     }
 
-    .orb1 {
-      width: 340px;
-      height: 340px;
+    .ambient-blob.a {
+      width: 320px;
+      height: 320px;
+      top: 12%;
       left: -100px;
-      top: 8%;
-      background: radial-gradient(circle, rgba(245,183,207,.45), transparent 70%);
+      background: radial-gradient(circle, rgba(248,177,206,.55), transparent 70%);
     }
 
-    .orb2 {
+    .ambient-blob.b {
       width: 400px;
       height: 400px;
-      right: -130px;
-      top: 30%;
-      background: radial-gradient(circle, rgba(173,218,195,.4), transparent 70%);
+      right: -140px;
+      top: 38%;
+      background: radial-gradient(circle, rgba(151,214,190,.48), transparent 70%);
       animation-delay: -4s;
     }
 
-    .orb3 {
-      width: 330px;
-      height: 330px;
-      left: 10%;
-      bottom: 0;
-      background: radial-gradient(circle, rgba(202,185,232,.34), transparent 70%);
-      animation-delay: -8s;
+    .ambient-blob.c {
+      width: 320px;
+      height: 320px;
+      bottom: 6%;
+      left: 14%;
+      background: radial-gradient(circle, rgba(198,180,235,.36), transparent 70%);
+      animation-delay: -7s;
     }
 
     @keyframes ambientFloat {
@@ -376,93 +312,161 @@
         transform: translate(0,0) scale(1);
       }
       50% {
-        transform: translate(35px,-25px) scale(1.08);
+        transform: translate(30px,-25px) scale(1.08);
       }
     }
 
     /* =========================================================
-       PARTICLES
+       MOON
     ========================================================= */
-
-    .particles,
-    .petals,
-    .fireflies,
-    .butterflies {
+    .moon {
       position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
+      width: 170px;
+      height: 170px;
+      top: 8%;
+      right: 5%;
+      border-radius: 50%;
+      z-index: 1;
+      opacity: .34;
+      background:
+        radial-gradient(
+          circle at 35% 30%,
+          #fff,
+          #fff7fb 26%,
+          #edd3df 62%,
+          #be90aa 100%
+        );
+      box-shadow:
+        0 0 30px rgba(255,255,255,.9),
+        0 0 85px rgba(215,125,158,.25);
+      animation: moonFloat 8s ease-in-out infinite;
     }
 
-    .particles { z-index: 2; }
-    .petals { z-index: 5; }
-    .fireflies { z-index: 3; }
-    .butterflies { z-index: 6; }
-
-    .spark {
+    .moon::before {
+      content: "";
       position: absolute;
-      color: rgba(255,255,255,.92);
-      text-shadow:
-        0 0 7px rgba(255,255,255,1),
-        0 0 18px rgba(215,123,155,.55);
-      animation: sparkle 2.7s ease-in-out infinite;
+      inset: 11px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.65);
     }
 
-    @keyframes sparkle {
+    @keyframes moonFloat {
       0%,100% {
-        transform: scale(.5) rotate(0);
-        opacity: .1;
+        transform: translateY(0);
       }
       50% {
-        transform: scale(1.35) rotate(90deg);
-        opacity: 1;
+        transform: translateY(-16px);
       }
     }
 
+    /* =========================================================
+       PARTICLE LAYERS
+    ========================================================= */
+    .sparkle-field,
+    .petal-layer,
+    .firefly-layer {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .sparkle-field {
+      z-index: 4;
+    }
+
+    .petal-layer {
+      z-index: 8;
+    }
+
+    .firefly-layer {
+      z-index: 3;
+    }
+
+    .sparkle {
+      position: absolute;
+      color: rgba(255,255,255,.97);
+      text-shadow:
+        0 0 8px rgba(255,255,255,1),
+        0 0 22px rgba(215,125,158,.46);
+      animation: sparkleTwinkle 2.5s ease-in-out infinite;
+    }
+
+    @keyframes sparkleTwinkle {
+      0%,100% {
+        opacity: .1;
+        transform: scale(.5) rotate(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.35) rotate(90deg);
+      }
+    }
+
+    /* MANY PETALS */
     .petal {
       position: absolute;
-      top: -50px;
+      top: -70px;
+      will-change: transform, opacity;
       animation: petalFall linear infinite;
-      filter: drop-shadow(0 0 8px rgba(255,255,255,.75));
-      opacity: .8;
+      filter:
+        drop-shadow(0 0 5px rgba(255,255,255,.8))
+        drop-shadow(0 4px 9px rgba(176,83,117,.12));
     }
 
     @keyframes petalFall {
       0% {
         transform:
-          translate3d(0,-10vh,0)
-          rotate(0deg);
+          translate3d(0,-8vh,0)
+          rotate(0deg)
+          scale(.8);
         opacity: 0;
       }
 
-      10% {
+      8% {
         opacity: .9;
+      }
+
+      25% {
+        transform:
+          translate3d(70px,24vh,0)
+          rotate(95deg)
+          scale(1);
       }
 
       50% {
         transform:
-          translate3d(100px,55vh,0)
-          rotate(180deg);
+          translate3d(-40px,52vh,0)
+          rotate(210deg)
+          scale(.92);
+      }
+
+      75% {
+        transform:
+          translate3d(100px,78vh,0)
+          rotate(295deg)
+          scale(1.08);
       }
 
       100% {
         transform:
-          translate3d(-90px,115vh,0)
-          rotate(360deg);
+          translate3d(-100px,114vh,0)
+          rotate(390deg)
+          scale(.72);
         opacity: 0;
       }
     }
 
     .firefly {
       position: absolute;
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
-      background: #fff4aa;
+      background: #fff3a4;
       box-shadow:
-        0 0 9px #fff4aa,
-        0 0 25px rgba(255,231,140,.7);
-      animation: fireflyFloat 6s ease-in-out infinite;
+        0 0 8px #fff3a4,
+        0 0 25px rgba(255,232,141,.8);
+      animation: fireflyFloat 5.5s ease-in-out infinite;
     }
 
     @keyframes fireflyFloat {
@@ -470,368 +474,409 @@
         transform: translateY(0) scale(.55);
         opacity: .1;
       }
-
       50% {
-        transform: translateY(-35px) scale(1.3);
+        transform: translateY(-45px) scale(1.3);
         opacity: 1;
-      }
-    }
-
-    .butterfly {
-      position: absolute;
-      font-size: 23px;
-      animation: butterflyFly linear infinite;
-      filter: drop-shadow(0 5px 13px rgba(70,55,70,.15));
-    }
-
-    @keyframes butterflyFly {
-      0% {
-        transform:
-          translate(-10vw, 60vh)
-          rotate(-8deg);
-        opacity: 0;
-      }
-
-      12% {
-        opacity: .85;
-      }
-
-      45% {
-        transform:
-          translate(40vw, 28vh)
-          rotate(8deg);
-      }
-
-      75% {
-        transform:
-          translate(75vw, 55vh)
-          rotate(-8deg);
-      }
-
-      100% {
-        transform:
-          translate(115vw, 15vh)
-          rotate(9deg);
-        opacity: 0;
       }
     }
 
     /* =========================================================
        HERO
     ========================================================= */
-
     header {
       position: relative;
       z-index: 10;
-      min-height: 900px;
+      min-height: 820px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 100px 20px 150px;
+      padding: 90px 20px 140px;
       overflow: hidden;
     }
 
-    .hero-sky {
+    .hero-stars {
       position: absolute;
       inset: 0;
+      pointer-events: none;
       background:
-        radial-gradient(
-          ellipse at 50% 68%,
-          rgba(255,255,255,.9),
-          transparent 32%
-        ),
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,.68),
-          rgba(226,242,250,.34),
-          rgba(185,214,198,.28)
-        );
+        radial-gradient(circle at 50% 30%, rgba(255,255,255,.4), transparent 20%),
+        radial-gradient(circle at 25% 55%, rgba(255,255,255,.22), transparent 14%),
+        radial-gradient(circle at 75% 62%, rgba(255,255,255,.2), transparent 17%);
     }
 
-    .sun {
+    .hero-orbit {
       position: absolute;
-      width: 280px;
-      height: 280px;
-      top: 50px;
-      right: 8%;
+      width: 690px;
+      height: 690px;
+      border: 1px solid rgba(153,116,166,.15);
       border-radius: 50%;
-      background:
-        radial-gradient(
-          circle,
-          #fffdf4,
-          #fce1a9 38%,
-          rgba(245,215,166,.25) 66%,
-          transparent 74%
-        );
-      filter: blur(1px);
-      opacity: .75;
-      animation: sunPulse 6s ease-in-out infinite;
-    }
-
-    @keyframes sunPulse {
-      0%,100% { transform: scale(.96); }
-      50% { transform: scale(1.05); }
-    }
-
-    .mountain {
-      position: absolute;
-      left: -10%;
-      bottom: 140px;
-      width: 120%;
-      height: 260px;
-      background:
-        linear-gradient(
-          150deg,
-          transparent 20%,
-          rgba(157,190,168,.4) 20%,
-          rgba(157,190,168,.4) 44%,
-          transparent 44%
-        ),
-        linear-gradient(
-          28deg,
-          transparent 20%,
-          rgba(195,215,198,.48) 20%,
-          rgba(195,215,198,.48) 58%,
-          transparent 58%
-        );
-      clip-path: polygon(
-        0 100%,
-        15% 55%,
-        29% 72%,
-        43% 38%,
-        59% 72%,
-        72% 46%,
-        87% 68%,
-        100% 42%,
-        100% 100%
-      );
-      filter: blur(1px);
-      opacity: .65;
-    }
-
-    .hero-water {
-      position: absolute;
-      left: -5%;
-      bottom: -35px;
-      width: 110%;
-      height: 210px;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(164,208,219,.22),
-          rgba(136,183,198,.28)
-        );
-      border-radius: 50% 50% 0 0 / 28% 28% 0 0;
-      box-shadow:
-        inset 0 20px 40px rgba(255,255,255,.28);
-      overflow: hidden;
-    }
-
-    .hero-water::before {
-      content: "";
-      position: absolute;
-      inset: 35px 8%;
-      background:
-        repeating-linear-gradient(
-          0deg,
-          rgba(255,255,255,.18) 0px,
-          rgba(255,255,255,.18) 2px,
-          transparent 2px,
-          transparent 22px
-        );
-      opacity: .5;
-      animation: waterMove 7s linear infinite;
-    }
-
-    @keyframes waterMove {
-      from {
-        transform: translateX(-30px);
-      }
-      to {
-        transform: translateX(30px);
-      }
-    }
-
-    .lotus {
-      position: absolute;
-      bottom: 85px;
-      font-size: 60px;
-      filter:
-        drop-shadow(0 8px 20px rgba(96,70,88,.18))
-        drop-shadow(0 0 16px rgba(255,255,255,.55));
-      animation: lotusFloat 5s ease-in-out infinite;
-      z-index: 5;
-    }
-
-    .lotus.l1 { left: 13%; }
-    .lotus.l2 {
-      left: 51%;
-      bottom: 105px;
-      font-size: 50px;
-      animation-delay: -1.5s;
-    }
-    .lotus.l3 {
-      right: 12%;
-      font-size: 65px;
-      animation-delay: -3s;
-    }
-
-    @keyframes lotusFloat {
-      0%,100% {
-        transform: translateY(0) rotate(-4deg);
-      }
-      50% {
-        transform: translateY(-10px) rotate(4deg);
-      }
-    }
-
-    .hero-gate {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: min(950px, 94%);
-      height: 600px;
-      transform: translate(-50%, -52%);
+      animation: orbit 35s linear infinite;
       pointer-events: none;
     }
 
-    .gate-arch {
+    .hero-orbit::before,
+    .hero-orbit::after {
+      content: "";
       position: absolute;
-      left: 50%;
-      top: 5%;
-      width: 470px;
-      height: 470px;
-      transform: translateX(-50%);
-      border: 1px solid rgba(145,63,99,.16);
       border-radius: 50%;
+    }
+
+    .hero-orbit::before {
+      width: 11px;
+      height: 11px;
+      top: 22px;
+      left: 50%;
+      background: white;
       box-shadow:
-        0 0 55px rgba(255,255,255,.55),
-        inset 0 0 40px rgba(255,255,255,.6);
+        0 0 15px white,
+        0 0 35px rgba(215,125,158,.75);
     }
 
-    .gate-arch::before,
-    .gate-arch::after {
-      content: "🌸";
+    .hero-orbit::after {
+      width: 8px;
+      height: 8px;
+      right: 13%;
+      bottom: 48px;
+      background: white;
+      box-shadow:
+        0 0 15px white,
+        0 0 35px rgba(138,198,223,.7);
+    }
+
+    @keyframes orbit {
+      from {
+        transform: rotate(0);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================================================
+       OPENING SCENE
+    ========================================================= */
+    .opening-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 200000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          rgba(255,255,255,.22),
+          transparent 22%
+        ),
+        linear-gradient(
+          135deg,
+          #2e2336,
+          #4c3448,
+          #31504c,
+          #2b394a
+        );
+      transition:
+        opacity 1.1s ease,
+        visibility 1.1s ease;
+    }
+
+    .opening-screen.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .opening-aurora {
       position: absolute;
-      font-size: 42px;
-      filter: drop-shadow(0 4px 14px rgba(80,60,80,.12));
-      animation: flowerFloat 4s ease-in-out infinite;
+      width: 160%;
+      height: 65%;
+      left: -30%;
+      top: 5%;
+      filter: blur(46px);
+      opacity: .58;
+      background:
+        linear-gradient(
+          110deg,
+          transparent,
+          rgba(105,220,189,.3),
+          rgba(202,157,238,.4),
+          rgba(247,157,201,.32),
+          transparent
+        );
+      transform: rotate(-7deg);
+      animation: openingAurora 7s ease-in-out infinite alternate;
     }
 
-    .gate-arch::before {
-      top: -8px;
-      left: 18px;
+    @keyframes openingAurora {
+      0% {
+        transform: translateX(-6%) rotate(-7deg) scaleY(.9);
+      }
+      100% {
+        transform: translateX(8%) rotate(-1deg) scaleY(1.08);
+      }
     }
 
-    .gate-arch::after {
-      top: 60px;
-      right: 12px;
-      animation-delay: -2s;
-    }
-
-    .hero-card {
+    .opening-content {
       position: relative;
-      z-index: 12;
-      width: min(1020px, 100%);
-      padding: 55px 38px 52px;
+      z-index: 3;
+      width: min(740px, calc(100% - 36px));
+      padding: 55px 30px;
       text-align: center;
-      border-radius: 46px;
+      border-radius: 36px;
+      border: 1px solid rgba(255,255,255,.26);
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(22px);
+      box-shadow:
+        0 30px 90px rgba(0,0,0,.3),
+        inset 0 1px 0 rgba(255,255,255,.18);
+    }
+
+    .opening-petal-ring {
+      position: absolute;
+      inset: -85px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.07);
+      animation: ringSpin 28s linear infinite;
+    }
+
+    .opening-petal-ring::before,
+    .opening-petal-ring::after {
+      content: "✿";
+      position: absolute;
+      font-size: 24px;
+      color: rgba(255,255,255,.7);
+      text-shadow: 0 0 15px rgba(255,255,255,.4);
+    }
+
+    .opening-petal-ring::before {
+      top: -12px;
+      left: 50%;
+    }
+
+    .opening-petal-ring::after {
+      right: 10%;
+      bottom: 8%;
+    }
+
+    @keyframes ringSpin {
+      from {
+        transform: rotate(0);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .opening-small {
+      color: rgba(255,255,255,.76);
+      font-size: 10px;
+      letter-spacing: 4px;
+      margin-bottom: 18px;
+    }
+
+    .opening-title {
+      font-family: "Playfair Display", serif;
+      color: white;
+      font-size: clamp(50px, 9vw, 92px);
+      line-height: .92;
+      text-shadow:
+        0 7px 35px rgba(0,0,0,.25),
+        0 0 40px rgba(255,255,255,.18);
+      margin-bottom: 18px;
+    }
+
+    .opening-subtitle {
+      color: rgba(255,255,255,.86);
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .opening-line {
+      width: 120px;
+      height: 2px;
+      margin: 24px auto;
+      border-radius: 99px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #f0bfd2,
+        #c4d7c5,
+        transparent
+      );
+    }
+
+    .opening-button {
+      position: relative;
+      margin-top: 8px;
+      min-width: 190px;
+      padding: 14px 25px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.5);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.92),
+          rgba(249,213,228,.86)
+        );
+      color: #743d57;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow:
+        0 12px 30px rgba(0,0,0,.18),
+        0 0 25px rgba(255,255,255,.15);
+      transition: .35s ease;
+    }
+
+    .opening-button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          120deg,
+          transparent,
+          rgba(255,255,255,.75),
+          transparent
+        );
+      transform: translateX(-120%);
+      transition: .8s ease;
+    }
+
+    .opening-button:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow:
+        0 18px 35px rgba(0,0,0,.22),
+        0 0 35px rgba(255,255,255,.22);
+    }
+
+    .opening-button:hover::before {
+      transform: translateX(120%);
+    }
+
+    .opening-hint {
+      margin-top: 16px;
+      color: rgba(255,255,255,.45);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+    }
+
+    /* =========================================================
+       HERO MAIN PANEL
+    ========================================================= */
+    .hero-shell {
+      position: relative;
+      z-index: 4;
+      width: min(1120px, 100%);
+      padding: 58px 38px 54px;
+      border-radius: 43px;
+      border: 1px solid rgba(255,255,255,.92);
       background:
         linear-gradient(
           135deg,
           rgba(255,255,255,.77),
-          rgba(248,241,251,.57),
-          rgba(241,250,246,.54)
+          rgba(247,240,251,.54),
+          rgba(238,250,244,.54)
         );
-      border: 1px solid rgba(255,255,255,.95);
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(21px);
       box-shadow: var(--shadow-deep);
+      text-align: center;
       overflow: hidden;
-      transform: translateY(var(--hero-shift,0));
+      will-change: transform;
     }
 
-    .hero-card::before,
-    .hero-card::after {
+    .hero-shell::before {
       content: "";
       position: absolute;
+      width: 390px;
+      height: 390px;
+      left: -140px;
+      top: -160px;
       border-radius: 50%;
-      pointer-events: none;
+      background:
+        radial-gradient(
+          circle,
+          rgba(245,170,204,.25),
+          transparent 70%
+        );
     }
 
-    .hero-card::before {
+    .hero-shell::after {
+      content: "";
+      position: absolute;
       width: 360px;
       height: 360px;
-      left: -150px;
-      top: -140px;
-      background: radial-gradient(circle, rgba(245,188,209,.3), transparent 70%);
-    }
-
-    .hero-card::after {
-      width: 330px;
-      height: 330px;
       right: -130px;
-      bottom: -150px;
-      background: radial-gradient(circle, rgba(165,210,188,.28), transparent 70%);
+      bottom: -130px;
+      border-radius: 50%;
+      background:
+        radial-gradient(
+          circle,
+          rgba(153,211,183,.24),
+          transparent 70%
+        );
     }
 
-    .hero-label {
+    .hero-topline {
       position: relative;
       z-index: 3;
       display: inline-flex;
       align-items: center;
       gap: 11px;
-      padding: 9px 18px;
+      padding: 8px 17px;
       border-radius: 999px;
+      color: var(--rose-deep);
       font-size: 10px;
       letter-spacing: 3px;
-      font-weight: 600;
-      color: var(--rose-deep);
-      background: rgba(255,255,255,.76);
+      font-weight: 700;
+      background: rgba(255,255,255,.78);
       border: 1px solid rgba(255,255,255,.95);
-      box-shadow: 0 10px 24px rgba(81,65,81,.07);
+      box-shadow: 0 10px 22px rgba(87,68,87,.07);
+      margin-bottom: 22px;
+    }
+
+    .hero-topline::before,
+    .hero-topline::after {
+      content: "✦";
+      color: var(--gold);
     }
 
     .hero-title {
       position: relative;
       z-index: 3;
-      margin: 22px 0 15px;
       font-family: "Playfair Display", serif;
-      font-size: clamp(58px, 9vw, 114px);
+      font-size: clamp(60px, 8.5vw, 108px);
       line-height: .88;
-      letter-spacing: -3px;
+      letter-spacing: -2px;
       color: var(--rose-deep);
+      margin-bottom: 20px;
       text-shadow:
-        0 12px 35px rgba(145,63,99,.13),
-        0 0 45px rgba(255,255,255,.9);
-    }
-
-    .hero-title span {
-      display: block;
-      color: #6d6071;
-      font-size: .43em;
-      letter-spacing: 8px;
-      margin-top: 22px;
+        0 12px 40px rgba(141,61,97,.12),
+        0 0 45px rgba(255,255,255,.85);
     }
 
     .hero-subtitle {
       position: relative;
       z-index: 3;
-      font-size: 18px;
-      color: #7a6d79;
-      margin-bottom: 18px;
+      color: #746a76;
+      font-size: 19px;
+      margin-bottom: 24px;
     }
 
-    .hero-text {
+    .hero-description {
       position: relative;
       z-index: 3;
-      width: min(740px, 100%);
+      max-width: 780px;
       margin: auto;
-      color: #6a616d;
+      color: #6b626d;
       font-size: 14px;
       line-height: 2;
     }
 
-    .hero-actions {
+    .hero-buttons {
       position: relative;
       z-index: 3;
       display: flex;
@@ -841,91 +886,256 @@
       margin-top: 30px;
     }
 
-    .hero-action {
+    .hero-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 175px;
       padding: 13px 20px;
       border-radius: 18px;
       text-decoration: none;
       font-size: 13px;
       font-weight: 600;
-      border: 1px solid rgba(255,255,255,.9);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.92);
+      box-shadow: 0 12px 28px rgba(86,70,86,.12);
       transition: .35s ease;
-      box-shadow: 0 12px 26px rgba(84,68,84,.1);
     }
 
-    .hero-action.primary {
+    .hero-button.primary {
       color: white;
       background:
         linear-gradient(
           135deg,
-          #a64d70,
-          #d77b9b
+          #9c4a6b,
+          #d57c9e
         );
     }
 
-    .hero-action.secondary {
+    .hero-button.secondary {
       color: var(--rose-deep);
-      background: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.7);
     }
 
-    .hero-action:hover {
+    .hero-button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          120deg,
+          transparent 20%,
+          rgba(255,255,255,.65) 50%,
+          transparent 80%
+        );
+      transform: translateX(-120%);
+      transition: .8s ease;
+    }
+
+    .hero-button:hover {
       transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 19px 34px rgba(84,68,84,.15);
+      box-shadow: 0 20px 38px rgba(86,70,86,.18);
     }
 
-    .hero-icons {
+    .hero-button:hover::before {
+      transform: translateX(120%);
+    }
+
+    .hero-symbols {
       position: relative;
       z-index: 3;
-      margin-top: 28px;
-      font-size: 19px;
-      letter-spacing: 7px;
-      opacity: .82;
-      animation: iconWave 3s ease-in-out infinite;
+      margin-top: 27px;
+      color: rgba(111,95,110,.68);
+      font-size: 20px;
+      letter-spacing: 9px;
+      animation: symbolsFloat 3.5s ease-in-out infinite;
     }
 
-    @keyframes iconWave {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
+    @keyframes symbolsFloat {
+      0%,100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* =========================================================
+       FLOWING WATER
+    ========================================================= */
+    .water-scene {
+      position: relative;
+      z-index: 6;
+      width: 100%;
+      height: 220px;
+      margin-top: -78px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .water-base {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(167,220,229,0),
+          rgba(152,211,221,.38) 38%,
+          rgba(112,176,197,.55) 100%
+        );
+      clip-path:
+        polygon(
+          0 24%,
+          10% 17%,
+          21% 21%,
+          32% 14%,
+          43% 24%,
+          54% 11%,
+          67% 22%,
+          78% 15%,
+          90% 22%,
+          100% 15%,
+          100% 100%,
+          0 100%
+        );
+    }
+
+    .water-wave {
+      position: absolute;
+      left: -10%;
+      width: 120%;
+      height: 88px;
+      border-radius: 50%;
+      opacity: .7;
+      filter: blur(1px);
+    }
+
+    .water-wave.w1 {
+      top: 28%;
+      border-top: 2px solid rgba(255,255,255,.64);
+      box-shadow:
+        0 -8px 22px rgba(255,255,255,.16);
+      animation: waterMove1 7s ease-in-out infinite;
+    }
+
+    .water-wave.w2 {
+      top: 47%;
+      border-top: 2px solid rgba(255,255,255,.4);
+      animation: waterMove2 9s ease-in-out infinite;
+    }
+
+    .water-wave.w3 {
+      top: 63%;
+      border-top: 1px solid rgba(255,255,255,.42);
+      animation: waterMove1 11s ease-in-out infinite reverse;
+    }
+
+    @keyframes waterMove1 {
+      0%,100% {
+        transform: translateX(-3%) scaleX(1);
+      }
+      50% {
+        transform: translateX(4%) scaleX(1.04);
+      }
+    }
+
+    @keyframes waterMove2 {
+      0%,100% {
+        transform: translateX(4%) scaleX(1.04);
+      }
+      50% {
+        transform: translateX(-4%) scaleX(.98);
+      }
+    }
+
+    .water-shine {
+      position: absolute;
+      width: 140px;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.62);
+      filter: blur(1px);
+      opacity: .55;
+      animation: shineMove 8s linear infinite;
+    }
+
+    .water-shine.s1 {
+      top: 46%;
+      left: 10%;
+      width: 100px;
+    }
+
+    .water-shine.s2 {
+      top: 58%;
+      left: 52%;
+      width: 170px;
+      animation-delay: -3s;
+    }
+
+    .water-shine.s3 {
+      top: 36%;
+      left: 74%;
+      width: 80px;
+      animation-delay: -5s;
+    }
+
+    @keyframes shineMove {
+      0% {
+        transform: translateX(-40px);
+        opacity: 0;
+      }
+      25% {
+        opacity: .7;
+      }
+      75% {
+        opacity: .45;
+      }
+      100% {
+        transform: translateX(160px);
+        opacity: 0;
+      }
     }
 
     /* =========================================================
        NAV
     ========================================================= */
-
-    .nav-shell {
+    .nav-wrap {
       position: sticky;
-      top: 12px;
-      z-index: 8000;
-      width: min(1040px, calc(100% - 28px));
-      margin: -30px auto 0;
+      top: 10px;
+      z-index: 5000;
+      width: min(1010px, calc(100% - 26px));
+      margin: -18px auto 0;
     }
 
     nav {
-      padding: 8px;
-      border-radius: 24px;
-      background: rgba(255,255,255,.63);
-      border: 1px solid rgba(255,255,255,.95);
+      padding: 9px;
+      border-radius: 23px;
+      background: rgba(255,255,255,.66);
+      border: 1px solid rgba(255,255,255,.92);
       backdrop-filter: blur(20px);
       box-shadow:
-        0 17px 40px rgba(81,67,81,.12),
-        inset 0 1px 0 rgba(255,255,255,.85);
+        0 15px 38px rgba(80,64,80,.11),
+        inset 0 1px 0 rgba(255,255,255,.78);
     }
 
     .nav-links {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 7px;
+      gap: 8px;
     }
 
     .nav-links a {
       position: relative;
-      color: #675d68;
-      padding: 11px 16px;
-      text-decoration: none;
+      padding: 11px 17px;
       border-radius: 15px;
+      text-decoration: none;
+      color: #675d67;
       font-size: 12px;
       font-weight: 600;
       transition: .3s ease;
+      overflow: hidden;
     }
 
     .nav-links a::before {
@@ -936,12 +1146,18 @@
       background:
         linear-gradient(
           135deg,
-          rgba(215,123,155,.17),
-          rgba(194,220,201,.14)
+          rgba(215,125,158,.18),
+          rgba(126,169,138,.12),
+          rgba(138,198,223,.12)
         );
-      transform: scale(.72);
       opacity: 0;
+      transform: scale(.75);
       transition: .3s ease;
+    }
+
+    .nav-links a span {
+      position: relative;
+      z-index: 2;
     }
 
     .nav-links a:hover,
@@ -952,45 +1168,39 @@
 
     .nav-links a:hover::before,
     .nav-links a.active::before {
-      transform: scale(1);
       opacity: 1;
-    }
-
-    .nav-links a span {
-      position: relative;
-      z-index: 2;
+      transform: scale(1);
     }
 
     /* =========================================================
        MAIN
     ========================================================= */
-
     main {
       position: relative;
-      z-index: 20;
+      z-index: 10;
     }
 
-    .section-intro {
+    .intro {
       width: min(1100px, calc(100% - 30px));
-      margin: 90px auto 0;
+      margin: 72px auto 0;
       text-align: center;
     }
 
-    .kicker {
+    .section-kicker {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       color: var(--rose-deep);
       font-size: 10px;
-      font-weight: 700;
       letter-spacing: 3px;
-      margin-bottom: 10px;
+      font-weight: 700;
+      margin-bottom: 9px;
     }
 
-    .kicker::before,
-    .kicker::after {
+    .section-kicker::before,
+    .section-kicker::after {
       content: "";
-      width: 44px;
+      width: 46px;
       height: 1px;
       background:
         linear-gradient(
@@ -1000,7 +1210,7 @@
         );
     }
 
-    .kicker::after {
+    .section-kicker::after {
       background:
         linear-gradient(
           90deg,
@@ -1009,108 +1219,69 @@
         );
     }
 
-    .section-intro h2 {
+    .intro h2 {
       font-family: "Playfair Display", serif;
-      color: var(--green-deep);
-      font-size: clamp(34px, 5vw, 53px);
+      font-size: clamp(33px, 4vw, 49px);
+      color: var(--leaf-deep);
       margin-bottom: 11px;
     }
 
-    .section-intro p {
+    .intro p {
       max-width: 790px;
       margin: auto;
+      color: var(--muted);
       font-size: 14px;
-      color: var(--muted);
       line-height: 2;
-    }
-
-    /* =========================================================
-       SPRING BADGES
-    ========================================================= */
-
-    .spring-stats {
-      width: min(990px, calc(100% - 30px));
-      margin: 30px auto 0;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .spring-stat {
-      position: relative;
-      padding: 17px 16px;
-      border-radius: 21px;
-      background: rgba(255,255,255,.63);
-      border: 1px solid rgba(255,255,255,.92);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 13px 28px rgba(80,65,80,.08);
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .spring-stat::before {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      top: -55px;
-      left: -20px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(245,186,208,.3), transparent 70%);
-    }
-
-    .spring-stat strong {
-      display: block;
-      color: var(--rose-deep);
-      font-size: 20px;
-    }
-
-    .spring-stat span {
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 1px;
     }
 
     /* =========================================================
        DIVIDER
     ========================================================= */
-
-    .ornament-divider {
-      width: min(1040px, calc(100% - 40px));
-      margin: 45px auto;
+    .divider {
+      width: min(1050px, calc(100% - 40px));
+      margin: 48px auto;
       display: flex;
       align-items: center;
-      gap: 13px;
+      justify-content: center;
+      gap: 14px;
     }
 
-    .ornament-divider i {
+    .divider-line {
       flex: 1;
       height: 1px;
       background:
         linear-gradient(
           90deg,
           transparent,
-          rgba(215,123,155,.55),
-          rgba(128,170,137,.45),
+          rgba(147,98,125,.45),
+          rgba(124,169,134,.4),
           transparent
         );
     }
 
-    .ornament-divider b {
+    .divider-icon {
       font-size: 22px;
-      animation: flowerFloat 3s ease-in-out infinite;
+      animation: iconPulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes iconPulse {
+      0%,100% {
+        transform: scale(.9) rotate(-5deg);
+      }
+      50% {
+        transform: scale(1.15) rotate(5deg);
+      }
     }
 
     /* =========================================================
-       CHARACTER GALLERY
+       CHARACTER GRID
     ========================================================= */
-
     .gallery {
-      width: min(1160px, calc(100% - 30px));
+      width: min(1180px, calc(100% - 30px));
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 27px;
       perspective: 1500px;
     }
 
@@ -1118,13 +1289,14 @@
       position: relative;
       overflow: hidden;
       border-radius: 35px;
-      background: rgba(255,255,255,.7);
       border: 1px solid rgba(255,255,255,.95);
+      background: rgba(255,255,255,.68);
       box-shadow: var(--shadow);
       transform-style: preserve-3d;
+      will-change: transform;
       transition:
-        box-shadow .4s ease,
-        border-color .4s ease;
+        transform .18s ease,
+        box-shadow .4s ease;
     }
 
     .character-card::before {
@@ -1133,62 +1305,70 @@
       inset: 0;
       z-index: 30;
       pointer-events: none;
+      border-radius: inherit;
       background:
         linear-gradient(
           120deg,
-          transparent 25%,
-          rgba(255,255,255,.63) 48%,
-          transparent 67%
+          transparent 24%,
+          rgba(255,255,255,.62) 49%,
+          transparent 66%
         );
-      transform: translateX(-140%);
-      transition: transform .9s ease;
+      transform: translateX(-130%);
+      transition: transform 1s ease;
     }
 
     .character-card:hover::before {
-      transform: translateX(140%);
+      transform: translateX(130%);
     }
 
     .character-card:hover {
-      border-color: white;
-    }
-
-    .sylus:hover {
       box-shadow:
-        0 42px 100px rgba(81,61,80,.23),
-        0 0 40px rgba(215,123,155,.25);
+        0 38px 100px rgba(79,61,79,.21),
+        0 0 35px rgba(255,255,255,.58);
     }
 
-    .zayne:hover {
-      box-shadow:
-        0 42px 100px rgba(81,61,80,.23),
-        0 0 40px rgba(149,205,226,.27);
-    }
-
-    .caleb:hover {
-      box-shadow:
-        0 42px 100px rgba(81,61,80,.23),
-        0 0 40px rgba(231,195,132,.28);
-    }
-
+    /* =========================================================
+       CHARACTER PORTRAIT
+    ========================================================= */
     .portrait {
       position: relative;
-      height: 430px;
+      height: 410px;
       overflow: hidden;
       isolation: isolate;
+    }
+
+    .portrait::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background:
+        radial-gradient(
+          circle at 50% 15%,
+          rgba(255,255,255,.64),
+          transparent 28%
+        ),
+        linear-gradient(
+          180deg,
+          transparent 32%,
+          rgba(43,37,44,.02) 55%,
+          rgba(43,37,44,.35) 100%
+        );
+      pointer-events: none;
     }
 
     .portrait::after {
       content: "";
       position: absolute;
-      inset: 0;
+      inset: auto 0 0;
+      height: 45%;
+      z-index: 3;
       background:
         linear-gradient(
-          180deg,
-          rgba(255,255,255,.04),
-          transparent 38%,
-          rgba(38,31,38,.38) 100%
+          to top,
+          rgba(32,27,33,.23),
+          transparent
         );
-      z-index: 4;
       pointer-events: none;
     }
 
@@ -1199,236 +1379,215 @@
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      z-index: 2;
-      transition:
-        transform .8s cubic-bezier(.2,.8,.2,1),
-        filter .8s ease;
+      z-index: 1;
       filter:
-        saturate(.94)
+        saturate(.95)
         contrast(1.03)
-        brightness(1.03);
+        brightness(1.02);
+      transition:
+        transform .7s cubic-bezier(.2,.8,.2,1),
+        filter .7s ease;
     }
 
     .character-card:hover .character-image {
-      transform: scale(1.075);
+      transform: scale(1.07);
       filter:
-        saturate(1.08)
+        saturate(1.07)
         contrast(1.05)
         brightness(1.06);
     }
 
     .portrait-glow {
       position: absolute;
-      width: 280px;
-      height: 280px;
+      width: 250px;
+      height: 250px;
       left: 50%;
-      bottom: -140px;
+      bottom: -115px;
       transform: translateX(-50%);
       border-radius: 50%;
+      filter: blur(7px);
+      opacity: .54;
       z-index: 1;
-      filter: blur(5px);
-      opacity: .62;
     }
 
     .sylus .portrait {
       background:
-        linear-gradient(
-          160deg,
-          #efdce5,
-          #dfd5f4,
-          #e5f2ec
-        );
+        linear-gradient(160deg, #f1dce6, #ddd4f3, #e5f1eb);
     }
 
     .sylus .portrait-glow {
       background:
-        radial-gradient(
-          circle,
-          #f3a5c0,
-          #b9a9e4,
-          transparent 68%
-        );
+        radial-gradient(circle, #ee9fbd, #b9abe5, transparent 68%);
     }
 
     .zayne .portrait {
       background:
-        linear-gradient(
-          160deg,
-          #dcecf7,
-          #e6f2ed,
-          #e9edf9
-        );
+        linear-gradient(160deg, #dceef7, #e6f2ed, #e7ecf7);
     }
 
     .zayne .portrait-glow {
       background:
-        radial-gradient(
-          circle,
-          #9fd6e8,
-          #c2decf,
-          transparent 68%
-        );
+        radial-gradient(circle, #9dd3e7, #bdd8c6, transparent 68%);
     }
 
     .caleb .portrait {
       background:
-        linear-gradient(
-          160deg,
-          #fff0d8,
-          #e6f2dd,
-          #dceef9
-        );
+        linear-gradient(160deg, #fff0d8, #e7f3df, #d9ecf8);
     }
 
     .caleb .portrait-glow {
       background:
-        radial-gradient(
-          circle,
-          #f3c88e,
-          #acd0a4,
-          transparent 68%
-        );
+        radial-gradient(circle, #f3c487, #a9cc9b, transparent 68%);
     }
 
+    /* =========================================================
+       PORTRAIT BADGES
+    ========================================================= */
     .character-number,
     .mood {
       position: absolute;
-      top: 17px;
       z-index: 8;
-      padding: 7px 12px;
+      padding: 7px 11px;
       border-radius: 999px;
       color: white;
-      background: rgba(59,52,59,.4);
-      border: 1px solid rgba(255,255,255,.68);
-      backdrop-filter: blur(10px);
       font-size: 9px;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.3px;
+      background: rgba(62,54,63,.42);
+      border: 1px solid rgba(255,255,255,.62);
+      backdrop-filter: blur(9px);
     }
 
     .character-number {
       left: 17px;
+      top: 17px;
     }
 
     .mood {
       right: 17px;
-      letter-spacing: 1px;
+      top: 17px;
     }
 
-    .character-orb {
-      position: absolute;
-      z-index: 6;
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      right: 18px;
-      bottom: 20px;
-      color: white;
-      background: rgba(255,255,255,.16);
-      border: 1px solid rgba(255,255,255,.6);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 20px rgba(255,255,255,.18);
-      animation: orbPulse 3s ease-in-out infinite;
-    }
-
-    @keyframes orbPulse {
-      0%,100% {
-        transform: scale(.96);
-      }
-      50% {
-        transform: scale(1.07);
-      }
-    }
-
-    .float-flower {
-      position: absolute;
-      z-index: 7;
-      font-size: 27px;
-      filter: drop-shadow(0 6px 13px rgba(55,44,55,.16));
-      animation: flowerFloat 4s ease-in-out infinite;
-    }
-
-    .float-flower.left {
-      left: 20px;
-      bottom: 26px;
-    }
-
-    .float-flower.right {
-      right: 85px;
-      top: 95px;
-      animation-delay: -1.5s;
-    }
-
-    .image-caption {
+    .floating-icon {
       position: absolute;
       z-index: 8;
+      font-size: 27px;
+      filter: drop-shadow(0 5px 12px rgba(40,30,40,.17));
+      animation: floatIcon 4.2s ease-in-out infinite;
+    }
+
+    .floating-icon.left {
       left: 20px;
-      bottom: 20px;
+      bottom: 25px;
+    }
+
+    .floating-icon.right {
+      right: 20px;
+      bottom: 26px;
+      animation-delay: -1.3s;
+    }
+
+    @keyframes floatIcon {
+      0%,100% {
+        transform: translateY(0) rotate(-4deg);
+      }
+      50% {
+        transform: translateY(-9px) rotate(5deg);
+      }
+    }
+
+    .image-bottom {
+      position: absolute;
+      z-index: 9;
+      left: 21px;
+      right: 21px;
+      bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
     }
 
     .image-caption small {
-      color: rgba(255,255,255,.72);
+      display: block;
+      color: rgba(255,255,255,.74);
       font-size: 8px;
       letter-spacing: 2px;
+      margin-bottom: 2px;
     }
 
     .image-caption strong {
       display: block;
-      margin-top: 2px;
       color: white;
       font-family: "Playfair Display", serif;
       font-size: 35px;
-      text-shadow: 0 5px 20px rgba(30,23,30,.32);
+      line-height: 1;
+      text-shadow: 0 6px 22px rgba(25,20,27,.32);
     }
 
+    .image-symbol {
+      width: 47px;
+      height: 47px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      color: white;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.58);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 19px rgba(255,255,255,.15);
+    }
+
+    /* =========================================================
+       CARD CONTENT
+    ========================================================= */
     .content {
       position: relative;
-      padding: 27px 25px 29px;
+      padding: 26px 25px 29px;
       background:
         linear-gradient(
           180deg,
-          rgba(255,255,255,.89),
-          rgba(255,255,255,.68)
+          rgba(255,255,255,.88),
+          rgba(255,255,255,.64)
         );
     }
 
     .content::before {
       content: "✿";
       position: absolute;
+      top: 14px;
       right: 18px;
-      top: 15px;
       color: var(--rose);
-      font-size: 22px;
-      opacity: .52;
-      animation: bloomSpin 3s ease-in-out infinite;
+      font-size: 23px;
+      opacity: .46;
+      animation: bloomPulse 2.8s ease-in-out infinite;
     }
 
-    @keyframes bloomSpin {
+    @keyframes bloomPulse {
       0%,100% {
-        transform: scale(.8) rotate(-8deg);
+        transform: scale(.8) rotate(-10deg);
       }
       50% {
-        transform: scale(1.15) rotate(10deg);
+        transform: scale(1.18) rotate(10deg);
       }
     }
 
     .mini-label {
-      color: var(--green-deep);
-      font-size: 10px;
+      color: var(--leaf-deep);
+      font-size: 9px;
       letter-spacing: 2px;
       font-weight: 700;
+      margin-bottom: 5px;
     }
 
     .content h2 {
       font-family: "Playfair Display", serif;
-      font-size: 31px;
       color: var(--rose-deep);
-      margin: 3px 0 2px;
+      font-size: 31px;
+      margin-bottom: 4px;
     }
 
     .tagline {
-      color: #817580;
+      color: #837681;
       font-size: 12px;
       margin-bottom: 17px;
     }
@@ -1436,25 +1595,27 @@
     .info-box {
       display: grid;
       gap: 7px;
+      margin-bottom: 17px;
     }
 
     .info-row {
       display: grid;
-      grid-template-columns: 90px 1fr;
+      grid-template-columns: 88px 1fr;
       gap: 8px;
-      padding-bottom: 6px;
-      border-bottom: 1px dashed rgba(118,149,127,.19);
-      font-size: 12.5px;
+      padding-bottom: 5px;
+      border-bottom: 1px dashed rgba(113,148,119,.18);
+      color: #635a66;
+      font-size: 13px;
       line-height: 1.6;
     }
 
     .info-row strong {
-      color: var(--green-deep);
+      color: var(--leaf-deep);
+      font-weight: 600;
     }
 
-    .description {
-      margin-top: 17px;
-      color: #685f6b;
+    .content-description {
+      color: #675f69;
       font-size: 13.5px;
       line-height: 1.9;
     }
@@ -1469,146 +1630,299 @@
     .chip {
       padding: 7px 10px;
       border-radius: 999px;
-      color: var(--green-deep);
+      color: var(--leaf-deep);
       font-size: 10px;
       font-weight: 600;
       background:
         linear-gradient(
           135deg,
-          rgba(238,248,239,.95),
-          rgba(255,240,246,.88)
+          rgba(237,248,239,.98),
+          rgba(255,240,246,.87)
         );
-      border: 1px solid rgba(128,170,137,.14);
+      border: 1px solid rgba(128,169,135,.15);
       transition: .25s ease;
     }
 
     .chip:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 17px rgba(84,104,89,.11);
+      box-shadow: 0 10px 18px rgba(83,105,88,.11);
+    }
+
+    .sylus:hover {
+      box-shadow:
+        0 38px 100px rgba(79,61,79,.21),
+        0 0 40px rgba(215,125,158,.24);
+    }
+
+    .zayne:hover {
+      box-shadow:
+        0 38px 100px rgba(79,61,79,.21),
+        0 0 40px rgba(138,198,223,.26);
+    }
+
+    .caleb:hover {
+      box-shadow:
+        0 38px 100px rgba(79,61,79,.21),
+        0 0 40px rgba(239,197,128,.27);
     }
 
     /* =========================================================
-       SPRING WORLD PANEL
+       GARDEN LANDSCAPE
     ========================================================= */
-
-    .world-panel {
+    .garden-landscape {
       position: relative;
-      width: min(1120px, calc(100% - 30px));
-      min-height: 360px;
-      margin: 65px auto 0;
-      padding: 55px 35px;
-      border-radius: 38px;
+      width: 100%;
+      height: 280px;
+      margin-top: 85px;
       overflow: hidden;
+      z-index: 8;
+      pointer-events: none;
+    }
+
+    .garden-mist {
+      position: absolute;
+      left: -10%;
+      width: 120%;
+      height: 120px;
+      bottom: 34px;
+      border-radius: 50%;
+      background:
+        radial-gradient(
+          ellipse,
+          rgba(255,255,255,.56),
+          transparent 68%
+        );
+      filter: blur(16px);
+      opacity: .46;
+      animation: mistMove 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes mistMove {
+      from {
+        transform: translateX(-6%);
+      }
+      to {
+        transform: translateX(7%);
+      }
+    }
+
+    /* distant hill */
+    .hill {
+      position: absolute;
+      left: -8%;
+      width: 116%;
+      height: 160px;
+      bottom: 48px;
+      border-radius: 50% 50% 0 0;
+      background:
+        linear-gradient(
+          180deg,
+          #a8d3a7,
+          #7dad82
+        );
+      opacity: .63;
+      filter: blur(1px);
+    }
+
+    .hill.h2 {
+      height: 120px;
+      bottom: 29px;
+      background:
+        linear-gradient(
+          180deg,
+          #bdddbc,
+          #89ba8d
+        );
+      opacity: .65;
+      transform: translateX(-6%);
+    }
+
+    /* flower meadow */
+    .meadow {
+      position: absolute;
+      left: -5%;
+      width: 110%;
+      bottom: -10px;
+      height: 120px;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      font-size: 29px;
+      overflow: hidden;
+    }
+
+    .meadow span {
+      display: block;
+      transform-origin: bottom;
+      animation: flowerSway 3.2s ease-in-out infinite;
+      filter: drop-shadow(0 4px 7px rgba(58,75,59,.1));
+    }
+
+    .meadow span:nth-child(2n) {
+      animation-delay: -.45s;
+    }
+
+    .meadow span:nth-child(3n) {
+      animation-delay: -.9s;
+    }
+
+    .meadow span:nth-child(4n) {
+      animation-delay: -1.2s;
+    }
+
+    @keyframes flowerSway {
+      0%,100% {
+        transform: translateY(0) rotate(-3deg);
+      }
+      50% {
+        transform: translateY(-8px) rotate(5deg);
+      }
+    }
+
+    .garden-title {
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      padding: 7px 17px;
+      border-radius: 99px;
+      color: rgba(255,255,255,.92);
+      font-size: 10px;
+      letter-spacing: 3px;
+      background: rgba(67,104,73,.3);
+      border: 1px solid rgba(255,255,255,.47);
+      backdrop-filter: blur(8px);
+    }
+
+    /* =========================================================
+       FEATURE PANEL
+    ========================================================= */
+    .feature-panel {
+      position: relative;
+      width: min(1110px, calc(100% - 30px));
+      margin: 35px auto 0;
+      padding: 43px 30px;
+      border-radius: 36px;
+      border: 1px solid rgba(255,255,255,.92);
       background:
         linear-gradient(
           135deg,
-          rgba(255,255,255,.72),
-          rgba(245,235,249,.62),
-          rgba(233,248,240,.62),
-          rgba(236,248,253,.64)
+          rgba(255,255,255,.82),
+          rgba(247,239,252,.58),
+          rgba(239,250,245,.6)
         );
-      border: 1px solid rgba(255,255,255,.95);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(19px);
       box-shadow: var(--shadow);
+      overflow: hidden;
       text-align: center;
     }
 
-    .world-panel::before {
+    .feature-panel::before {
       content: "";
       position: absolute;
-      width: 450px;
-      height: 450px;
-      left: -160px;
-      bottom: -220px;
+      width: 300px;
+      height: 300px;
+      left: -110px;
+      bottom: -120px;
       border-radius: 50%;
       background:
         radial-gradient(
           circle,
-          rgba(215,123,155,.18),
+          rgba(215,125,158,.22),
           transparent 70%
         );
     }
 
-    .world-panel::after {
+    .feature-panel::after {
       content: "";
       position: absolute;
-      width: 420px;
-      height: 420px;
-      right: -150px;
-      top: -210px;
+      width: 300px;
+      height: 300px;
+      right: -120px;
+      top: -140px;
       border-radius: 50%;
       background:
         radial-gradient(
           circle,
-          rgba(128,170,137,.18),
+          rgba(126,169,134,.19),
           transparent 70%
         );
     }
 
-    .world-content {
+    .feature-inner {
       position: relative;
-      z-index: 3;
+      z-index: 2;
     }
 
-    .world-icon {
-      font-size: 42px;
-      animation: flowerFloat 4s ease-in-out infinite;
-    }
-
-    .world-panel h3 {
-      font-family: "Playfair Display", serif;
+    .feature-icon {
       font-size: 34px;
-      color: var(--rose-deep);
-      margin: 9px 0 10px;
+      margin-bottom: 8px;
+      animation: featureFloat 3.8s ease-in-out infinite;
     }
 
-    .world-panel p {
-      max-width: 770px;
+    @keyframes featureFloat {
+      0%,100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .feature-inner h3 {
+      font-family: "Playfair Display", serif;
+      color: var(--rose-deep);
+      font-size: 31px;
+      margin-bottom: 12px;
+    }
+
+    .feature-inner p {
+      max-width: 800px;
       margin: auto;
       color: var(--muted);
       font-size: 14px;
       line-height: 2;
     }
 
-    .world-decoration {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      margin-top: 23px;
-      font-size: 18px;
+    .feature-line {
+      width: 130px;
+      height: 2px;
+      margin: 22px auto 0;
+      border-radius: 99px;
+      background:
+        linear-gradient(
+          90deg,
+          var(--rose),
+          var(--lavender),
+          var(--leaf)
+        );
     }
 
     /* =========================================================
        FOOTER
     ========================================================= */
-
     footer {
       position: relative;
-      z-index: 20;
-      margin-top: 90px;
-      padding: 75px 20px 50px;
+      z-index: 10;
+      margin-top: 85px;
+      padding: 75px 20px 48px;
       text-align: center;
-      overflow: hidden;
       color: white;
+      overflow: hidden;
+
       background:
-        radial-gradient(
-          circle at 20% 20%,
-          rgba(255,255,255,.14),
-          transparent 22%
-        ),
-        radial-gradient(
-          circle at 78% 70%,
-          rgba(255,255,255,.1),
-          transparent 25%
-        ),
+        radial-gradient(circle at 20% 25%, rgba(255,255,255,.13), transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,.11), transparent 22%),
         linear-gradient(
           135deg,
-          #55785f,
-          #92627d,
-          #6b8aa2
+          #537760,
+          #91617c,
+          #6689a4
         );
+
       box-shadow:
-        0 -25px 60px rgba(75,62,75,.12);
+        0 -20px 55px rgba(78,64,78,.13);
     }
 
     footer::before,
@@ -1616,47 +1930,45 @@
       content: "";
       position: absolute;
       border-radius: 50%;
-      filter: blur(2px);
+      filter: blur(4px);
+      opacity: .17;
     }
 
     footer::before {
-      width: 280px;
-      height: 280px;
-      left: -80px;
-      top: -150px;
-      background:
-        radial-gradient(circle, #fff, transparent 70%);
-      opacity: .15;
+      width: 330px;
+      height: 330px;
+      left: -120px;
+      top: -120px;
+      background: radial-gradient(circle, white, transparent 70%);
     }
 
     footer::after {
-      width: 300px;
-      height: 300px;
+      width: 280px;
+      height: 280px;
       right: -100px;
-      bottom: -150px;
+      bottom: -100px;
       background:
-        radial-gradient(circle, #ffdbe8, transparent 70%);
-      opacity: .13;
+        radial-gradient(
+          circle,
+          #ffdce8,
+          transparent 70%
+        );
     }
 
     .footer-floral {
       font-size: 23px;
       letter-spacing: 8px;
-      margin-bottom: 14px;
+      margin-bottom: 15px;
     }
 
     footer h3 {
-      position: relative;
-      z-index: 2;
       font-family: "Playfair Display", serif;
-      font-size: 31px;
-      margin-bottom: 10px;
+      font-size: 29px;
+      margin-bottom: 8px;
     }
 
     footer p {
-      position: relative;
-      z-index: 2;
-      margin: 6px;
+      margin: 5px 0;
       font-size: 13px;
       line-height: 1.8;
       opacity: .92;
@@ -1665,73 +1977,100 @@
     footer a {
       color: white;
       font-weight: 600;
-      text-underline-offset: 3px;
+      text-underline-offset: 4px;
     }
 
     /* =========================================================
        MUSIC PLAYER
     ========================================================= */
-
     .music-player {
       position: fixed;
       right: 20px;
       bottom: 20px;
-      width: 345px;
-      min-height: 82px;
-      padding: 10px 12px;
+      z-index: 99999;
+      width: 350px;
+      min-height: 80px;
       display: flex;
       align-items: center;
       gap: 11px;
-      z-index: 99998;
+      padding: 10px 12px;
       border-radius: 26px;
-      border: 1px solid rgba(255,255,255,.87);
+
       background:
         linear-gradient(
           135deg,
-          rgba(153,78,112,.94),
-          rgba(82,124,96,.95)
+          rgba(150,80,108,.95),
+          rgba(86,124,97,.96)
         );
-      backdrop-filter: blur(18px);
+
+      border: 1px solid rgba(255,255,255,.84);
+
       box-shadow:
-        0 0 20px rgba(255,255,255,.4),
-        0 0 50px rgba(215,123,155,.14),
-        0 18px 40px rgba(63,50,63,.24);
+        0 0 20px rgba(255,255,255,.45),
+        0 0 46px rgba(215,125,158,.18),
+        0 18px 45px rgba(58,48,58,.24);
+
+      backdrop-filter: blur(20px);
       animation: musicFloat 4s ease-in-out infinite;
     }
 
+    @keyframes musicFloat {
+      0%,100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
     .music-disc {
-      width: 50px;
-      height: 50px;
-      min-width: 50px;
-      border-radius: 50%;
+      position: relative;
+      width: 49px;
+      height: 49px;
+      min-width: 49px;
       display: grid;
       place-items: center;
+      border-radius: 50%;
       font-size: 21px;
       background:
         radial-gradient(
-          circle at 30% 28%,
+          circle at 35% 30%,
           #fff,
-          #f2bbcc 40%,
-          #a04c6e 100%
+          #f4b8cb 42%,
+          #a34f71 100%
         );
       box-shadow:
-        0 0 18px rgba(255,255,255,.7),
-        0 0 30px rgba(255,205,225,.2);
+        0 0 18px rgba(255,255,255,.72),
+        0 0 30px rgba(255,213,229,.23);
       animation: discSpin 6s linear infinite;
     }
 
-    @keyframes discSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    .music-disc::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 0 9px rgba(255,255,255,.8);
     }
 
-    .music-info {
+    @keyframes discSpin {
+      from {
+        transform: rotate(0);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .music-text {
       flex: 1;
       min-width: 0;
       color: white;
     }
 
-    .music-info small {
+    .music-text small {
       display: block;
       font-size: 8px;
       letter-spacing: 2px;
@@ -1739,24 +2078,25 @@
       margin-bottom: 3px;
     }
 
-    .music-info strong {
+    .music-text strong {
       display: block;
-      font-size: 11.5px;
+      font-size: 12px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
     #musicBtn {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
+      width: 43px;
+      height: 43px;
+      min-width: 43px;
       border: 0;
       border-radius: 50%;
       background: white;
       color: var(--rose-deep);
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(255,255,255,.7);
+      font-size: 15px;
+      box-shadow: 0 0 20px rgba(255,255,255,.75);
       transition: .3s ease;
     }
 
@@ -1766,36 +2106,35 @@
 
     #youtubePlayer {
       position: absolute;
-      left: -9999px;
-      top: -9999px;
       width: 1px;
       height: 1px;
       opacity: 0;
+      left: -9999px;
+      top: -9999px;
       pointer-events: none;
     }
 
     /* =========================================================
-       TOP BUTTON
+       BACK TO TOP
     ========================================================= */
-
     .top-btn {
       position: fixed;
-      right: 25px;
+      right: 26px;
       bottom: 120px;
       width: 45px;
       height: 45px;
-      border: 1px solid rgba(255,255,255,.92);
       border-radius: 50%;
-      color: var(--rose-deep);
-      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(255,255,255,.92);
+      background: rgba(255,255,255,.73);
       backdrop-filter: blur(12px);
-      box-shadow: 0 12px 30px rgba(76,61,76,.13);
+      color: var(--rose-deep);
       font-size: 18px;
       cursor: pointer;
+      z-index: 9998;
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(15px);
       transition: .35s ease;
-      z-index: 99990;
+      box-shadow: 0 12px 28px rgba(77,63,77,.14);
     }
 
     .top-btn.show {
@@ -1808,102 +2147,145 @@
     }
 
     /* =========================================================
-       CLICK BURST
+       CLICK EFFECT
     ========================================================= */
-
-    .burst {
+    .ripple {
       position: fixed;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid rgba(215,125,158,.82);
       pointer-events: none;
-      z-index: 1000002;
-      font-size: 17px;
-      animation: burstAnim .85s ease-out forwards;
+      z-index: 100001;
+      transform: translate(-50%, -50%) scale(.1);
+      animation: ripple .9s ease-out forwards;
     }
 
-    @keyframes burstAnim {
+    @keyframes ripple {
+      to {
+        transform: translate(-50%, -50%) scale(8);
+        opacity: 0;
+      }
+    }
+
+    .click-petal {
+      position: fixed;
+      pointer-events: none;
+      z-index: 100002;
+      font-size: 15px;
+      animation: clickPetal .9s ease-out forwards;
+      filter: drop-shadow(0 0 6px rgba(255,255,255,.8));
+    }
+
+    @keyframes clickPetal {
       0% {
+        transform:
+          translate(-50%, -50%)
+          scale(.5)
+          rotate(0);
         opacity: 1;
-        transform: translate(0,0) scale(.7);
       }
       100% {
-        opacity: 0;
         transform:
-          translate(var(--x),var(--y))
-          rotate(var(--r))
-          scale(1.35);
+          translate(
+            calc(-50% + var(--x)),
+            calc(-50% + var(--y))
+          )
+          scale(1.12)
+          rotate(230deg);
+        opacity: 0;
       }
+    }
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(45px);
+      transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* =========================================================
        RESPONSIVE
     ========================================================= */
-
     @media (max-width: 1000px) {
-
       .gallery {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .hero-gate {
-        width: 100%;
-      }
-
-      .gate-arch {
-        width: 400px;
-        height: 400px;
+      .hero-orbit {
+        width: 540px;
+        height: 540px;
       }
     }
 
     @media (max-width: 700px) {
-
       body {
         cursor: auto;
       }
 
-      .cursor-dot,
+      .cursor-main,
       .cursor-ring {
         display: none;
       }
 
       header {
-        min-height: 760px;
-        padding: 80px 15px 125px;
+        min-height: 730px;
+        padding-top: 75px;
       }
 
-      .hero-card {
-        padding: 42px 20px 40px;
-        border-radius: 31px;
+      .hero-shell {
+        padding: 45px 19px 44px;
+        border-radius: 30px;
       }
 
       .hero-title {
-        font-size: clamp(50px, 15vw, 76px);
+        font-size: clamp(48px, 14vw, 73px);
       }
 
-      .hero-title span {
-        font-size: .34em;
-        letter-spacing: 5px;
+      .hero-subtitle {
+        font-size: 16px;
       }
 
-      .hero-text {
+      .hero-description {
         font-size: 13px;
       }
 
-      .sun {
-        width: 180px;
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-button {
+        width: 100%;
+      }
+
+      .water-scene {
         height: 180px;
+        margin-top: -50px;
+      }
+
+      .moon {
+        width: 110px;
+        height: 110px;
         right: -20px;
+        top: 7%;
       }
 
-      .gate-arch {
-        width: 330px;
-        height: 330px;
+      .nav-wrap {
+        top: 7px;
       }
 
-      .lotus {
-        font-size: 40px;
-      }
-
-      .spring-stats {
-        grid-template-columns: 1fr;
+      .nav-links a {
+        padding: 9px 11px;
+        font-size: 10px;
       }
 
       .gallery {
@@ -1914,8 +2296,16 @@
         height: 390px;
       }
 
-      .world-panel {
-        padding: 42px 22px;
+      .feature-panel {
+        padding: 33px 20px;
+      }
+
+      .garden-landscape {
+        height: 235px;
+      }
+
+      .meadow {
+        font-size: 24px;
       }
 
       .music-player {
@@ -1929,48 +2319,38 @@
         bottom: 104px;
       }
 
-      .corner {
-        display: none;
+      .opening-content {
+        padding: 45px 20px;
       }
 
+      .opening-petal-ring {
+        inset: -45px;
+      }
     }
 
     @media (max-width: 450px) {
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .hero-action {
-        width: 100%;
-      }
-
       .portrait {
-        height: 350px;
+        height: 340px;
       }
 
       .image-caption strong {
-        font-size: 29px;
+        font-size: 28px;
       }
 
-      .gate-ring {
-        width: 300px;
-        height: 300px;
+      .content h2 {
+        font-size: 28px;
       }
 
-      .gate-aura {
-        width: 350px;
-        height: 350px;
+      .garden-title {
+        font-size: 8px;
       }
 
+      .music-player {
+        min-height: 72px;
+      }
     }
 
-    /* =========================================================
-       REDUCED MOTION
-    ========================================================= */
-
     @media (prefers-reduced-motion: reduce) {
-
       *,
       *::before,
       *::after {
@@ -1979,47 +2359,56 @@
         transition-duration: .01ms !important;
         scroll-behavior: auto !important;
       }
-
     }
   </style>
 </head>
 
+
 <body>
 
   <!-- =======================================================
-       SPRING GATE
+       SCROLL PROGRESS
   ======================================================== -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-  <section class="spring-gate" id="springGate">
 
-    <div class="gate-aura"></div>
-    <div class="gate-ring"></div>
+  <!-- =======================================================
+       OPENING CINEMATIC SCENE
+  ======================================================== -->
+  <section class="opening-screen" id="openingScreen">
 
-    <div class="gate-content">
+    <div class="opening-aurora"></div>
 
-      <div class="gate-flower">
-        🌸
+    <div class="opening-content">
+
+      <div class="opening-petal-ring"></div>
+
+      <div class="opening-small">
+        SPRING · FANTASY · DEEPSPACE
       </div>
 
-      <div class="gate-mini">
-        ✦ ETERNAL SPRING GARDEN ✦
-      </div>
-
-      <h1 class="gate-title">
+      <h1 class="opening-title">
         Love &amp;<br>
         Deepspace
       </h1>
 
-      <p class="gate-sub">
-        A magical garden where flowers bloom,
-        butterflies wander,
-        and three unforgettable souls await beneath
-        the eternal spring sky.
-      </p>
+      <div class="opening-subtitle">
+        🌸 A Garden Where Stars Begin to Bloom 🌸
+      </div>
 
-      <button class="enter-btn" id="enterGarden">
-        🌷 ENTER THE SPRING GARDEN
+      <div class="opening-line"></div>
+
+      <button
+        class="opening-button"
+        id="enterGarden"
+        type="button"
+      >
+        ✦ ENTER THE SPRING GARDEN ✦
       </button>
+
+      <div class="opening-hint">
+        Click to begin the journey
+      </div>
 
     </div>
 
@@ -2029,111 +2418,94 @@
   <!-- =======================================================
        CURSOR
   ======================================================== -->
-
-  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-main" id="cursorMain"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
 
   <!-- =======================================================
-       SCROLL
+       BACKGROUND AURORA
   ======================================================== -->
-
-  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="aurora">
+    <div class="aurora-layer aurora-1"></div>
+    <div class="aurora-layer aurora-2"></div>
+    <div class="aurora-layer aurora-3"></div>
+  </div>
 
 
   <!-- =======================================================
        AMBIENT
   ======================================================== -->
-
   <div class="ambient">
-
-    <div class="ambient-orb orb1"></div>
-    <div class="ambient-orb orb2"></div>
-    <div class="ambient-orb orb3"></div>
-
+    <div class="ambient-blob a"></div>
+    <div class="ambient-blob b"></div>
+    <div class="ambient-blob c"></div>
   </div>
+
+  <div class="moon"></div>
 
 
   <!-- =======================================================
        PARTICLES
   ======================================================== -->
-
-  <div class="particles" id="particles"></div>
-  <div class="petals" id="petals"></div>
-  <div class="fireflies" id="fireflies"></div>
-  <div class="butterflies" id="butterflies"></div>
+  <div class="sparkle-field" id="sparkles"></div>
+  <div class="firefly-layer" id="fireflies"></div>
+  <div class="petal-layer" id="petals"></div>
 
 
   <!-- =======================================================
-       HEADER
+       HERO
   ======================================================== -->
-
   <header id="top">
 
-    <div class="hero-sky"></div>
+    <div class="hero-stars"></div>
 
-    <div class="sun"></div>
+    <div class="hero-orbit"></div>
 
-    <div class="mountain"></div>
+    <div
+      class="hero-shell reveal"
+      id="heroShell"
+    >
 
-    <div class="hero-water"></div>
-
-    <div class="lotus l1">🌸</div>
-    <div class="lotus l2">🌷</div>
-    <div class="lotus l3">🪷</div>
-
-    <div class="hero-gate">
-      <div class="gate-arch"></div>
-    </div>
-
-
-    <div class="hero-card" id="heroCard">
-
-      <div class="hero-label">
-        ✦ FAN-MADE SPRING COLLECTION ✦
+      <div class="hero-topline">
+        SPRING GARDEN · FAN MADE
       </div>
 
       <h1 class="hero-title">
-        Love &amp;
-        <br>
+        Love &amp;<br>
         Deepspace
-
-        <span>
-          ETERNAL SPRING PALACE
-        </span>
       </h1>
 
       <div class="hero-subtitle">
-        🌸 Sylus · Zayne · Caleb 🌸
+        ✦ Sylus · Zayne · Caleb ✦
       </div>
 
-      <p class="hero-text">
-        ยินดีต้อนรับเข้าสู่สวนฤดูใบไม้ผลิแห่ง Deepspace
-        โลกแฟนตาซีที่รวมดอกไม้ แสงอาทิตย์ สายน้ำ
-        กลีบดอกซากุระ ผีเสื้อ และประกายแห่งดวงดาว
-        เข้ากับเรื่องราวของตัวละครทั้งสาม
+      <p class="hero-description">
+        ยินดีต้อนรับสู่สวนฤดูใบไม้ผลิแห่ง Deepspace
+        ดินแดนแฟนตาซีที่แสง Aurora ลอยอยู่บนท้องฟ้า
+        สายน้ำสะท้อนแสงระยิบระยับ
+        และกลีบดอกไม้นับไม่ถ้วนกำลังลอยผ่านความทรงจำ
       </p>
 
-      <div class="hero-actions">
+      <div class="hero-buttons">
 
         <a
+          class="hero-button primary"
           href="#characters"
-          class="hero-action primary"
         >
-          🌸 EXPLORE CHARACTERS
+          🌸 Explore Characters
         </a>
 
         <a
+          class="hero-button secondary"
           href="#garden"
-          class="hero-action secondary"
         >
-          🦋 ENTER THE GARDEN
+          🦋 Enter The Garden
         </a>
 
       </div>
 
-      <div class="hero-icons">
-        🌿 ✦ 🌸 ✦ 🦋 ✦ 🪷 ✦ 🌷 ✦ 🌿
+      <div class="hero-symbols">
+        ✦ 🌸 ✦ 🦋 ✦ 🌷 ✦ 🌿 ✦
       </div>
 
     </div>
@@ -2142,37 +2514,50 @@
 
 
   <!-- =======================================================
-       NAVIGATION
+       WATER SCENE
   ======================================================== -->
+  <section class="water-scene" aria-hidden="true">
 
-  <div class="nav-shell">
+    <div class="water-base"></div>
+
+    <div class="water-wave w1"></div>
+    <div class="water-wave w2"></div>
+    <div class="water-wave w3"></div>
+
+    <div class="water-shine s1"></div>
+    <div class="water-shine s2"></div>
+    <div class="water-shine s3"></div>
+
+  </section>
+
+
+  <!-- =======================================================
+       NAV
+  ======================================================== -->
+  <div class="nav-wrap">
 
     <nav>
 
       <div class="nav-links">
 
         <a href="#top">
-          <span>🏡 HOME</span>
-        </a>
-
-        <a href="#characters">
-          <span>🌸 CHARACTERS</span>
+          <span>🏡 Home</span>
         </a>
 
         <a href="#sylus">
-          <span>🦋 SYLUS</span>
+          <span>🦋 Sylus</span>
         </a>
 
         <a href="#zayne">
-          <span>❄️ ZAYNE</span>
+          <span>❄️ Zayne</span>
         </a>
 
         <a href="#caleb">
-          <span>🌼 CALEB</span>
+          <span>🌼 Caleb</span>
         </a>
 
         <a href="#garden">
-          <span>🌿 GARDEN</span>
+          <span>🌿 Garden</span>
         </a>
 
       </div>
@@ -2185,75 +2570,55 @@
   <!-- =======================================================
        MAIN
   ======================================================== -->
-
   <main>
 
+    <!-- INTRO -->
     <section
-      class="section-intro"
+      class="intro reveal"
       id="characters"
     >
 
-      <div class="kicker">
-        SPRING CHARACTER ARCHIVE
+      <div class="section-kicker">
+        CHARACTER COLLECTION
       </div>
 
       <h2>
-        Three Souls,
-        One Eternal Spring
+        Three Souls in a Spring Dream
       </h2>
 
       <p>
-        ตัวละครทั้งสามถูกนำเสนอในบรรยากาศฤดูใบไม้ผลิ
-        ที่ผสมความหรูหรา ความนุ่มนวล และแฟนตาซีเข้าด้วยกัน
+        ตัวละครทั้งสามถูกนำมาอยู่ในสวนเดียวกัน
+        ท่ามกลางกลีบดอกไม้ สายน้ำ
+        แสงละมุน และบรรยากาศแฟนตาซีแห่งฤดูใบไม้ผลิ
       </p>
 
     </section>
 
 
-    <!-- =====================================================
-         STATS
-    ====================================================== -->
+    <!-- DIVIDER -->
+    <div class="divider reveal">
 
-    <section class="spring-stats">
+      <div class="divider-line"></div>
 
-      <div class="spring-stat">
-        <strong>03</strong>
-        <span>SPRING CHARACTERS</span>
+      <div class="divider-icon">
+        🌷
       </div>
 
-      <div class="spring-stat">
-        <strong>∞</strong>
-        <span>ETERNAL BLOOM</span>
-      </div>
+      <div class="divider-line"></div>
 
-      <div class="spring-stat">
-        <strong>01</strong>
-        <span>MAGICAL GARDEN</span>
-      </div>
-
-    </section>
-
-
-    <div class="ornament-divider">
-      <i></i>
-      <b>🌷</b>
-      <i></i>
     </div>
 
 
     <!-- =====================================================
          CHARACTER GALLERY
     ====================================================== -->
-
     <section class="gallery">
-
 
       <!-- ===================================================
            SYLUS
       ==================================================== -->
-
       <article
-        class="character-card sylus"
+        class="character-card sylus reveal"
         id="sylus"
       >
 
@@ -2275,28 +2640,28 @@
             alt="Sylus from Love and Deepspace"
             loading="lazy"
             referrerpolicy="no-referrer"
-          >
+            onerror="this.style.display='none'"
+          />
 
-          <div class="float-flower left">
-            🌿
+          <div class="floating-icon left">
+            🍃
           </div>
 
-          <div class="float-flower right">
+          <div class="floating-icon right">
             🦋
           </div>
 
-          <div class="character-orb">
-            ♟
-          </div>
+          <div class="image-bottom">
 
-          <div class="image-caption">
-            <small>
-              THE LEADER
-            </small>
+            <div class="image-caption">
+              <small>THE LEADER</small>
+              <strong>Sylus</strong>
+            </div>
 
-            <strong>
-              Sylus
-            </strong>
+            <div class="image-symbol">
+              ♟
+            </div>
+
           </div>
 
         </div>
@@ -2308,9 +2673,7 @@
             01 / SPRING PROFILE
           </div>
 
-          <h2>
-            Sylus
-          </h2>
+          <h2>Sylus</h2>
 
           <div class="tagline">
             The leader of Onychinus
@@ -2350,13 +2713,14 @@
 
           </div>
 
-          <p class="description">
+          <p class="content-description">
             Sylus เป็นผู้นำของ Onychinus
             มีบุคลิกมั่นใจ พูดตรง สุขุมในสถานการณ์กดดัน
             และมีแนวคิดเชิงวิเคราะห์และวางแผนล่วงหน้า
           </p>
 
           <div class="chips">
+
             <span class="chip">
               🖤 Silver Hair
             </span>
@@ -2368,6 +2732,7 @@
             <span class="chip">
               🐦 Crow
             </span>
+
           </div>
 
         </div>
@@ -2378,9 +2743,8 @@
       <!-- ===================================================
            ZAYNE
       ==================================================== -->
-
       <article
-        class="character-card zayne"
+        class="character-card zayne reveal"
         id="zayne"
       >
 
@@ -2402,28 +2766,28 @@
             alt="Zayne from Love and Deepspace"
             loading="lazy"
             referrerpolicy="no-referrer"
-          >
+            onerror="this.style.display='none'"
+          />
 
-          <div class="float-flower left">
+          <div class="floating-icon left">
             ❄️
           </div>
 
-          <div class="float-flower right">
+          <div class="floating-icon right">
             🌼
           </div>
 
-          <div class="character-orb">
-            ❄
-          </div>
+          <div class="image-bottom">
 
-          <div class="image-caption">
-            <small>
-              THE DOCTOR
-            </small>
+            <div class="image-caption">
+              <small>THE DOCTOR</small>
+              <strong>Zayne</strong>
+            </div>
 
-            <strong>
-              Zayne
-            </strong>
+            <div class="image-symbol">
+              ❄
+            </div>
+
           </div>
 
         </div>
@@ -2435,9 +2799,7 @@
             02 / SPRING PROFILE
           </div>
 
-          <h2>
-            Zayne
-          </h2>
+          <h2>Zayne</h2>
 
           <div class="tagline">
             Akso Hospital — Cardiac Surgeon
@@ -2477,7 +2839,7 @@
 
           </div>
 
-          <p class="description">
+          <p class="content-description">
             Zayne เป็นศัลยแพทย์หัวใจที่ทำงานที่ Akso Hospital
             มีบุคลิกสุขุม ตรงไปตรงมา เป็นมืออาชีพ
             และใส่ใจคนรอบตัว
@@ -2507,9 +2869,8 @@
       <!-- ===================================================
            CALEB
       ==================================================== -->
-
       <article
-        class="character-card caleb"
+        class="character-card caleb reveal"
         id="caleb"
       >
 
@@ -2531,28 +2892,28 @@
             alt="Caleb from Love and Deepspace"
             loading="lazy"
             referrerpolicy="no-referrer"
-          >
+            onerror="this.style.display='none'"
+          />
 
-          <div class="float-flower left">
+          <div class="floating-icon left">
             🌿
           </div>
 
-          <div class="float-flower right">
+          <div class="floating-icon right">
             🌼
           </div>
 
-          <div class="character-orb">
-            ✦
-          </div>
+          <div class="image-bottom">
 
-          <div class="image-caption">
-            <small>
-              THE COLONEL
-            </small>
+            <div class="image-caption">
+              <small>THE COLONEL</small>
+              <strong>Caleb</strong>
+            </div>
 
-            <strong>
-              Caleb
-            </strong>
+            <div class="image-symbol">
+              ✦
+            </div>
+
           </div>
 
         </div>
@@ -2564,9 +2925,7 @@
             03 / SPRING PROFILE
           </div>
 
-          <h2>
-            Caleb
-          </h2>
+          <h2>Caleb</h2>
 
           <div class="tagline">
             Farspace Fleet — Colonel
@@ -2606,7 +2965,7 @@
 
           </div>
 
-          <p class="description">
+          <p class="content-description">
             Caleb เคยเป็นนักบินรบของ DAA
             และปัจจุบันเป็น Colonel แห่ง Farspace Fleet
             มีทั้งความใจดี ขี้เล่น ปกป้องคนที่สำคัญ
@@ -2637,44 +2996,90 @@
 
 
     <!-- =====================================================
-         GARDEN
+         SPRING GARDEN
     ====================================================== -->
-
     <section
-      class="world-panel"
+      class="garden-landscape reveal"
       id="garden"
     >
 
-      <div class="world-content">
+      <div class="garden-title">
+        ✦ SPRING FLOWER GARDEN ✦
+      </div>
 
-        <div class="world-icon">
-          🌸
-        </div>
+      <div class="hill"></div>
+      <div class="hill h2"></div>
 
-        <h3>
-          The Eternal Spring Garden
-        </h3>
+      <div class="garden-mist"></div>
 
-        <p>
-          สถานที่แห่งนี้เปรียบเสมือนสวนลับที่ไม่มีวันสิ้นสุด
-          ดอกไม้จะผลิบานอยู่เสมอ
-          ผีเสื้อบินผ่านสายน้ำอย่างช้า ๆ
-          และแสงอาทิตย์ยามเย็นจะเปลี่ยนผิวน้ำ
-          ให้กลายเป็นประกายสีชมพูและทอง
-        </p>
+      <div class="meadow">
 
-        <div class="world-decoration">
-          🌷 ✦ 🌿 ✦ 🦋 ✦ 🪷 ✦ 🌸
-        </div>
+        <span>🌷</span>
+        <span>🌸</span>
+        <span>🌼</span>
+        <span>🪻</span>
+        <span>🌿</span>
+        <span>🌷</span>
+        <span>🌸</span>
+        <span>🌼</span>
+        <span>🍃</span>
+        <span>🪻</span>
+        <span>🌷</span>
+        <span>🌸</span>
+        <span>🌼</span>
+        <span>🌿</span>
+        <span>🌷</span>
+        <span>🌸</span>
+        <span>🪻</span>
+        <span>🌼</span>
 
       </div>
 
     </section>
 
-    <div class="ornament-divider">
-      <i></i>
-      <b>🦋</b>
-      <i></i>
+
+    <!-- =====================================================
+         FEATURE
+    ====================================================== -->
+    <section class="feature-panel reveal">
+
+      <div class="feature-inner">
+
+        <div class="feature-icon">
+          🌸
+        </div>
+
+        <h3>
+          A Garden Beyond the Stars
+        </h3>
+
+        <p>
+          ที่แห่งนี้คือสวนที่เชื่อมระหว่างท้องฟ้า
+          สายน้ำ และความทรงจำ
+          แสง Aurora เคลื่อนไหวอยู่เบื้องบน
+          ขณะที่กลีบดอกไม้ค่อย ๆ ลอยไปตามสายลม
+          ทำให้การเลื่อนหน้าเว็บแต่ละครั้งเหมือน
+          กำลังเดินทางเข้าสู่โลกอีกใบหนึ่ง
+        </p>
+
+        <div class="feature-line"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DIVIDER -->
+    <div class="divider reveal">
+
+      <div class="divider-line"></div>
+
+      <div class="divider-icon">
+        🦋
+      </div>
+
+      <div class="divider-line"></div>
+
     </div>
 
   </main>
@@ -2683,7 +3088,6 @@
   <!-- =======================================================
        MUSIC PLAYER
   ======================================================== -->
-
   <section
     class="music-player"
     aria-label="Music player"
@@ -2693,14 +3097,16 @@
       🎵
     </div>
 
-    <div class="music-info">
+    <div class="music-text">
+
       <small>
-        ETERNAL SPRING SOUNDTRACK
+        SPRING MUSIC
       </small>
 
       <strong>
         Love &amp; Deepspace • YouTube
       </strong>
+
     </div>
 
     <button
@@ -2719,10 +3125,10 @@
   <!-- =======================================================
        TOP BUTTON
   ======================================================== -->
-
   <button
     class="top-btn"
     id="topBtn"
+    type="button"
     aria-label="กลับด้านบน"
   >
     ↑
@@ -2732,7 +3138,6 @@
   <!-- =======================================================
        FOOTER
   ======================================================== -->
-
   <footer>
 
     <div class="footer-floral">
@@ -2740,12 +3145,8 @@
     </div>
 
     <h3>
-      Love &amp; Deepspace
+      Love &amp; Deepspace — Spring Garden
     </h3>
-
-    <p>
-      Eternal Spring Palace
-    </p>
 
     <p>
       Fan-made page • Spring Fantasy Edition
@@ -2793,67 +3194,63 @@
   <!-- =======================================================
        JAVASCRIPT
   ======================================================== -->
-
   <script>
 
     /* =====================================================
-       SPRING GATE
+       OPENING SCENE
     ====================================================== */
 
-    const springGate =
-      document.getElementById("springGate");
+    const openingScreen =
+      document.getElementById("openingScreen");
 
     const enterGarden =
       document.getElementById("enterGarden");
 
-    enterGarden.addEventListener(
-      "click",
-      () => {
+    enterGarden.addEventListener("click", () => {
 
-        springGate.classList.add("hide");
+      openingScreen.classList.add("hide");
 
-        setTimeout(() => {
+      document.body.style.overflow = "auto";
 
-          if (
-            player &&
-            player.playVideo
-          ) {
-            player.playVideo();
-          }
+    });
 
-        }, 850);
-
-      }
-    );
+    /*
+      ทำให้หลังโหลดหน้าเว็บยังคงอยู่ในฉากเปิด
+      จนกว่าจะกดปุ่ม
+    */
+    document.body.style.overflow = "hidden";
 
 
     /* =====================================================
        CURSOR
     ====================================================== */
 
-    const cursorDot =
-      document.getElementById("cursorDot");
+    const cursorMain =
+      document.getElementById("cursorMain");
 
     const cursorRing =
       document.getElementById("cursorRing");
 
-    let mouseX = innerWidth / 2;
-    let mouseY = innerHeight / 2;
+    let mouseX =
+      window.innerWidth / 2;
+
+    let mouseY =
+      window.innerHeight / 2;
 
     let ringX = mouseX;
     let ringY = mouseY;
 
     window.addEventListener(
       "mousemove",
-      (event) => {
+      (e) => {
 
-        mouseX = event.clientX;
-        mouseY = event.clientY;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
 
-        cursorDot.style.left =
+        cursorMain.style.left =
           mouseX + "px";
 
-        cursorDot.style.top =
+        cursorMain.style.top =
           mouseY + "px";
 
       }
@@ -2862,10 +3259,10 @@
     function animateCursor() {
 
       ringX +=
-        (mouseX - ringX) * .16;
+        (mouseX - ringX) * .14;
 
       ringY +=
-        (mouseY - ringY) * .16;
+        (mouseY - ringY) * .14;
 
       cursorRing.style.left =
         ringX + "px";
@@ -2883,30 +3280,30 @@
 
 
     /* =====================================================
-       HOVER
+       CURSOR INTERACTION
     ====================================================== */
 
     document
       .querySelectorAll(
-        "a, button, .chip, .character-card"
+        "a, button, .character-card, .chip"
       )
-      .forEach((item) => {
+      .forEach((element) => {
 
-        item.addEventListener(
+        element.addEventListener(
           "mouseenter",
           () => {
             document.body
               .classList
-              .add("hovering");
+              .add("cursor-hover");
           }
         );
 
-        item.addEventListener(
+        element.addEventListener(
           "mouseleave",
           () => {
             document.body
               .classList
-              .remove("hovering");
+              .remove("cursor-hover");
           }
         );
 
@@ -2917,43 +3314,46 @@
        SPARKLES
     ====================================================== */
 
-    const particles =
-      document.getElementById("particles");
+    const sparkleField =
+      document.getElementById("sparkles");
 
-    for (let i = 0; i < 55; i++) {
+    for (let i = 0; i < 58; i++) {
 
-      const s =
+      const sparkle =
         document.createElement("span");
 
-      s.className = "spark";
+      sparkle.className =
+        "sparkle";
 
-      s.textContent =
-        Math.random() > .45
+      sparkle.textContent =
+        Math.random() > .42
           ? "✦"
           : "·";
 
-      s.style.left =
+      sparkle.style.left =
         Math.random() * 100 + "%";
 
-      s.style.top =
+      sparkle.style.top =
         Math.random() * 100 + "%";
 
-      s.style.fontSize =
+      sparkle.style.fontSize =
         (7 + Math.random() * 15) + "px";
 
-      s.style.animationDelay =
+      sparkle.style.animationDuration =
+        (1.8 + Math.random() * 3.2) + "s";
+
+      sparkle.style.animationDelay =
         (-Math.random() * 5) + "s";
 
-      s.style.animationDuration =
-        (1.7 + Math.random() * 3) + "s";
-
-      particles.appendChild(s);
+      sparkleField.appendChild(
+        sparkle
+      );
 
     }
 
 
     /* =====================================================
-       PETALS
+       MANY PETALS
     ====================================================== */
 
     const petals =
@@ -2961,21 +3361,23 @@
 
     const petalTypes = [
       "🌸",
+      "🌸",
       "🌷",
       "🌼",
       "🪻",
-      "🍃",
-      "✿"
+      "✿",
+      "🍃"
     ];
 
-    for (let i = 42; i--;) {
+    for (let i = 0; i < 72; i++) {
 
-      const p =
+      const petal =
         document.createElement("span");
 
-      p.className = "petal";
+      petal.className =
+        "petal";
 
-      p.textContent =
+      petal.textContent =
         petalTypes[
           Math.floor(
             Math.random() *
@@ -2983,19 +3385,21 @@
           )
         ];
 
-      p.style.left =
+      petal.style.left =
         Math.random() * 100 + "%";
 
-      p.style.fontSize =
-        (13 + Math.random() * 20) + "px";
+      petal.style.fontSize =
+        (11 + Math.random() * 22) + "px";
 
-      p.style.animationDuration =
-        (7 + Math.random() * 10) + "s";
+      petal.style.animationDuration =
+        (7 + Math.random() * 12) + "s";
 
-      p.style.animationDelay =
-        (-Math.random() * 15) + "s";
+      petal.style.animationDelay =
+        (-Math.random() * 18) + "s";
 
-      petals.appendChild(p);
+      petals.appendChild(
+        petal
+      );
 
     }
 
@@ -3007,75 +3411,140 @@
     const fireflies =
       document.getElementById("fireflies");
 
-    for (let i = 24; i--;) {
+    for (let i = 26; i--;) {
 
-      const f =
+      const firefly =
         document.createElement("span");
 
-      f.className = "firefly";
+      firefly.className =
+        "firefly";
 
-      f.style.left =
+      firefly.style.left =
         Math.random() * 100 + "%";
 
-      f.style.top =
+      firefly.style.top =
         (5 + Math.random() * 90) + "%";
 
-      f.style.animationDuration =
-        (4 + Math.random() * 5) + "s";
+      firefly.style.animationDuration =
+        (4 + Math.random() * 7) + "s";
 
-      f.style.animationDelay =
-        (-Math.random() * 8) + "s";
+      firefly.style.animationDelay =
+        (-Math.random() * 9) + "s";
 
-      fireflies.appendChild(f);
+      fireflies.appendChild(
+        firefly
+      );
 
     }
 
 
     /* =====================================================
-       BUTTERFLIES
+       CLICK PETAL BURST
     ====================================================== */
 
-    const butterflies =
-      document.getElementById("butterflies");
+    document.addEventListener(
+      "click",
+      (event) => {
 
-    const butterflyTypes = [
-      "🦋",
-      "🦋",
-      "🦋",
-      "🌸"
-    ];
-
-    for (let i = 6; i--;) {
-
-      const b =
-        document.createElement("span");
-
-      b.className = "butterfly";
-
-      b.textContent =
-        butterflyTypes[
-          Math.floor(
-            Math.random() *
-            butterflyTypes.length
+        if (
+          event.target.closest(
+            ".music-player"
           )
+        ) {
+          return;
+        }
+
+        /*
+          Ripple
+        */
+
+        const ripple =
+          document.createElement("span");
+
+        ripple.className =
+          "ripple";
+
+        ripple.style.left =
+          event.clientX + "px";
+
+        ripple.style.top =
+          event.clientY + "px";
+
+        document.body.appendChild(
+          ripple
+        );
+
+        setTimeout(
+          () => ripple.remove(),
+          900
+        );
+
+
+        /*
+          Petal burst
+        */
+
+        const burstTypes = [
+          "🌸",
+          "🌷",
+          "🌼",
+          "✿",
+          "🍃",
+          "🪻"
         ];
 
-      b.style.top =
-        (10 + Math.random() * 65) + "%";
+        for (let i = 0; i < 9; i++) {
 
-      b.style.animationDuration =
-        (13 + Math.random() * 10) + "s";
+          const petal =
+            document.createElement("span");
 
-      b.style.animationDelay =
-        (-Math.random() * 15) + "s";
+          petal.className =
+            "click-petal";
 
-      butterflies.appendChild(b);
+          petal.textContent =
+            burstTypes[
+              Math.floor(
+                Math.random() *
+                burstTypes.length
+              )
+            ];
 
-    }
+          petal.style.left =
+            event.clientX + "px";
+
+          petal.style.top =
+            event.clientY + "px";
+
+          petal.style.setProperty(
+            "--x",
+            ((Math.random() - .5) * 210) + "px"
+          );
+
+          petal.style.setProperty(
+            "--y",
+            ((Math.random() - .5) * 190) + "px"
+          );
+
+          petal.style.animationDelay =
+            (Math.random() * .08) + "s";
+
+          document.body.appendChild(
+            petal
+          );
+
+          setTimeout(
+            () => petal.remove(),
+            950
+          );
+
+        }
+
+      }
+    );
 
 
     /* =====================================================
-       3D CARD TILT
+       CARD 3D TILT
     ====================================================== */
 
     const cards =
@@ -3089,8 +3558,11 @@
         "mousemove",
         (event) => {
 
-          if (innerWidth < 900)
+          if (
+            window.innerWidth < 850
+          ) {
             return;
+          }
 
           const rect =
             card.getBoundingClientRect();
@@ -3111,19 +3583,18 @@
 
           const rotateX =
             ((y - centerY) /
-              centerY) * -3.5;
+              centerY) * -4;
 
           const rotateY =
             ((x - centerX) /
-              centerX) * 3.5;
+              centerX) * 4;
 
           card.style.transform =
-            `
-              perspective(1300px)
-              rotateX(${rotateX}deg)
-              rotateY(${rotateY}deg)
-              translateY(-8px)
-            `;
+            `perspective(1400px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             translateY(-8px)
+             scale(1.01)`;
 
         }
       );
@@ -3133,12 +3604,7 @@
         () => {
 
           card.style.transform =
-            `
-              perspective(1300px)
-              rotateX(0)
-              rotateY(0)
-              translateY(0)
-            `;
+            "perspective(1400px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)";
 
         }
       );
@@ -3150,33 +3616,87 @@
        HERO PARALLAX
     ====================================================== */
 
-    const heroCard =
-      document.getElementById("heroCard");
+    const heroShell =
+      document.getElementById(
+        "heroShell"
+      );
+
+    let heroTargetX = 0;
+    let heroTargetY = 0;
 
     window.addEventListener(
       "mousemove",
       (event) => {
 
-        if (innerWidth < 800)
+        if (
+          window.innerWidth < 800
+        ) {
           return;
+        }
 
-        const x =
+        heroTargetX =
           (event.clientX /
-            innerWidth - .5);
+            window.innerWidth - .5) * 10;
 
-        const y =
+        heroTargetY =
           (event.clientY /
-            innerHeight - .5);
-
-        heroCard.style.transform =
-          `
-            translate(
-              ${x * 8}px,
-              ${y * 7}px
-            )
-          `;
+            window.innerHeight - .5) * 8;
 
       }
+    );
+
+    function animateHero() {
+
+      const currentTransform =
+        heroShell.style.transform;
+
+      /*
+        ใช้ค่า target โดยตรง
+        และปล่อยให้ CSS animation
+        ทำงานร่วมกับตำแหน่งได้อย่างเบา
+      */
+
+      heroShell.style.transform =
+        `translate3d(
+          ${heroTargetX}px,
+          ${heroTargetY}px,
+          0
+        )`;
+
+      requestAnimationFrame(
+        animateHero
+      );
+
+    }
+
+    animateHero();
+
+
+    /* =====================================================
+       SCROLL PARALLAX FOR BACKGROUND
+    ====================================================== */
+
+    const moon =
+      document.querySelector(".moon");
+
+    const aurora =
+      document.querySelector(".aurora");
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        const scrollY =
+          window.scrollY;
+
+        moon.style.transform =
+          `translateY(${scrollY * .06}px)`;
+
+        aurora.style.transform =
+          `translateY(${scrollY * .025}px)`;
+
+      },
+      { passive: true }
     );
 
 
@@ -3191,139 +3711,79 @@
 
     function updateProgress() {
 
-      const top =
-        scrollY;
+      const scrollTop =
+        window.scrollY;
 
-      const height =
+      const scrollHeight =
         document.documentElement
           .scrollHeight -
-        innerHeight;
+        window.innerHeight;
 
-      const progress =
-        height > 0
-          ? (top / height) * 100
+      const percent =
+        scrollHeight > 0
+          ? (scrollTop /
+              scrollHeight) * 100
           : 0;
 
       scrollProgress.style.width =
-        progress + "%";
+        percent + "%";
 
     }
 
-    addEventListener(
+    window.addEventListener(
       "scroll",
-      updateProgress
+      updateProgress,
+      { passive: true }
     );
 
     updateProgress();
 
 
     /* =====================================================
-       TOP BUTTON
+       SCROLL REVEAL
     ====================================================== */
 
-    const topBtn =
-      document.getElementById(
-        "topBtn"
+    const revealElements =
+      document.querySelectorAll(
+        ".reveal"
       );
 
-    addEventListener(
-      "scroll",
-      () => {
+    const revealObserver =
+      new IntersectionObserver(
+        (entries) => {
 
-        if (scrollY > 650) {
-          topBtn.classList.add("show");
-        } else {
-          topBtn.classList.remove("show");
+          entries.forEach(
+            (entry) => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target
+                  .classList
+                  .add("show");
+
+                revealObserver
+                  .unobserve(
+                    entry.target
+                  );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold: .12
         }
+      );
 
-      }
-    );
-
-    topBtn.addEventListener(
-      "click",
-      () => {
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-
-      }
-    );
-
-
-    /* =====================================================
-       CLICK FLOWER BURST
-    ====================================================== */
-
-    document.addEventListener(
-      "click",
-      (event) => {
-
-        if (
-          event.target.closest(
-            ".music-player"
-          )
-        ) {
-          return;
-        }
-
-        const symbols = [
-          "🌸",
-          "🌷",
-          "🌼",
-          "🍃",
-          "✦",
-          "🦋"
-        ];
-
-        for (let i = 0; i < 8; i++) {
-
-          const burst =
-            document.createElement("span");
-
-          burst.className = "burst";
-
-          burst.textContent =
-            symbols[
-              Math.floor(
-                Math.random() *
-                symbols.length
-              )
-            ];
-
-          burst.style.left =
-            event.clientX + "px";
-
-          burst.style.top =
-            event.clientY + "px";
-
-          burst.style.setProperty(
-            "--x",
-            ((Math.random() - .5) * 180) + "px"
-          );
-
-          burst.style.setProperty(
-            "--y",
-            ((Math.random() - .5) * 180) + "px"
-          );
-
-          burst.style.setProperty(
-            "--r",
-            ((Math.random() - .5) * 300) + "deg"
-          );
-
-          document.body.appendChild(
-            burst
-          );
-
-          setTimeout(
-            () => burst.remove(),
-            850
-          );
-
-        }
-
+    revealElements.forEach(
+      (element) => {
+        revealObserver.observe(
+          element
+        );
       }
     );
 
@@ -3337,23 +3797,26 @@
         ".nav-links a"
       );
 
-    const observedSections =
+    const navSections =
       document.querySelectorAll(
         "header, .character-card, #garden"
       );
 
-    const sectionObserver =
+    const navObserver =
       new IntersectionObserver(
         (entries) => {
 
           entries.forEach(
             (entry) => {
 
-              if (!entry.isIntersecting)
+              if (
+                !entry.isIntersecting
+              ) {
                 return;
+              }
 
               navLinks.forEach(
-                link => {
+                (link) => {
                   link.classList.remove(
                     "active"
                   );
@@ -3376,15 +3839,61 @@
 
         },
         {
-          threshold: .45
+          threshold: .5
         }
       );
 
-    observedSections.forEach(
-      section => {
-        sectionObserver.observe(
+    navSections.forEach(
+      (section) => {
+        navObserver.observe(
           section
         );
+      }
+    );
+
+
+    /* =====================================================
+       BACK TO TOP
+    ====================================================== */
+
+    const topBtn =
+      document.getElementById(
+        "topBtn"
+      );
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (
+          window.scrollY > 650
+        ) {
+
+          topBtn.classList.add(
+            "show"
+          );
+
+        } else {
+
+          topBtn.classList.remove(
+            "show"
+          );
+
+        }
+
+      },
+      { passive: true }
+    );
+
+    topBtn.addEventListener(
+      "click",
+      () => {
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
       }
     );
 
@@ -3402,12 +3911,10 @@
         new YT.Player(
           "youtubePlayer",
           {
-
             width: "1",
             height: "1",
 
-            videoId:
-              "xMR9tY3XfaY",
+            videoId: "xMR9tY3XfaY",
 
             playerVars: {
               autoplay: 0,
@@ -3424,7 +3931,8 @@
                   .getElementById(
                     "musicBtn"
                   )
-                  .textContent = "▶";
+                  .textContent =
+                  "▶";
 
               },
 
@@ -3442,13 +3950,15 @@
                       .getElementById(
                         "musicBtn"
                       )
-                      .textContent = "❚❚";
+                      .textContent =
+                      "❚❚";
 
                   }
 
                   else if (
                     event.data ===
                     YT.PlayerState.PAUSED ||
+
                     event.data ===
                     YT.PlayerState.ENDED
                   ) {
@@ -3459,7 +3969,8 @@
                       .getElementById(
                         "musicBtn"
                       )
-                      .textContent = "▶";
+                      .textContent =
+                      "▶";
 
                   }
 
@@ -3478,7 +3989,9 @@
     ====================================================== */
 
     document
-      .getElementById("musicBtn")
+      .getElementById(
+        "musicBtn"
+      )
       .addEventListener(
         "click",
         () => {
