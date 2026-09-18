@@ -1,10 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Love & Deepspace — Cinematic Garden</title>
+<title>Love & Deepspace — Ultimate Fantasy Garden</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
@@ -12,7 +13,6 @@
 /* =========================================================
    RESET
 ========================================================= */
-
 *{
     margin:0;
     padding:0;
@@ -26,199 +26,226 @@ html{
 body{
     font-family:"Kanit","Noto Sans Thai",sans-serif;
     overflow-x:hidden;
-    color:var(--ink);
-    background:var(--page-bg);
     cursor:none;
+
+    color:var(--ink);
+
+    background:var(--page);
+
     transition:
-        background 1.2s ease,
+        background 1s ease,
         color 1s ease;
 }
 
 /* =========================================================
-   SPRING VARIABLES
+   THEME VARIABLES
 ========================================================= */
 
 :root{
 
-    --page-bg:#f8f3f9;
+    --page:#f6f2f7;
 
-    --sky-1:#dff6fc;
-    --sky-2:#e6def8;
-    --sky-3:#f8e6ef;
+    --sky-a:#dff6fc;
+    --sky-b:#dcd5f3;
+    --sky-c:#f8dfe9;
 
-    --rose-dark:#91405f;
-    --rose:#d77b9b;
-    --rose-light:#f4b6cb;
+    --primary:#a34d70;
+    --primary-light:#e58cab;
 
-    --green-dark:#4d7558;
-    --green:#82ad88;
-    --green-light:#c5dfc4;
+    --secondary:#689b78;
+    --secondary-light:#b6d8b7;
 
-    --water-1:#9ad8e3;
-    --water-2:#639fb8;
-    --water-light:#e0fbff;
+    --water-a:#a9e1e8;
+    --water-b:#6da8bc;
+    --water-c:#4e7f9b;
 
-    --gold:#dbb66f;
+    --petal:#f0aac3;
+    --petal-light:#fff5f9;
+    --petal-shadow:#a55d7b;
 
-    --petal-1:#fff5fa;
-    --petal-2:#efa7bf;
-    --petal-shadow:#a95b7d;
+    --gold:#deb66e;
 
-    --ink:#544c57;
-    --muted:#7f7580;
+    --ink:#514955;
+    --muted:#7b727e;
 
     --glass:rgba(255,255,255,.62);
-    --glass-heavy:rgba(255,255,255,.80);
+    --glass-strong:rgba(255,255,255,.82);
 
-    --footer-a:#54785f;
-    --footer-b:#8b5d77;
+    --footer-a:#547c61;
+    --footer-b:#98617d;
 }
-
-/* =========================================================
-   AUTUMN VARIABLES
-========================================================= */
 
 body[data-season="autumn"]{
 
-    --page-bg:#f4ede2;
+    --page:#f3ebdf;
 
-    --sky-1:#f1d4ae;
-    --sky-2:#e8bb91;
-    --sky-3:#d8996d;
+    --sky-a:#f0d2a9;
+    --sky-b:#dfb383;
+    --sky-c:#d28d61;
 
-    --rose-dark:#81472f;
-    --rose:#c36b3a;
-    --rose-light:#e6a267;
+    --primary:#8b4c30;
+    --primary-light:#d98248;
 
-    --green-dark:#59663d;
-    --green:#8b9554;
-    --green-light:#c9c486;
+    --secondary:#697741;
+    --secondary-light:#afb471;
 
-    --water-1:#829d91;
-    --water-2:#526f67;
-    --water-light:#d7eee0;
+    --water-a:#afc8aa;
+    --water-b:#789584;
+    --water-c:#536f66;
 
-    --gold:#ca994d;
+    --petal:#db8842;
+    --petal-light:#ffe6b5;
+    --petal-shadow:#8e4c24;
 
-    --petal-1:#ffe2a9;
-    --petal-2:#df813b;
-    --petal-shadow:#8d4b24;
+    --gold:#c89b4d;
 
-    --ink:#51483f;
-    --muted:#786b5e;
+    --ink:#50463d;
+    --muted:#77695b;
 
-    --glass:rgba(255,248,236,.64);
-    --glass-heavy:rgba(255,248,236,.82);
+    --glass:rgba(255,248,237,.65);
+    --glass-strong:rgba(255,248,237,.84);
 
-    --footer-a:#58603d;
-    --footer-b:#8b583d;
+    --footer-a:#5c6941;
+    --footer-b:#91583c;
 }
 
 /* =========================================================
-   SCROLL BAR
+   GLOBAL
 ========================================================= */
 
-.scroll-progress{
+::selection{
+    background:var(--primary-light);
+    color:white;
+}
+
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+.progress{
     position:fixed;
-    top:0;
     left:0;
-    height:5px;
+    top:0;
+
     width:0;
-    z-index:100001;
+    height:4px;
+
+    z-index:100000;
 
     background:
         linear-gradient(
             90deg,
-            #8ccfe1,
-            #c7b7ea,
-            #df809f,
-            #82ae88
+            #8ed5e4,
+            #c6b5ea,
+            var(--primary-light),
+            var(--secondary)
         );
 
     box-shadow:
-        0 0 10px rgba(255,255,255,.9),
-        0 0 25px rgba(215,123,155,.65);
+        0 0 12px rgba(255,255,255,.9),
+        0 0 25px var(--primary-light);
 }
 
 /* =========================================================
-   CUSTOM CURSOR
+   CURSOR
 ========================================================= */
 
-.cursor-dot{
+.cursor-core{
     position:fixed;
-    width:15px;
-    height:15px;
+
+    width:13px;
+    height:13px;
+
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            #fff,
-            #ffe4ec 42%,
-            var(--rose) 100%
+            white 0%,
+            #ffe7ef 45%,
+            var(--primary-light) 100%
         );
 
     box-shadow:
-        0 0 13px #fff,
-        0 0 32px rgba(215,123,155,.72);
+        0 0 14px white,
+        0 0 32px var(--primary-light);
 
     pointer-events:none;
-    z-index:100000;
-    transform:translate(-50%,-50%);
+
+    z-index:100001;
+
+    transform:
+        translate(-50%,-50%);
 }
 
-.cursor-ring{
+.cursor-orbit{
     position:fixed;
-    width:42px;
-    height:42px;
+
+    width:44px;
+    height:44px;
+
+    border:
+        1px solid
+        rgba(150,70,100,.38);
+
     border-radius:50%;
-    border:1px solid rgba(145,64,95,.4);
 
     pointer-events:none;
-    z-index:99999;
-    transform:translate(-50%,-50%);
+
+    z-index:100000;
+
+    transform:
+        translate(-50%,-50%);
 
     transition:
-        width .25s ease,
-        height .25s ease,
-        border-color .25s ease;
+        width .3s ease,
+        height .3s ease,
+        border-color .3s ease;
 }
 
-body.cursor-hover .cursor-dot{
-    width:25px;
-    height:25px;
+body.hovering .cursor-core{
+    width:23px;
+    height:23px;
 }
 
-body.cursor-hover .cursor-ring{
-    width:68px;
-    height:68px;
-    border-color:var(--rose);
+body.hovering .cursor-orbit{
+    width:70px;
+    height:70px;
+    border-color:var(--primary-light);
 }
 
 /* =========================================================
-   CINEMATIC OPENING
+   OPENING SCREEN
 ========================================================= */
 
 .opening{
     position:fixed;
     inset:0;
+
     z-index:95000;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     overflow:hidden;
 
     background:
         radial-gradient(
-            circle at 50% 35%,
+            circle at 50% 48%,
             rgba(255,255,255,.98),
-            transparent 25%
+            transparent 23%
         ),
         linear-gradient(
-            150deg,
-            var(--sky-1),
-            var(--sky-2),
-            var(--sky-3)
+            135deg,
+            var(--sky-a),
+            var(--sky-b),
+            var(--sky-c)
         );
 
     transition:
@@ -226,743 +253,62 @@ body.cursor-hover .cursor-ring{
         visibility 1.5s ease;
 }
 
-.opening.hide{
+.opening.closed{
     opacity:0;
     visibility:hidden;
 }
 
 /* opening aurora */
 
-.opening-aurora{
-    position:absolute;
-    inset:-20%;
-    pointer-events:none;
-}
-
-.opening-aurora::before,
-.opening-aurora::after{
+.opening::before,
+.opening::after{
     content:"";
+
     position:absolute;
-    width:120%;
-    height:220px;
-    left:-10%;
+
+    width:150%;
+    height:300px;
+
+    left:-25%;
+
     border-radius:50%;
-    filter:blur(35px);
+
+    filter:blur(45px);
+
     mix-blend-mode:screen;
 }
 
-.opening-aurora::before{
-    top:8%;
+.opening::before{
+    top:3%;
+
     background:
         radial-gradient(
             ellipse,
-            rgba(145,238,211,.58),
+            rgba(149,239,211,.6),
             transparent 68%
         );
-    transform:rotate(-4deg);
-    animation:openAurora1 11s ease-in-out infinite;
+
+    animation:
+        openingAurora1
+        12s ease-in-out infinite;
 }
 
-.opening-aurora::after{
-    top:17%;
+.opening::after{
+    top:13%;
+
     background:
         radial-gradient(
             ellipse,
-            rgba(201,183,243,.62),
+            rgba(211,186,245,.58),
             transparent 68%
         );
-    transform:rotate(5deg);
-    animation:openAurora2 15s ease-in-out infinite;
-}
-
-@keyframes openAurora1{
-
-    0%,100%{
-        transform:
-            translateX(-6%)
-            rotate(-4deg);
-    }
-
-    50%{
-        transform:
-            translateX(8%)
-            rotate(4deg);
-    }
-}
-
-@keyframes openAurora2{
-
-    0%,100%{
-        transform:
-            translateX(5%)
-            rotate(5deg);
-    }
-
-    50%{
-        transform:
-            translateX(-7%)
-            rotate(-3deg);
-    }
-}
-
-/* opening moon */
-
-.opening-moon{
-    position:absolute;
-    width:250px;
-    height:250px;
-    top:10%;
-    right:9%;
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #fff,
-            #fff8fb 25%,
-            #edcbd9 68%,
-            #bd91aa
-        );
-
-    box-shadow:
-        0 0 30px rgba(255,255,255,.98),
-        0 0 100px rgba(255,255,255,.55);
-
-    opacity:.58;
 
     animation:
-        openingMoonFloat
-        8s ease-in-out infinite;
+        openingAurora2
+        15s ease-in-out infinite;
 }
 
-body[data-season="autumn"] .opening-moon{
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #fffef0,
-            #f7e3bb 27%,
-            #d3aa70 69%,
-            #9e6c40
-        );
-}
-
-@keyframes openingMoonFloat{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-17px);
-    }
-}
-
-/* opening light rays */
-
-.light-rays{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    overflow:hidden;
-}
-
-.light-ray{
-    position:absolute;
-    width:150px;
-    height:850px;
-    left:50%;
-    top:-250px;
-    transform-origin:center bottom;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(255,255,255,.0),
-            rgba(255,255,255,.18),
-            transparent
-        );
-
-    filter:blur(10px);
-    opacity:.4;
-}
-
-.light-ray.r1{
-    transform:rotate(-26deg);
-}
-
-.light-ray.r2{
-    transform:rotate(-11deg);
-    opacity:.27;
-}
-
-.light-ray.r3{
-    transform:rotate(14deg);
-    opacity:.34;
-}
-
-.light-ray.r4{
-    transform:rotate(29deg);
-    opacity:.22;
-}
-
-/* =========================================================
-   OPENING CONTENT
-========================================================= */
-
-.opening-content{
-    position:relative;
-    z-index:10;
-    width:min(900px,calc(100% - 30px));
-    text-align:center;
-}
-
-.opening-mini{
-    font-size:10px;
-    letter-spacing:5px;
-    color:var(--rose-dark);
-    font-weight:700;
-    margin-bottom:11px;
-    opacity:.82;
-}
-
-.opening-title{
-    font-family:"Playfair Display",serif;
-    font-size:clamp(48px,9vw,106px);
-    line-height:.9;
-    color:var(--rose-dark);
-
-    text-shadow:
-        0 11px 35px rgba(116,66,90,.18),
-        0 0 46px rgba(255,255,255,.95);
-
-    opacity:0;
-
-    animation:
-        openingTitle 1.7s 1.1s
-        cubic-bezier(.2,.85,.2,1)
-        forwards;
-}
-
-@keyframes openingTitle{
-
-    from{
-        opacity:0;
-        transform:
-            translateY(25px)
-            scale(.9);
-        filter:blur(9px);
-    }
-
-    to{
-        opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
-        filter:blur(0);
-    }
-}
-
-.opening-sub{
-    margin-top:18px;
-    color:var(--muted);
-    font-size:14px;
-    opacity:0;
-    animation:fadeIn .9s 2.1s forwards;
-}
-
-@keyframes fadeIn{
-    to{opacity:1}
-}
-
-/* =========================================================
-   FLOWER PILE
-========================================================= */
-
-.flower-pile{
-    position:absolute;
-    left:50%;
-    top:61%;
-    width:0;
-    height:0;
-    z-index:4;
-}
-
-.intro-petal{
-    position:absolute;
-    left:0;
-    top:0;
-
-    width:55px;
-    height:34px;
-
-    border-radius:
-        80% 12% 80% 12%;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--petal-1),
-            var(--petal-2)
-        );
-
-    box-shadow:
-        inset 0 2px 7px rgba(255,255,255,.9),
-        inset -4px -5px 10px rgba(135,70,95,.18),
-        0 8px 17px rgba(80,55,70,.18);
-
-    transform:
-        translate(-50%,-50%)
-        rotate(var(--rot-start))
-        scale(var(--scale-start));
-
-    opacity:var(--opacity-start);
-
-    animation:
-        flowerExplosion
-        5.4s
-        var(--delay)
-        cubic-bezier(.15,.85,.1,1)
-        forwards;
-}
-
-.intro-petal::after{
-    content:"";
-    position:absolute;
-    width:75%;
-    height:2px;
-    left:12%;
-    top:51%;
-    border-radius:99px;
-    background:rgba(255,255,255,.72);
-    filter:blur(1px);
-}
-
-@keyframes flowerExplosion{
-
-    0%{
-        opacity:var(--opacity-start);
-
-        transform:
-            translate(-50%,-50%)
-            rotate(var(--rot-start))
-            scale(var(--scale-start));
-    }
-
-    18%{
-        opacity:1;
-
-        transform:
-            translate(
-                calc(-50% + var(--x1)),
-                calc(-50% + var(--y1))
-            )
-            rotate(var(--rot1))
-            scale(1.14);
-    }
-
-    48%{
-
-        transform:
-            translate(
-                calc(-50% + var(--x2)),
-                calc(-50% + var(--y2))
-            )
-            rotate(var(--rot2))
-            scale(1);
-    }
-
-    100%{
-        opacity:0;
-
-        transform:
-            translate(
-                calc(-50% + var(--x3)),
-                calc(-50% + var(--y3))
-            )
-            rotate(var(--rot3))
-            scale(.2);
-    }
-}
-
-/* =========================================================
-   ENTER BUTTON
-========================================================= */
-
-.enter-button{
-    position:relative;
-    z-index:12;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
-
-    margin-top:29px;
-    padding:13px 27px;
-
-    border:1px solid rgba(255,255,255,.85);
-    border-radius:18px;
-
-    color:white;
-    background:
-        linear-gradient(
-            135deg,
-            var(--rose-dark),
-            var(--rose)
-        );
-
-    box-shadow:
-        0 15px 35px rgba(112,57,82,.2),
-        0 0 20px rgba(255,255,255,.28);
-
-    cursor:pointer;
-    font-family:inherit;
-    font-size:13px;
-    font-weight:600;
-
-    opacity:0;
-    animation:
-        enterAppear
-        1s
-        2.8s
-        forwards;
-
-    transition:.35s ease;
-}
-
-@keyframes enterAppear{
-
-    from{
-        opacity:0;
-        transform:
-            translateY(15px)
-            scale(.92);
-    }
-
-    to{
-        opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-.enter-button:hover{
-    transform:
-        translateY(-5px)
-        scale(1.04);
-
-    box-shadow:
-        0 22px 40px rgba(112,57,82,.24),
-        0 0 30px rgba(255,255,255,.35);
-}
-
-.opening-skip{
-    margin-top:12px;
-    color:var(--muted);
-    font-size:9px;
-    letter-spacing:2px;
-    opacity:.5;
-}
-
-/* =========================================================
-   BACKGROUND PETALS
-========================================================= */
-
-.petal-layer,
-.sparkle-layer,
-.firefly-layer{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-}
-
-.petal-layer{
-    z-index:4;
-}
-
-.sparkle-layer{
-    z-index:3;
-}
-
-.firefly-layer{
-    z-index:2;
-}
-
-.falling-petal{
-    position:absolute;
-    top:-50px;
-    width:25px;
-    height:16px;
-
-    border-radius:
-        80% 12% 80% 12%;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--petal-1),
-            var(--petal-2)
-        );
-
-    box-shadow:
-        inset 0 1px 4px rgba(255,255,255,.85),
-        inset -2px -3px 5px var(--petal-shadow),
-        0 4px 10px rgba(80,60,70,.15);
-
-    opacity:.72;
-
-    animation:
-        fall linear infinite;
-}
-
-.falling-petal::after{
-    content:"";
-    position:absolute;
-    left:12%;
-    right:12%;
-    top:49%;
-    height:1px;
-    background:rgba(255,255,255,.75);
-}
-
-@keyframes fall{
-
-    0%{
-        transform:
-            translate3d(0,-10vh,0)
-            rotate(0);
-        opacity:0;
-    }
-
-    10%{
-        opacity:.85;
-    }
-
-    50%{
-        transform:
-            translate3d(
-                var(--wind),
-                55vh,
-                0
-            )
-            rotate(190deg);
-    }
-
-    100%{
-        transform:
-            translate3d(
-                calc(var(--wind) * -1),
-                112vh,
-                0
-            )
-            rotate(390deg);
-
-        opacity:0;
-    }
-}
-
-/* =========================================================
-   SPARKLES
-========================================================= */
-
-.sparkle{
-    position:absolute;
-    color:white;
-
-    text-shadow:
-        0 0 7px #fff,
-        0 0 20px rgba(215,123,155,.7);
-
-    animation:
-        sparklePulse
-        ease-in-out infinite;
-}
-
-@keyframes sparklePulse{
-
-    0%,100%{
-        opacity:.1;
-        transform:
-            scale(.5)
-            rotate(0);
-    }
-
-    50%{
-        opacity:1;
-        transform:
-            scale(1.35)
-            rotate(90deg);
-    }
-}
-
-/* =========================================================
-   FIREFLIES
-========================================================= */
-
-.firefly{
-    position:absolute;
-    width:5px;
-    height:5px;
-    border-radius:50%;
-
-    background:#fff5a7;
-
-    box-shadow:
-        0 0 8px #fff5a7,
-        0 0 23px rgba(255,239,145,.8);
-
-    animation:
-        flyFloat
-        ease-in-out infinite;
-}
-
-@keyframes flyFloat{
-
-    0%,100%{
-        opacity:.15;
-        transform:
-            translateY(0)
-            scale(.55);
-    }
-
-    50%{
-        opacity:1;
-        transform:
-            translateY(-35px)
-            scale(1.3);
-    }
-}
-
-/* =========================================================
-   HERO WORLD
-========================================================= */
-
-.hero-world{
-    position:relative;
-    min-height:950px;
-    overflow:hidden;
-
-    background:
-        linear-gradient(
-            180deg,
-            var(--sky-1) 0%,
-            var(--sky-2) 44%,
-            var(--sky-3) 71%,
-            #d6ebda 100%
-        );
-}
-
-.hero-world::after{
-    content:"";
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    height:280px;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(50,86,57,.34),
-            transparent
-        );
-
-    pointer-events:none;
-}
-
-/* =========================================================
-   AURORA
-========================================================= */
-
-.aurora{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-}
-
-.aurora-band{
-    position:absolute;
-    width:145%;
-    height:240px;
-    left:-22%;
-
-    border-radius:50%;
-    filter:blur(34px);
-    opacity:.48;
-    mix-blend-mode:screen;
-}
-
-.aurora-a{
-    top:7%;
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(158,238,211,.72),
-            transparent 67%
-        );
-
-    animation:
-        auroraMoveA
-        13s ease-in-out infinite;
-}
-
-.aurora-b{
-    top:14%;
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(208,186,246,.66),
-            transparent 67%
-        );
-
-    animation:
-        auroraMoveB
-        16s ease-in-out infinite;
-}
-
-.aurora-c{
-    top:22%;
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(246,180,209,.48),
-            transparent 66%
-        );
-
-    animation:
-        auroraMoveC
-        20s ease-in-out infinite;
-}
-
-body[data-season="autumn"] .aurora-a{
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(210,224,159,.42),
-            transparent 67%
-        );
-}
-
-body[data-season="autumn"] .aurora-b{
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(238,186,137,.4),
-            transparent 67%
-        );
-}
-
-body[data-season="autumn"] .aurora-c{
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(227,122,79,.3),
-            transparent 66%
-        );
-}
-
-@keyframes auroraMoveA{
+@keyframes openingAurora1{
     0%,100%{
         transform:
             translateX(-5%)
@@ -976,7 +322,816 @@ body[data-season="autumn"] .aurora-c{
     }
 }
 
-@keyframes auroraMoveB{
+@keyframes openingAurora2{
+    0%,100%{
+        transform:
+            translateX(5%)
+            rotate(4deg);
+    }
+
+    50%{
+        transform:
+            translateX(-7%)
+            rotate(-4deg);
+    }
+}
+
+/* opening rays */
+
+.rays{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.ray{
+    position:absolute;
+
+    width:180px;
+    height:900px;
+
+    top:-280px;
+    left:50%;
+
+    transform-origin:center bottom;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(255,255,255,.16),
+            transparent
+        );
+
+    filter:blur(10px);
+}
+
+.ray.r1{transform:rotate(-28deg)}
+.ray.r2{transform:rotate(-12deg);opacity:.45}
+.ray.r3{transform:rotate(12deg);opacity:.55}
+.ray.r4{transform:rotate(28deg);opacity:.35}
+
+/* moon */
+
+.opening-moon{
+    position:absolute;
+
+    width:240px;
+    height:240px;
+
+    right:8%;
+    top:10%;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 28%,
+            white,
+            #fff8fb 24%,
+            #ead0dc 66%,
+            #bc8ca6
+        );
+
+    opacity:.56;
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,.95),
+        0 0 100px rgba(255,255,255,.48);
+
+    animation:
+        moonFloat
+        8s ease-in-out infinite;
+}
+
+body[data-season="autumn"] .opening-moon{
+    background:
+        radial-gradient(
+            circle at 35% 28%,
+            #fffbed,
+            #f4e0b9 27%,
+            #d1aa6c 68%,
+            #9b683e
+        );
+}
+
+@keyframes moonFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-16px);
+    }
+}
+
+/* =========================================================
+   FLOWER EXPLOSION
+========================================================= */
+
+.flower-origin{
+    position:absolute;
+
+    left:50%;
+    top:58%;
+
+    width:0;
+    height:0;
+
+    z-index:6;
+}
+
+.flower{
+    position:absolute;
+
+    width:57px;
+    height:35px;
+
+    left:0;
+    top:0;
+
+    border-radius:
+        80% 12% 80% 12%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--petal-light),
+            var(--petal)
+        );
+
+    box-shadow:
+        inset 0 2px 7px rgba(255,255,255,.92),
+        inset -4px -5px 10px rgba(110,60,80,.18),
+        0 8px 18px rgba(70,50,70,.15);
+
+    transform:
+        translate(-50%,-50%)
+        rotate(var(--sr))
+        scale(var(--ss));
+
+    opacity:var(--so);
+
+    animation:
+        flowerBlast
+        5.8s
+        var(--delay)
+        cubic-bezier(.12,.83,.08,1)
+        forwards;
+}
+
+.flower::after{
+    content:"";
+
+    position:absolute;
+
+    left:10%;
+    right:10%;
+
+    top:50%;
+
+    height:2px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.75);
+
+    filter:blur(1px);
+}
+
+@keyframes flowerBlast{
+
+    0%{
+        opacity:var(--so);
+
+        transform:
+            translate(-50%,-50%)
+            rotate(var(--sr))
+            scale(var(--ss));
+    }
+
+    17%{
+        opacity:1;
+
+        transform:
+            translate(
+                calc(-50% + var(--x1)),
+                calc(-50% + var(--y1))
+            )
+            rotate(var(--r1))
+            scale(1.17);
+    }
+
+    44%{
+
+        transform:
+            translate(
+                calc(-50% + var(--x2)),
+                calc(-50% + var(--y2))
+            )
+            rotate(var(--r2))
+            scale(1);
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x3)),
+                calc(-50% + var(--y3))
+            )
+            rotate(var(--r3))
+            scale(.15);
+    }
+}
+
+/* opening center */
+
+.opening-center{
+    position:relative;
+
+    z-index:15;
+
+    width:min(900px,calc(100% - 30px));
+
+    text-align:center;
+}
+
+.opening-kicker{
+    color:var(--primary);
+
+    font-size:10px;
+
+    letter-spacing:5px;
+
+    font-weight:700;
+
+    opacity:0;
+
+    animation:
+        revealOpening
+        1s
+        .9s
+        forwards;
+}
+
+.opening-title{
+    margin-top:12px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:
+        clamp(
+            50px,
+            9vw,
+            108px
+        );
+
+    line-height:.88;
+
+    color:var(--primary);
+
+    text-shadow:
+        0 12px 40px rgba(100,55,75,.16),
+        0 0 55px rgba(255,255,255,.96);
+
+    opacity:0;
+
+    animation:
+        openingTitle
+        1.5s
+        1.2s
+        cubic-bezier(.18,.85,.18,1)
+        forwards;
+}
+
+@keyframes revealOpening{
+    from{
+        opacity:0;
+        transform:translateY(14px);
+    }
+
+    to{
+        opacity:.82;
+        transform:translateY(0);
+    }
+}
+
+@keyframes openingTitle{
+    from{
+        opacity:0;
+        transform:
+            translateY(30px)
+            scale(.82);
+
+        filter:blur(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:blur(0);
+    }
+}
+
+.opening-sub{
+    margin-top:18px;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    opacity:0;
+
+    animation:
+        fadeOpening
+        1s
+        2.2s
+        forwards;
+}
+
+@keyframes fadeOpening{
+    to{
+        opacity:1;
+    }
+}
+
+.enter{
+    margin-top:27px;
+
+    padding:13px 28px;
+
+    border:1px solid rgba(255,255,255,.9);
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 16px 35px rgba(110,55,80,.2),
+        0 0 25px rgba(255,255,255,.22);
+
+    opacity:0;
+
+    animation:
+        enterButton
+        1s
+        2.8s
+        forwards;
+
+    transition:.35s ease;
+}
+
+@keyframes enterButton{
+    from{
+        opacity:0;
+        transform:
+            translateY(12px)
+            scale(.92);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.enter:hover{
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    box-shadow:
+        0 22px 42px rgba(110,55,80,.24),
+        0 0 35px rgba(255,255,255,.35);
+}
+
+.opening-note{
+    margin-top:12px;
+
+    font-size:9px;
+
+    color:var(--muted);
+
+    letter-spacing:2px;
+
+    opacity:.48;
+}
+
+/* =========================================================
+   SEASON TRANSITION
+========================================================= */
+
+.season-transition{
+    position:fixed;
+    inset:0;
+
+    z-index:94000;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    pointer-events:none;
+
+    opacity:0;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.92),
+            rgba(255,255,255,.42) 20%,
+            transparent 60%
+        );
+
+    transition:
+        opacity .35s ease;
+}
+
+.season-transition.active{
+    opacity:1;
+}
+
+.season-ring{
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    border:
+        2px solid
+        var(--primary-light);
+
+    box-shadow:
+        0 0 25px var(--primary-light),
+        0 0 70px rgba(255,255,255,.8);
+
+    animation:
+        seasonRing .9s ease forwards;
+}
+
+@keyframes seasonRing{
+
+    0%{
+        transform:scale(.25);
+        opacity:.3;
+    }
+
+    55%{
+        transform:scale(5);
+        opacity:1;
+    }
+
+    100%{
+        transform:scale(16);
+        opacity:0;
+    }
+}
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.petal-layer,
+.sparkles,
+.fireflies{
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+}
+
+.petal-layer{
+    z-index:4;
+}
+
+.sparkles{
+    z-index:3;
+}
+
+.fireflies{
+    z-index:2;
+}
+
+.falling-petal{
+    position:absolute;
+
+    top:-50px;
+
+    width:26px;
+    height:16px;
+
+    border-radius:
+        80% 12% 80% 12%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--petal-light),
+            var(--petal)
+        );
+
+    box-shadow:
+        inset 0 1px 4px rgba(255,255,255,.86),
+        inset -2px -3px 5px var(--petal-shadow),
+        0 4px 11px rgba(80,55,70,.13);
+
+    opacity:.74;
+
+    animation:
+        falling linear infinite;
+}
+
+.falling-petal::after{
+    content:"";
+
+    position:absolute;
+
+    left:12%;
+    right:12%;
+
+    top:50%;
+
+    height:1px;
+
+    background:
+        rgba(255,255,255,.8);
+}
+
+@keyframes falling{
+
+    0%{
+        transform:
+            translate3d(0,-10vh,0)
+            rotate(0);
+        opacity:0;
+    }
+
+    10%{
+        opacity:.86;
+    }
+
+    50%{
+        transform:
+            translate3d(
+                var(--wind),
+                54vh,
+                0
+            )
+            rotate(185deg);
+    }
+
+    100%{
+        transform:
+            translate3d(
+                calc(var(--wind) * -1),
+                112vh,
+                0
+            )
+            rotate(390deg);
+        opacity:0;
+    }
+}
+
+.sparkle{
+    position:absolute;
+
+    color:white;
+
+    text-shadow:
+        0 0 7px white,
+        0 0 20px var(--primary-light);
+
+    animation:
+        sparkle
+        ease-in-out infinite;
+}
+
+@keyframes sparkle{
+
+    0%,100%{
+        opacity:.12;
+
+        transform:
+            scale(.5)
+            rotate(0);
+    }
+
+    50%{
+        opacity:1;
+
+        transform:
+            scale(1.35)
+            rotate(90deg);
+    }
+}
+
+.firefly{
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#fff5a8;
+
+    box-shadow:
+        0 0 8px #fff5a8,
+        0 0 24px rgba(255,238,146,.76);
+
+    animation:
+        firefly
+        ease-in-out infinite;
+}
+
+@keyframes firefly{
+
+    0%,100%{
+        opacity:.15;
+
+        transform:
+            translateY(0)
+            scale(.55);
+    }
+
+    50%{
+        opacity:1;
+
+        transform:
+            translateY(-34px)
+            scale(1.3);
+    }
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    position:relative;
+
+    min-height:980px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--sky-a),
+            var(--sky-b) 42%,
+            var(--sky-c) 72%,
+            #d8eddc
+        );
+}
+
+body[data-season="autumn"] .hero{
+    background:
+        linear-gradient(
+            180deg,
+            var(--sky-a),
+            var(--sky-b) 42%,
+            var(--sky-c) 72%,
+            #d4d7b8
+        );
+}
+
+.hero-aurora{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.hero-aurora div{
+    position:absolute;
+
+    width:150%;
+    height:240px;
+
+    left:-25%;
+
+    border-radius:50%;
+
+    filter:blur(35px);
+
+    mix-blend-mode:screen;
+
+    opacity:.45;
+}
+
+.hero-aurora .a{
+    top:4%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(143,237,210,.68),
+            transparent 68%
+        );
+
+    animation:
+        aurora1
+        13s ease-in-out infinite;
+}
+
+.hero-aurora .b{
+    top:12%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(203,181,244,.64),
+            transparent 68%
+        );
+
+    animation:
+        aurora2
+        17s ease-in-out infinite;
+}
+
+.hero-aurora .c{
+    top:20%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(242,178,207,.46),
+            transparent 68%
+        );
+
+    animation:
+        aurora3
+        20s ease-in-out infinite;
+}
+
+body[data-season="autumn"] .hero-aurora .a{
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(206,224,154,.4),
+            transparent 68%
+        );
+}
+
+body[data-season="autumn"] .hero-aurora .b{
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(243,186,132,.4),
+            transparent 68%
+        );
+}
+
+body[data-season="autumn"] .hero-aurora .c{
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(226,117,77,.3),
+            transparent 68%
+        );
+}
+
+@keyframes aurora1{
+    0%,100%{
+        transform:
+            translateX(-5%)
+            rotate(-3deg);
+    }
+
+    50%{
+        transform:
+            translateX(8%)
+            rotate(4deg);
+    }
+}
+
+@keyframes aurora2{
     0%,100%{
         transform:
             translateX(6%)
@@ -990,7 +1145,7 @@ body[data-season="autumn"] .aurora-c{
     }
 }
 
-@keyframes auroraMoveC{
+@keyframes aurora3{
     0%,100%{
         transform:scale(1);
     }
@@ -1000,34 +1155,36 @@ body[data-season="autumn"] .aurora-c{
     }
 }
 
-/* =========================================================
-   MOON
-========================================================= */
+/* moon */
 
 .hero-moon{
     position:absolute;
-    width:200px;
-    height:200px;
+
+    width:190px;
+    height:190px;
+
     top:90px;
     right:8%;
+
     border-radius:50%;
 
     background:
         radial-gradient(
             circle at 35% 30%,
-            #fff,
+            white,
             #fff8fb 25%,
-            #ead0dd 67%,
-            #b888a0 100%
+            #eaceda 67%,
+            #bb8ea5
         );
 
-    box-shadow:
-        0 0 30px rgba(255,255,255,.97),
-        0 0 80px rgba(255,255,255,.42);
+    opacity:.62;
 
-    opacity:.64;
+    box-shadow:
+        0 0 30px rgba(255,255,255,.98),
+        0 0 80px rgba(255,255,255,.45);
+
     animation:
-        moonDrift
+        moonFloat
         8s ease-in-out infinite;
 }
 
@@ -1035,101 +1192,34 @@ body[data-season="autumn"] .hero-moon{
     background:
         radial-gradient(
             circle at 35% 30%,
-            #fffdea,
-            #f5dfbb 27%,
-            #d0a66a 69%,
-            #9c693d
+            #fffdec,
+            #f3dfbb 26%,
+            #cda568 68%,
+            #9a673b
         );
-}
-
-@keyframes moonDrift{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-17px);
-    }
 }
 
 /* =========================================================
-   HERO GARDEN
+   HERO CONTENT
 ========================================================= */
 
-.garden-layer{
-    position:absolute;
-    left:-3%;
-    right:-3%;
-    bottom:105px;
-}
-
-.garden-hill{
-    height:190px;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(53,94,61,.7),
-            rgba(90,135,90,.32),
-            transparent
-        );
-
-    clip-path:
-        polygon(
-            0 72%,
-            6% 59%,
-            11% 69%,
-            18% 46%,
-            24% 68%,
-            32% 43%,
-            38% 65%,
-            46% 49%,
-            52% 68%,
-            60% 42%,
-            66% 63%,
-            74% 45%,
-            80% 67%,
-            88% 43%,
-            94% 65%,
-            100% 48%,
-            100% 100%,
-            0 100%
-        );
-}
-
-.garden-hill.back{
-    opacity:.45;
-    transform:scale(1.05);
-}
-
-.garden-hill.front{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:-25px;
-    opacity:.85;
-}
-
-/* =========================================================
-   HERO CENTER
-========================================================= */
-
-.hero-center{
+.hero-content{
     position:relative;
+
     z-index:20;
 
-    width:min(1050px,calc(100% - 30px));
+    width:min(1080px,calc(100% - 30px));
 
     margin:auto;
-    padding-top:155px;
+
+    padding-top:175px;
 
     text-align:center;
-
-    transition:
-        transform .35s ease;
 }
 
 .hero-kicker{
     display:inline-flex;
+
     align-items:center;
     gap:10px;
 
@@ -1137,50 +1227,53 @@ body[data-season="autumn"] .hero-moon{
 
     border-radius:999px;
 
-    background:rgba(255,255,255,.63);
-    border:1px solid rgba(255,255,255,.88);
+    background:
+        rgba(255,255,255,.62);
+
+    border:
+        1px solid
+        rgba(255,255,255,.9);
 
     backdrop-filter:blur(14px);
 
-    color:var(--rose-dark);
+    color:var(--primary);
 
     font-size:10px;
-    font-weight:700;
-    letter-spacing:3px;
 
-    box-shadow:
-        0 11px 25px rgba(80,65,80,.08);
+    font-weight:700;
+
+    letter-spacing:3px;
 }
 
 .hero-title{
-    margin-top:23px;
+    margin-top:21px;
 
     font-family:"Playfair Display",serif;
 
     font-size:
         clamp(
-            62px,
+            64px,
             10vw,
             132px
         );
 
-    line-height:.85;
+    line-height:.83;
 
-    color:var(--rose-dark);
+    color:var(--primary);
 
     text-shadow:
-        0 12px 45px rgba(110,65,85,.17),
-        0 0 55px rgba(255,255,255,.94);
+        0 12px 42px rgba(100,55,75,.16),
+        0 0 55px rgba(255,255,255,.95);
 }
 
 .hero-title span{
     display:block;
 }
 
-.hero-subtitle{
+.hero-sub{
     margin-top:23px;
 
-    color:#766d79;
+    color:#766d78;
 
     font-size:17px;
 
@@ -1188,27 +1281,34 @@ body[data-season="autumn"] .hero-moon{
 }
 
 .hero-copy{
-    width:min(790px,100%);
-    margin:22px auto 0;
+    width:min(800px,100%);
 
-    color:#69616b;
+    margin:23px auto 0;
+
+    color:#6b636d;
 
     font-size:14px;
+
     line-height:2;
 }
 
-.hero-buttons{
+.hero-actions{
     display:flex;
+
     justify-content:center;
+
     flex-wrap:wrap;
 
     gap:12px;
 
-    margin-top:30px;
+    margin-top:32px;
 }
 
-.hero-button{
-    position:relative;
+.hero-btn{
+    display:inline-flex;
+
+    justify-content:center;
+    align-items:center;
 
     min-width:175px;
 
@@ -1219,127 +1319,116 @@ body[data-season="autumn"] .hero-moon{
     text-decoration:none;
 
     font-size:13px;
-    font-weight:600;
 
-    overflow:hidden;
+    font-weight:600;
 
     transition:.35s ease;
 }
 
-.hero-button.primary{
+.hero-btn.main{
     color:white;
 
     background:
         linear-gradient(
             135deg,
-            var(--rose-dark),
-            var(--rose)
+            var(--primary),
+            var(--primary-light)
         );
 
     box-shadow:
-        0 16px 33px rgba(110,57,80,.19);
+        0 16px 34px rgba(105,55,78,.18);
 }
 
-.hero-button.secondary{
-    color:var(--rose-dark);
+.hero-btn.alt{
+    color:var(--primary);
 
-    background:rgba(255,255,255,.64);
+    background:
+        rgba(255,255,255,.65);
 
     border:
         1px solid
-        rgba(255,255,255,.92);
+        rgba(255,255,255,.9);
 }
 
-.hero-button::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            120deg,
-            transparent 30%,
-            rgba(255,255,255,.65) 50%,
-            transparent 70%
-        );
-
-    transform:translateX(-130%);
-
-    transition:.8s ease;
-}
-
-.hero-button:hover{
+.hero-btn:hover{
     transform:
         translateY(-5px)
         scale(1.03);
 }
 
-.hero-button:hover::before{
-    transform:translateX(130%);
-}
-
 /* =========================================================
-   FLOWER PARTICLES IN HERO
+   HERO GARDEN
 ========================================================= */
 
-.hero-petal{
+.garden{
     position:absolute;
 
-    width:18px;
-    height:11px;
+    left:-3%;
+    right:-3%;
 
-    border-radius:
-        80% 12% 80% 12%;
+    bottom:105px;
+
+    z-index:10;
+}
+
+.hill{
+    height:210px;
 
     background:
         linear-gradient(
-            135deg,
-            var(--petal-1),
-            var(--petal-2)
+            to top,
+            rgba(49,89,58,.69),
+            rgba(90,134,91,.28),
+            transparent
         );
 
-    box-shadow:
-        0 2px 8px rgba(100,60,80,.12),
-        inset 0 1px 3px rgba(255,255,255,.8);
-
-    animation:
-        heroPetalFloat
-        6s ease-in-out infinite;
+    clip-path:
+        polygon(
+            0 69%,
+            6% 58%,
+            12% 69%,
+            19% 46%,
+            25% 68%,
+            32% 44%,
+            39% 67%,
+            46% 50%,
+            53% 69%,
+            60% 42%,
+            67% 65%,
+            74% 47%,
+            81% 68%,
+            88% 44%,
+            95% 66%,
+            100% 48%,
+            100% 100%,
+            0 100%
+        );
 }
 
-.hero-petal.p1{left:9%;top:35%;animation-delay:-1s}
-.hero-petal.p2{left:20%;top:21%;animation-delay:-3s}
-.hero-petal.p3{left:30%;top:40%;animation-delay:-2s}
-.hero-petal.p4{right:20%;top:24%;animation-delay:-4s}
-.hero-petal.p5{right:10%;top:38%;animation-delay:-1.5s}
-.hero-petal.p6{right:30%;top:17%;animation-delay:-5s}
+.hill.front{
+    position:absolute;
 
-@keyframes heroPetalFloat{
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(-5deg);
-    }
+    left:0;
+    right:0;
 
-    50%{
-        transform:
-            translateY(-16px)
-            rotate(8deg);
-    }
+    bottom:-20px;
+
+    opacity:.9;
 }
 
 /* =========================================================
    HERO RIVER
 ========================================================= */
 
-.hero-river{
+.hero-water{
     position:absolute;
 
-    left:-7%;
-    right:-7%;
-    bottom:-120px;
+    left:-8%;
+    right:-8%;
 
-    height:280px;
+    bottom:-125px;
+
+    height:300px;
 
     border-radius:
         50% 50% 0 0;
@@ -1347,103 +1436,112 @@ body[data-season="autumn"] .hero-moon{
     background:
         linear-gradient(
             170deg,
-            var(--water-light),
-            var(--water-1) 34%,
-            var(--water-2) 100%
+            var(--water-a),
+            var(--water-b),
+            var(--water-c)
         );
 
     overflow:hidden;
 
     box-shadow:
-        inset 0 18px 32px rgba(255,255,255,.23),
-        0 -20px 55px rgba(76,123,128,.15);
+        inset 0 20px 45px rgba(255,255,255,.2),
+        0 -18px 48px rgba(70,120,125,.15);
 
-    z-index:12;
+    z-index:15;
 }
 
-.hero-river-flow{
+.hero-water::before{
+    content:"";
+
     position:absolute;
-    inset:-30%;
+    inset:-40%;
 
     background:
         repeating-linear-gradient(
             8deg,
-            transparent 0 24px,
-            rgba(255,255,255,.18) 27px 31px,
+            transparent 0 26px,
+            rgba(255,255,255,.18) 28px 32px,
             transparent 34px 53px
         );
 
     animation:
-        waterFlow
+        heroWaterFlow
         7s linear infinite;
 }
 
-@keyframes waterFlow{
+@keyframes heroWaterFlow{
     from{
-        transform:translateX(-55px);
+        transform:translateX(-60px);
     }
+
     to{
-        transform:translateX(55px);
+        transform:translateX(60px);
     }
 }
 
 /* =========================================================
-   NAVIGATION
+   NAV
 ========================================================= */
 
 .nav-shell{
     position:sticky;
+
     top:12px;
+
     z-index:8000;
 
-    width:min(1080px,calc(100% - 28px));
+    width:min(1090px,calc(100% - 28px));
 
     margin:-25px auto 0;
 }
 
 .nav{
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     flex-wrap:wrap;
 
     gap:7px;
 
     padding:8px;
 
-    border-radius:23px;
-
-    background:rgba(255,255,255,.61);
+    background:
+        rgba(255,255,255,.61);
 
     border:
         1px solid
         rgba(255,255,255,.93);
 
-    backdrop-filter:blur(22px);
+    border-radius:22px;
+
+    backdrop-filter:blur(21px);
 
     box-shadow:
-        0 18px 40px rgba(74,61,76,.12);
+        0 18px 42px rgba(76,62,78,.12);
 }
 
 .nav a,
-.nav-theme-mini{
+.nav-season{
     position:relative;
 
     border:0;
 
     padding:10px 14px;
 
-    border-radius:14px;
-
     background:transparent;
 
-    color:#655d66;
+    border-radius:14px;
+
+    color:#625a65;
 
     text-decoration:none;
 
     font-family:inherit;
 
     font-size:11px;
+
     font-weight:600;
 
     cursor:pointer;
@@ -1452,9 +1550,11 @@ body[data-season="autumn"] .hero-moon{
 }
 
 .nav a::before,
-.nav-theme-mini::before{
+.nav-season::before{
     content:"";
+
     position:absolute;
+
     inset:0;
 
     border-radius:inherit;
@@ -1463,10 +1563,11 @@ body[data-season="autumn"] .hero-moon{
         linear-gradient(
             135deg,
             rgba(215,123,155,.18),
-            rgba(128,169,135,.14)
+            rgba(128,169,135,.13)
         );
 
     transform:scale(.7);
+
     opacity:0;
 
     transition:.3s ease;
@@ -1474,26 +1575,28 @@ body[data-season="autumn"] .hero-moon{
 
 .nav a:hover,
 .nav a.active,
-.nav-theme-mini:hover{
-    color:var(--rose-dark);
+.nav-season:hover{
+    color:var(--primary);
+
     transform:translateY(-2px);
 }
 
 .nav a:hover::before,
 .nav a.active::before,
-.nav-theme-mini:hover::before{
+.nav-season:hover::before{
     transform:scale(1);
+
     opacity:1;
 }
 
-.nav a span,
-.nav-theme-mini span{
+.nav span{
     position:relative;
+
     z-index:2;
 }
 
 /* =========================================================
-   PAGE CONTENT
+   MAIN
 ========================================================= */
 
 main{
@@ -1501,27 +1604,26 @@ main{
     z-index:30;
 }
 
-/* =========================================================
-   SECTION TITLES
-========================================================= */
-
 .section{
     width:min(1160px,calc(100% - 30px));
+
     margin-left:auto;
     margin-right:auto;
 }
 
 .section-heading{
-    text-align:center;
     margin-top:95px;
+
+    text-align:center;
 }
 
-.section-kicker{
+.kicker{
     display:inline-flex;
+
     align-items:center;
     gap:9px;
 
-    color:var(--rose-dark);
+    color:var(--primary);
 
     font-size:10px;
 
@@ -1530,170 +1632,175 @@ main{
     letter-spacing:3px;
 }
 
-.section-kicker::before,
-.section-kicker::after{
+.kicker::before,
+.kicker::after{
     content:"";
 
-    width:45px;
+    width:44px;
+
     height:1px;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            var(--rose)
+            var(--primary-light)
         );
 }
 
-.section-kicker::after{
+.kicker::after{
     background:
         linear-gradient(
             90deg,
-            var(--rose),
+            var(--primary-light),
             transparent
         );
 }
 
 .section-heading h2{
-    margin-top:10px;
+    margin-top:9px;
 
     font-family:"Playfair Display",serif;
 
     font-size:
         clamp(
-            35px,
+            34px,
             5vw,
             58px
         );
 
-    color:var(--green-dark);
+    color:var(--secondary);
 }
 
 .section-heading p{
-    width:min(760px,100%);
+    width:min(770px,100%);
 
-    margin:15px auto 0;
+    margin:14px auto 0;
 
     color:var(--muted);
 
-    line-height:1.95;
-
     font-size:14px;
+
+    line-height:1.95;
 }
 
 /* =========================================================
-   SEASON SWITCH - VERY OBVIOUS
+   SEASON PORTAL
 ========================================================= */
 
-.season-section{
-    margin-top:75px;
+.season-portal{
+    margin-top:70px;
 }
 
-.season-gate{
+.portal{
     position:relative;
-    padding:27px;
 
-    border-radius:35px;
+    overflow:hidden;
+
+    padding:29px;
+
+    border-radius:37px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.78),
-            rgba(247,239,252,.64),
-            rgba(239,249,242,.65)
+            rgba(255,255,255,.79),
+            rgba(247,239,252,.58),
+            rgba(237,249,241,.6)
         );
 
     border:
         1px solid
-        rgba(255,255,255,.94);
+        rgba(255,255,255,.95);
 
     backdrop-filter:blur(18px);
 
     box-shadow:
-        0 28px 75px rgba(83,67,84,.14);
-
-    overflow:hidden;
+        0 30px 80px rgba(80,64,81,.14);
 }
 
-body[data-season="autumn"] .season-gate{
+body[data-season="autumn"] .portal{
     background:
         linear-gradient(
             135deg,
-            rgba(255,248,237,.8),
-            rgba(250,232,209,.62),
-            rgba(236,240,219,.65)
+            rgba(255,248,237,.82),
+            rgba(250,231,208,.62),
+            rgba(235,240,219,.65)
         );
 }
 
-.season-glow{
+.portal-glow{
     position:absolute;
 
-    width:350px;
-    height:350px;
+    width:380px;
+    height:380px;
 
     border-radius:50%;
 
-    filter:blur(15px);
+    filter:blur(20px);
 
-    opacity:.25;
+    opacity:.22;
 
     pointer-events:none;
 }
 
-.season-glow.left{
-    left:-140px;
-    top:-160px;
+.portal-glow.g1{
+    left:-160px;
+    top:-180px;
 
     background:
         radial-gradient(
             circle,
-            var(--rose),
+            var(--primary-light),
             transparent 70%
         );
 }
 
-.season-glow.right{
-    right:-140px;
-    bottom:-170px;
+.portal-glow.g2{
+    right:-160px;
+    bottom:-190px;
 
     background:
         radial-gradient(
             circle,
-            var(--green),
+            var(--secondary),
             transparent 70%
         );
 }
 
-.season-content{
+.portal-title{
     position:relative;
     z-index:2;
 
     text-align:center;
 }
 
-.season-label{
+.portal-title small{
+    color:var(--primary);
+
     font-size:10px;
+
     letter-spacing:4px;
-    color:var(--rose-dark);
+
     font-weight:700;
 }
 
-.season-title{
-    margin-top:7px;
+.portal-title h2{
+    margin-top:5px;
 
     font-family:"Playfair Display",serif;
 
+    color:var(--ink);
+
     font-size:
         clamp(
-            28px,
+            29px,
             4vw,
-            42px
+            43px
         );
-
-    color:var(--ink);
 }
 
-.season-subtitle{
+.portal-title p{
     margin-top:5px;
 
     color:var(--muted);
@@ -1701,159 +1808,168 @@ body[data-season="autumn"] .season-gate{
     font-size:12px;
 }
 
-.season-switch{
-    width:min(760px,100%);
+/* choices */
 
-    margin:25px auto 0;
+.season-choices{
+    position:relative;
+    z-index:2;
 
     display:grid;
 
-    grid-template-columns:1fr 90px 1fr;
+    grid-template-columns:
+        1fr 110px 1fr;
+
+    gap:13px;
 
     align-items:center;
 
-    gap:10px;
+    width:min(820px,100%);
+
+    margin:27px auto 0;
 }
 
-/* big buttons */
-
-.season-choice{
+.choice{
     position:relative;
 
-    min-height:86px;
+    min-height:105px;
 
-    padding:12px 20px;
+    border-radius:25px;
 
-    border:1px solid rgba(255,255,255,.9);
+    border:
+        1px solid
+        rgba(255,255,255,.9);
 
-    border-radius:22px;
-
-    background:rgba(255,255,255,.64);
+    background:
+        rgba(255,255,255,.58);
 
     cursor:pointer;
 
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease,
-        background .5s ease,
-        border-color .5s ease;
-
     font-family:inherit;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease,
+        background .5s ease;
 }
 
-.season-choice:hover{
-    transform:translateY(-4px);
+.choice:hover{
+    transform:
+        translateY(-5px);
 }
 
-.season-choice.active{
+.choice.active{
     box-shadow:
-        0 15px 30px rgba(80,65,80,.13),
-        0 0 28px rgba(255,255,255,.65);
-
-    border-color:
-        rgba(255,255,255,1);
+        0 20px 35px rgba(80,65,80,.13),
+        0 0 28px rgba(255,255,255,.72);
 }
 
-.spring-choice.active{
+.choice.spring.active{
     background:
         linear-gradient(
             135deg,
-            rgba(255,225,236,.94),
-            rgba(235,249,241,.9)
+            rgba(255,225,237,.96),
+            rgba(233,249,239,.9)
         );
 }
 
-.autumn-choice.active{
+.choice.autumn.active{
     background:
         linear-gradient(
             135deg,
-            rgba(255,224,187,.94),
-            rgba(233,237,198,.9)
+            rgba(255,225,189,.96),
+            rgba(234,239,207,.92)
         );
 }
 
-.season-choice .icon{
-    font-size:31px;
+.choice .emoji{
     display:block;
+
+    font-size:34px;
 }
 
-.season-choice strong{
+.choice strong{
     display:block;
 
-    margin-top:3px;
+    margin-top:2px;
+
+    color:var(--ink);
 
     font-family:"Playfair Display",serif;
 
-    font-size:19px;
-
-    color:var(--ink);
+    font-size:20px;
 }
 
-.season-choice small{
+.choice small{
     color:var(--muted);
+
     font-size:9px;
-    letter-spacing:1px;
+
+    letter-spacing:1.5px;
 }
 
-/* slider */
+/* central wheel */
 
-.season-slider{
+.season-wheel{
     position:relative;
 
-    width:78px;
-    height:78px;
+    width:92px;
+    height:92px;
+
+    margin:auto;
 
     border-radius:50%;
 
     border:
-        1px solid
-        rgba(255,255,255,.93);
+        2px solid
+        rgba(255,255,255,.88);
 
     background:
         conic-gradient(
             from 0deg,
-            #f4b7cb,
-            #c9b9e9,
-            #a9d7df,
-            #efbd8b,
-            #d8854b,
-            #f4b7cb
+            #f4b8ca,
+            #cdbce9,
+            #9fd5df,
+            #f0c48e,
+            #d5783e,
+            #f4b8ca
         );
 
     box-shadow:
-        0 9px 23px rgba(80,65,80,.14),
-        0 0 30px rgba(255,255,255,.5);
+        0 12px 28px rgba(82,67,82,.16),
+        0 0 30px rgba(255,255,255,.58);
 
     cursor:pointer;
 
     transition:
-        transform .6s cubic-bezier(.2,.8,.2,1);
+        transform .7s cubic-bezier(.2,.8,.2,1);
 }
 
-.season-slider.autumn{
-    transform:rotate(180deg);
+.season-wheel.autumn{
+    transform:
+        rotate(180deg);
 }
 
-.season-slider::before{
+.season-wheel::before{
     content:"";
 
     position:absolute;
-    inset:7px;
+
+    inset:8px;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            white,
-            rgba(255,255,255,.67) 45%,
-            rgba(255,255,255,.35)
+            #fff,
+            rgba(255,255,255,.75)
         );
 
-    backdrop-filter:blur(7px);
+    box-shadow:
+        inset 0 0 20px rgba(255,255,255,.85);
 }
 
-.season-slider::after{
+.season-wheel::after{
     content:"↕";
 
     position:absolute;
@@ -1861,48 +1977,62 @@ body[data-season="autumn"] .season-gate{
     inset:0;
 
     display:grid;
+
     place-items:center;
 
-    color:var(--rose-dark);
+    color:var(--primary);
 
-    font-size:21px;
+    font-size:22px;
+
     font-weight:700;
 
     transform:rotate(-90deg);
 }
 
-.season-status{
-    margin-top:17px;
+.portal-status{
+    position:relative;
+    z-index:2;
 
-    display:inline-flex;
+    width:max-content;
+
+    max-width:100%;
+
+    margin:17px auto 0;
+
+    display:flex;
+
     align-items:center;
+
     gap:8px;
 
-    padding:8px 17px;
+    padding:8px 16px;
 
     border-radius:999px;
 
-    color:var(--rose-dark);
+    color:var(--primary);
 
-    background:rgba(255,255,255,.68);
+    background:
+        rgba(255,255,255,.66);
 
-    border:1px solid rgba(255,255,255,.9);
+    border:
+        1px solid
+        rgba(255,255,255,.9);
 
-    font-size:11px;
+    font-size:10px;
 
-    box-shadow:
-        0 9px 20px rgba(80,65,80,.07);
+    letter-spacing:1.5px;
 }
 
 .status-dot{
     width:8px;
     height:8px;
+
     border-radius:50%;
 
-    background:var(--rose);
+    background:var(--primary-light);
 
     box-shadow:
-        0 0 10px var(--rose);
+        0 0 11px var(--primary-light);
 
     animation:
         statusPulse
@@ -1910,35 +2040,37 @@ body[data-season="autumn"] .season-gate{
 }
 
 @keyframes statusPulse{
-
     0%,100%{
-        transform:scale(.75);
         opacity:.5;
+        transform:scale(.75);
     }
 
     50%{
-        transform:scale(1.25);
         opacity:1;
+        transform:scale(1.2);
     }
 }
 
-.season-hint{
-    margin-top:11px;
+.portal-hint{
+    position:relative;
+    z-index:2;
 
-    font-size:10px;
+    margin-top:10px;
+
+    text-align:center;
+
+    font-size:9px;
 
     color:var(--muted);
 
-    letter-spacing:1px;
+    letter-spacing:1.7px;
 }
 
 /* =========================================================
    CHARACTER CARDS
 ========================================================= */
 
-.characters{
-    margin-top:43px;
-
+.cards{
     display:grid;
 
     grid-template-columns:
@@ -1946,15 +2078,17 @@ body[data-season="autumn"] .season-gate{
 
     gap:28px;
 
+    margin-top:43px;
+
     perspective:1600px;
 }
 
-.character-card{
+.card{
     position:relative;
 
     overflow:hidden;
 
-    border-radius:34px;
+    border-radius:35px;
 
     background:var(--glass);
 
@@ -1965,7 +2099,7 @@ body[data-season="autumn"] .season-gate{
     backdrop-filter:blur(16px);
 
     box-shadow:
-        0 30px 75px rgba(79,63,81,.16);
+        0 30px 78px rgba(78,62,80,.16);
 
     transform-style:preserve-3d;
 
@@ -1974,19 +2108,25 @@ body[data-season="autumn"] .season-gate{
         box-shadow .35s ease;
 
     opacity:0;
-    transform:translateY(35px);
+
+    transform:
+        translateY(40px);
 }
 
-.character-card.visible{
+.card.visible{
     opacity:1;
-    transform:translateY(0);
+
+    transform:
+        translateY(0);
 }
 
-.character-card::before{
+.card::before{
     content:"";
 
     position:absolute;
     inset:0;
+
+    z-index:20;
 
     background:
         linear-gradient(
@@ -1996,51 +2136,52 @@ body[data-season="autumn"] .season-gate{
             transparent 66%
         );
 
-    transform:translateX(-130%);
+    transform:
+        translateX(-130%);
 
     transition:.9s ease;
 
     pointer-events:none;
-
-    z-index:20;
 }
 
-.character-card:hover::before{
-    transform:translateX(130%);
+.card:hover::before{
+    transform:
+        translateX(130%);
 }
 
-.character-card:hover{
+.card:hover{
     box-shadow:
-        0 42px 100px rgba(75,59,77,.21),
-        0 0 35px rgba(255,255,255,.64);
+        0 42px 100px rgba(75,59,77,.22),
+        0 0 35px rgba(255,255,255,.62);
 }
 
-.character-image-wrap{
+.card-image{
     position:relative;
 
-    height:425px;
+    height:430px;
 
     overflow:hidden;
 }
 
-.character-image-wrap::after{
+.card-image::after{
     content:"";
 
     position:absolute;
     inset:0;
 
+    z-index:2;
+
     background:
         linear-gradient(
             to top,
-            rgba(35,29,36,.39),
+            rgba(30,25,32,.42),
             transparent 45%
         );
-
-    z-index:2;
 }
 
-.character-image-wrap img{
+.card-image img{
     position:absolute;
+
     inset:0;
 
     width:100%;
@@ -2054,31 +2195,29 @@ body[data-season="autumn"] .season-gate{
         filter .8s ease;
 }
 
-.character-card:hover
-.character-image-wrap img{
+.card:hover
+.card-image img{
     transform:scale(1.07);
 
     filter:
-        saturate(1.07)
-        brightness(1.04);
+        saturate(1.08)
+        brightness(1.05);
 }
 
-.card-number{
+.card-label{
     position:absolute;
 
-    top:16px;
     left:16px;
+    top:16px;
 
-    z-index:8;
+    z-index:7;
 
     padding:7px 12px;
 
     border-radius:999px;
 
-    color:white;
-
     background:
-        rgba(48,42,50,.43);
+        rgba(45,39,48,.42);
 
     border:
         1px solid
@@ -2086,33 +2225,35 @@ body[data-season="autumn"] .season-gate{
 
     backdrop-filter:blur(9px);
 
+    color:white;
+
     font-size:9px;
 
     letter-spacing:1.5px;
 }
 
-.card-mood{
+.card-season{
     position:absolute;
 
-    top:16px;
     right:16px;
+    top:16px;
 
-    z-index:8;
+    z-index:7;
 
     padding:7px 11px;
 
     border-radius:999px;
 
-    color:white;
-
     background:
-        rgba(48,42,50,.40);
+        rgba(45,39,48,.4);
 
     border:
         1px solid
         rgba(255,255,255,.62);
 
     backdrop-filter:blur(9px);
+
+    color:white;
 
     font-size:9px;
 
@@ -2122,10 +2263,10 @@ body[data-season="autumn"] .season-gate{
 .card-name{
     position:absolute;
 
-    z-index:8;
-
     left:20px;
-    bottom:19px;
+    bottom:20px;
+
+    z-index:7;
 
     color:white;
 }
@@ -2137,7 +2278,7 @@ body[data-season="autumn"] .season-gate{
 
     letter-spacing:2px;
 
-    opacity:.74;
+    opacity:.73;
 }
 
 .card-name strong{
@@ -2145,24 +2286,24 @@ body[data-season="autumn"] .season-gate{
 
     font-family:"Playfair Display",serif;
 
-    font-size:37px;
+    font-size:38px;
 
     line-height:1;
 
     text-shadow:
-        0 5px 22px rgba(20,15,20,.33);
+        0 5px 22px rgba(20,15,20,.35);
 }
 
 .card-symbol{
     position:absolute;
 
-    right:19px;
+    right:18px;
     bottom:20px;
+
+    z-index:7;
 
     width:49px;
     height:49px;
-
-    z-index:8;
 
     display:grid;
     place-items:center;
@@ -2176,39 +2317,40 @@ body[data-season="autumn"] .season-gate{
 
     border:
         1px solid
-        rgba(255,255,255,.64);
+        rgba(255,255,255,.63);
 
     backdrop-filter:blur(8px);
 }
 
-.character-content{
-    padding:26px 24px 29px;
+.card-content{
+    padding:27px 24px 29px;
 }
 
-.character-content h3{
+.card-content h3{
     font-family:"Playfair Display",serif;
 
-    color:var(--rose-dark);
+    color:var(--primary);
 
-    font-size:29px;
+    font-size:30px;
 }
 
-.character-tagline{
-    margin-top:2px;
-
+.card-role{
     color:var(--muted);
 
     font-size:12px;
 
+    margin-top:2px;
+
     margin-bottom:18px;
 }
 
-.character-meta{
+.info{
     display:grid;
+
     gap:7px;
 }
 
-.character-row{
+.info-row{
     display:grid;
 
     grid-template-columns:
@@ -2220,21 +2362,21 @@ body[data-season="autumn"] .season-gate{
 
     border-bottom:
         1px dashed
-        rgba(90,90,90,.12);
+        rgba(80,80,80,.12);
 
     font-size:12.5px;
 
     line-height:1.55;
 }
 
-.character-row b{
-    color:var(--green-dark);
+.info-row b{
+    color:var(--secondary);
 }
 
-.character-description{
+.description{
     margin-top:17px;
 
-    color:#6d6570;
+    color:#6b646d;
 
     font-size:13px;
 
@@ -2243,6 +2385,7 @@ body[data-season="autumn"] .season-gate{
 
 .tags{
     display:flex;
+
     flex-wrap:wrap;
 
     gap:7px;
@@ -2258,30 +2401,27 @@ body[data-season="autumn"] .season-gate{
     background:
         linear-gradient(
             135deg,
-            rgba(237,248,239,.94),
-            rgba(255,239,246,.9)
+            rgba(239,248,240,.94),
+            rgba(255,240,246,.9)
         );
 
-    color:var(--green-dark);
+    color:var(--secondary);
+
+    font-size:10px;
 
     border:
         1px solid
         rgba(128,169,135,.14);
-
-    font-size:10px;
 
     transition:.25s ease;
 }
 
 .tag:hover{
     transform:translateY(-3px);
-
-    box-shadow:
-        0 8px 17px rgba(90,110,95,.11);
 }
 
 /* =========================================================
-   RIVER SECTION
+   INTERACTIVE RIVER
 ========================================================= */
 
 .river-section{
@@ -2291,18 +2431,18 @@ body[data-season="autumn"] .season-gate{
 .river-world{
     position:relative;
 
-    min-height:590px;
-
-    border-radius:42px;
+    min-height:610px;
 
     overflow:hidden;
+
+    border-radius:44px;
 
     background:
         linear-gradient(
             180deg,
-            #b7ddd5,
-            #9dc8bb 34%,
-            #668f87 100%
+            #bfded6,
+            #a0c9bf 35%,
+            #6f988d
         );
 
     border:
@@ -2310,88 +2450,88 @@ body[data-season="autumn"] .season-gate{
         rgba(255,255,255,.75);
 
     box-shadow:
-        0 36px 95px rgba(59,82,77,.2);
+        0 38px 100px rgba(55,80,75,.2);
 }
 
-body[data-season="autumn"] .river-world{
+body[data-season="autumn"]
+.river-world{
     background:
         linear-gradient(
             180deg,
-            #cbd6b6,
-            #9baa83 36%,
-            #6c785a 100%
+            #d2dbbe,
+            #aab688 38%,
+            #717b5b
         );
 }
 
-.river-aura{
+.river-world::before{
+    content:"";
+
     position:absolute;
-
-    width:650px;
-    height:330px;
-
-    left:50%;
-    top:20px;
-
-    transform:translateX(-50%);
-
-    border-radius:50%;
+    inset:0;
 
     background:
         radial-gradient(
-            ellipse,
-            rgba(255,255,255,.32),
-            transparent 68%
+            circle at 20% 25%,
+            rgba(255,255,255,.24),
+            transparent 19%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(255,255,255,.2),
+            transparent 18%
         );
-
-    filter:blur(13px);
 }
 
-.river-title{
+.river-caption{
     position:absolute;
 
-    top:34px;
+    top:35px;
+
     left:50%;
 
-    transform:translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    width:min(800px,calc(100% - 40px));
+    z-index:12;
 
-    z-index:10;
+    width:min(820px,calc(100% - 30px));
 
     text-align:center;
 }
 
-.river-title h2{
-    margin-top:7px;
+.river-caption h2{
+    margin-top:8px;
 
     font-family:"Playfair Display",serif;
 
-    color:#365b55;
-
     font-size:
         clamp(
-            35px,
+            34px,
             5vw,
             57px
         );
+
+    color:#365d56;
+
+    text-shadow:
+        0 3px 15px rgba(255,255,255,.28);
 }
 
 body[data-season="autumn"]
-.river-title h2{
-    color:#526340;
+.river-caption h2{
+    color:#526442;
 }
 
-.river-title p{
-    margin-top:8px;
+.river-caption p{
+    margin-top:7px;
 
-    color:#4f6862;
+    color:#4e6963;
 
     font-size:13px;
 
-    line-height:1.8;
+    line-height:1.85;
 }
-
-/* interactive water */
 
 .water{
     position:absolute;
@@ -2399,9 +2539,9 @@ body[data-season="autumn"]
     left:-8%;
     right:-8%;
 
-    bottom:-130px;
+    bottom:-145px;
 
-    height:390px;
+    height:410px;
 
     border-radius:
         50% 50% 0 0;
@@ -2409,9 +2549,9 @@ body[data-season="autumn"]
     background:
         linear-gradient(
             170deg,
-            var(--water-light),
-            var(--water-1) 35%,
-            var(--water-2)
+            var(--water-a),
+            var(--water-b),
+            var(--water-c)
         );
 
     overflow:hidden;
@@ -2419,19 +2559,20 @@ body[data-season="autumn"]
     transform:rotate(-1deg);
 
     box-shadow:
-        inset 0 20px 45px rgba(255,255,255,.2);
+        inset 0 25px 48px rgba(255,255,255,.2);
 }
 
 .water-flow{
     position:absolute;
+
     inset:-35%;
 
     background:
         repeating-linear-gradient(
             8deg,
-            transparent 0 27px,
-            rgba(255,255,255,.19) 29px 33px,
-            transparent 35px 55px
+            transparent 0 26px,
+            rgba(255,255,255,.2) 29px 33px,
+            transparent 35px 54px
         );
 
     animation:
@@ -2443,21 +2584,23 @@ body[data-season="autumn"]
     from{
         transform:translateX(-60px);
     }
+
     to{
         transform:translateX(60px);
     }
 }
 
-.water-glow{
+.water-light{
     position:absolute;
 
-    width:440px;
-    height:280px;
+    width:460px;
+    height:300px;
 
     left:50%;
     top:50%;
 
-    transform:translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
     border-radius:50%;
 
@@ -2470,11 +2613,67 @@ body[data-season="autumn"]
 
     filter:blur(10px);
 
-    pointer-events:none;
-
     transition:
-        left .2s ease,
-        top .2s ease;
+        left .18s ease,
+        top .18s ease;
+}
+
+.water-line{
+    position:absolute;
+
+    height:2px;
+
+    border-radius:99px;
+
+    background:
+        rgba(255,255,255,.33);
+
+    animation:
+        waterLine
+        4s linear infinite;
+}
+
+.water-line.w1{
+    width:190px;
+    top:34%;
+    left:9%;
+}
+
+.water-line.w2{
+    width:130px;
+    top:48%;
+    left:57%;
+    animation-delay:-1.3s;
+}
+
+.water-line.w3{
+    width:230px;
+    top:64%;
+    left:31%;
+    animation-delay:-2s;
+}
+
+.water-line.w4{
+    width:145px;
+    top:77%;
+    left:77%;
+    animation-delay:-.7s;
+}
+
+@keyframes waterLine{
+    from{
+        transform:translateX(-30px);
+        opacity:.1;
+    }
+
+    50%{
+        opacity:.7;
+    }
+
+    to{
+        transform:translateX(60px);
+        opacity:.1;
+    }
 }
 
 /* fish */
@@ -2482,7 +2681,7 @@ body[data-season="autumn"]
 .fish{
     position:absolute;
 
-    width:48px;
+    width:49px;
     height:21px;
 
     border-radius:
@@ -2491,14 +2690,11 @@ body[data-season="autumn"]
     background:
         linear-gradient(
             90deg,
-            #f1b06d,
-            #de7f4e
+            #f4b76f,
+            #de7e4e
         );
 
-    box-shadow:
-        0 4px 10px rgba(60,60,60,.14);
-
-    z-index:7;
+    z-index:10;
 
     animation:
         swim
@@ -2539,20 +2735,23 @@ body[data-season="autumn"]
 
     border-radius:50%;
 
-    background:#fff;
+    background:white;
 }
 
 .fish.f1{
-    top:42%;
     left:-100px;
+    top:42%;
+
     animation-duration:12s;
 }
 
 .fish.f2{
-    top:67%;
     left:-120px;
+    top:67%;
+
     animation-duration:15s;
     animation-delay:-6s;
+
     transform:scale(.8);
 }
 
@@ -2566,14 +2765,14 @@ body[data-season="autumn"]
 
     46%{
         transform:
-            translateX(54vw)
+            translateX(55vw)
             translateY(-13px)
             scaleX(1);
     }
 
     50%{
         transform:
-            translateX(59vw)
+            translateX(60vw)
             translateY(-13px)
             scaleX(-1);
     }
@@ -2586,7 +2785,7 @@ body[data-season="autumn"]
     }
 }
 
-/* lily pads */
+/* lily */
 
 .lily{
     position:absolute;
@@ -2599,14 +2798,14 @@ body[data-season="autumn"]
     background:
         radial-gradient(
             ellipse,
-            #87ad7d,
-            #5d865f
+            #8bae7f,
+            #5d845f
         );
 
     box-shadow:
-        0 8px 15px rgba(52,77,55,.18);
+        0 8px 17px rgba(45,72,50,.2);
 
-    z-index:8;
+    z-index:10;
 }
 
 .lily::after{
@@ -2614,14 +2813,14 @@ body[data-season="autumn"]
 
     position:absolute;
 
-    right:3px;
+    right:2px;
     top:1px;
 
     width:18px;
     height:19px;
 
     background:
-        rgba(255,255,255,.58);
+        rgba(255,255,255,.56);
 
     clip-path:
         polygon(
@@ -2631,115 +2830,22 @@ body[data-season="autumn"]
         );
 }
 
-.lily.l1{
-    left:13%;
-    top:34%;
-    transform:rotate(-11deg);
+.lily.a{
+    left:12%;
+    top:32%;
+    transform:rotate(-12deg);
 }
 
-.lily.l2{
+.lily.b{
     right:15%;
-    top:50%;
-    transform:rotate(13deg);
+    top:49%;
+    transform:rotate(11deg);
 }
 
-.lily.l3{
+.lily.c{
     left:39%;
     top:71%;
 }
-
-.water-line{
-    position:absolute;
-
-    height:2px;
-
-    background:
-        rgba(255,255,255,.31);
-
-    border-radius:999px;
-
-    filter:blur(.5px);
-
-    animation:
-        waterShine
-        4s linear infinite;
-}
-
-.water-line.l1{
-    width:190px;
-    top:36%;
-    left:10%;
-}
-
-.water-line.l2{
-    width:130px;
-    top:49%;
-    left:57%;
-    animation-delay:-1.2s;
-}
-
-.water-line.l3{
-    width:230px;
-    top:65%;
-    left:32%;
-    animation-delay:-2.1s;
-}
-
-.water-line.l4{
-    width:140px;
-    top:78%;
-    left:77%;
-    animation-delay:-.5s;
-}
-
-@keyframes waterShine{
-
-    from{
-        transform:translateX(-30px);
-        opacity:.1;
-    }
-
-    50%{
-        opacity:.7;
-    }
-
-    to{
-        transform:translateX(60px);
-        opacity:.1;
-    }
-}
-
-.river-message{
-    position:absolute;
-
-    z-index:12;
-
-    left:50%;
-    top:205px;
-
-    transform:translateX(-50%);
-
-    padding:10px 18px;
-
-    border-radius:999px;
-
-    background:
-        rgba(255,255,255,.34);
-
-    border:
-        1px solid
-        rgba(255,255,255,.6);
-
-    backdrop-filter:blur(11px);
-
-    color:#46665f;
-
-    font-size:10px;
-
-    letter-spacing:1.5px;
-}
-
-/* ripple */
 
 .ripple{
     position:absolute;
@@ -2758,17 +2864,16 @@ body[data-season="autumn"]
         scale(.2);
 
     animation:
-        rippleExpand
-        1.15s
-        ease-out
+        ripple
+        1.2s ease-out
         forwards;
 
-    z-index:20;
+    z-index:15;
 
     pointer-events:none;
 }
 
-@keyframes rippleExpand{
+@keyframes ripple{
 
     from{
         transform:
@@ -2787,22 +2892,56 @@ body[data-season="autumn"]
     }
 }
 
+.river-help{
+    position:absolute;
+
+    top:210px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index:14;
+
+    padding:10px 17px;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,.33);
+
+    border:
+        1px solid
+        rgba(255,255,255,.63);
+
+    backdrop-filter:blur(10px);
+
+    color:#486760;
+
+    font-size:10px;
+
+    letter-spacing:1.5px;
+}
+
 /* =========================================================
-   FINAL MESSAGE
+   FINAL PANEL
 ========================================================= */
 
 .final-panel{
     margin-top:80px;
 
-    padding:48px 30px;
+    padding:46px 30px;
 
-    border-radius:35px;
+    text-align:center;
+
+    border-radius:37px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.77),
-            rgba(245,239,251,.6),
+            rgba(255,255,255,.78),
+            rgba(247,239,252,.58),
             rgba(237,249,241,.6)
         );
 
@@ -2810,12 +2949,10 @@ body[data-season="autumn"]
         1px solid
         rgba(255,255,255,.93);
 
-    backdrop-filter:blur(16px);
+    backdrop-filter:blur(17px);
 
     box-shadow:
-        0 28px 75px rgba(80,65,82,.13);
-
-    text-align:center;
+        0 30px 80px rgba(80,65,82,.14);
 }
 
 body[data-season="autumn"]
@@ -2823,25 +2960,27 @@ body[data-season="autumn"]
     background:
         linear-gradient(
             135deg,
-            rgba(255,248,237,.8),
-            rgba(251,233,211,.62),
-            rgba(235,241,219,.62)
+            rgba(255,248,237,.82),
+            rgba(251,232,208,.62),
+            rgba(235,241,218,.63)
         );
 }
 
-.final-panel .magic-icon{
-    font-size:38px;
+.final-icon{
+    font-size:39px;
+
     animation:
-        magicFloat
+        finalFloat
         3s ease-in-out infinite;
 }
 
-@keyframes magicFloat{
+@keyframes finalFloat{
     0%,100%{
         transform:
             translateY(0)
-            scale(.95);
+            scale(.96);
     }
+
     50%{
         transform:
             translateY(-6px)
@@ -2850,17 +2989,17 @@ body[data-season="autumn"]
 }
 
 .final-panel h2{
-    margin-top:7px;
+    margin-top:8px;
 
     font-family:"Playfair Display",serif;
 
-    color:var(--rose-dark);
+    color:var(--primary);
 
     font-size:
         clamp(
-            29px,
+            30px,
             4vw,
-            42px
+            43px
         );
 }
 
@@ -2885,26 +3024,33 @@ footer{
 
     z-index:30;
 
-    margin-top:90px;
+    margin-top:95px;
 
-    padding:76px 20px 52px;
+    padding:77px 20px 54px;
+
+    overflow:hidden;
 
     text-align:center;
 
     color:white;
-
-    overflow:hidden;
 
     background:
         linear-gradient(
             135deg,
             var(--footer-a),
             var(--footer-b),
-            #67879b
+            #68899c
         );
+}
 
-    box-shadow:
-        0 -22px 55px rgba(75,62,76,.13);
+body[data-season="autumn"] footer{
+    background:
+        linear-gradient(
+            135deg,
+            #5b6840,
+            #905a3d,
+            #6d704f
+        );
 }
 
 footer::before,
@@ -2913,8 +3059,8 @@ footer::after{
 
     position:absolute;
 
-    width:360px;
-    height:360px;
+    width:380px;
+    height:380px;
 
     border-radius:50%;
 
@@ -2927,22 +3073,22 @@ footer::after{
 }
 
 footer::before{
-    left:-140px;
-    top:-150px;
+    left:-150px;
+    top:-160px;
 }
 
 footer::after{
     right:-140px;
-    bottom:-150px;
+    bottom:-160px;
 }
 
 .footer-symbols{
-    font-size:25px;
+    font-size:24px;
     letter-spacing:8px;
 }
 
 footer h3{
-    margin-top:13px;
+    margin-top:12px;
 
     font-family:"Playfair Display",serif;
 
@@ -2956,7 +3102,7 @@ footer p{
 
     line-height:1.8;
 
-    opacity:.92;
+    opacity:.91;
 }
 
 footer a{
@@ -2965,10 +3111,10 @@ footer a{
 }
 
 /* =========================================================
-   MUSIC
+   MUSIC PLAYER
 ========================================================= */
 
-.music-player{
+.music{
     position:fixed;
 
     right:20px;
@@ -2976,11 +3122,10 @@ footer a{
 
     width:350px;
 
-    min-height:79px;
-
-    z-index:9998;
+    min-height:80px;
 
     display:flex;
+
     align-items:center;
 
     gap:11px;
@@ -2989,40 +3134,42 @@ footer a{
 
     border-radius:25px;
 
+    z-index:9998;
+
+    color:white;
+
     background:
         linear-gradient(
             135deg,
-            rgba(144,73,100,.95),
-            rgba(75,117,84,.95)
+            rgba(145,73,101,.96),
+            rgba(76,117,84,.96)
         );
 
     border:
         1px solid
-        rgba(255,255,255,.87);
+        rgba(255,255,255,.88);
 
     backdrop-filter:blur(18px);
 
     box-shadow:
-        0 0 20px rgba(255,255,255,.46),
-        0 20px 45px rgba(50,40,50,.25);
+        0 0 22px rgba(255,255,255,.45),
+        0 20px 45px rgba(50,40,50,.24);
 
     animation:
         musicFloat
         4s ease-in-out infinite;
 }
 
-body[data-season="autumn"]
-.music-player{
+body[data-season="autumn"] .music{
     background:
         linear-gradient(
             135deg,
-            rgba(138,78,44,.96),
-            rgba(83,101,57,.96)
+            rgba(139,79,44,.96),
+            rgba(83,100,56,.96)
         );
 }
 
 @keyframes musicFloat{
-
     0%,100%{
         transform:translateY(0);
     }
@@ -3035,19 +3182,21 @@ body[data-season="autumn"]
 .music-disc{
     width:49px;
     height:49px;
+
     min-width:49px;
 
     display:grid;
+
     place-items:center;
 
     border-radius:50%;
 
     background:
         radial-gradient(
-            circle at 33% 28%,
+            circle at 33% 27%,
             white,
             #efb2c9 42%,
-            #9d4d70
+            #9e4e70
         );
 
     box-shadow:
@@ -3062,6 +3211,7 @@ body[data-season="autumn"]
     from{
         transform:rotate(0);
     }
+
     to{
         transform:rotate(360deg);
     }
@@ -3070,16 +3220,16 @@ body[data-season="autumn"]
 .music-text{
     flex:1;
     min-width:0;
-    color:white;
 }
 
 .music-text small{
     display:block;
 
     font-size:8px;
+
     letter-spacing:2px;
 
-    opacity:.72;
+    opacity:.7;
 }
 
 .music-text strong{
@@ -3090,7 +3240,9 @@ body[data-season="autumn"]
     font-size:12px;
 
     white-space:nowrap;
+
     overflow:hidden;
+
     text-overflow:ellipsis;
 }
 
@@ -3106,11 +3258,9 @@ body[data-season="autumn"]
 
     background:white;
 
-    color:var(--rose-dark);
+    color:var(--primary);
 
     cursor:pointer;
-
-    font-size:15px;
 
     box-shadow:
         0 0 20px rgba(255,255,255,.75);
@@ -3138,11 +3288,11 @@ body[data-season="autumn"]
    TOP BUTTON
 ========================================================= */
 
-.top-btn{
+.top{
     position:fixed;
 
-    right:22px;
-    bottom:120px;
+    right:23px;
+    bottom:121px;
 
     width:45px;
     height:45px;
@@ -3156,9 +3306,9 @@ body[data-season="autumn"]
     background:
         rgba(255,255,255,.72);
 
-    backdrop-filter:blur(13px);
+    backdrop-filter:blur(12px);
 
-    color:var(--rose-dark);
+    color:var(--primary);
 
     cursor:pointer;
 
@@ -3166,7 +3316,7 @@ body[data-season="autumn"]
 
     opacity:0;
 
-    transform:translateY(18px);
+    transform:translateY(17px);
 
     transition:.35s ease;
 
@@ -3174,47 +3324,48 @@ body[data-season="autumn"]
         0 12px 26px rgba(80,65,80,.14);
 }
 
-.top-btn.show{
+.top.show{
     opacity:1;
+
     transform:translateY(0);
 }
 
-.top-btn:hover{
+.top:hover{
     transform:
         translateY(-4px)
         scale(1.05);
 }
 
 /* =========================================================
-   CLICK SPARK
+   CLICK PARTICLES
 ========================================================= */
 
-.click-spark{
+.click-particle{
     position:fixed;
-
-    pointer-events:none;
 
     z-index:100002;
 
+    pointer-events:none;
+
+    color:var(--primary-light);
+
     font-size:17px;
 
-    color:var(--rose);
-
     animation:
-        sparkBurst
+        clickBurst
         .9s
         ease-out
         forwards;
 }
 
-@keyframes sparkBurst{
+@keyframes clickBurst{
 
     0%{
         opacity:1;
 
         transform:
             translate(-50%,-50%)
-            scale(.5);
+            scale(.45);
     }
 
     100%{
@@ -3238,7 +3389,7 @@ body[data-season="autumn"]
     opacity:0;
 
     transform:
-        translateY(42px);
+        translateY(45px);
 
     transition:
         opacity 1s ease,
@@ -3259,14 +3410,14 @@ body[data-season="autumn"]
 
 @media(max-width:1000px){
 
-    .characters{
+    .cards{
         grid-template-columns:
             repeat(2,1fr);
     }
 
-    .hero-moon{
-        width:150px;
-        height:150px;
+    .season-choices{
+        grid-template-columns:
+            1fr 90px 1fr;
     }
 }
 
@@ -3276,17 +3427,17 @@ body[data-season="autumn"]
         cursor:auto;
     }
 
-    .cursor-dot,
-    .cursor-ring{
+    .cursor-core,
+    .cursor-orbit{
         display:none;
     }
 
-    .hero-world{
-        min-height:850px;
+    .hero{
+        min-height:890px;
     }
 
-    .hero-center{
-        padding-top:135px;
+    .hero-content{
+        padding-top:145px;
     }
 
     .hero-title{
@@ -3302,8 +3453,8 @@ body[data-season="autumn"]
         width:110px;
         height:110px;
 
-        right:-15px;
-        top:75px;
+        right:-16px;
+        top:70px;
     }
 
     .nav-shell{
@@ -3311,52 +3462,48 @@ body[data-season="autumn"]
     }
 
     .nav a,
-    .nav-theme-mini{
+    .nav-season{
         padding:9px 9px;
+
         font-size:9.5px;
     }
 
-    .season-switch{
-        grid-template-columns:
-            1fr;
-    }
-
-    .season-slider{
-        margin:auto;
-        transform:none;
-    }
-
-    .season-slider.autumn{
-        transform:rotate(180deg);
-    }
-
-    .characters{
+    .season-choices{
         grid-template-columns:1fr;
     }
 
+    .season-wheel{
+        margin:auto;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .card-image{
+        height:390px;
+    }
+
     .river-world{
-        min-height:530px;
+        min-height:540px;
     }
 
-    .river-title{
-        top:30px;
-    }
-
-    .river-message{
-        top:195px;
+    .river-help{
+        top:197px;
         font-size:9px;
     }
 
-    .music-player{
-        width:calc(100% - 24px);
+    .music{
+        width:
+            calc(100% - 24px);
 
         right:12px;
         bottom:12px;
     }
 
-    .top-btn{
-        right:14px;
-        bottom:105px;
+    .top{
+        right:15px;
+        bottom:104px;
     }
 
     .opening-moon{
@@ -3369,38 +3516,32 @@ body[data-season="autumn"]
 
 @media(max-width:450px){
 
-    .hero-buttons{
+    .hero-actions{
         flex-direction:column;
     }
 
-    .hero-button{
+    .hero-btn{
         width:100%;
     }
 
-    .character-image-wrap{
-        height:345px;
-    }
-
-    .character-content{
-        padding:
-            24px 20px
-            27px;
-    }
-
-    .season-gate{
+    .portal{
         padding:20px 15px;
     }
 
-    .season-choice{
-        min-height:79px;
+    .choice{
+        min-height:90px;
+    }
+
+    .card-image{
+        height:345px;
     }
 
     .opening-title{
         font-size:
             clamp(
-                43px,
+                44px,
                 14vw,
-                67px
+                68px
             );
     }
 }
@@ -3419,62 +3560,56 @@ body[data-season="autumn"]
 </style>
 </head>
 
-
 <body data-season="spring">
 
 
-<!-- =========================================================
-     SCROLL PROGRESS
-========================================================= -->
+<!-- =======================================================
+     PROGRESS
+======================================================= -->
 
 <div
-    class="scroll-progress"
-    id="scrollProgress"
+    class="progress"
+    id="progress"
 ></div>
 
 
-<!-- =========================================================
+<!-- =======================================================
      CURSOR
-========================================================= -->
+======================================================= -->
 
 <div
-    class="cursor-dot"
-    id="cursorDot"
+    class="cursor-core"
+    id="cursorCore"
 ></div>
 
 <div
-    class="cursor-ring"
-    id="cursorRing"
+    class="cursor-orbit"
+    id="cursorOrbit"
 ></div>
 
 
-<!-- =========================================================
-     CINEMATIC OPENING
-========================================================= -->
+<!-- =======================================================
+     OPENING
+======================================================= -->
 
 <section
     class="opening"
     id="opening"
 >
 
-    <div class="opening-aurora"></div>
+    <div class="rays">
+        <div class="ray r1"></div>
+        <div class="ray r2"></div>
+        <div class="ray r3"></div>
+        <div class="ray r4"></div>
+    </div>
 
     <div class="opening-moon"></div>
 
-    <div class="light-rays">
+    <div class="opening-center">
 
-        <div class="light-ray r1"></div>
-        <div class="light-ray r2"></div>
-        <div class="light-ray r3"></div>
-        <div class="light-ray r4"></div>
-
-    </div>
-
-
-    <div class="opening-content">
-
-        <div class="opening-mini">
-            WELCOME TO THE GARDEN
+        <div class="opening-kicker">
+            WELCOME TO THE WORLD
         </div>
 
         <h1 class="opening-title">
@@ -3482,36 +3617,50 @@ body[data-season="autumn"]
         </h1>
 
         <p class="opening-sub">
-            Love &amp; Deepspace · A World Between Flowers &amp; Stars
+            Love &amp; Deepspace
+            ·
+            A Garden Between Stars
         </p>
 
         <button
-            class="enter-button"
-            id="enterButton"
+            class="enter"
+            id="enter"
         >
-            ✦ Enter the Garden
+            ✦ ENTER THE GARDEN
         </button>
 
-        <div class="opening-skip">
-            CLICK ANYWHERE TO ENTER
+        <div class="opening-note">
+            CLICK TO AWAKEN THE GARDEN
         </div>
 
     </div>
 
 
-    <!-- flower pile -->
+    <!-- giant pile of petals -->
 
     <div
-        class="flower-pile"
-        id="flowerPile"
+        class="flower-origin"
+        id="flowerOrigin"
     ></div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
+     SEASON TRANSITION
+======================================================= -->
+
+<div
+    class="season-transition"
+    id="seasonTransition"
+>
+    <div class="season-ring"></div>
+</div>
+
+
+<!-- =======================================================
      PARTICLES
-========================================================= -->
+======================================================= -->
 
 <div
     class="petal-layer"
@@ -3519,30 +3668,30 @@ body[data-season="autumn"]
 ></div>
 
 <div
-    class="sparkle-layer"
-    id="sparkleLayer"
+    class="sparkles"
+    id="sparkles"
 ></div>
 
 <div
-    class="firefly-layer"
-    id="fireflyLayer"
+    class="fireflies"
+    id="fireflies"
 ></div>
 
 
-<!-- =========================================================
-     HERO WORLD
-========================================================= -->
+<!-- =======================================================
+     HERO
+======================================================= -->
 
 <header
-    class="hero-world"
+    class="hero"
     id="top"
 >
 
-    <div class="aurora">
+    <div class="hero-aurora">
 
-        <div class="aurora-band aurora-a"></div>
-        <div class="aurora-band aurora-b"></div>
-        <div class="aurora-band aurora-c"></div>
+        <div class="a"></div>
+        <div class="b"></div>
+        <div class="c"></div>
 
     </div>
 
@@ -3550,35 +3699,10 @@ body[data-season="autumn"]
     <div class="hero-moon"></div>
 
 
-    <!-- floating petals -->
-
-    <div class="hero-petal p1"></div>
-    <div class="hero-petal p2"></div>
-    <div class="hero-petal p3"></div>
-    <div class="hero-petal p4"></div>
-    <div class="hero-petal p5"></div>
-    <div class="hero-petal p6"></div>
-
-
-    <!-- garden -->
-
-    <div class="garden-layer">
-
-        <div class="garden-hill back"></div>
-        <div class="garden-hill front"></div>
-
-    </div>
-
-
-    <!-- hero text -->
-
-    <div
-        class="hero-center"
-        id="heroCenter"
-    >
+    <div class="hero-content" id="heroContent">
 
         <div class="hero-kicker">
-            ✦ SEASONAL FANTASY WORLD ✦
+            ✦ FANTASY SEASONAL WORLD ✦
         </div>
 
         <h1 class="hero-title">
@@ -3588,34 +3712,31 @@ body[data-season="autumn"]
 
         </h1>
 
-        <div class="hero-subtitle">
+        <div class="hero-sub">
             SYLUS · ZAYNE · CALEB
         </div>
 
         <p class="hero-copy">
-
-            ยินดีต้อนรับเข้าสู่สวนแฟนตาซี
-            ที่ดอกไม้ ลำธาร แสง Aurora
-            และดวงดาวมาบรรจบกัน
-            ทุกการเคลื่อนไหวของเมาส์
-            จะทำให้โลกแห่งนี้มีชีวิตขึ้นมา
-
+            สวนแฟนตาซีที่ดอกไม้
+            Aurora ดวงดาว และสายน้ำ
+            อยู่ร่วมกันในโลกเดียว
+            พร้อมโลก 2 ฤดูที่สามารถเปลี่ยนได้แบบทันที
         </p>
 
-        <div class="hero-buttons">
+        <div class="hero-actions">
 
             <a
                 href="#characters"
-                class="hero-button primary"
+                class="hero-btn main"
             >
-                🌸 Explore Characters
+                🌸 EXPLORE
             </a>
 
             <a
                 href="#season"
-                class="hero-button secondary"
+                class="hero-btn alt"
             >
-                🍂 Change Season
+                🍂 CHANGE SEASON
             </a>
 
         </div>
@@ -3623,20 +3744,26 @@ body[data-season="autumn"]
     </div>
 
 
-    <!-- river -->
+    <!-- garden -->
 
-    <div class="hero-river">
+    <div class="garden">
 
-        <div class="hero-river-flow"></div>
+        <div class="hill"></div>
+        <div class="hill front"></div>
 
     </div>
+
+
+    <!-- water -->
+
+    <div class="hero-water"></div>
 
 </header>
 
 
-<!-- =========================================================
+<!-- =======================================================
      NAV
-========================================================= -->
+======================================================= -->
 
 <div class="nav-shell">
 
@@ -3671,12 +3798,12 @@ body[data-season="autumn"]
         </a>
 
         <button
-            class="nav-theme-mini"
-            id="miniThemeButton"
+            class="nav-season"
+            id="navSeason"
             type="button"
         >
-            <span id="miniThemeText">
-                🌸 Spring
+            <span id="navSeasonText">
+                🍂 Autumn
             </span>
         </button>
 
@@ -3685,120 +3812,112 @@ body[data-season="autumn"]
 </div>
 
 
-<!-- =========================================================
+<!-- =======================================================
      MAIN
-========================================================= -->
+======================================================= -->
 
 <main>
 
 
-<!-- =========================================================
-     SEASON SECTION
-========================================================= -->
+<!-- =======================================================
+     SEASON PORTAL
+======================================================= -->
 
 <section
-    class="section season-section reveal"
+    class="section season-portal reveal"
     id="season"
 >
 
-    <div class="season-gate">
+    <div class="portal">
 
-        <div class="season-glow left"></div>
-        <div class="season-glow right"></div>
+        <div class="portal-glow g1"></div>
+        <div class="portal-glow g2"></div>
 
 
-        <div class="season-content">
+        <div class="portal-title">
 
-            <div class="season-label">
-                ✦ SEASON GATE ✦
-            </div>
+            <small>
+                ✦ SEASON PORTAL ✦
+            </small>
 
-            <h2 class="season-title">
-                Choose Your Garden
+            <h2>
+                Choose Your World
             </h2>
 
-            <p class="season-subtitle">
-                โลกใบนี้มี 2 ฤดู — กดเลือกเพื่อเปลี่ยนบรรยากาศทั้งเว็บไซต์
+            <p>
+                เปลี่ยนบรรยากาศของทั้งเว็บไซต์ด้วยการกดเพียงครั้งเดียว
             </p>
 
-
-            <div class="season-switch">
-
-                <!-- SPRING -->
-
-                <button
-                    class="season-choice spring-choice active"
-                    id="springChoice"
-                    type="button"
-                >
-
-                    <span class="icon">
-                        🌸
-                    </span>
-
-                    <strong>
-                        SPRING
-                    </strong>
-
-                    <small>
-                        BLOOMING GARDEN
-                    </small>
-
-                </button>
+        </div>
 
 
-                <!-- CENTER SWITCH -->
+        <div class="season-choices">
 
-                <button
-                    class="season-slider"
-                    id="seasonSlider"
-                    type="button"
-                    aria-label="เปลี่ยนฤดู"
-                ></button>
+            <button
+                class="choice spring active"
+                id="springChoice"
+                type="button"
+            >
 
-
-                <!-- AUTUMN -->
-
-                <button
-                    class="season-choice autumn-choice"
-                    id="autumnChoice"
-                    type="button"
-                >
-
-                    <span class="icon">
-                        🍂
-                    </span>
-
-                    <strong>
-                        AUTUMN
-                    </strong>
-
-                    <small>
-                        GOLDEN GARDEN
-                    </small>
-
-                </button>
-
-            </div>
-
-
-            <div class="season-status">
-
-                <span
-                    class="status-dot"
-                ></span>
-
-                <span id="seasonStatus">
-                    CURRENT SEASON : SPRING
+                <span class="emoji">
+                    🌸
                 </span>
 
-            </div>
+                <strong>
+                    SPRING
+                </strong>
+
+                <small>
+                    BLOOMING GARDEN
+                </small>
+
+            </button>
 
 
-            <div class="season-hint">
-                CLICK SPRING / AUTUMN TO TRANSFORM THE WORLD
-            </div>
+            <button
+                class="season-wheel"
+                id="seasonWheel"
+                type="button"
+                aria-label="เปลี่ยนฤดู"
+            ></button>
 
+
+            <button
+                class="choice autumn"
+                id="autumnChoice"
+                type="button"
+            >
+
+                <span class="emoji">
+                    🍂
+                </span>
+
+                <strong>
+                    AUTUMN
+                </strong>
+
+                <small>
+                    GOLDEN GARDEN
+                </small>
+
+            </button>
+
+        </div>
+
+
+        <div class="portal-status">
+
+            <span class="status-dot"></span>
+
+            <span id="portalStatus">
+                CURRENT WORLD : SPRING
+            </span>
+
+        </div>
+
+
+        <div class="portal-hint">
+            CLICK SPRING · CLICK AUTUMN · CLICK THE CENTER PORTAL
         </div>
 
     </div>
@@ -3806,9 +3925,9 @@ body[data-season="autumn"]
 </section>
 
 
-<!-- =========================================================
-     CHARACTER HEADER
-========================================================= -->
+<!-- =======================================================
+     CHARACTERS
+======================================================= -->
 
 <section
     class="section"
@@ -3817,44 +3936,39 @@ body[data-season="autumn"]
 
     <div class="section-heading reveal">
 
-        <div class="section-kicker">
+        <div class="kicker">
             CHARACTER COLLECTION
         </div>
 
         <h2>
-            Three Souls in the Garden
+            Three Souls
         </h2>
 
         <p>
-            ตัวละครทั้งสามถูกวางไว้ท่ามกลางสวนแฟนตาซี
-            พร้อมแสง เงา และเอฟเฟกต์ 3D
-            ที่ตอบสนองต่อการเคลื่อนไหวของเมาส์
+            ตัวละครทั้งสามอยู่ท่ามกลางสวนที่เปลี่ยนฤดูกาลได้
+            พร้อมเอฟเฟกต์ 3D ที่ตอบสนองต่อเมาส์
         </p>
 
     </div>
 
 
-    <!-- =====================================================
-         CHARACTER CARDS
-    ====================================================== -->
-
-    <div class="characters">
+    <div class="cards">
 
 
         <!-- SYLUS -->
 
         <article
-            class="character-card tilt-card reveal"
+            class="card tilt reveal"
             id="sylus"
         >
 
-            <div class="character-image-wrap">
+            <div class="card-image">
 
-                <div class="card-number">
+                <div class="card-label">
                     CHARACTER 01
                 </div>
 
-                <div class="card-mood">
+                <div class="card-season">
                     MYSTERIOUS BLOOM
                 </div>
 
@@ -3863,7 +3977,6 @@ body[data-season="autumn"]
                     alt="Sylus from Love and Deepspace"
                     loading="lazy"
                     referrerpolicy="no-referrer"
-                    onerror="this.style.display='none'"
                 >
 
                 <div class="card-name">
@@ -3885,45 +3998,43 @@ body[data-season="autumn"]
             </div>
 
 
-            <div class="character-content">
+            <div class="card-content">
 
-                <h3>
-                    Sylus
-                </h3>
+                <h3>Sylus</h3>
 
-                <div class="character-tagline">
+                <div class="card-role">
                     The leader of Onychinus
                 </div>
 
 
-                <div class="character-meta">
+                <div class="info">
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Age</b>
                         <span>28</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Height</b>
                         <span>190 cm</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Birthday</b>
                         <span>April 18</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Sign</b>
                         <span>Aries</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Evol</b>
                         <span>Energy Manipulation</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Workplace</b>
                         <span>Onychinus</span>
                     </div>
@@ -3931,13 +4042,11 @@ body[data-season="autumn"]
                 </div>
 
 
-                <p class="character-description">
-
+                <p class="description">
                     Sylus เป็นผู้นำของ Onychinus
                     มีบุคลิกมั่นใจ พูดตรง
                     สุขุมในสถานการณ์กดดัน
                     และมีแนวคิดเชิงวิเคราะห์
-
                 </p>
 
 
@@ -3969,17 +4078,17 @@ body[data-season="autumn"]
         <!-- ZAYNE -->
 
         <article
-            class="character-card tilt-card reveal"
+            class="card tilt reveal"
             id="zayne"
         >
 
-            <div class="character-image-wrap">
+            <div class="card-image">
 
-                <div class="card-number">
+                <div class="card-label">
                     CHARACTER 02
                 </div>
 
-                <div class="card-mood">
+                <div class="card-season">
                     WINTER → SPRING
                 </div>
 
@@ -3988,7 +4097,6 @@ body[data-season="autumn"]
                     alt="Zayne from Love and Deepspace"
                     loading="lazy"
                     referrerpolicy="no-referrer"
-                    onerror="this.style.display='none'"
                 >
 
                 <div class="card-name">
@@ -4010,45 +4118,43 @@ body[data-season="autumn"]
             </div>
 
 
-            <div class="character-content">
+            <div class="card-content">
 
-                <h3>
-                    Zayne
-                </h3>
+                <h3>Zayne</h3>
 
-                <div class="character-tagline">
+                <div class="card-role">
                     Akso Hospital — Cardiac Surgeon
                 </div>
 
 
-                <div class="character-meta">
+                <div class="info">
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Age</b>
                         <span>27</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Height</b>
                         <span>186 cm</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Birthday</b>
                         <span>September 5</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Sign</b>
                         <span>Virgo</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Evol</b>
                         <span>Ice</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Workplace</b>
                         <span>Akso Hospital</span>
                     </div>
@@ -4056,12 +4162,10 @@ body[data-season="autumn"]
                 </div>
 
 
-                <p class="character-description">
-
+                <p class="description">
                     Zayne เป็นศัลยแพทย์หัวใจ
                     มีบุคลิกสุขุม ตรงไปตรงมา
                     เป็นมืออาชีพและใส่ใจคนรอบตัว
-
                 </p>
 
 
@@ -4093,17 +4197,17 @@ body[data-season="autumn"]
         <!-- CALEB -->
 
         <article
-            class="character-card tilt-card reveal"
+            class="card tilt reveal"
             id="caleb"
         >
 
-            <div class="character-image-wrap">
+            <div class="card-image">
 
-                <div class="card-number">
+                <div class="card-label">
                     CHARACTER 03
                 </div>
 
-                <div class="card-mood">
+                <div class="card-season">
                     SUNLIT BLOOM
                 </div>
 
@@ -4112,7 +4216,6 @@ body[data-season="autumn"]
                     alt="Caleb from Love and Deepspace"
                     loading="lazy"
                     referrerpolicy="no-referrer"
-                    onerror="this.style.display='none'"
                 >
 
                 <div class="card-name">
@@ -4134,45 +4237,43 @@ body[data-season="autumn"]
             </div>
 
 
-            <div class="character-content">
+            <div class="card-content">
 
-                <h3>
-                    Caleb
-                </h3>
+                <h3>Caleb</h3>
 
-                <div class="character-tagline">
+                <div class="card-role">
                     Farspace Fleet — Colonel
                 </div>
 
 
-                <div class="character-meta">
+                <div class="info">
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Age</b>
                         <span>25</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Height</b>
                         <span>188 cm</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Birthday</b>
                         <span>June 13</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Sign</b>
                         <span>Gemini</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Evol</b>
                         <span>Gravity Manipulation</span>
                     </div>
 
-                    <div class="character-row">
+                    <div class="info-row">
                         <b>Workplace</b>
                         <span>Farspace Fleet</span>
                     </div>
@@ -4180,14 +4281,12 @@ body[data-season="autumn"]
                 </div>
 
 
-                <p class="character-description">
-
+                <p class="description">
                     Caleb เคยเป็นนักบินรบของ DAA
                     และปัจจุบันเป็น Colonel
                     แห่ง Farspace Fleet
                     มีทั้งความใจดี ขี้เล่น
                     และปกป้องคนสำคัญ
-
                 </p>
 
 
@@ -4221,24 +4320,24 @@ body[data-season="autumn"]
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      RIVER
-========================================================= -->
+======================================================= -->
 
 <section
     class="section river-section reveal"
     id="river"
 >
 
-    <div class="river-world" id="riverWorld">
+    <div
+        class="river-world"
+        id="riverWorld"
+    >
 
-        <div class="river-aura"></div>
+        <div class="river-caption">
 
-
-        <div class="river-title">
-
-            <div class="section-kicker">
-                INTERACTIVE WATER
+            <div class="kicker">
+                ✦ INTERACTIVE WORLD ✦
             </div>
 
             <h2>
@@ -4246,16 +4345,15 @@ body[data-season="autumn"]
             </h2>
 
             <p>
-                เลื่อนเมาส์เหนือแม่น้ำ
-                เพื่อให้แสงสะท้อนวิ่งตาม
-                และคลิกลงบนสายน้ำเพื่อสร้างระลอกคลื่น
+                ขยับเมาส์บนผิวน้ำเพื่อให้แสงตามเมาส์
+                และคลิกเพื่อสร้างระลอกคลื่น
             </p>
 
         </div>
 
 
-        <div class="river-message">
-            MOVE · TOUCH · CLICK THE WATER
+        <div class="river-help">
+            MOVE YOUR MOUSE · CLICK THE WATER
         </div>
 
 
@@ -4267,21 +4365,18 @@ body[data-season="autumn"]
             <div class="water-flow"></div>
 
             <div
-                class="water-glow"
-                id="waterGlow"
+                class="water-light"
+                id="waterLight"
             ></div>
 
+            <div class="water-line w1"></div>
+            <div class="water-line w2"></div>
+            <div class="water-line w3"></div>
+            <div class="water-line w4"></div>
 
-            <div class="water-line l1"></div>
-            <div class="water-line l2"></div>
-            <div class="water-line l3"></div>
-            <div class="water-line l4"></div>
-
-
-            <div class="lily l1"></div>
-            <div class="lily l2"></div>
-            <div class="lily l3"></div>
-
+            <div class="lily a"></div>
+            <div class="lily b"></div>
+            <div class="lily c"></div>
 
             <div class="fish f1"></div>
             <div class="fish f2"></div>
@@ -4293,29 +4388,28 @@ body[data-season="autumn"]
 </section>
 
 
-<!-- =========================================================
-     FINAL PANEL
-========================================================= -->
+<!-- =======================================================
+     FINAL
+======================================================= -->
 
 <section class="section reveal">
 
     <div class="final-panel">
 
-        <div class="magic-icon">
+        <div class="final-icon">
             ✦
         </div>
 
         <h2>
-            Two Seasons, One Fantasy
+            One World · Two Seasons
         </h2>
 
         <p>
-            ฤดูใบไม้ผลิเต็มไปด้วยกลีบดอกไม้
-            แสง Aurora และสวนที่กำลังผลิบาน
-            ขณะที่ฤดูใบไม้ร่วงเปลี่ยนโลกให้กลายเป็น
-            สวนสีทอง แสงอุ่น และบรรยากาศลึกลับ
-            โดยทุกอย่างในเว็บไซต์สามารถเปลี่ยนไปพร้อมกัน
-            ด้วยระบบ Season Gate ด้านบน
+            จากสวนดอกไม้สีชมพูในฤดูใบไม้ผลิ
+            สู่สวนสีทองในฤดูใบไม้ร่วง
+            โลกแห่งนี้สามารถเปลี่ยนบรรยากาศได้ทั้งระบบ
+            ตั้งแต่ท้องฟ้า Aurora สายน้ำ
+            กลีบดอกไม้ ไปจนถึงสีของ UI
         </p>
 
     </div>
@@ -4326,11 +4420,11 @@ body[data-season="autumn"]
 </main>
 
 
-<!-- =========================================================
-     MUSIC PLAYER
-========================================================= -->
+<!-- =======================================================
+     MUSIC
+======================================================= -->
 
-<section class="music-player">
+<section class="music">
 
     <div class="music-disc">
         🎵
@@ -4361,12 +4455,12 @@ body[data-season="autumn"]
 </section>
 
 
-<!-- =========================================================
-     TOP BUTTON
-========================================================= -->
+<!-- =======================================================
+     TOP
+======================================================= -->
 
 <button
-    class="top-btn"
+    class="top"
     id="topBtn"
     type="button"
 >
@@ -4374,9 +4468,9 @@ body[data-season="autumn"]
 </button>
 
 
-<!-- =========================================================
+<!-- =======================================================
      FOOTER
-========================================================= -->
+======================================================= -->
 
 <footer>
 
@@ -4389,11 +4483,11 @@ body[data-season="autumn"]
     </h3>
 
     <p>
-        Cinematic Spring &amp; Autumn Garden
+        Ultimate Fantasy Garden
     </p>
 
     <p>
-        Fan-made page • Interactive Fantasy Theme
+        Fan-made Interactive Seasonal Website
     </p>
 
     <p>
@@ -4437,15 +4531,11 @@ body[data-season="autumn"]
    CURSOR
 ========================================================= */
 
-const cursorDot =
-    document.getElementById(
-        "cursorDot"
-    );
+const cursorCore =
+    document.getElementById("cursorCore");
 
-const cursorRing =
-    document.getElementById(
-        "cursorRing"
-    );
+const cursorOrbit =
+    document.getElementById("cursorOrbit");
 
 let mouseX =
     window.innerWidth / 2;
@@ -4453,16 +4543,12 @@ let mouseX =
 let mouseY =
     window.innerHeight / 2;
 
-let ringX =
-    mouseX;
-
-let ringY =
-    mouseY;
-
+let orbitX = mouseX;
+let orbitY = mouseY;
 
 window.addEventListener(
     "mousemove",
-    (event)=>{
+    event=>{
 
         mouseX =
             event.clientX;
@@ -4470,77 +4556,78 @@ window.addEventListener(
         mouseY =
             event.clientY;
 
-        cursorDot.style.left =
+        cursorCore.style.left =
             mouseX + "px";
 
-        cursorDot.style.top =
+        cursorCore.style.top =
             mouseY + "px";
 
     }
 );
 
+function cursorAnimation(){
 
-function animateCursor(){
+    orbitX +=
+        (mouseX-orbitX)*.15;
 
-    ringX +=
-        (mouseX - ringX) * .15;
+    orbitY +=
+        (mouseY-orbitY)*.15;
 
-    ringY +=
-        (mouseY - ringY) * .15;
+    cursorOrbit.style.left =
+        orbitX+"px";
 
-    cursorRing.style.left =
-        ringX + "px";
-
-    cursorRing.style.top =
-        ringY + "px";
+    cursorOrbit.style.top =
+        orbitY+"px";
 
     requestAnimationFrame(
-        animateCursor
+        cursorAnimation
     );
 }
 
-animateCursor();
+cursorAnimation();
 
 
 document
 .querySelectorAll(
-    "a,button,.character-card,.tag,.river-world,.season-choice"
+    "a,button,.card,.tag"
 )
-.forEach(
-    element=>{
+.forEach(element=>{
 
-        element.addEventListener(
-            "mouseenter",
-            ()=>{
-                document.body
-                    .classList
-                    .add("cursor-hover");
-            }
-        );
+    element.addEventListener(
+        "mouseenter",
+        ()=>{
+            document.body
+                .classList
+                .add("hovering");
+        }
+    );
 
-        element.addEventListener(
-            "mouseleave",
-            ()=>{
-                document.body
-                    .classList
-                    .remove("cursor-hover");
-            }
-        );
+    element.addEventListener(
+        "mouseleave",
+        ()=>{
+            document.body
+                .classList
+                .remove("hovering");
+        }
+    );
 
-    }
-);
+});
 
 
 /* =========================================================
    OPENING FLOWER EXPLOSION
 ========================================================= */
 
-const flowerPile =
+const flowerOrigin =
     document.getElementById(
-        "flowerPile"
+        "flowerOrigin"
     );
 
-for(let i=0;i<100;i++){
+for(
+    let i=0;
+    i<115;
+    i++
+){
 
     const petal =
         document.createElement(
@@ -4548,14 +4635,7 @@ for(let i=0;i<100;i++){
         );
 
     petal.className =
-        "intro-petal";
-
-
-    const x1 =
-        (Math.random() - .5) * 220;
-
-    const y1 =
-        (Math.random() - .5) * 160;
+        "flower";
 
 
     const angle =
@@ -4563,11 +4643,17 @@ for(let i=0;i<100;i++){
         Math.PI *
         2;
 
-
     const distance =
-        180 +
-        Math.random() * 330;
+        170 +
+        Math.random() *
+        370;
 
+
+    const x1 =
+        (Math.random()-.5)*210;
+
+    const y1 =
+        (Math.random()-.5)*180;
 
     const x2 =
         Math.cos(angle) *
@@ -4577,94 +4663,92 @@ for(let i=0;i<100;i++){
         Math.sin(angle) *
         distance;
 
-
     const x3 =
-        (Math.random() - .5) *
+        (Math.random()-.5) *
         Math.max(
             window.innerWidth * .95,
-            900
+            950
         );
 
     const y3 =
-        (Math.random() - .5) *
+        (Math.random()-.5) *
         Math.max(
-            window.innerHeight * .8,
-            600
+            window.innerHeight * .85,
+            650
         );
 
 
     petal.style.setProperty(
         "--x1",
-        x1 + "px"
+        x1+"px"
     );
 
     petal.style.setProperty(
         "--y1",
-        y1 + "px"
+        y1+"px"
     );
 
     petal.style.setProperty(
         "--x2",
-        x2 + "px"
+        x2+"px"
     );
 
     petal.style.setProperty(
         "--y2",
-        y2 + "px"
+        y2+"px"
     );
 
     petal.style.setProperty(
         "--x3",
-        x3 + "px"
+        x3+"px"
     );
 
     petal.style.setProperty(
         "--y3",
-        y3 + "px"
+        y3+"px"
     );
 
 
     petal.style.setProperty(
-        "--rot-start",
+        "--sr",
         (Math.random()*360)+"deg"
     );
 
     petal.style.setProperty(
-        "--rot1",
-        (Math.random()*600-300)+"deg"
+        "--r1",
+        (Math.random()*500-250)+"deg"
     );
 
     petal.style.setProperty(
-        "--rot2",
+        "--r2",
         (Math.random()*800-400)+"deg"
     );
 
     petal.style.setProperty(
-        "--rot3",
-        (Math.random()*1100-550)+"deg"
+        "--r3",
+        (Math.random()*1200-600)+"deg"
     );
 
 
     petal.style.setProperty(
-        "--scale-start",
+        "--ss",
         .35 +
-        Math.random() * .8
+        Math.random()*.85
     );
 
     petal.style.setProperty(
-        "--opacity-start",
+        "--so",
         .55 +
-        Math.random() * .45
+        Math.random()*.45
     );
-
 
     petal.style.setProperty(
         "--delay",
-        Math.random() * .9 + "s"
+        Math.random()*.85+"s"
     );
 
 
-    flowerPile.appendChild(
+    flowerOrigin.appendChild(
         petal
     );
 
@@ -4672,7 +4756,7 @@ for(let i=0;i<100;i++){
 
 
 /* =========================================================
-   OPENING CLOSE
+   CLOSE OPENING
 ========================================================= */
 
 const opening =
@@ -4680,44 +4764,38 @@ const opening =
         "opening"
     );
 
-const enterButton =
+const enter =
     document.getElementById(
-        "enterButton"
+        "enter"
     );
 
 function closeOpening(){
 
     opening.classList.add(
-        "hide"
+        "closed"
     );
 
 }
 
-enterButton.addEventListener(
+enter.addEventListener(
     "click",
-    closeOpening
-);
+    event=>{
 
-opening.addEventListener(
-    "click",
-    (event)=>{
+        event.stopPropagation();
 
-        if(
-            event.target ===
-            opening
-        ){
-            closeOpening();
-        }
+        closeOpening();
 
     }
 );
 
-
-/* automatic opening close */
+opening.addEventListener(
+    "click",
+    closeOpening
+);
 
 setTimeout(
     closeOpening,
-    7200
+    7500
 );
 
 
@@ -4730,7 +4808,11 @@ const petalLayer =
         "petalLayer"
     );
 
-for(let i=0;i<50;i++){
+for(
+    let i=0;
+    i<52;
+    i++
+){
 
     const petal =
         document.createElement(
@@ -4741,32 +4823,32 @@ for(let i=0;i<50;i++){
         "falling-petal";
 
     petal.style.left =
-        Math.random()*100 + "%";
+        Math.random()*100+"%";
 
     petal.style.width =
-        13 +
-        Math.random()*19 +
+        14+
+        Math.random()*20+
         "px";
 
     petal.style.height =
-        9 +
-        Math.random()*12 +
+        9+
+        Math.random()*12+
         "px";
 
     petal.style.setProperty(
         "--wind",
-        (35 +
-        Math.random()*120) +
+        35+
+        Math.random()*130+
         "px"
     );
 
     petal.style.animationDuration =
-        8 +
-        Math.random()*10 +
+        8+
+        Math.random()*11+
         "s";
 
     petal.style.animationDelay =
-        (-Math.random()*17) +
+        -Math.random()*17+
         "s";
 
     petalLayer.appendChild(
@@ -4780,12 +4862,15 @@ for(let i=0;i<50;i++){
    SPARKLES
 ========================================================= */
 
-const sparkleLayer =
+const sparkles =
     document.getElementById(
-        "sparkleLayer"
+        "sparkles"
     );
 
-for(let i=45;i--;){
+for(
+    let i=48;
+    i--;
+){
 
     const sparkle =
         document.createElement(
@@ -4796,31 +4881,33 @@ for(let i=45;i--;){
         "sparkle";
 
     sparkle.textContent =
-        Math.random() > .45
+        Math.random()>.45
         ? "✦"
         : "·";
 
     sparkle.style.left =
-        Math.random()*100 + "%";
+        Math.random()*100+
+        "%";
 
     sparkle.style.top =
-        Math.random()*100 + "%";
+        Math.random()*100+
+        "%";
 
     sparkle.style.fontSize =
-        7 +
-        Math.random()*15 +
+        7+
+        Math.random()*14+
         "px";
 
     sparkle.style.animationDuration =
-        1.7 +
-        Math.random()*3 +
+        1.8+
+        Math.random()*3+
         "s";
 
     sparkle.style.animationDelay =
-        (-Math.random()*4) +
+        -Math.random()*4+
         "s";
 
-    sparkleLayer.appendChild(
+    sparkles.appendChild(
         sparkle
     );
 
@@ -4831,12 +4918,15 @@ for(let i=45;i--;){
    FIREFLIES
 ========================================================= */
 
-const fireflyLayer =
+const fireflies =
     document.getElementById(
-        "fireflyLayer"
+        "fireflies"
     );
 
-for(let i=25;i--;){
+for(
+    let i=26;
+    i--;
+){
 
     const firefly =
         document.createElement(
@@ -4847,23 +4937,24 @@ for(let i=25;i--;){
         "firefly";
 
     firefly.style.left =
-        Math.random()*100 + "%";
+        Math.random()*100+
+        "%";
 
     firefly.style.top =
-        (8 +
-        Math.random()*84) +
+        7+
+        Math.random()*85+
         "%";
 
     firefly.style.animationDuration =
-        4 +
-        Math.random()*5 +
+        4+
+        Math.random()*6+
         "s";
 
     firefly.style.animationDelay =
-        (-Math.random()*8) +
+        -Math.random()*8+
         "s";
 
-    fireflyLayer.appendChild(
+    fireflies.appendChild(
         firefly
     );
 
@@ -4871,138 +4962,96 @@ for(let i=25;i--;){
 
 
 /* =========================================================
-   CHARACTER 3D TILT
+   3D TILT
 ========================================================= */
 
-const cards =
-    document.querySelectorAll(
-        ".tilt-card"
+document
+.querySelectorAll(".tilt")
+.forEach(card=>{
+
+    card.addEventListener(
+        "mousemove",
+        event=>{
+
+            if(
+                window.innerWidth<850
+            ){
+                return;
+            }
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const px =
+                (event.clientX-
+                rect.left)/
+                rect.width;
+
+            const py =
+                (event.clientY-
+                rect.top)/
+                rect.height;
+
+            const rotateX =
+                (py-.5)*-7;
+
+            const rotateY =
+                (px-.5)*7;
+
+            card.style.transform =
+                `perspective(1400px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-8px)`;
+
+        }
     );
 
-cards.forEach(
-    card=>{
+    card.addEventListener(
+        "mouseleave",
+        ()=>{
 
-        card.addEventListener(
-            "mousemove",
-            (event)=>{
+            card.style.transform =
+                "perspective(1400px) rotateX(0) rotateY(0) translateY(0)";
 
-                if(
-                    window.innerWidth < 850
-                ){
-                    return;
-                }
+        }
+    );
 
-                const rect =
-                    card.getBoundingClientRect();
-
-
-                const px =
-                    (event.clientX -
-                    rect.left) /
-                    rect.width;
-
-
-                const py =
-                    (event.clientY -
-                    rect.top) /
-                    rect.height;
-
-
-                const rotateX =
-                    (py - .5) * -7;
-
-                const rotateY =
-                    (px - .5) * 7;
-
-
-                card.style.transform =
-                    `perspective(1400px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     translateY(-8px)`;
-
-            }
-        );
-
-
-        card.addEventListener(
-            "mouseleave",
-            ()=>{
-
-                card.style.transform =
-                    "perspective(1400px) rotateX(0deg) rotateY(0deg) translateY(0)";
-
-            }
-        );
-
-    }
-);
+});
 
 
 /* =========================================================
    HERO PARALLAX
 ========================================================= */
 
-const heroCenter =
+const heroContent =
     document.getElementById(
-        "heroCenter"
+        "heroContent"
     );
 
 window.addEventListener(
     "mousemove",
-    (event)=>{
+    event=>{
 
         if(
-            window.innerWidth < 800
+            window.innerWidth<800
         ){
             return;
         }
 
         const x =
-            event.clientX /
-            window.innerWidth -
-            .5;
+            event.clientX/
+            window.innerWidth-.5;
 
         const y =
-            event.clientY /
-            window.innerHeight -
-            .5;
+            event.clientY/
+            window.innerHeight-.5;
 
-
-        heroCenter.style.transform =
+        heroContent.style.transform =
             `translate(
-                ${x*9}px,
-                ${y*7}px
+                ${x*10}px,
+                ${y*8}px
             )`;
-
-    }
-);
-
-
-/* =========================================================
-   SCROLL PARALLAX
-========================================================= */
-
-window.addEventListener(
-    "scroll",
-    ()=>{
-
-        const scroll =
-            window.scrollY;
-
-        const moon =
-            document.querySelector(
-                ".hero-moon"
-            );
-
-        if(moon){
-
-            moon.style.transform =
-                `translateY(
-                    ${scroll*.09}px
-                )`;
-
-        }
 
     }
 );
@@ -5012,45 +5061,35 @@ window.addEventListener(
    SCROLL PROGRESS
 ========================================================= */
 
-const scrollProgress =
+const progress =
     document.getElementById(
-        "scrollProgress"
+        "progress"
     );
 
 window.addEventListener(
     "scroll",
     ()=>{
 
-        const pageHeight =
+        const max =
             document.documentElement
                 .scrollHeight -
             window.innerHeight;
 
-
-        const percentage =
-            pageHeight > 0
-            ? (
-                window.scrollY /
-                pageHeight
-              ) * 100
+        const percent =
+            max>0
+            ? window.scrollY/max*100
             : 0;
 
-
-        scrollProgress.style.width =
-            percentage + "%";
+        progress.style.width =
+            percent+"%";
 
     }
 );
 
 
 /* =========================================================
-   REVEAL
+   SCROLL REVEAL
 ========================================================= */
-
-const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
 
 const revealObserver =
     new IntersectionObserver(
@@ -5065,7 +5104,9 @@ const revealObserver =
 
                         entry.target
                             .classList
-                            .add("visible");
+                            .add(
+                                "visible"
+                            );
 
                     }
 
@@ -5074,20 +5115,20 @@ const revealObserver =
 
         },
         {
-            threshold:.14
+            threshold:.15
         }
     );
 
-revealElements.forEach(
-    element =>
-        revealObserver.observe(
-            element
-        )
+document
+.querySelectorAll(".reveal")
+.forEach(
+    el =>
+        revealObserver.observe(el)
 );
 
 
 /* =========================================================
-   RIVER INTERACTION
+   RIVER MOUSE LIGHT
 ========================================================= */
 
 const water =
@@ -5095,48 +5136,46 @@ const water =
         "water"
     );
 
-const waterGlow =
+const waterLight =
     document.getElementById(
-        "waterGlow"
+        "waterLight"
     );
-
 
 water.addEventListener(
     "mousemove",
-    (event)=>{
+    event=>{
 
         const rect =
             water.getBoundingClientRect();
 
-
         const x =
-            event.clientX -
+            event.clientX-
             rect.left;
 
         const y =
-            event.clientY -
+            event.clientY-
             rect.top;
 
+        waterLight.style.left =
+            x+"px";
 
-        waterGlow.style.left =
-            x + "px";
-
-        waterGlow.style.top =
-            y + "px";
+        waterLight.style.top =
+            y+"px";
 
     }
 );
 
 
-/* click water */
+/* =========================================================
+   RIVER CLICK RIPPLE
+========================================================= */
 
 water.addEventListener(
     "click",
-    (event)=>{
+    event=>{
 
         const rect =
             water.getBoundingClientRect();
-
 
         const ripple =
             document.createElement(
@@ -5146,29 +5185,25 @@ water.addEventListener(
         ripple.className =
             "ripple";
 
-
         ripple.style.left =
-            event.clientX -
-            rect.left +
+            event.clientX-
+            rect.left+
             "px";
-
 
         ripple.style.top =
-            event.clientY -
-            rect.top +
+            event.clientY-
+            rect.top+
             "px";
-
 
         water.appendChild(
             ripple
         );
 
-
         setTimeout(
             ()=>{
                 ripple.remove();
             },
-            1200
+            1250
         );
 
     }
@@ -5176,32 +5211,27 @@ water.addEventListener(
 
 
 /* =========================================================
-   CLICK MAGIC
+   GLOBAL CLICK MAGIC
 ========================================================= */
 
 document.addEventListener(
     "click",
-    (event)=>{
+    event=>{
 
         if(
             event.target.closest(
-                ".music-player"
-            ) ||
-            event.target.closest(
-                ".season-slider"
+                ".music"
             )
         ){
             return;
         }
 
-
-        const symbols = [
+        const symbols=[
             "✦",
             "✧",
             "·",
             "✿"
         ];
-
 
         for(
             let i=0;
@@ -5209,63 +5239,59 @@ document.addEventListener(
             i++
         ){
 
-            const spark =
+            const particle =
                 document.createElement(
                     "span"
                 );
 
-            spark.className =
-                "click-spark";
+            particle.className =
+                "click-particle";
 
-            spark.textContent =
+            particle.textContent =
                 symbols[
                     Math.floor(
-                        Math.random() *
+                        Math.random()*
                         symbols.length
                     )
                 ];
 
+            particle.style.left =
+                event.clientX+
+                "px";
 
-            spark.style.left =
-                event.clientX + "px";
+            particle.style.top =
+                event.clientY+
+                "px";
 
-            spark.style.top =
-                event.clientY + "px";
-
-
-            spark.style.setProperty(
+            particle.style.setProperty(
                 "--dx",
                 (
-                    (Math.random()-.5)
-                    * 160
-                ) + "px"
+                    (Math.random()-.5)*
+                    160
+                )+"px"
             );
 
-            spark.style.setProperty(
+            particle.style.setProperty(
                 "--dy",
                 (
-                    (Math.random()-.5)
-                    * 160
-                ) + "px"
+                    (Math.random()-.5)*
+                    160
+                )+"px"
             );
 
-            spark.style.setProperty(
+            particle.style.setProperty(
                 "--rot",
                 (
                     Math.random()*360
-                ) + "deg"
+                )+"deg"
             );
-
 
             document.body.appendChild(
-                spark
+                particle
             );
 
-
             setTimeout(
-                ()=>{
-                    spark.remove();
-                },
+                ()=>particle.remove(),
                 950
             );
 
@@ -5289,142 +5315,170 @@ const autumnChoice =
         "autumnChoice"
     );
 
-const seasonSlider =
+const seasonWheel =
     document.getElementById(
-        "seasonSlider"
+        "seasonWheel"
     );
 
-const seasonStatus =
+const portalStatus =
     document.getElementById(
-        "seasonStatus"
+        "portalStatus"
     );
 
-const miniThemeButton =
+const navSeason =
     document.getElementById(
-        "miniThemeButton"
+        "navSeason"
     );
 
-const miniThemeText =
+const navSeasonText =
     document.getElementById(
-        "miniThemeText"
+        "navSeasonText"
     );
 
+const seasonTransition =
+    document.getElementById(
+        "seasonTransition"
+    );
 
-let currentSeason =
+let season =
     "spring";
 
 
-function setSeason(
-    season
+function changeSeason(
+    nextSeason
 ){
 
-    currentSeason =
-        season;
+    if(
+        nextSeason === season
+    ){
+        return;
+    }
 
 
-    document.body.setAttribute(
-        "data-season",
-        season
+    seasonTransition
+        .classList
+        .add(
+            "active"
+        );
+
+
+    setTimeout(
+        ()=>{
+
+            season =
+                nextSeason;
+
+            document.body
+                .setAttribute(
+                    "data-season",
+                    season
+                );
+
+
+            if(
+                season ===
+                "spring"
+            ){
+
+                springChoice
+                    .classList
+                    .add(
+                        "active"
+                    );
+
+                autumnChoice
+                    .classList
+                    .remove(
+                        "active"
+                    );
+
+                seasonWheel
+                    .classList
+                    .remove(
+                        "autumn"
+                    );
+
+                portalStatus.textContent =
+                    "CURRENT WORLD : SPRING";
+
+                navSeasonText.textContent =
+                    "🍂 Autumn";
+
+            }else{
+
+                springChoice
+                    .classList
+                    .remove(
+                        "active"
+                    );
+
+                autumnChoice
+                    .classList
+                    .add(
+                        "active"
+                    );
+
+                seasonWheel
+                    .classList
+                    .add(
+                        "autumn"
+                    );
+
+                portalStatus.textContent =
+                    "CURRENT WORLD : AUTUMN";
+
+                navSeasonText.textContent =
+                    "🌸 Spring";
+
+            }
+
+        },
+        220
     );
 
 
-    if(
-        season === "spring"
-    ){
+    setTimeout(
+        ()=>{
 
-        springChoice
-            .classList
-            .add("active");
+            seasonTransition
+                .classList
+                .remove(
+                    "active"
+                );
 
-        autumnChoice
-            .classList
-            .remove("active");
-
-        seasonSlider
-            .classList
-            .remove("autumn");
-
-        seasonStatus.textContent =
-            "CURRENT SEASON : SPRING";
-
-        miniThemeText.textContent =
-            "🍂 Autumn";
-
-        document
-            .querySelector(
-                'meta[name="theme-color"]'
-            )
-            ?.setAttribute(
-                "content",
-                "#d77b9b"
-            );
-
-    }else{
-
-        springChoice
-            .classList
-            .remove("active");
-
-        autumnChoice
-            .classList
-            .add("active");
-
-        seasonSlider
-            .classList
-            .add("autumn");
-
-        seasonStatus.textContent =
-            "CURRENT SEASON : AUTUMN";
-
-        miniThemeText.textContent =
-            "🌸 Spring";
-
-        document
-            .querySelector(
-                'meta[name="theme-color"]'
-            )
-            ?.setAttribute(
-                "content",
-                "#c36b3a"
-            );
-
-    }
+        },
+        950
+    );
 
 }
 
 
-/* Spring */
+/* buttons */
 
 springChoice.addEventListener(
     "click",
     ()=>{
-        setSeason(
+        changeSeason(
             "spring"
         );
     }
 );
 
-
-/* Autumn */
-
 autumnChoice.addEventListener(
     "click",
     ()=>{
-        setSeason(
+        changeSeason(
             "autumn"
         );
     }
 );
 
-
-/* Center slider */
-
-seasonSlider.addEventListener(
+seasonWheel.addEventListener(
     "click",
     ()=>{
 
-        setSeason(
-            currentSeason === "spring"
+        changeSeason(
+            season === "spring"
             ? "autumn"
             : "spring"
         );
@@ -5432,19 +5486,15 @@ seasonSlider.addEventListener(
     }
 );
 
-
-/* Mini switch */
-
-miniThemeButton.addEventListener(
+navSeason.addEventListener(
     "click",
     ()=>{
 
-        setSeason(
-            currentSeason === "spring"
+        changeSeason(
+            season === "spring"
             ? "autumn"
             : "spring"
         );
-
 
         document
             .getElementById(
@@ -5456,83 +5506,6 @@ miniThemeButton.addEventListener(
             });
 
     }
-);
-
-
-/* =========================================================
-   ACTIVE NAV
-========================================================= */
-
-const navLinks =
-    document.querySelectorAll(
-        ".nav a"
-    );
-
-const trackedSections =
-    document.querySelectorAll(
-        "header[id],section[id],article[id]"
-    );
-
-
-const navObserver =
-    new IntersectionObserver(
-        entries=>{
-
-            entries.forEach(
-                entry=>{
-
-                    if(
-                        !entry.isIntersecting
-                    ){
-                        return;
-                    }
-
-
-                    const id =
-                        entry.target.id;
-
-
-                    navLinks.forEach(
-                        link=>{
-                            link.classList
-                                .remove(
-                                    "active"
-                                );
-                        }
-                    );
-
-
-                    const activeLink =
-                        document.querySelector(
-                            `.nav a[href="#${id}"]`
-                        );
-
-
-                    if(activeLink){
-
-                        activeLink
-                            .classList
-                            .add(
-                                "active"
-                            );
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold:.45
-        }
-    );
-
-
-trackedSections.forEach(
-    section =>
-        navObserver.observe(
-            section
-        )
 );
 
 
@@ -5550,44 +5523,41 @@ window.addEventListener(
     ()=>{
 
         if(
-            window.scrollY > 600
+            window.scrollY>650
         ){
 
-            topBtn
-                .classList
-                .add("show");
+            topBtn.classList.add(
+                "show"
+            );
 
         }else{
 
-            topBtn
-                .classList
-                .remove("show");
+            topBtn.classList.remove(
+                "show"
+            );
 
         }
 
     }
 );
 
-
 topBtn.addEventListener(
     "click",
     ()=>{
-
         window.scrollTo({
             top:0,
             behavior:"smooth"
         });
-
     }
 );
 
 
 /* =========================================================
-   YOUTUBE PLAYER
+   YOUTUBE MUSIC
 ========================================================= */
 
 let player;
-let isPlaying = false;
+let isPlaying=false;
 
 
 function onYouTubeIframeAPIReady(){
@@ -5624,15 +5594,14 @@ function onYouTubeIframeAPIReady(){
                     },
 
                     onStateChange:
-                        (event)=>{
+                        event=>{
 
                             if(
                                 event.data ===
                                 YT.PlayerState.PLAYING
                             ){
 
-                                isPlaying =
-                                    true;
+                                isPlaying=true;
 
                                 document
                                     .getElementById(
@@ -5643,7 +5612,6 @@ function onYouTubeIframeAPIReady(){
 
                             }
 
-
                             if(
                                 event.data ===
                                 YT.PlayerState.PAUSED ||
@@ -5651,8 +5619,7 @@ function onYouTubeIframeAPIReady(){
                                 YT.PlayerState.ENDED
                             ){
 
-                                isPlaying =
-                                    false;
+                                isPlaying=false;
 
                                 document
                                     .getElementById(
@@ -5673,10 +5640,6 @@ function onYouTubeIframeAPIReady(){
 }
 
 
-/* =========================================================
-   MUSIC BUTTON
-========================================================= */
-
 document
 .getElementById(
     "musicBtn"
@@ -5691,7 +5654,6 @@ document
         ){
             return;
         }
-
 
         if(isPlaying){
 
@@ -5708,7 +5670,7 @@ document
 
 
 /* =========================================================
-   LOAD YOUTUBE API
+   LOAD YOUTUBE
 ========================================================= */
 
 const youtubeScript =
@@ -5723,17 +5685,8 @@ document.head.appendChild(
     youtubeScript
 );
 
-
-/* =========================================================
-   INITIAL SEASON
-========================================================= */
-
-setSeason(
-    "spring"
-);
-
 </script>
 
 </body>
 </html>
-
+```
