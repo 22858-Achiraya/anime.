@@ -13,7 +13,6 @@
 /* =========================================================
    RESET
 ========================================================= */
-
 *{
     margin:0;
     padding:0;
@@ -28,11 +27,8 @@ body{
     font-family:"Kanit","Noto Sans Thai",sans-serif;
     overflow-x:hidden;
     cursor:none;
-
     color:var(--ink);
-
     background:var(--page);
-
     transition:
         background 1s ease,
         color 1s ease;
@@ -41,9 +37,7 @@ body{
 /* =========================================================
    THEME VARIABLES
 ========================================================= */
-
 :root{
-
     --page:#f6f2f7;
 
     --sky-a:#dff6fc;
@@ -74,10 +68,21 @@ body{
 
     --footer-a:#547c61;
     --footer-b:#98617d;
+
+    /* POND */
+    --lotus-main:#f0a8c1;
+    --lotus-light:#fff5fa;
+    --lotus-shadow:#b96383;
+
+    --leaf-main:#6f9a69;
+    --leaf-light:#9fc98d;
+    --leaf-shadow:#466d50;
+
+    --food-main:#d7a44b;
+    --food-light:#fff2a9;
 }
 
 body[data-season="autumn"]{
-
     --page:#f3ebdf;
 
     --sky-a:#f0d2a9;
@@ -108,12 +113,23 @@ body[data-season="autumn"]{
 
     --footer-a:#5c6941;
     --footer-b:#91583c;
+
+    /* AUTUMN POND */
+    --lotus-main:#e6a361;
+    --lotus-light:#fff0c7;
+    --lotus-shadow:#a65d31;
+
+    --leaf-main:#87964d;
+    --leaf-light:#b7bb70;
+    --leaf-shadow:#596338;
+
+    --food-main:#bf7c31;
+    --food-light:#ffe19a;
 }
 
 /* =========================================================
    GLOBAL
 ========================================================= */
-
 ::selection{
     background:var(--primary-light);
     color:white;
@@ -127,7 +143,6 @@ a{
 /* =========================================================
    SCROLL PROGRESS
 ========================================================= */
-
 .progress{
     position:fixed;
     left:0;
@@ -155,7 +170,6 @@ a{
 /* =========================================================
    CURSOR
 ========================================================= */
-
 .cursor-core{
     position:fixed;
 
@@ -177,7 +191,6 @@ a{
         0 0 32px var(--primary-light);
 
     pointer-events:none;
-
     z-index:100001;
 
     transform:
@@ -197,7 +210,6 @@ a{
     border-radius:50%;
 
     pointer-events:none;
-
     z-index:100000;
 
     transform:
@@ -223,7 +235,6 @@ body.hovering .cursor-orbit{
 /* =========================================================
    OPENING
 ========================================================= */
-
 .opening{
     position:fixed;
     inset:0;
@@ -271,9 +282,7 @@ body.hovering .cursor-orbit{
     left:-25%;
 
     border-radius:50%;
-
     filter:blur(45px);
-
     mix-blend-mode:screen;
 }
 
@@ -419,7 +428,6 @@ body[data-season="autumn"] .opening-moon{
 /* =========================================================
    OPENING CONTENT
 ========================================================= */
-
 .opening-center{
     position:relative;
 
@@ -611,7 +619,6 @@ body[data-season="autumn"] .opening-moon{
 /* =========================================================
    FLOWER EXPLOSION
 ========================================================= */
-
 .flower-origin{
     position:absolute;
 
@@ -732,7 +739,6 @@ body[data-season="autumn"] .opening-moon{
 /* =========================================================
    SEASON TRANSITION
 ========================================================= */
-
 .season-transition{
     position:fixed;
 
@@ -804,7 +810,6 @@ body[data-season="autumn"] .opening-moon{
 /* =========================================================
    PARTICLES
 ========================================================= */
-
 .petal-layer,
 .sparkles,
 .fireflies{
@@ -985,7 +990,6 @@ body[data-season="autumn"] .opening-moon{
 /* =========================================================
    HERO
 ========================================================= */
-
 .hero{
     position:relative;
 
@@ -1194,7 +1198,6 @@ body[data-season="autumn"] .hero-moon{
 /* =========================================================
    HERO CONTENT
 ========================================================= */
-
 .hero-content{
     position:relative;
 
@@ -1356,7 +1359,6 @@ body[data-season="autumn"] .hero-moon{
 /* =========================================================
    HERO GARDEN
 ========================================================= */
-
 .garden{
     position:absolute;
 
@@ -1416,7 +1418,6 @@ body[data-season="autumn"] .hero-moon{
 /* =========================================================
    HERO WATER
 ========================================================= */
-
 .hero-water{
     position:absolute;
 
@@ -1451,6 +1452,7 @@ body[data-season="autumn"] .hero-moon{
     content:"";
 
     position:absolute;
+
     inset:-40%;
 
     background:
@@ -1479,7 +1481,6 @@ body[data-season="autumn"] .hero-moon{
 /* =========================================================
    NAV
 ========================================================= */
-
 .nav-shell{
     position:sticky;
 
@@ -1589,14 +1590,12 @@ body[data-season="autumn"] .hero-moon{
 
 .nav span{
     position:relative;
-
     z-index:2;
 }
 
 /* =========================================================
    MAIN
 ========================================================= */
-
 main{
     position:relative;
 
@@ -1687,7 +1686,6 @@ main{
 /* =========================================================
    SEASON PORTAL
 ========================================================= */
-
 .season-portal{
     margin-top:70px;
 }
@@ -1993,7 +1991,6 @@ body[data-season="autumn"] .portal{
     z-index:2;
 
     width:max-content;
-
     max-width:100%;
 
     margin:17px auto 0;
@@ -2069,7 +2066,6 @@ body[data-season="autumn"] .portal{
 /* =========================================================
    CHARACTER CARDS
 ========================================================= */
-
 .cards{
     display:grid;
 
@@ -2198,8 +2194,7 @@ body[data-season="autumn"] .portal{
         filter .8s ease;
 }
 
-.card:hover
-.card-image img{
+.card:hover .card-image img{
     transform:
         scale(1.07);
 
@@ -2428,7 +2423,6 @@ body[data-season="autumn"] .portal{
 /* =========================================================
    INTERACTIVE RIVER
 ========================================================= */
-
 .river-section{
     margin-top:95px;
 }
@@ -2458,8 +2452,7 @@ body[data-season="autumn"] .portal{
         0 38px 100px rgba(55,80,75,.2);
 }
 
-body[data-season="autumn"]
-.river-world{
+body[data-season="autumn"] .river-world{
     background:
         linear-gradient(
             180deg,
@@ -2473,6 +2466,7 @@ body[data-season="autumn"]
     content:"";
 
     position:absolute;
+
     inset:0;
 
     background:
@@ -2492,13 +2486,12 @@ body[data-season="autumn"]
     position:absolute;
 
     top:35px;
-
     left:50%;
 
     transform:
         translateX(-50%);
 
-    z-index:12;
+    z-index:50;
 
     width:min(820px,calc(100% - 30px));
 
@@ -2523,8 +2516,7 @@ body[data-season="autumn"]
         0 3px 15px rgba(255,255,255,.28);
 }
 
-body[data-season="autumn"]
-.river-caption h2{
+body[data-season="autumn"] .river-caption h2{
     color:#526442;
 }
 
@@ -2538,6 +2530,48 @@ body[data-season="autumn"]
     line-height:1.85;
 }
 
+.river-help{
+    position:absolute;
+
+    top:205px;
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index:40;
+
+    width:max-content;
+    max-width:calc(100% - 30px);
+
+    padding:8px 15px;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,.46);
+
+    border:
+        1px solid
+        rgba(255,255,255,.6);
+
+    backdrop-filter:blur(8px);
+
+    color:#45655f;
+
+    font-size:9px;
+
+    letter-spacing:1.8px;
+
+    text-align:center;
+
+    box-shadow:
+        0 8px 24px rgba(50,80,75,.08);
+}
+
+/* =========================================================
+   WATER
+========================================================= */
 .water{
     position:absolute;
 
@@ -2566,6 +2600,17 @@ body[data-season="autumn"]
 
     box-shadow:
         inset 0 25px 48px rgba(255,255,255,.2);
+
+    cursor:default;
+}
+
+.water.feeding-mode{
+    cursor:crosshair;
+
+    box-shadow:
+        inset 0 25px 48px rgba(255,255,255,.2),
+        0 0 0 2px rgba(255,255,255,.32),
+        0 0 40px var(--primary-light);
 }
 
 .water-flow{
@@ -2584,6 +2629,8 @@ body[data-season="autumn"]
     animation:
         waterCurrent
         7s linear infinite;
+
+    z-index:1;
 }
 
 @keyframes waterCurrent{
@@ -2623,6 +2670,8 @@ body[data-season="autumn"]
     transition:
         left .18s ease,
         top .18s ease;
+
+    z-index:2;
 }
 
 .water-line{
@@ -2638,6 +2687,8 @@ body[data-season="autumn"]
     animation:
         waterLine
         4s linear infinite;
+
+    z-index:3;
 }
 
 .water-line.w1{
@@ -2689,18 +2740,837 @@ body[data-season="autumn"]
 }
 
 /* =========================================================
-   UPGRADED FISH SYSTEM
+   POND DECORATION — LOTUS + LILY PADS
 ========================================================= */
-
-.fish-layer{
+.pond-decoration{
     position:absolute;
+
     inset:0;
-    z-index:12;
+
+    z-index:18;
+
     pointer-events:none;
-    overflow:hidden;
 }
 
-/* every fish is an individual moving object */
+.lotus-leaf{
+    position:absolute;
+
+    width:84px;
+    height:84px;
+
+    padding:0;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 38% 30%,
+            var(--leaf-light),
+            var(--leaf-main) 62%,
+            var(--leaf-shadow) 100%
+        );
+
+    box-shadow:
+        inset 6px 8px 13px rgba(255,255,255,.22),
+        inset -8px -10px 13px rgba(40,70,50,.16),
+        0 8px 18px rgba(38,70,60,.18);
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            100% 100%,
+            67% 94%,
+            47% 84%,
+            29% 94%,
+            0 100%
+        );
+
+    pointer-events:auto;
+
+    cursor:pointer;
+
+    opacity:.88;
+
+    transition:
+        transform .45s cubic-bezier(.2,.85,.2,1),
+        filter .45s ease;
+}
+
+.lotus-leaf::before{
+    content:"";
+
+    position:absolute;
+
+    inset:8px;
+
+    border-radius:50%;
+
+    background:
+        repeating-conic-gradient(
+            from 0deg,
+            rgba(255,255,255,.13) 0deg 10deg,
+            transparent 10deg 23deg
+        );
+
+    opacity:.55;
+}
+
+.lotus-leaf::after{
+    content:"";
+
+    position:absolute;
+
+    width:35%;
+
+    height:3px;
+
+    left:42%;
+
+    top:15%;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,.35);
+
+    transform:
+        rotate(40deg);
+}
+
+.lotus-leaf:hover{
+    filter:
+        brightness(1.08)
+        saturate(1.08);
+
+    transform:
+        translateY(-7px)
+        rotate(-4deg)
+        scale(1.07);
+}
+
+.lotus-leaf.leaf-1{
+    left:8%;
+    top:39%;
+    transform:rotate(-15deg);
+}
+
+.lotus-leaf.leaf-2{
+    left:26%;
+    top:68%;
+    width:68px;
+    height:68px;
+    transform:rotate(17deg) scale(.9);
+}
+
+.lotus-leaf.leaf-3{
+    right:19%;
+    top:41%;
+    width:92px;
+    height:92px;
+    transform:rotate(11deg);
+}
+
+.lotus-leaf.leaf-4{
+    right:4%;
+    top:73%;
+    width:73px;
+    height:73px;
+    transform:rotate(-19deg) scale(.92);
+}
+
+.lotus-leaf.clicked{
+    animation:
+        leafBounce
+        .7s
+        ease;
+}
+
+@keyframes leafBounce{
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(var(--leaf-rot,0deg))
+            scale(1);
+    }
+
+    35%{
+        transform:
+            translateY(-12px)
+            rotate(calc(var(--leaf-rot,0deg) - 8deg))
+            scale(1.1);
+    }
+
+    70%{
+        transform:
+            translateY(2px)
+            rotate(calc(var(--leaf-rot,0deg) + 6deg))
+            scale(.97);
+    }
+}
+
+/* =========================================================
+   LOTUS FLOWERS
+========================================================= */
+.lotus-bloom{
+    position:absolute;
+
+    width:110px;
+    height:90px;
+
+    border:0;
+
+    background:transparent;
+
+    padding:0;
+
+    pointer-events:auto;
+
+    cursor:pointer;
+
+    filter:
+        drop-shadow(
+            0 8px 12px
+            rgba(80,55,70,.13)
+        );
+
+    transform-origin:center bottom;
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        filter .35s ease;
+}
+
+.lotus-bloom:hover{
+    transform:
+        translateY(-7px)
+        scale(1.06);
+}
+
+.lotus-bloom.lotus-1{
+    left:17%;
+    top:25%;
+    transform:rotate(-8deg);
+}
+
+.lotus-bloom.lotus-2{
+    right:27%;
+    top:27%;
+    transform:scale(.9) rotate(10deg);
+}
+
+.lotus-bloom.lotus-3{
+    right:8%;
+    top:58%;
+    transform:scale(.78) rotate(-10deg);
+}
+
+.lotus-petals{
+    position:absolute;
+
+    inset:0;
+
+    transform-origin:center bottom;
+
+    transition:
+        transform .65s cubic-bezier(.12,.83,.08,1);
+}
+
+.lp{
+    position:absolute;
+
+    width:35px;
+    height:62px;
+
+    left:50%;
+    top:16px;
+
+    margin-left:-17.5px;
+
+    border-radius:
+        75% 75% 35% 35%;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--lotus-light),
+            var(--lotus-main) 65%,
+            var(--lotus-shadow)
+        );
+
+    box-shadow:
+        inset 2px 3px 7px rgba(255,255,255,.82),
+        inset -5px -6px 9px rgba(120,70,85,.16);
+
+    transform-origin:
+        50% 100%;
+
+    transition:
+        transform .6s cubic-bezier(.12,.8,.12,1),
+        filter .4s ease;
+}
+
+.lp:nth-child(1){
+    transform:rotate(0deg) translateY(-3px);
+}
+
+.lp:nth-child(2){
+    transform:rotate(45deg) translateY(-3px);
+}
+
+.lp:nth-child(3){
+    transform:rotate(90deg) translateY(-3px);
+}
+
+.lp:nth-child(4){
+    transform:rotate(135deg) translateY(-3px);
+}
+
+.lp:nth-child(5){
+    transform:rotate(180deg) translateY(-3px);
+}
+
+.lp:nth-child(6){
+    transform:rotate(225deg) translateY(-3px);
+}
+
+.lp:nth-child(7){
+    transform:rotate(270deg) translateY(-3px);
+}
+
+.lp:nth-child(8){
+    transform:rotate(315deg) translateY(-3px);
+}
+
+.lotus-center{
+    position:absolute;
+
+    left:50%;
+    top:43px;
+
+    width:28px;
+    height:28px;
+
+    margin-left:-14px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff8b7,
+            #ebc761 55%,
+            #ba8731 100%
+        );
+
+    box-shadow:
+        0 0 17px rgba(255,230,130,.75),
+        inset 2px 2px 4px rgba(255,255,255,.72);
+
+    z-index:8;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+.lotus-center::after{
+    content:"✦";
+
+    position:absolute;
+
+    inset:0;
+
+    display:grid;
+
+    place-items:center;
+
+    color:#fff6cf;
+
+    font-size:10px;
+}
+
+.lotus-bloom::after{
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:48%;
+
+    width:30px;
+    height:30px;
+
+    border:
+        2px solid
+        rgba(255,255,255,.58);
+
+    border-radius:50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.4);
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+.lotus-bloom.bloomed .lotus-petals{
+    transform:
+        translateY(-3px)
+        scale(1.09);
+}
+
+.lotus-bloom.bloomed .lp{
+    filter:
+        brightness(1.06);
+
+}
+
+.lotus-bloom.bloomed .lp:nth-child(1){
+    transform:rotate(0deg) translateY(-11px) scale(1.08);
+}
+
+.lotus-bloom.bloomed .lp:nth-child(2){
+    transform:rotate(45deg) translateY(-10px) scale(1.06);
+}
+
+.lotus-bloom.bloomed .lp:nth-child(3){
+    transform:rotate(90deg) translateY(-10px) scale(1.08);
+}
+
+.lotus-bloom.bloomed .lp:nth-child(4){
+    transform:rotate(135deg) translateY(-10px) scale(1.06);
+}
+
+.lotus-bloom.bloomed .lp:nth-child(5){
+    transform:rotate(180deg) translateY(-10px) scale(1.08);
+}
+
+.lotus-bloom.bloomed .lp:nth-child(6){
+    transform:rotate(225deg) translateY(-10px) scale(1.06);
+}
+
+.lotus-bloom.bloomed .lp:nth-child(7){
+    transform:rotate(270deg) translateY(-10px) scale(1.08);
+}
+
+.lotus-bloom.bloomed .lp:nth-child(8){
+    transform:rotate(315deg) translateY(-10px) scale(1.06);
+}
+
+.lotus-bloom.bloomed .lotus-center{
+    transform:
+        translateY(-3px)
+        scale(1.15);
+    box-shadow:
+        0 0 27px rgba(255,230,130,.95),
+        inset 2px 2px 4px rgba(255,255,255,.72);
+}
+
+.lotus-bloom.bloomed::after{
+    animation:
+        lotusPulse
+        .9s
+        ease-out;
+}
+
+@keyframes lotusPulse{
+    0%{
+        opacity:.9;
+        transform:
+            translate(-50%,-50%)
+            scale(.3);
+    }
+
+    100%{
+        opacity:0;
+        transform:
+            translate(-50%,-50%)
+            scale(4.5);
+    }
+}
+
+/* =========================================================
+   FEEDING UI
+========================================================= */
+.pond-ui{
+    position:absolute;
+
+    left:50%;
+    bottom:38px;
+
+    transform:
+        translateX(-50%);
+
+    z-index:40;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    pointer-events:auto;
+}
+
+.feed-btn{
+    position:relative;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    min-width:177px;
+
+    padding:11px 17px;
+
+    border-radius:999px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.86);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.82),
+            rgba(255,241,247,.7)
+        );
+
+    color:var(--primary);
+
+    font-family:inherit;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+        0 10px 30px rgba(50,70,65,.15);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+.feed-btn::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-2px;
+
+    border-radius:inherit;
+
+    border:
+        1px solid
+        rgba(255,255,255,.42);
+
+    opacity:0;
+
+    transition:.3s ease;
+}
+
+.feed-btn:hover{
+    transform:
+        translateY(-4px)
+        scale(1.03);
+
+    box-shadow:
+        0 17px 34px rgba(50,70,65,.2),
+        0 0 24px rgba(255,255,255,.36);
+}
+
+.feed-btn:hover::before{
+    opacity:1;
+}
+
+.feed-btn.active{
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
+    box-shadow:
+        0 12px 32px rgba(120,68,90,.27),
+        0 0 30px rgba(255,255,255,.35);
+
+    animation:
+        feedButtonPulse
+        1.1s
+        ease-in-out
+        infinite;
+}
+
+@keyframes feedButtonPulse{
+    0%,100%{
+        box-shadow:
+            0 12px 32px rgba(120,68,90,.27),
+            0 0 25px rgba(255,255,255,.28);
+    }
+
+    50%{
+        box-shadow:
+            0 12px 32px rgba(120,68,90,.32),
+            0 0 42px rgba(255,255,255,.58);
+    }
+}
+
+.feed-status{
+    min-width:180px;
+
+    padding:10px 14px;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,.45);
+
+    border:
+        1px solid
+        rgba(255,255,255,.58);
+
+    backdrop-filter:blur(12px);
+
+    color:#41635e;
+
+    font-size:9px;
+
+    letter-spacing:.7px;
+
+    text-align:center;
+
+    box-shadow:
+        0 8px 22px rgba(50,70,65,.08);
+}
+
+body[data-season="autumn"] .feed-status{
+    color:#5d6945;
+}
+
+.feeding-hint{
+    position:absolute;
+
+    left:50%;
+    bottom:93px;
+
+    transform:
+        translateX(-50%);
+
+    z-index:40;
+
+    width:max-content;
+    max-width:calc(100% - 30px);
+
+    padding:8px 13px;
+
+    border-radius:999px;
+
+    background:
+        rgba(65,58,62,.34);
+
+    border:
+        1px solid
+        rgba(255,255,255,.38);
+
+    backdrop-filter:blur(10px);
+
+    color:white;
+
+    font-size:9px;
+
+    letter-spacing:1px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.35s ease;
+
+    text-align:center;
+}
+
+.water.feeding-mode .feeding-hint{
+    opacity:1;
+}
+
+/* =========================================================
+   FOOD PELLETS
+========================================================= */
+.food-layer{
+    position:absolute;
+
+    inset:0;
+
+    z-index:25;
+
+    pointer-events:none;
+}
+
+.food-pellet{
+    position:absolute;
+
+    width:12px;
+    height:12px;
+
+    margin:-6px 0 0 -6px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            var(--food-light),
+            var(--food-main) 65%,
+            #8f5d2c
+        );
+
+    box-shadow:
+        0 2px 8px rgba(80,55,30,.3),
+        0 0 11px rgba(255,230,145,.45);
+
+    animation:
+        foodBob
+        1.3s
+        ease-in-out
+        infinite;
+
+    will-change:transform;
+}
+
+.food-pellet.falling{
+    animation:none;
+}
+
+.food-pellet::after{
+    content:"";
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    left:2px;
+    top:2px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.55);
+}
+
+@keyframes foodBob{
+    0%,100%{
+        transform:
+            translateY(0)
+            scale(.94);
+    }
+
+    50%{
+        transform:
+            translateY(-2px)
+            scale(1.06);
+    }
+}
+
+.food-eat-effect{
+    position:absolute;
+
+    width:18px;
+    height:18px;
+
+    margin:-9px 0 0 -9px;
+
+    border:
+        2px solid
+        rgba(255,255,255,.68);
+
+    border-radius:50%;
+
+    animation:
+        foodEat
+        .6s
+        ease-out
+        forwards;
+
+    pointer-events:none;
+}
+
+.food-eat-effect::before,
+.food-eat-effect::after{
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.8);
+}
+
+.food-eat-effect::before{
+    transform:
+        translate(-18px,-11px);
+}
+
+.food-eat-effect::after{
+    transform:
+        translate(11px,-17px);
+}
+
+@keyframes foodEat{
+    from{
+        opacity:1;
+
+        transform:
+            scale(.4);
+    }
+
+    to{
+        opacity:0;
+
+        transform:
+            scale(3.8);
+    }
+}
+
+/* =========================================================
+   FISH SYSTEM
+========================================================= */
+.fish-layer{
+    position:absolute;
+
+    inset:0;
+
+    z-index:22;
+
+    pointer-events:none;
+
+    overflow:hidden;
+}
 
 .fish-group{
     position:absolute;
@@ -2908,8 +3778,6 @@ body[data-season="autumn"]
     opacity:.28;
 }
 
-/* different koi colors */
-
 .fish-orange{
     --fish-light:#ffd69a;
     --fish-mid:#ef9f4f;
@@ -3017,19 +3885,17 @@ body[data-season="autumn"]
     }
 }
 
-/* fish bubble */
-
 .fish-bubble{
     position:absolute;
 
     width:5px;
     height:5px;
 
-    border-radius:50%;
-
     border:
         1px solid
         rgba(255,255,255,.66);
+
+    border-radius:50%;
 
     background:
         rgba(255,255,255,.1);
@@ -3049,14 +3915,17 @@ body[data-season="autumn"]
 .fish-bubble.b1{
     right:1px;
     top:3px;
+
     animation-delay:.4s;
 }
 
 .fish-bubble.b2{
     right:-4px;
     top:8px;
+
     width:7px;
     height:7px;
+
     animation-delay:1.2s;
 }
 
@@ -3086,8 +3955,6 @@ body[data-season="autumn"]
     }
 }
 
-/* fish highlight */
-
 .fish-highlight{
     position:absolute;
 
@@ -3107,8 +3974,6 @@ body[data-season="autumn"]
     transform:
         rotate(-7deg);
 }
-
-/* fish wake */
 
 .fish-wake{
     position:absolute;
@@ -3151,8 +4016,6 @@ body[data-season="autumn"]
     }
 }
 
-/* fish becomes startled */
-
 .fish-group.fish-startled{
     filter:
         brightness(1.2)
@@ -3162,12 +4025,50 @@ body[data-season="autumn"]
         );
 }
 
-/* little fish burst */
+.fish-group.fish-curious .fish-eye{
+    animation:
+        eyeBlink
+        .45s
+        ease-in-out;
+}
+
+.fish-group.fish-feeding .fish-body{
+    animation:
+        feedingWiggle
+        .25s
+        ease-in-out
+        infinite;
+}
+
+@keyframes eyeBlink{
+    0%,100%{
+        transform:scaleY(1);
+    }
+
+    50%{
+        transform:scaleY(.2);
+    }
+}
+
+@keyframes feedingWiggle{
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(0)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translateY(-3px)
+            rotate(-4deg)
+            scale(1.05);
+    }
+}
 
 /* =========================================================
    FISH RIPPLE / SPLASH
 ========================================================= */
-
 .fish-splash{
     position:absolute;
 
@@ -3191,6 +4092,39 @@ body[data-season="autumn"]
         forwards;
 
     pointer-events:none;
+
+    z-index:55;
+}
+
+.fish-splash::before,
+.fish-splash::after{
+    content:"";
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.72);
+
+    animation:
+        splashDrop
+        .7s
+        ease-out
+        forwards;
+}
+
+.fish-splash::before{
+    left:-7px;
+    top:-9px;
+}
+
+.fish-splash::after{
+    right:-6px;
+    top:-13px;
 }
 
 @keyframes fishSplash{
@@ -3212,10 +4146,27 @@ body[data-season="autumn"]
     }
 }
 
+@keyframes splashDrop{
+    from{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(.7);
+    }
+
+    to{
+        opacity:0;
+
+        transform:
+            translateY(-24px)
+            scale(1.25);
+    }
+}
+
 /* =========================================================
    WATER RIPPLE
 ========================================================= */
-
 .ripple{
     position:absolute;
 
@@ -3238,7 +4189,7 @@ body[data-season="autumn"]
         ease-out
         forwards;
 
-    z-index:20;
+    z-index:60;
 
     pointer-events:none;
 }
@@ -3263,9 +4214,62 @@ body[data-season="autumn"]
 }
 
 /* =========================================================
+   LOTUS SPARKLES
+========================================================= */
+.lotus-spark{
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            white,
+            var(--gold)
+        );
+
+    box-shadow:
+        0 0 8px white,
+        0 0 15px var(--gold);
+
+    pointer-events:none;
+
+    z-index:70;
+
+    animation:
+        lotusSpark
+        .9s
+        ease-out
+        forwards;
+}
+
+@keyframes lotusSpark{
+    0%{
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.4);
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translate(
+                calc(-50% + var(--dx)),
+                calc(-50% + var(--dy))
+            )
+            scale(1.3);
+    }
+}
+
+/* =========================================================
    FINAL PANEL
 ========================================================= */
-
 .final-panel{
     margin-top:80px;
 
@@ -3293,8 +4297,7 @@ body[data-season="autumn"]
         0 30px 80px rgba(80,65,82,.14);
 }
 
-body[data-season="autumn"]
-.final-panel{
+body[data-season="autumn"] .final-panel{
     background:
         linear-gradient(
             135deg,
@@ -3357,7 +4360,6 @@ body[data-season="autumn"]
 /* =========================================================
    FOOTER
 ========================================================= */
-
 footer{
     position:relative;
 
@@ -3454,7 +4456,6 @@ footer a{
 /* =========================================================
    MUSIC
 ========================================================= */
-
 .music{
     position:fixed;
 
@@ -3562,6 +4563,7 @@ body[data-season="autumn"] .music{
 
 .music-text{
     flex:1;
+
     min-width:0;
 }
 
@@ -3630,7 +4632,6 @@ body[data-season="autumn"] .music{
 /* =========================================================
    TOP BUTTON
 ========================================================= */
-
 .top{
     position:fixed;
 
@@ -3682,7 +4683,6 @@ body[data-season="autumn"] .music{
 /* =========================================================
    CLICK PARTICLES
 ========================================================= */
-
 .click-particle{
     position:fixed;
 
@@ -3727,7 +4727,6 @@ body[data-season="autumn"] .music{
 /* =========================================================
    REVEAL
 ========================================================= */
-
 .reveal{
     opacity:0;
 
@@ -3750,7 +4749,6 @@ body[data-season="autumn"] .music{
 /* =========================================================
    RESPONSIVE
 ========================================================= */
-
 @media(max-width:1000px){
 
     .cards{
@@ -3863,6 +4861,69 @@ body[data-season="autumn"] .music{
         transform:
             scale(.82);
     }
+
+    .pond-ui{
+        flex-direction:column;
+
+        bottom:20px;
+
+        width:
+            calc(100% - 30px);
+    }
+
+    .feed-btn,
+    .feed-status{
+        width:100%;
+        max-width:290px;
+    }
+
+    .feeding-hint{
+        bottom:112px;
+
+        font-size:8px;
+    }
+
+    .lotus-bloom.lotus-1{
+        left:12%;
+        top:30%;
+        transform:scale(.78) rotate(-8deg);
+    }
+
+    .lotus-bloom.lotus-2{
+        right:28%;
+        top:33%;
+        transform:scale(.72) rotate(10deg);
+    }
+
+    .lotus-bloom.lotus-3{
+        right:5%;
+        top:60%;
+        transform:scale(.62) rotate(-10deg);
+    }
+
+    .lotus-leaf.leaf-1{
+        left:4%;
+        top:43%;
+        transform:scale(.78) rotate(-15deg);
+    }
+
+    .lotus-leaf.leaf-2{
+        left:25%;
+        top:67%;
+        transform:scale(.72) rotate(17deg);
+    }
+
+    .lotus-leaf.leaf-3{
+        right:14%;
+        top:44%;
+        transform:scale(.78) rotate(11deg);
+    }
+
+    .lotus-leaf.leaf-4{
+        right:0%;
+        top:72%;
+        transform:scale(.66) rotate(-19deg);
+    }
 }
 
 @media(max-width:450px){
@@ -3900,6 +4961,24 @@ body[data-season="autumn"] .music{
         transform:
             scale(.72);
     }
+
+    .lotus-bloom.lotus-1{
+        left:7%;
+        top:31%;
+        transform:scale(.65) rotate(-8deg);
+    }
+
+    .lotus-bloom.lotus-2{
+        right:24%;
+        top:34%;
+        transform:scale(.62) rotate(10deg);
+    }
+
+    .lotus-bloom.lotus-3{
+        right:-2%;
+        top:59%;
+        transform:scale(.55) rotate(-10deg);
+    }
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -3918,21 +4997,17 @@ body[data-season="autumn"] .music{
 
 <body data-season="spring">
 
-
 <!-- =======================================================
      PROGRESS
 ======================================================= -->
-
 <div
     class="progress"
     id="progress"
 ></div>
 
-
 <!-- =======================================================
      CURSOR
 ======================================================= -->
-
 <div
     class="cursor-core"
     id="cursorCore"
@@ -3943,11 +5018,9 @@ body[data-season="autumn"] .music{
     id="cursorOrbit"
 ></div>
 
-
 <!-- =======================================================
      OPENING
 ======================================================= -->
-
 <section
     class="opening"
     id="opening"
@@ -3988,22 +5061,17 @@ body[data-season="autumn"] .music{
         <div class="opening-note">
             CLICK TO AWAKEN THE GARDEN
         </div>
-
     </div>
-
 
     <div
         class="flower-origin"
         id="flowerOrigin"
     ></div>
-
 </section>
-
 
 <!-- =======================================================
      SEASON TRANSITION
 ======================================================= -->
-
 <div
     class="season-transition"
     id="seasonTransition"
@@ -4011,11 +5079,9 @@ body[data-season="autumn"] .music{
     <div class="season-ring"></div>
 </div>
 
-
 <!-- =======================================================
      PARTICLES
 ======================================================= -->
-
 <div
     class="petal-layer"
     id="petalLayer"
@@ -4031,11 +5097,9 @@ body[data-season="autumn"] .music{
     id="fireflies"
 ></div>
 
-
 <!-- =======================================================
      HERO
 ======================================================= -->
-
 <header
     class="hero"
     id="top"
@@ -4050,7 +5114,6 @@ body[data-season="autumn"] .music{
     </div>
 
     <div class="hero-moon"></div>
-
 
     <div
         class="hero-content"
@@ -4099,7 +5162,6 @@ body[data-season="autumn"] .music{
 
     </div>
 
-
     <div class="garden">
 
         <div class="hill"></div>
@@ -4107,16 +5169,13 @@ body[data-season="autumn"] .music{
 
     </div>
 
-
     <div class="hero-water"></div>
 
 </header>
 
-
 <!-- =======================================================
      NAVIGATION
 ======================================================= -->
-
 <div class="nav-shell">
 
     <nav class="nav">
@@ -4165,18 +5224,14 @@ body[data-season="autumn"] .music{
 
 </div>
 
-
 <!-- =======================================================
      MAIN
 ======================================================= -->
-
 <main>
-
 
 <!-- =======================================================
      SEASON PORTAL
 ======================================================= -->
-
 <section
     class="section season-portal reveal"
     id="season"
@@ -4186,7 +5241,6 @@ body[data-season="autumn"] .music{
 
         <div class="portal-glow g1"></div>
         <div class="portal-glow g2"></div>
-
 
         <div class="portal-title">
 
@@ -4203,7 +5257,6 @@ body[data-season="autumn"] .music{
             </p>
 
         </div>
-
 
         <div class="season-choices">
 
@@ -4227,14 +5280,12 @@ body[data-season="autumn"] .music{
 
             </button>
 
-
             <button
                 class="season-wheel"
                 id="seasonWheel"
                 type="button"
                 aria-label="เปลี่ยนฤดู"
             ></button>
-
 
             <button
                 class="choice autumn"
@@ -4258,7 +5309,6 @@ body[data-season="autumn"] .music{
 
         </div>
 
-
         <div class="portal-status">
 
             <span class="status-dot"></span>
@@ -4269,7 +5319,6 @@ body[data-season="autumn"] .music{
 
         </div>
 
-
         <div class="portal-hint">
             CLICK SPRING · CLICK AUTUMN · CLICK THE CENTER PORTAL
         </div>
@@ -4278,11 +5327,9 @@ body[data-season="autumn"] .music{
 
 </section>
 
-
 <!-- =======================================================
      CHARACTERS
 ======================================================= -->
-
 <section
     class="section"
     id="characters"
@@ -4305,12 +5352,9 @@ body[data-season="autumn"] .music{
 
     </div>
 
-
     <div class="cards">
 
-
         <!-- SYLUS -->
-
         <article
             class="card tilt reveal"
             id="sylus"
@@ -4351,7 +5395,6 @@ body[data-season="autumn"] .music{
 
             </div>
 
-
             <div class="card-content">
 
                 <h3>
@@ -4361,7 +5404,6 @@ body[data-season="autumn"] .music{
                 <div class="card-role">
                     The leader of Onychinus
                 </div>
-
 
                 <div class="info">
 
@@ -4397,14 +5439,12 @@ body[data-season="autumn"] .music{
 
                 </div>
 
-
                 <p class="description">
                     Sylus เป็นผู้นำของ Onychinus
                     มีบุคลิกมั่นใจ พูดตรง
                     สุขุมในสถานการณ์กดดัน
                     และมีแนวคิดเชิงวิเคราะห์
                 </p>
-
 
                 <div class="tags">
 
@@ -4430,9 +5470,7 @@ body[data-season="autumn"] .music{
 
         </article>
 
-
         <!-- ZAYNE -->
-
         <article
             class="card tilt reveal"
             id="zayne"
@@ -4473,7 +5511,6 @@ body[data-season="autumn"] .music{
 
             </div>
 
-
             <div class="card-content">
 
                 <h3>
@@ -4483,7 +5520,6 @@ body[data-season="autumn"] .music{
                 <div class="card-role">
                     Akso Hospital — Cardiac Surgeon
                 </div>
-
 
                 <div class="info">
 
@@ -4519,13 +5555,11 @@ body[data-season="autumn"] .music{
 
                 </div>
 
-
                 <p class="description">
                     Zayne เป็นศัลยแพทย์หัวใจ
                     มีบุคลิกสุขุม ตรงไปตรงมา
                     เป็นมืออาชีพและใส่ใจคนรอบตัว
                 </p>
-
 
                 <div class="tags">
 
@@ -4551,9 +5585,7 @@ body[data-season="autumn"] .music{
 
         </article>
 
-
         <!-- CALEB -->
-
         <article
             class="card tilt reveal"
             id="caleb"
@@ -4594,7 +5626,6 @@ body[data-season="autumn"] .music{
 
             </div>
 
-
             <div class="card-content">
 
                 <h3>
@@ -4604,7 +5635,6 @@ body[data-season="autumn"] .music{
                 <div class="card-role">
                     Farspace Fleet — Colonel
                 </div>
-
 
                 <div class="info">
 
@@ -4640,7 +5670,6 @@ body[data-season="autumn"] .music{
 
                 </div>
 
-
                 <p class="description">
                     Caleb เคยเป็นนักบินรบของ DAA
                     และปัจจุบันเป็น Colonel
@@ -4648,7 +5677,6 @@ body[data-season="autumn"] .music{
                     มีทั้งความใจดี ขี้เล่น
                     และปกป้องคนสำคัญ
                 </p>
-
 
                 <div class="tags">
 
@@ -4674,16 +5702,13 @@ body[data-season="autumn"] .music{
 
         </article>
 
-
     </div>
 
 </section>
 
-
 <!-- =======================================================
      INTERACTIVE RIVER
 ======================================================= -->
-
 <section
     class="section river-section reveal"
     id="river"
@@ -4707,16 +5732,15 @@ body[data-season="autumn"] .music{
             <p>
                 ขยับเมาส์บนสายน้ำ
                 เพื่อให้แสงสะท้อนตาม
-                และคลิกเพื่อดูปฏิกิริยาของฝูงปลา
+                เล่นกับฝูงปลา ดอกบัว
+                และลองให้อาหารปลาได้
             </p>
 
         </div>
 
-
         <div class="river-help">
-            MOVE YOUR MOUSE · WATCH THE KOI · CLICK THE WATER
+            MOVE YOUR MOUSE · CLICK THE LOTUS · FEED THE KOI
         </div>
-
 
         <div
             class="water"
@@ -4730,14 +5754,138 @@ body[data-season="autumn"] .music{
                 id="waterLight"
             ></div>
 
-
             <div class="water-line w1"></div>
             <div class="water-line w2"></div>
             <div class="water-line w3"></div>
             <div class="water-line w4"></div>
 
+            <!-- =================================================
+                 LOTUS + LILY PADS
+            ================================================== -->
+            <div class="pond-decoration">
 
-            <div class="fish-layer" id="fishLayer"></div>
+                <button
+                    class="lotus-leaf leaf-1"
+                    type="button"
+                    aria-label="เล่นกับใบบัว"
+                    style="--leaf-rot:-15deg"
+                ></button>
+
+                <button
+                    class="lotus-leaf leaf-2"
+                    type="button"
+                    aria-label="เล่นกับใบบัว"
+                    style="--leaf-rot:17deg"
+                ></button>
+
+                <button
+                    class="lotus-leaf leaf-3"
+                    type="button"
+                    aria-label="เล่นกับใบบัว"
+                    style="--leaf-rot:11deg"
+                ></button>
+
+                <button
+                    class="lotus-leaf leaf-4"
+                    type="button"
+                    aria-label="เล่นกับใบบัว"
+                    style="--leaf-rot:-19deg"
+                ></button>
+
+                <button
+                    class="lotus-bloom lotus-1"
+                    type="button"
+                    aria-label="ดอกบัว"
+                >
+                    <div class="lotus-petals">
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                    </div>
+                    <span class="lotus-center"></span>
+                </button>
+
+                <button
+                    class="lotus-bloom lotus-2"
+                    type="button"
+                    aria-label="ดอกบัว"
+                >
+                    <div class="lotus-petals">
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                    </div>
+                    <span class="lotus-center"></span>
+                </button>
+
+                <button
+                    class="lotus-bloom lotus-3"
+                    type="button"
+                    aria-label="ดอกบัว"
+                >
+                    <div class="lotus-petals">
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                        <span class="lp"></span>
+                    </div>
+                    <span class="lotus-center"></span>
+                </button>
+
+            </div>
+
+            <!-- FISH -->
+            <div
+                class="fish-layer"
+                id="fishLayer"
+            ></div>
+
+            <!-- FOOD -->
+            <div
+                class="food-layer"
+                id="foodLayer"
+            ></div>
+
+            <!-- FEEDING UI -->
+            <div
+                class="feeding-hint"
+                id="feedingHint"
+            >
+                ✦ FEEDING MODE · CLICK ANYWHERE ON THE WATER ✦
+            </div>
+
+            <div class="pond-ui">
+
+                <button
+                    class="feed-btn"
+                    id="feedFishButton"
+                    type="button"
+                >
+                    🍚 ให้อาหารปลา
+                </button>
+
+                <div
+                    class="feed-status"
+                    id="feedStatus"
+                >
+                    🐟 ปลาในบ่อกำลังว่ายเล่น
+                </div>
+
+            </div>
 
         </div>
 
@@ -4745,11 +5893,9 @@ body[data-season="autumn"] .music{
 
 </section>
 
-
 <!-- =======================================================
      FINAL
 ======================================================= -->
-
 <section class="section reveal">
 
     <div class="final-panel">
@@ -4772,14 +5918,11 @@ body[data-season="autumn"] .music{
 
 </section>
 
-
 </main>
-
 
 <!-- =======================================================
      MUSIC
 ======================================================= -->
-
 <section class="music">
 
     <div class="music-disc">
@@ -4809,11 +5952,9 @@ body[data-season="autumn"] .music{
 
 </section>
 
-
 <!-- =======================================================
      TOP
 ======================================================= -->
-
 <button
     class="top"
     id="topBtn"
@@ -4822,11 +5963,9 @@ body[data-season="autumn"] .music{
     ↑
 </button>
 
-
 <!-- =======================================================
      FOOTER
 ======================================================= -->
-
 <footer>
 
     <div class="footer-symbols">
@@ -4879,22 +6018,16 @@ body[data-season="autumn"] .music{
 
 </footer>
 
-
 <script>
 
 /* =========================================================
    CURSOR
 ========================================================= */
-
 const cursorCore =
-    document.getElementById(
-        "cursorCore"
-    );
+    document.getElementById("cursorCore");
 
 const cursorOrbit =
-    document.getElementById(
-        "cursorOrbit"
-    );
+    document.getElementById("cursorOrbit");
 
 let mouseX =
     window.innerWidth / 2;
@@ -4923,7 +6056,6 @@ window.addEventListener(
 
         cursorCore.style.top =
             mouseY + "px";
-
     }
 );
 
@@ -4944,11 +6076,9 @@ function cursorAnimation(){
     requestAnimationFrame(
         cursorAnimation
     );
-
 }
 
 cursorAnimation();
-
 
 document
 .querySelectorAll(
@@ -4976,11 +6106,9 @@ document
 
 });
 
-
 /* =========================================================
    OPENING FLOWER EXPLOSION
 ========================================================= */
-
 const flowerOrigin =
     document.getElementById(
         "flowerOrigin"
@@ -5000,7 +6128,6 @@ for(
     petal.className =
         "flower";
 
-
     const angle =
         Math.random() *
         Math.PI *
@@ -5011,13 +6138,13 @@ for(
         Math.random() *
         370;
 
-
     const x1 =
-        (Math.random()-.5)*210;
+        (Math.random()-.5)*
+        210;
 
     const y1 =
-        (Math.random()-.5)*180;
-
+        (Math.random()-.5)*
+        180;
 
     const x2 =
         Math.cos(angle) *
@@ -5026,7 +6153,6 @@ for(
     const y2 =
         Math.sin(angle) *
         distance;
-
 
     const x3 =
         (Math.random()-.5) *
@@ -5041,7 +6167,6 @@ for(
             window.innerHeight*.85,
             650
         );
-
 
     petal.style.setProperty(
         "--x1",
@@ -5073,7 +6198,6 @@ for(
         y3+"px"
     );
 
-
     petal.style.setProperty(
         "--sr",
         Math.random()*360+"deg"
@@ -5094,7 +6218,6 @@ for(
         Math.random()*1200-600+"deg"
     );
 
-
     petal.style.setProperty(
         "--ss",
         .35+Math.random()*.85
@@ -5110,18 +6233,14 @@ for(
         Math.random()*.85+"s"
     );
 
-
     flowerOrigin.appendChild(
         petal
     );
-
 }
-
 
 /* =========================================================
    OPENING CLOSE
 ========================================================= */
-
 const opening =
     document.getElementById(
         "opening"
@@ -5137,7 +6256,6 @@ function closeOpening(){
     opening.classList.add(
         "closed"
     );
-
 }
 
 enter.addEventListener(
@@ -5147,7 +6265,6 @@ enter.addEventListener(
         event.stopPropagation();
 
         closeOpening();
-
     }
 );
 
@@ -5161,11 +6278,9 @@ setTimeout(
     7500
 );
 
-
 /* =========================================================
    BACKGROUND PETALS
 ========================================================= */
-
 const petalLayer =
     document.getElementById(
         "petalLayer"
@@ -5217,14 +6332,11 @@ for(
     petalLayer.appendChild(
         petal
     );
-
 }
-
 
 /* =========================================================
    SPARKLES
 ========================================================= */
-
 const sparkles =
     document.getElementById(
         "sparkles"
@@ -5273,14 +6385,11 @@ for(
     sparkles.appendChild(
         sparkle
     );
-
 }
-
 
 /* =========================================================
    FIREFLIES
 ========================================================= */
-
 const fireflies =
     document.getElementById(
         "fireflies"
@@ -5320,14 +6429,11 @@ for(
     fireflies.appendChild(
         firefly
     );
-
 }
-
 
 /* =========================================================
    3D TILT
 ========================================================= */
-
 document
 .querySelectorAll(".tilt")
 .forEach(card=>{
@@ -5366,7 +6472,6 @@ document
                  rotateX(${rotateX}deg)
                  rotateY(${rotateY}deg)
                  translateY(-8px)`;
-
         }
     );
 
@@ -5376,17 +6481,13 @@ document
 
             card.style.transform =
                 "perspective(1400px) rotateX(0) rotateY(0) translateY(0)";
-
         }
     );
-
 });
-
 
 /* =========================================================
    HERO PARALLAX
 ========================================================= */
-
 const heroContent =
     document.getElementById(
         "heroContent"
@@ -5415,15 +6516,12 @@ window.addEventListener(
                 ${x*10}px,
                 ${y*8}px
             )`;
-
     }
 );
-
 
 /* =========================================================
    SCROLL PROGRESS
 ========================================================= */
-
 const progress =
     document.getElementById(
         "progress"
@@ -5447,15 +6545,12 @@ window.addEventListener(
 
         progress.style.width =
             percent+"%";
-
     }
 );
-
 
 /* =========================================================
    SCROLL REVEAL
 ========================================================= */
-
 const revealObserver =
     new IntersectionObserver(
         entries=>{
@@ -5472,12 +6567,9 @@ const revealObserver =
                             .add(
                                 "visible"
                             );
-
                     }
-
                 }
             );
-
         },
         {
             threshold:.15
@@ -5493,11 +6585,9 @@ document
         )
 );
 
-
 /* =========================================================
    WATER LIGHT
 ========================================================= */
-
 const water =
     document.getElementById(
         "water"
@@ -5507,6 +6597,22 @@ const waterLight =
     document.getElementById(
         "waterLight"
     );
+
+let mouseInsideWater = false;
+
+water.addEventListener(
+    "mouseenter",
+    ()=>{
+        mouseInsideWater = true;
+    }
+);
+
+water.addEventListener(
+    "mouseleave",
+    ()=>{
+        mouseInsideWater = false;
+    }
+);
 
 water.addEventListener(
     "mousemove",
@@ -5532,16 +6638,28 @@ water.addEventListener(
     }
 );
 
-
 /* =========================================================
-   ENHANCED FISH SYSTEM
+   ULTIMATE FISH + FOOD SYSTEM
 ========================================================= */
-
 const fishLayer =
     document.getElementById(
         "fishLayer"
     );
 
+const foodLayer =
+    document.getElementById(
+        "foodLayer"
+    );
+
+const feedFishButton =
+    document.getElementById(
+        "feedFishButton"
+    );
+
+const feedStatus =
+    document.getElementById(
+        "feedStatus"
+    );
 
 const fishColors = [
     "fish-orange",
@@ -5550,23 +6668,41 @@ const fishColors = [
     "fish-gold"
 ];
 
-
 const fishData = [];
+const foodData = [];
 
+let feedingMode = false;
+let feedingTimer = null;
+let fishTime = 0;
+let lastFrame = performance.now();
 
 function randomRange(
     min,
     max
 ){
     return min +
-        Math.random() *
+        Math.random()*
         (max-min);
 }
 
-
-function createFish(
-    index
+function clamp(
+    value,
+    min,
+    max
 ){
+    return Math.max(
+        min,
+        Math.min(
+            max,
+            value
+        )
+    );
+}
+
+/* ---------------------------------------------------------
+   FISH CREATION
+--------------------------------------------------------- */
+function createFish(index){
 
     const wrapper =
         document.createElement(
@@ -5576,19 +6712,17 @@ function createFish(
     wrapper.className =
         "fish-group";
 
-
     const body =
         document.createElement(
             "div"
         );
 
     body.className =
-        "fish-body " +
+        "fish-body "+
         fishColors[
             index %
             fishColors.length
         ];
-
 
     const tail =
         document.createElement(
@@ -5598,7 +6732,6 @@ function createFish(
     tail.className =
         "fish-tail";
 
-
     const fin =
         document.createElement(
             "div"
@@ -5606,7 +6739,6 @@ function createFish(
 
     fin.className =
         "fish-fin";
-
 
     const eye =
         document.createElement(
@@ -5616,7 +6748,6 @@ function createFish(
     eye.className =
         "fish-eye";
 
-
     const stripe1 =
         document.createElement(
             "div"
@@ -5624,7 +6755,6 @@ function createFish(
 
     stripe1.className =
         "fish-stripe";
-
 
     const stripe2 =
         document.createElement(
@@ -5634,7 +6764,6 @@ function createFish(
     stripe2.className =
         "fish-stripe s2";
 
-
     const stripe3 =
         document.createElement(
             "div"
@@ -5642,7 +6771,6 @@ function createFish(
 
     stripe3.className =
         "fish-stripe s3";
-
 
     const highlight =
         document.createElement(
@@ -5652,7 +6780,6 @@ function createFish(
     highlight.className =
         "fish-highlight";
 
-
     const shadow =
         document.createElement(
             "div"
@@ -5660,7 +6787,6 @@ function createFish(
 
     shadow.className =
         "fish-shadow";
-
 
     const wake =
         document.createElement(
@@ -5670,7 +6796,6 @@ function createFish(
     wake.className =
         "fish-wake";
 
-
     const bubble1 =
         document.createElement(
             "div"
@@ -5678,7 +6803,6 @@ function createFish(
 
     bubble1.className =
         "fish-bubble b1";
-
 
     const bubble2 =
         document.createElement(
@@ -5688,65 +6812,29 @@ function createFish(
     bubble2.className =
         "fish-bubble b2";
 
+    body.appendChild(tail);
+    body.appendChild(fin);
+    body.appendChild(eye);
+    body.appendChild(stripe1);
+    body.appendChild(stripe2);
+    body.appendChild(stripe3);
+    body.appendChild(highlight);
 
-    body.appendChild(
-        tail
-    );
+    wrapper.appendChild(shadow);
+    wrapper.appendChild(body);
+    wrapper.appendChild(wake);
+    wrapper.appendChild(bubble1);
+    wrapper.appendChild(bubble2);
 
-    body.appendChild(
-        fin
-    );
-
-    body.appendChild(
-        eye
-    );
-
-    body.appendChild(
-        stripe1
-    );
-
-    body.appendChild(
-        stripe2
-    );
-
-    body.appendChild(
-        stripe3
-    );
-
-    body.appendChild(
-        highlight
-    );
-
-
-    wrapper.appendChild(
-        shadow
-    );
-
-    wrapper.appendChild(
-        body
-    );
-
-    wrapper.appendChild(
-        wake
-    );
-
-    wrapper.appendChild(
-        bubble1
-    );
-
-    wrapper.appendChild(
-        bubble2
-    );
-
-
-    fishLayer.appendChild(
-        wrapper
-    );
-
+    fishLayer.appendChild(wrapper);
 
     const rect =
         fishLayer.getBoundingClientRect();
 
+    const startDirection =
+        Math.random()>.5
+        ? 1
+        : -1;
 
     const fish = {
 
@@ -5754,35 +6842,37 @@ function createFish(
 
         x:
             randomRange(
-                -100,
-                rect.width + 100
+                50,
+                Math.max(
+                    100,
+                    rect.width-130
+                )
             ),
 
         y:
             randomRange(
-                65,
+                75,
                 Math.max(
                     120,
-                    rect.height - 80
+                    rect.height-90
                 )
             ),
 
-        speed:
+        vx:
+            startDirection*
             randomRange(
-                .28,
-                .62
+                .35,
+                .85
             ),
 
-        amplitude:
+        vy:
             randomRange(
-                4,
-                12
+                -.12,
+                .12
             ),
 
-        phase:
-            Math.random() *
-            Math.PI *
-            2,
+        direction:
+            startDirection,
 
         size:
             randomRange(
@@ -5790,400 +6880,1325 @@ function createFish(
                 1.18
             ),
 
-        direction:
-            Math.random()>.5
-            ? 1
-            : -1,
+        amplitude:
+            randomRange(
+                3,
+                9
+            ),
 
-        targetY:0,
+        phase:
+            Math.random()*
+            Math.PI*
+            2,
 
-        startled:0,
+        schoolOffset:
+            randomRange(
+                -60,
+                60
+            ),
+
+        startled:
+            0,
+
+        curiosity:
+            0,
+
+        feeding:
+            false,
+
+        feedBoost:
+            0,
 
         opacity:
             randomRange(
                 .72,
-                .94
+                .97
             )
-
     };
-
-
-    if(
-        fish.direction === -1
-    ){
-        fish.x =
-            rect.width +
-            randomRange(
-                50,
-                180
-            );
-    }
-
 
     fish.el.style.opacity =
         fish.opacity;
-
 
     fish.el.style.transform =
         `translate3d(
             ${fish.x}px,
             ${fish.y}px,
             0
-        ) scale(${fish.size})`;
-
+        )
+        scale(${fish.size})
+        scaleX(${fish.direction})`;
 
     fishData.push(
         fish
     );
-
 }
 
-
-/* create a real little school */
-
+/* 14 fish for a richer pond */
 for(
     let i=0;
-    i<11;
+    i<14;
     i++
 ){
-
     createFish(i);
-
 }
 
+/* ---------------------------------------------------------
+   FOOD CREATION
+--------------------------------------------------------- */
+function createFood(
+    x,
+    y,
+    count=1
+){
 
-/* =========================================================
-   FISH ANIMATION LOOP
-========================================================= */
+    for(
+        let i=0;
+        i<count;
+        i++
+    ){
 
-let fishTime = 0;
+        const pellet =
+            document.createElement(
+                "span"
+            );
 
+        pellet.className =
+            "food-pellet falling";
 
-function animateFish(){
+        const startX =
+            x +
+            randomRange(
+                -28,
+                28
+            );
 
-    fishTime += .016;
+        const landingY =
+            y +
+            randomRange(
+                -18,
+                18
+            );
 
+        const startY =
+            -15 -
+            Math.random()*65;
+
+        pellet.style.left =
+            startX+"px";
+
+        pellet.style.top =
+            startY+"px";
+
+        foodLayer.appendChild(
+            pellet
+        );
+
+        const food = {
+
+            el:pellet,
+
+            x:startX,
+
+            y:startY,
+
+            targetY:landingY,
+
+            falling:true,
+
+            age:0,
+
+            life:
+                9000 +
+                Math.random()*5000
+        };
+
+        foodData.push(
+            food
+        );
+    }
+}
+
+/* ---------------------------------------------------------
+   FEED BUTTON
+--------------------------------------------------------- */
+function activateFeedMode(){
+
+    feedingMode =
+        !feedingMode;
+
+    if(feedingMode){
+
+        water.classList.add(
+            "feeding-mode"
+        );
+
+        feedFishButton.classList.add(
+            "active"
+        );
+
+        feedFishButton.textContent =
+            "🐟 กำลังให้อาหารปลา...";
+
+        feedStatus.textContent =
+            "✨ คลิกบนผิวน้ำเพื่อโปรยอาหาร";
+
+        /* immediate snack */
+        const rect =
+            water.getBoundingClientRect();
+
+        createFood(
+            rect.width*.5,
+            rect.height*.58,
+            5
+        );
+
+        clearTimeout(
+            feedingTimer
+        );
+
+        feedingTimer =
+            setTimeout(
+                deactivateFeedMode,
+                9000
+            );
+
+    }else{
+
+        deactivateFeedMode();
+    }
+}
+
+function deactivateFeedMode(){
+
+    feedingMode =
+        false;
+
+    water.classList.remove(
+        "feeding-mode"
+    );
+
+    feedFishButton.classList.remove(
+        "active"
+    );
+
+    feedFishButton.textContent =
+        "🍚 ให้อาหารปลา";
+
+    feedStatus.textContent =
+        "🐟 ปลาในบ่อกำลังว่ายเล่น";
+
+    if(feedingTimer){
+
+        clearTimeout(
+            feedingTimer
+        );
+
+        feedingTimer = null;
+    }
+}
+
+feedFishButton.addEventListener(
+    "click",
+    event=>{
+
+        event.stopPropagation();
+
+        activateFeedMode();
+    }
+);
+
+/* ---------------------------------------------------------
+   FISH REACTION
+--------------------------------------------------------- */
+function startFishCuriosity(
+    x,
+    y
+){
+
+    fishData.forEach(
+        fish=>{
+
+            const fx =
+                fish.x+40;
+
+            const fy =
+                fish.y+21;
+
+            const dx =
+                x-fx;
+
+            const dy =
+                y-fy;
+
+            const distance =
+                Math.hypot(
+                    dx,
+                    dy
+                );
+
+            if(
+                distance<230
+            ){
+
+                fish.curiosity =
+                    1-
+                    distance/
+                    230;
+
+                if(
+                    Math.random()<.68
+                ){
+
+                    fish.el.classList.add(
+                        "fish-curious"
+                    );
+
+                    setTimeout(
+                        ()=>{
+                            fish.el.classList.remove(
+                                "fish-curious"
+                            );
+                        },
+                        500
+                    );
+                }
+            }
+        }
+    );
+}
+
+function startFishScatter(
+    x,
+    y
+){
+
+    fishData.forEach(
+        fish=>{
+
+            const fx =
+                fish.x+40;
+
+            const fy =
+                fish.y+21;
+
+            const dx =
+                fx-x;
+
+            const dy =
+                fy-y;
+
+            const distance =
+                Math.hypot(
+                    dx,
+                    dy
+                );
+
+            if(
+                distance<260
+            ){
+
+                const safeDistance =
+                    Math.max(
+                        distance,
+                        1
+                    );
+
+                const strength =
+                    1 -
+                    distance/
+                    260;
+
+                fish.vx +=
+                    (dx/
+                    safeDistance)*
+                    4.5*
+                    strength;
+
+                fish.vy +=
+                    (dy/
+                    safeDistance)*
+                    3.4*
+                    strength;
+
+                fish.startled =
+                    Math.max(
+                        fish.startled,
+                        1.3*
+                        strength
+                    );
+
+                fish.direction =
+                    fish.vx>=0
+                    ? 1
+                    : -1;
+
+                fish.el.classList.add(
+                    "fish-startled"
+                );
+
+                setTimeout(
+                    ()=>{
+                        fish.el.classList.remove(
+                            "fish-startled"
+                        );
+                    },
+                    450
+                );
+            }
+        }
+    );
+}
+
+/* ---------------------------------------------------------
+   FOOD EATING
+--------------------------------------------------------- */
+function createFoodEatEffect(
+    x,
+    y
+){
+
+    const effect =
+        document.createElement(
+            "span"
+        );
+
+    effect.className =
+        "food-eat-effect";
+
+    effect.style.left =
+        x+"px";
+
+    effect.style.top =
+        y+"px";
+
+    water.appendChild(
+        effect
+    );
+
+    setTimeout(
+        ()=>{
+            effect.remove();
+        },
+        650
+    );
+}
+
+function eatFood(
+    food,
+    fish
+){
+
+    if(!food || !food.el){
+        return;
+    }
+
+    createFoodEatEffect(
+        food.x,
+        food.y
+    );
+
+    fish.feeding =
+        true;
+
+    fish.feedBoost =
+        .9;
+
+    fish.curiosity =
+        1;
+
+    fish.el.classList.add(
+        "fish-feeding"
+    );
+
+    setTimeout(
+        ()=>{
+            fish.feeding = false;
+
+            fish.el.classList.remove(
+                "fish-feeding"
+            );
+        },
+        650
+    );
+
+    food.el.remove();
+
+    const index =
+        foodData.indexOf(
+            food
+        );
+
+    if(index!==-1){
+
+        foodData.splice(
+            index,
+            1
+        );
+    }
+
+    feedStatus.textContent =
+        "💖 ปลาเจออาหารแล้ว! ดูมันแห่มากินสิ";
+}
+
+/* ---------------------------------------------------------
+   FISH ANIMATION
+--------------------------------------------------------- */
+function animateFish(
+    now
+){
+
+    const delta =
+        Math.min(
+            32,
+            now-lastFrame
+        );
+
+    lastFrame =
+        now;
+
+    const dt =
+        delta/16.67;
+
+    fishTime +=
+        .016*dt;
 
     const rect =
         fishLayer.getBoundingClientRect();
 
-
-    const mouseRect =
+    const waterRect =
         water.getBoundingClientRect();
 
-
     const relativeMouseX =
-        mouseX -
-        mouseRect.left;
-
+        mouseX-
+        waterRect.left;
 
     const relativeMouseY =
-        mouseY -
-        mouseRect.top;
+        mouseY-
+        waterRect.top;
 
+    /* update food */
+    for(
+        let i=foodData.length-1;
+        i>=0;
+        i--
+    ){
+
+        const food =
+            foodData[i];
+
+        food.age +=
+            delta;
+
+        if(
+            food.falling
+        ){
+
+            food.y +=
+                (food.targetY-food.y)*
+                .065*
+                dt;
+
+            if(
+                Math.abs(
+                    food.targetY-food.y
+                )<.8
+            ){
+
+                food.y =
+                    food.targetY;
+
+                food.falling =
+                    false;
+
+                food.el.classList.remove(
+                    "falling"
+                );
+            }
+
+        }else{
+
+            food.y +=
+                Math.sin(
+                    fishTime*2.4+
+                    food.x*.02
+                )*
+                .035*
+                dt;
+        }
+
+        food.el.style.left =
+            food.x+"px";
+
+        food.el.style.top =
+            food.y+"px";
+
+        if(
+            food.age >
+            food.life
+        ){
+
+            food.el.remove();
+
+            foodData.splice(
+                i,
+                1
+            );
+        }
+    }
+
+    /* school center */
+    let schoolX = 0;
+    let schoolY = 0;
+
+    fishData.forEach(
+        fish=>{
+
+            schoolX +=
+                fish.x;
+
+            schoolY +=
+                fish.y;
+        }
+    );
+
+    if(
+        fishData.length
+    ){
+
+        schoolX /=
+            fishData.length;
+
+        schoolY /=
+            fishData.length;
+    }
 
     fishData.forEach(
         (fish,index)=>{
 
             const centerX =
-                fish.x + 40;
+                fish.x+40;
 
             const centerY =
-                fish.y + 20;
+                fish.y+21;
 
+            /* find closest landed food */
+            let targetFood = null;
+            let targetDistance = Infinity;
 
-            const dx =
-                relativeMouseX -
-                centerX;
-
-            const dy =
-                relativeMouseY -
-                centerY;
-
-
-            const distance =
-                Math.sqrt(
-                    dx*dx+
-                    dy*dy
-                );
-
-
-            /* subtle attraction / curiosity */
-
-            let driftX = 0;
-            let driftY = 0;
-
-
-            if(
-                distance < 180 &&
-                relativeMouseY > 0
+            for(
+                const food of foodData
             ){
 
-                driftX =
-                    dx/
-                    Math.max(
-                        distance,
-                        1
-                    ) *
-                    .08;
+                if(
+                    food.falling
+                ){
+                    continue;
+                }
 
-                driftY =
-                    dy/
-                    Math.max(
-                        distance,
-                        1
-                    ) *
-                    .055;
+                const dx =
+                    food.x-centerX;
 
+                const dy =
+                    food.y-centerY;
+
+                const d =
+                    Math.hypot(
+                        dx,
+                        dy
+                    );
+
+                if(
+                    d<targetDistance
+                ){
+
+                    targetDistance =
+                        d;
+
+                    targetFood =
+                        food;
+                }
             }
 
+            /* organic school behavior */
+            const slotX =
+                schoolX+
+                fish.schoolOffset;
 
-            fish.phase +=
-                .004 +
-                index*.00003;
-
-
-            fish.x +=
-                fish.speed *
-                fish.direction;
-
-
-            fish.y +=
-                driftY;
-
-
-            const bob =
+            const slotY =
+                schoolY+
                 Math.sin(
-                    fishTime*2.1 +
+                    fishTime*1.2+
                     fish.phase
-                ) *
-                fish.amplitude;
+                )*
+                18;
 
+            let desiredVX =
+                fish.vx;
 
-            /* keep fish inside swimming zone */
+            let desiredVY =
+                fish.vy;
 
             if(
-                fish.direction === 1 &&
-                fish.x >
-                rect.width + 120
+                targetFood &&
+                targetDistance<340
+            ){
+
+                const dx =
+                    targetFood.x-centerX;
+
+                const dy =
+                    targetFood.y-centerY;
+
+                const safeDistance =
+                    Math.max(
+                        Math.hypot(
+                            dx,
+                            dy
+                        ),
+                        1
+                    );
+
+                const chasePower =
+                    targetDistance<90
+                    ? 2.5
+                    : 1.6;
+
+                desiredVX =
+                    (dx/
+                    safeDistance)*
+                    chasePower;
+
+                desiredVY =
+                    (dy/
+                    safeDistance)*
+                    chasePower;
+
+                fish.el.classList.add(
+                    "fish-feeding"
+                );
+
+            }else{
+
+                /* flocking */
+                const schoolDx =
+                    slotX-
+                    fish.x;
+
+                const schoolDy =
+                    slotY-
+                    fish.y;
+
+                desiredVX =
+                    fish.direction*
+                    .58 +
+                    schoolDx*
+                    .0009;
+
+                desiredVY =
+                    schoolDy*
+                    .0017;
+
+                /* mouse curiosity */
+                if(
+                    mouseInsideWater &&
+                    relativeMouseY>100 &&
+                    relativeMouseY<
+                        rect.height
+                ){
+
+                    const dx =
+                        relativeMouseX-centerX;
+
+                    const dy =
+                        relativeMouseY-centerY;
+
+                    const distance =
+                        Math.hypot(
+                            dx,
+                            dy
+                        );
+
+                    if(
+                        distance<210
+                    ){
+
+                        const strength =
+                            1-
+                            distance/
+                            210;
+
+                        desiredVX +=
+                            (dx/
+                            Math.max(
+                                distance,
+                                1
+                            ))*
+                            .55*
+                            strength;
+
+                        desiredVY +=
+                            (dy/
+                            Math.max(
+                                distance,
+                                1
+                            ))*
+                            .4*
+                            strength;
+
+                        fish.curiosity =
+                            Math.min(
+                                1,
+                                fish.curiosity+
+                                .018*
+                                dt
+                            );
+
+                        fish.el.classList.add(
+                            "fish-curious"
+                        );
+
+                    }else{
+
+                        fish.curiosity *=
+                            .97;
+                    }
+                }else{
+
+                    fish.curiosity *=
+                        .97;
+                }
+
+                if(
+                    fish.curiosity<.12
+                ){
+                    fish.el.classList.remove(
+                        "fish-curious"
+                    );
+                }
+            }
+
+            /* water click impulse fades */
+            fish.vx +=
+                desiredVX-
+                fish.vx;
+
+            fish.vy +=
+                (desiredVY-
+                fish.vy)*
+                .055*
+                dt;
+
+            /* feed boost */
+            if(
+                fish.feedBoost>0
+            ){
+
+                fish.vx +=
+                    fish.direction*
+                    fish.feedBoost*
+                    .04*
+                    dt;
+
+                fish.feedBoost *=
+                    Math.pow(
+                        .94,
+                        dt
+                    );
+            }
+
+            /* natural bob */
+            const bob =
+                Math.sin(
+                    fishTime*2.1+
+                    fish.phase
+                )*
+                fish.amplitude;
+
+            /* limit speed */
+            const speed =
+                Math.hypot(
+                    fish.vx,
+                    fish.vy
+                );
+
+            const maxSpeed =
+                targetFood
+                ? 2.6
+                : 1.45;
+
+            if(
+                speed>maxSpeed
+            ){
+
+                fish.vx =
+                    fish.vx/
+                    speed*
+                    maxSpeed;
+
+                fish.vy =
+                    fish.vy/
+                    speed*
+                    maxSpeed;
+            }
+
+            /* minimum movement */
+            if(
+                Math.hypot(
+                    fish.vx,
+                    fish.vy
+                )<.18
+            ){
+
+                fish.vx +=
+                    fish.direction*
+                    .035;
+            }
+
+            fish.x +=
+                fish.vx*
+                dt;
+
+            fish.y +=
+                fish.vy*
+                dt;
+
+            /* soft water boundaries */
+            const minY =
+                72;
+
+            const maxY =
+                Math.max(
+                    120,
+                    rect.height-78
+                );
+
+            if(
+                fish.y<minY
+            ){
+
+                fish.vy +=
+                    .06*
+                    dt;
+
+                fish.y =
+                    minY;
+            }
+
+            if(
+                fish.y>maxY
+            ){
+
+                fish.vy -=
+                    .06*
+                    dt;
+
+                fish.y =
+                    maxY;
+            }
+
+            /* wrap sides */
+            if(
+                fish.x>
+                rect.width+100
             ){
 
                 fish.x =
-                    -140;
+                    -120;
 
                 fish.y =
                     randomRange(
-                        75,
-                        Math.max(
-                            120,
-                            rect.height-75
-                        )
+                        minY,
+                        maxY
                     );
-
             }
 
-
             if(
-                fish.direction === -1 &&
-                fish.x <
+                fish.x<
                 -140
             ){
 
                 fish.x =
-                    rect.width +
-                    140;
+                    rect.width+120;
 
                 fish.y =
                     randomRange(
-                        75,
-                        Math.max(
-                            120,
-                            rect.height-75
-                        )
+                        minY,
+                        maxY
                     );
-
             }
 
-
+            /* direction */
             if(
-                fish.startled > 0
+                Math.abs(
+                    fish.vx
+                )>.08
             ){
 
-                fish.x +=
-                    fish.direction *
-                    fish.startled;
-
-                fish.startled *= .92;
-
+                fish.direction =
+                    fish.vx>=0
+                    ? 1
+                    : -1;
             }
 
+            /* eat nearest food */
+            if(
+                targetFood &&
+                targetDistance<25
+            ){
 
-            /* switch visual direction */
+                eatFood(
+                    targetFood,
+                    fish
+                );
+            }
 
-            const scaleX =
-                fish.direction === 1
-                ? 1
-                : -1;
-
-
+            /* render */
             fish.el.style.transform =
                 `translate3d(
-                    ${fish.x + driftX*25}px,
-                    ${fish.y + bob}px,
+                    ${fish.x}px,
+                    ${fish.y+bob}px,
                     0
                 )
                 scale(${fish.size})
-                scaleX(${scaleX})`;
-
+                scaleX(${fish.direction})`;
         }
     );
-
 
     requestAnimationFrame(
         animateFish
     );
-
 }
 
-
-animateFish();
-
+requestAnimationFrame(
+    animateFish
+);
 
 /* =========================================================
-   FISH REACTION TO WATER CLICK
+   WATER CLICK
 ========================================================= */
-
 water.addEventListener(
     "click",
     event=>{
 
+        if(
+            event.target.closest(
+                ".lotus-bloom"
+            ) ||
+            event.target.closest(
+                ".lotus-leaf"
+            ) ||
+            event.target.closest(
+                ".pond-ui"
+            )
+        ){
+
+            return;
+        }
+
         const rect =
             water.getBoundingClientRect();
 
-
         const clickX =
-            event.clientX -
+            event.clientX-
             rect.left;
 
         const clickY =
-            event.clientY -
+            event.clientY-
             rect.top;
 
-
-        fishData.forEach(
-            fish=>{
-
-                const fishX =
-                    fish.x + 40;
-
-                const fishY =
-                    fish.y + 20;
-
-
-                const dx =
-                    fishX -
-                    clickX;
-
-                const dy =
-                    fishY -
-                    clickY;
-
-
-                const distance =
-                    Math.sqrt(
-                        dx*dx+
-                        dy*dy
-                    );
-
-
-                if(
-                    distance < 220
-                ){
-
-                    const power =
-                        18 *
-                        (
-                            1 -
-                            distance/
-                            220
-                        );
-
-
-                    fish.direction =
-                        dx > 0
-                        ? 1
-                        : -1;
-
-
-                    fish.startled +=
-                        power;
-
-
-                    fish.y +=
-                        dy > 0
-                        ? 8
-                        : -8;
-
-
-                    fish.el.classList.add(
-                        "fish-startled"
-                    );
-
-
-                    setTimeout(
-                        ()=>{
-                            fish.el.classList
-                                .remove(
-                                    "fish-startled"
-                                );
-                        },
-                        320
-                    );
-
-                }
-
-            }
+        createRipple(
+            clickX,
+            clickY
         );
 
+        if(
+            feedingMode
+        ){
 
-        /* create splash where clicked */
-
-        const splash =
-            document.createElement(
-                "span"
+            /* feed where user clicked */
+            createFood(
+                clickX,
+                clickY,
+                4
             );
 
-        splash.className =
-            "fish-splash";
+            startFishCuriosity(
+                clickX,
+                clickY
+            );
 
+            feedStatus.textContent =
+                "🍚 โปรยอาหารแล้ว! ปลาเริ่มว่ายเข้ามา...";
 
-        splash.style.left =
-            clickX+"px";
+            /* little burst */
+            for(
+                let i=0;
+                i<4;
+                i++
+            ){
+                createFoodEatEffect(
+                    clickX+
+                    randomRange(
+                        -16,
+                        16
+                    ),
+                    clickY+
+                    randomRange(
+                        -10,
+                        10
+                    )
+                );
+            }
 
-        splash.style.top =
-            clickY+"px";
+            return;
+        }
 
-
-        water.appendChild(
-            splash
+        /* normal click = splash + fish scatter */
+        startFishScatter(
+            clickX,
+            clickY
         );
 
+        feedStatus.textContent =
+            "💦 จ๋อม! ปลาแตกฝูงแล้ว";
 
         setTimeout(
             ()=>{
-                splash.remove();
+                if(!feedingMode){
+                    feedStatus.textContent =
+                        "🐟 ปลาในบ่อกำลังว่ายเล่น";
+                }
             },
-            1000
+            1500
         );
-
     }
 );
 
+/* =========================================================
+   CREATE RIPPLE
+========================================================= */
+function createRipple(
+    x,
+    y
+){
+
+    const ripple =
+        document.createElement(
+            "span"
+        );
+
+    ripple.className =
+        "ripple";
+
+    ripple.style.left =
+        x+"px";
+
+    ripple.style.top =
+        y+"px";
+
+    water.appendChild(
+        ripple
+    );
+
+    setTimeout(
+        ()=>{
+            ripple.remove();
+        },
+        1300
+    );
+}
+
+/* =========================================================
+   LOTUS INTERACTION
+========================================================= */
+document
+.querySelectorAll(".lotus-bloom")
+.forEach(
+    lotus=>{
+
+        lotus.addEventListener(
+            "click",
+            event=>{
+
+                event.stopPropagation();
+
+                const waterRect =
+                    water.getBoundingClientRect();
+
+                const lotusRect =
+                    lotus.getBoundingClientRect();
+
+                const x =
+                    lotusRect.left-
+                    waterRect.left+
+                    lotusRect.width/2;
+
+                const y =
+                    lotusRect.top-
+                    waterRect.top+
+                    lotusRect.height/2;
+
+                lotus.classList.toggle(
+                    "bloomed"
+                );
+
+                createRipple(
+                    x,
+                    y
+                );
+
+                /* sparkle burst */
+                for(
+                    let i=0;
+                    i<14;
+                    i++
+                ){
+
+                    const spark =
+                        document.createElement(
+                            "span"
+                        );
+
+                    spark.className =
+                        "lotus-spark";
+
+                    spark.style.left =
+                        x+"px";
+
+                    spark.style.top =
+                        y+"px";
+
+                    spark.style.setProperty(
+                        "--dx",
+                        (
+                            Math.random()-.5
+                        )*
+                        150+
+                        "px"
+                    );
+
+                    spark.style.setProperty(
+                        "--dy",
+                        (
+                            Math.random()-.5
+                        )*
+                        120-
+                        20+
+                        "px"
+                    );
+
+                    water.appendChild(
+                        spark
+                    );
+
+                    setTimeout(
+                        ()=>{
+                            spark.remove();
+                        },
+                        950
+                    );
+                }
+
+                /* make nearby fish curious */
+                startFishCuriosity(
+                    x,
+                    y
+                );
+
+                const isBloomed =
+                    lotus.classList.contains(
+                        "bloomed"
+                    );
+
+                feedStatus.textContent =
+                    isBloomed
+                    ? "🌸 ดอกบัวกำลังเบ่งบาน..."
+                    : "🌙 ดอกบัวค่อย ๆ หุบกลับ";
+
+                setTimeout(
+                    ()=>{
+                        if(!feedingMode){
+                            feedStatus.textContent =
+                                "🐟 ปลาในบ่อกำลังว่ายเล่น";
+                        }
+                    },
+                    1700
+                );
+            }
+        );
+    }
+);
+
+/* =========================================================
+   LILY PAD INTERACTION
+========================================================= */
+document
+.querySelectorAll(".lotus-leaf")
+.forEach(
+    leaf=>{
+
+        leaf.addEventListener(
+            "click",
+            event=>{
+
+                event.stopPropagation();
+
+                leaf.classList.remove(
+                    "clicked"
+                );
+
+                void leaf.offsetWidth;
+
+                leaf.classList.add(
+                    "clicked"
+                );
+
+                const waterRect =
+                    water.getBoundingClientRect();
+
+                const leafRect =
+                    leaf.getBoundingClientRect();
+
+                const x =
+                    leafRect.left-
+                    waterRect.left+
+                    leafRect.width/2;
+
+                const y =
+                    leafRect.top-
+                    waterRect.top+
+                    leafRect.height/2;
+
+                createRipple(
+                    x,
+                    y
+                );
+
+                startFishCuriosity(
+                    x,
+                    y
+                );
+
+                feedStatus.textContent =
+                    "🍃 ใบบัวสั่นไหว... ปลาก็หันมามอง";
+
+                setTimeout(
+                    ()=>{
+                        if(!feedingMode){
+                            feedStatus.textContent =
+                                "🐟 ปลาในบ่อกำลังว่ายเล่น";
+                        }
+                    },
+                    1200
+                );
+            }
+        );
+    }
+);
 
 /* =========================================================
    GLOBAL CLICK MAGIC
 ========================================================= */
-
 document.addEventListener(
     "click",
     event=>{
@@ -6194,11 +8209,19 @@ document.addEventListener(
             ) ||
             event.target.closest(
                 ".season-wheel"
+            ) ||
+            event.target.closest(
+                ".lotus-bloom"
+            ) ||
+            event.target.closest(
+                ".lotus-leaf"
+            ) ||
+            event.target.closest(
+                ".pond-ui"
             )
         ){
             return;
         }
-
 
         const symbols=[
             "✦",
@@ -6206,7 +8229,6 @@ document.addEventListener(
             "·",
             "✿"
         ];
-
 
         for(
             let i=0;
@@ -6236,7 +8258,6 @@ document.addEventListener(
             particle.style.top =
                 event.clientY+"px";
 
-
             particle.style.setProperty(
                 "--dx",
                 (
@@ -6260,11 +8281,9 @@ document.addEventListener(
                 )+"deg"
             );
 
-
             document.body.appendChild(
                 particle
             );
-
 
             setTimeout(
                 ()=>{
@@ -6272,17 +8291,13 @@ document.addEventListener(
                 },
                 950
             );
-
         }
-
     }
 );
-
 
 /* =========================================================
    SEASON SWITCH
 ========================================================= */
-
 const springChoice =
     document.getElementById(
         "springChoice"
@@ -6321,7 +8336,6 @@ const seasonTransition =
 let season =
     "spring";
 
-
 function changeSeason(
     nextSeason
 ){
@@ -6330,11 +8344,8 @@ function changeSeason(
         nextSeason ===
         season
     ){
-
         return;
-
     }
-
 
     seasonTransition
         .classList
@@ -6342,20 +8353,17 @@ function changeSeason(
             "active"
         );
 
-
     setTimeout(
         ()=>{
 
             season =
                 nextSeason;
 
-
             document.body
                 .setAttribute(
                     "data-season",
                     season
                 );
-
 
             if(
                 season ===
@@ -6411,13 +8419,11 @@ function changeSeason(
 
                 navSeasonText.textContent =
                     "🌸 Spring";
-
             }
 
         },
         220
     );
-
 
     setTimeout(
         ()=>{
@@ -6431,9 +8437,7 @@ function changeSeason(
         },
         950
     );
-
 }
-
 
 springChoice.addEventListener(
     "click",
@@ -6444,7 +8448,6 @@ springChoice.addEventListener(
     }
 );
 
-
 autumnChoice.addEventListener(
     "click",
     ()=>{
@@ -6454,31 +8457,25 @@ autumnChoice.addEventListener(
     }
 );
 
-
 seasonWheel.addEventListener(
     "click",
     ()=>{
-
         changeSeason(
             season === "spring"
             ? "autumn"
             : "spring"
         );
-
     }
 );
-
 
 navSeason.addEventListener(
     "click",
     ()=>{
-
         changeSeason(
             season === "spring"
             ? "autumn"
             : "spring"
         );
-
 
         document
             .getElementById(
@@ -6488,15 +8485,12 @@ navSeason.addEventListener(
                 behavior:"smooth",
                 block:"center"
             });
-
     }
 );
-
 
 /* =========================================================
    ACTIVE NAV
 ========================================================= */
-
 const navLinks =
     document.querySelectorAll(
         ".nav a"
@@ -6506,7 +8500,6 @@ const trackedSections =
     document.querySelectorAll(
         "header[id],section[id],article[id]"
     );
-
 
 const navObserver =
     new IntersectionObserver(
@@ -6518,15 +8511,11 @@ const navObserver =
                     if(
                         !entry.isIntersecting
                     ){
-
                         return;
-
                     }
-
 
                     const id =
                         entry.target.id;
-
 
                     navLinks.forEach(
                         link=>{
@@ -6537,12 +8526,10 @@ const navObserver =
                         }
                     );
 
-
                     const activeLink =
                         document.querySelector(
                             `.nav a[href="#${id}"]`
                         );
-
 
                     if(activeLink){
 
@@ -6551,7 +8538,6 @@ const navObserver =
                             .add(
                                 "active"
                             );
-
                     }
 
                 }
@@ -6563,7 +8549,6 @@ const navObserver =
         }
     );
 
-
 trackedSections.forEach(
     section =>
         navObserver.observe(
@@ -6571,11 +8556,9 @@ trackedSections.forEach(
         )
 );
 
-
 /* =========================================================
    TOP BUTTON
 ========================================================= */
-
 const topBtn =
     document.getElementById(
         "topBtn"
@@ -6603,34 +8586,27 @@ window.addEventListener(
                 .remove(
                     "show"
                 );
-
         }
 
     }
 );
 
-
 topBtn.addEventListener(
     "click",
     ()=>{
-
         window.scrollTo({
             top:0,
             behavior:"smooth"
         });
-
     }
 );
-
 
 /* =========================================================
    YOUTUBE PLAYER
 ========================================================= */
-
 let player;
 let isPlaying =
     false;
-
 
 function onYouTubeIframeAPIReady(){
 
@@ -6662,7 +8638,6 @@ function onYouTubeIframeAPIReady(){
                             )
                             .textContent =
                             "▶";
-
                     },
 
                     onStateChange:
@@ -6682,9 +8657,7 @@ function onYouTubeIframeAPIReady(){
                                     )
                                     .textContent =
                                     "❚❚";
-
                             }
-
 
                             if(
                                 event.data ===
@@ -6702,18 +8675,13 @@ function onYouTubeIframeAPIReady(){
                                     )
                                     .textContent =
                                     "▶";
-
                             }
 
                         }
-
                 }
-
             }
         );
-
 }
-
 
 document
 .getElementById(
@@ -6727,11 +8695,8 @@ document
             !player ||
             !player.playVideo
         ){
-
             return;
-
         }
-
 
         if(
             isPlaying
@@ -6742,17 +8707,14 @@ document
         }else{
 
             player.playVideo();
-
         }
 
     }
 );
 
-
 /* =========================================================
    LOAD YOUTUBE
 ========================================================= */
-
 const youtubeScript =
     document.createElement(
         "script"
@@ -6765,11 +8727,9 @@ document.head.appendChild(
     youtubeScript
 );
 
-
 /* =========================================================
    INITIAL SEASON
 ========================================================= */
-
 document.body.setAttribute(
     "data-season",
     "spring"
